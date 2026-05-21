@@ -117,30 +117,6 @@ CREATE TABLE IF NOT EXISTS user_preferences (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Query history and traceability
-CREATE TABLE IF NOT EXISTS query_history (
-    id SERIAL PRIMARY KEY,
-    user_id VARCHAR(100),
-    query TEXT NOT NULL,
-    mode VARCHAR(20),
-    
-    -- Retrieval metadata
-    retrieved_metrics_count INTEGER DEFAULT 0,
-    retrieved_narrative_count INTEGER DEFAULT 0,
-    
-    -- Response metadata
-    response TEXT,
-    model_used VARCHAR(50),
-    tokens_used INTEGER,
-    latency_ms INTEGER,
-    
-    -- Timestamps
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
--- Create indexes for query_history
-CREATE INDEX IF NOT EXISTS idx_user_created ON query_history (user_id, created_at);
-
 """
 
 

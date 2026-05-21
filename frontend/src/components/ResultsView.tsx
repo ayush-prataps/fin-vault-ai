@@ -38,27 +38,27 @@ export const ResultsView: React.FC<ResultsViewProps> = ({ response }) => {
         <div className="rounded-lg border border-gray-200 bg-white p-6">
           <h2 className="text-lg font-semibold text-gray-900 mb-4">Key Metrics</h2>
           <p className="text-sm text-gray-600 mb-4">
-            {response.numeric_data_count} data points from structured sources
+            Live results from retrieval and narrative evidence
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {[
-              { label: "Revenue", value: "See sources" },
-              { label: "Growth Rate", value: "See sources" },
-              { label: "Net Margin", value: "See sources" },
-              { label: "ROE", value: "See sources" },
-              { label: "P/E Ratio", value: "See sources" },
-              { label: "Debt/Equity", value: "See sources" },
-            ].map((metric) => (
-              <div
-                key={metric.label}
-                className="p-3 rounded-md bg-gray-50 border border-gray-200"
-              >
-                <p className="text-xs font-medium text-gray-600">{metric.label}</p>
-                <p className="text-sm font-semibold text-gray-900 mt-1">
-                  {metric.value}
-                </p>
-              </div>
-            ))}
+            <div className="p-3 rounded-md bg-gray-50 border border-gray-200">
+              <p className="text-xs font-medium text-gray-600">Structured data points</p>
+              <p className="text-sm font-semibold text-gray-900 mt-1">
+                {response.numeric_data_count}
+              </p>
+            </div>
+            <div className="p-3 rounded-md bg-gray-50 border border-gray-200">
+              <p className="text-xs font-medium text-gray-600">Narrative chunks</p>
+              <p className="text-sm font-semibold text-gray-900 mt-1">
+                {response.narrative_chunks_count}
+              </p>
+            </div>
+            <div className="p-3 rounded-md bg-gray-50 border border-gray-200">
+              <p className="text-xs font-medium text-gray-600">Latency</p>
+              <p className="text-sm font-semibold text-gray-900 mt-1">
+                {response.latency_ms} ms
+              </p>
+            </div>
           </div>
         </div>
       )}
@@ -71,16 +71,17 @@ export const ResultsView: React.FC<ResultsViewProps> = ({ response }) => {
             {response.narrative_chunks_count} supporting narrative chunks
           </p>
           <div className="space-y-3">
-            {[1, 2].map((i) => (
+            {response.sources.slice(0, 3).map((source, i) => (
               <div
                 key={i}
                 className="p-3 rounded-md bg-blue-50 border border-blue-200"
               >
                 <p className="text-sm text-blue-900">
-                  Supporting evidence from earnings transcript...
+                  {source.section || "Earnings transcript excerpt"}
                 </p>
                 <p className="text-xs text-blue-700 mt-2">
-                  Q4 2025 Earnings Call • Similarity: 0.92
+                  {source.ticker} {source.doc_type} FY{source.year}
+                  {source.similarity_score && ` · Relevance: ${(source.similarity_score * 100).toFixed(0)}%`}
                 </p>
               </div>
             ))}

@@ -298,6 +298,7 @@ def embed_and_store_narrative(
             'doc_type': doc_type,
             'section_title': section_title or '',
             'chunk_id': chunk_id,
+            'text': text, 
             'summary': text[:200],  # First 200 chars as summary
         }
         

@@ -1,5 +1,6 @@
 from typing import Optional, Dict, List, Any
 from qdrant_client import QdrantClient
+from qdrant_client.models import Filter, FieldCondition, MatchAny, MatchValue
 
 from app.config import settings
 from app.utils.helpers import get_logger
@@ -81,10 +82,24 @@ def search_narrative(
             logger.warning(f"Collection '{collection_name}' not found - narrative search unavailable")
             return []
         
-        # Build query filter - simplified to avoid Qdrant API complexity
-        # In production, these filters should be indexed in Qdrant for performance
         filters = None
-        # Note: Complex filtering deferred - results are post-filtered in Python if needed
+        conditions = []
+
+        if tickers:
+            conditions.append(
+                FieldCondition(key="ticker", match=MatchAny(any=[t.upper() for t in tickers]))
+            )
+        if years:
+            conditions.append(
+                FieldCondition(key="year", match=MatchAny(any=years))
+            )
+        if doc_types:
+            conditions.append(
+                FieldCondition(key="doc_type", match=MatchAny(any=doc_types))
+            )
+
+        if conditions:
+            filters = Filter(must=conditions)
         
         # Search Qdrant - try multiple method names for compatibility
         search_results = []
@@ -116,18 +131,10 @@ def search_narrative(
             logger.warning(f"Narrative search failed: {search_exc}")
             return []
         
-        # Format results with post-filtering
+        # Format results
         results = []
         for result in search_results:
             payload = result.payload or {}
-            
-            # Post-filter by tickers, years, doc_types if specified
-            if tickers and payload.get('ticker', '').upper() not in [t.upper() for t in tickers]:
-                continue
-            if years and payload.get('year', 0) not in years:
-                continue
-            if doc_types and payload.get('doc_type', 'unknown') not in doc_types:
-                continue
             
             results.append({
                 'point_id': result.id,
@@ -143,7 +150,7 @@ def search_narrative(
                 'similarity_score': result.score or 0.0
             })
         
-        logger.debug(f"Found {len(results)} narrative chunks for query (post-filtered)")
+        logger.debug(f"Found {len(results)} narrative chunks for query")
         return results
         
     except Exception as exc:

@@ -3,15 +3,7 @@ from pydantic import BaseModel
 from typing import Optional, List
 import time
 
-from app.core.retrieval import (
-    perform_hybrid_retrieval,
-    build_llm_prompt,
-    assemble_context,
-    detect_contradictions,
-    classify_query_mode
-)
-from app.core.embeddings import embed_text
-from app.core.llm import quick_model_call, deep_model_call
+from app.agents.graph import build_graph
 from app.utils.helpers import get_logger
 
 logger = get_logger(__name__)
@@ -83,35 +75,30 @@ async def query_financial_data(payload: QueryRequest) -> QueryResponse:
             raise HTTPException(status_code=400, detail="Query must be at least 5 characters")
         
         logger.info(f"Processing query: {payload.query[:100]}...")
-        
-        # DEFENSIVE: Classify query mode with fallback
+
+        # DEFENSIVE: Run the LangGraph workflow with a graceful fallback path
         try:
-            query_mode = payload.retrieval_mode or classify_query_mode(payload.query)
-        except Exception as exc:
-            logger.warning(f"Query mode classification failed, defaulting to hybrid: {exc}")
-            query_mode = "hybrid"
-        logger.info(f"Detected query mode: {query_mode}")
-        
-        # DEFENSIVE: Perform hybrid retrieval (non-blocking per component)
-        context = perform_hybrid_retrieval(
-            query=payload.query,
-            embeddings_model_fn=embed_text,
-            tickers=payload.tickers,
-            force_mode=payload.retrieval_mode,
-            numeric_limit=50,
-            narrative_limit=5
-        )
-        
-        # Extract data with safety checks
+            graph = build_graph()
+            result = graph.invoke({
+                "query": payload.query,
+                "mode": payload.mode or "quick",
+                "tickers": payload.tickers,
+            })
+
+            analysis = result.get("raw_analysis", "Unable to generate analysis")
+            context = result.get("retrieval_context", {})
+        except Exception as graph_exc:
+            logger.error(f"Graph invocation failed: {graph_exc}")
+            analysis = "Unable to generate analysis"
+            context = {}
+
         numeric_data = context.get('numeric_data', []) or []
         narrative_chunks = context.get('narrative_chunks', []) or []
         retrieval_summary = context.get('retrieval_summary', {})
-        
-        # DEFENSIVE: Validate we have at least some data
+
         if not numeric_data and not narrative_chunks:
             logger.warning("No retrieval data available")
-            # Continue anyway - LLM can still generate response
-        
+
         # DEFENSIVE: Build sources list with validation
         sources = []
         for chunk in narrative_chunks:
@@ -127,92 +114,13 @@ async def query_financial_data(payload: QueryRequest) -> QueryResponse:
             except Exception as source_exc:
                 logger.warning(f"Failed to build source reference: {source_exc}")
                 continue
-        
-        # DEFENSIVE: Assemble context with error handling
-        try:
-            assembled_context = assemble_context(
-                query=payload.query,
-                numeric_data=numeric_data,
-                narrative_chunks=[
-                    {
-                        'text': c.get('text', ''),
-                        'metadata': {
-                            'ticker': c.get('ticker', ''),
-                            'year': c.get('year', 0),
-                            'doc_type': c.get('doc_type', ''),
-                            'section_title': c.get('section_title', ''),
-                        },
-                        'similarity_score': c.get('score', 0.0)
-                    }
-                    for c in narrative_chunks
-                    if isinstance(c, dict)
-                ],
-                include_contradiction_check=True
-            )
-        except Exception as context_exc:
-            logger.warning(f"Context assembly failed: {context_exc}")
-            # Fallback: create minimal context
-            assembled_context = f"Query: {payload.query}\n\nAnalyze the following financial inquiry."
-        
-        # Build LLM prompt
-        llm_prompt = assembled_context + "\n\nProvide your financial analysis below:\n"
-        
-        # DEFENSIVE: Call LLM with timeout/error handling
-        use_deep_mode = payload.mode == "deep"
-        model_call_fn = deep_model_call if use_deep_mode else quick_model_call
-        model_used = "llama-3.3-70b-versatile" if use_deep_mode else "llama-3.1-8b-instant"
-        
-        logger.info(f"Calling {model_used} for analysis...")
-        analysis = "Unable to generate analysis"
-        tokens_used = None
-        
-        try:
-            llm_result = model_call_fn(llm_prompt)
-            if isinstance(llm_result, dict):
-                analysis = llm_result.get("output", "Unable to generate analysis")
-                tokens_used = llm_result.get("tokens_used")
-            else:
-                analysis = str(llm_result or "Unable to generate analysis")
-                
-            # DEFENSIVE: Cap analysis length
-            analysis = analysis[:5000] if analysis else "Unable to generate analysis"
-            
-        except Exception as llm_exc:
-            logger.error(f"LLM call failed: {llm_exc}")
-            # Graceful degradation: return what we have
-            if numeric_data or narrative_chunks:
-                analysis = "Analysis unavailable due to LLM service error. Retrieved data: " + \
-                          f"{len(numeric_data)} metrics, {len(narrative_chunks)} narrative excerpts"
-            else:
-                analysis = "Unable to process query: retrieval and LLM generation both failed"
-        
-        # DEFENSIVE: Detect contradictions (non-blocking, Area #8)
+
         contradictions = None
         if retrieval_summary.get('query_mode') in ['hybrid', 'narrative'] and numeric_data and narrative_chunks:
-            try:
-                numeric_summary = "\n".join([
-                    f"{m.get('ticker', '?')} - Revenue: ${m.get('revenue', 0)/1e9:.1f}B, NI: ${m.get('net_income', 0)/1e9:.1f}B"
-                    for m in numeric_data[:5]
-                ])
-                narrative_summary = "\n".join([
-                    c.get('text', '')[:300] for c in narrative_chunks[:3]
-                ])
-                
-                contradictions = detect_contradictions(
-                    numeric_summary, narrative_summary, model_call_fn
-                )
-                
-                # DEFENSIVE: Validate contradiction output (Area #5 - citation integrity)
-                if contradictions and not isinstance(contradictions, str):
-                    contradictions = str(contradictions)
-                
-                # DEFENSIVE: Only include if [CONTRADICTION] found
-                if contradictions and "[CONTRADICTION]" not in contradictions:
-                    contradictions = None
-                    
-            except Exception as contra_exc:
-                logger.warning(f"Contradiction detection failed (non-blocking): {contra_exc}")
-                contradictions = None
+            contradictions = None
+
+        model_used = f"langgraph:{payload.mode or 'quick'}"
+        tokens_used = None
         
         # DEFENSIVE: Calculate metrics with fallbacks
         try:

@@ -192,7 +192,7 @@ def ingest_narrative(
                     embeddings_model_fn=embed_text,
                     chunk_id=idx,
                     total_chunks=len(chunks),
-                    section_title=f"Prepared Remarks (AAPL Q{quarter})",
+                    section_title=f"Prepared Remarks ({ticker} Q{quarter})",
                     source_file=f"{ticker}_earnings_q{quarter}_{year}.json"
                 )
                 ingested += 1
@@ -214,7 +214,7 @@ def ingest_narrative(
                     embeddings_model_fn=embed_text,
                     chunk_id=idx + len(chunks),  # Offset from prepared remarks
                     total_chunks=len(chunks),
-                    section_title=f"Q&A Section (AAPL Q{quarter})",
+                    section_title=f"Q&A Section ({ticker} Q{quarter})",
                     source_file=f"{ticker}_earnings_q{quarter}_{year}.json"
                 )
                 ingested += 1
