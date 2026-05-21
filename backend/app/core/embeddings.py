@@ -100,7 +100,7 @@ def embed_batch(texts: list[str]) -> Optional[list[list[float]]]:
 
 def get_model_dimension() -> int:
     """
-    Get embedding model dimension for Qdrant collection creation
+    Get embedding model dimension for pgvector column sizing
     
     Returns:
         Vector size (typically 384 for BGE-small)

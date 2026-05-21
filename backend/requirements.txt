@@ -15,8 +15,5 @@ python-multipart
 requests
 pandas
 diskcache
-yfinance
-lxml
 numpy
-earningscall
 python-dateutil

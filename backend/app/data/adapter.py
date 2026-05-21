@@ -1,18 +1,16 @@
 """
 Data Adapter Module
 Converts raw pipeline outputs (CSVs) into structured data for AI agent
-Bridges SEC EDGAR pipeline → PostgreSQL (numeric) + Qdrant (narrative)
+Bridges SEC EDGAR pipeline → PostgreSQL (numeric + narrative vector search)
 """
 import os
 import pandas as pd
 from pathlib import Path
 from typing import Optional
 from datetime import datetime
-from uuid import uuid4
 
 from app.config import DATA_OUTPUT_DIR, settings
-from app.core.schema import insert_financial_metrics, register_narrative_document
-from app.core.vector import get_qdrant_client
+from app.core.schema import init_schema, insert_financial_metrics, register_narrative_document
 from app.utils.helpers import get_logger
 
 logger = get_logger(__name__)
@@ -170,6 +168,16 @@ def ingest_bulk_download_data(
     return summary
 
 
+def ensure_narrative_store_ready() -> bool:
+    """Ensure the PostgreSQL vector store schema is ready."""
+    return init_schema()
+
+
+def ensure_vector_store_ready(collection_name: str = "financial_narratives") -> bool:
+    """Backwards-compatible helper for older call sites."""
+    return ensure_narrative_store_ready()
+
+
 def chunk_text(text: str, chunk_size: int = 500, overlap: int = 100) -> list[str]:
     """
     Split narrative text into overlapping chunks for embedding and vector storage.
@@ -212,43 +220,6 @@ def chunk_text(text: str, chunk_size: int = 500, overlap: int = 100) -> list[str
 
 
 
-def create_qdrant_collection_if_needed(collection_name: str = "financial_narratives") -> bool:
-    """
-    Create Qdrant collection for narrative embeddings if it doesn't exist
-    
-    Args:
-        collection_name: Name of collection to create
-        
-    Returns:
-        True if successful or already exists
-    """
-    try:
-        client = get_qdrant_client()
-        
-        # Check if collection exists
-        try:
-            client.get_collection(collection_name)
-            logger.info(f"Qdrant collection '{collection_name}' already exists")
-            return True
-        except Exception:
-            pass
-        
-        # Create collection with vector size 384 (for BGE-small embeddings)
-        from qdrant_client.models import Distance, VectorParams
-        
-        client.create_collection(
-            collection_name=collection_name,
-            vectors_config=VectorParams(size=384, distance=Distance.COSINE),
-        )
-        
-        logger.info(f"Created Qdrant collection: {collection_name}")
-        return True
-        
-    except Exception as exc:
-        logger.error(f"Failed to create Qdrant collection: {exc}")
-        return False
-
-
 def embed_and_store_narrative(
     text: str,
     collection_name: str,
@@ -264,11 +235,11 @@ def embed_and_store_narrative(
     source_url: str = None
 ) -> Optional[int]:
     """
-    Embed narrative text and store in Qdrant, register in PostgreSQL
+    Embed narrative text and store in PostgreSQL with a pgvector embedding.
     
     Args:
         text: Narrative text to embed
-        collection_name: Qdrant collection name
+        collection_name: Narrative store name (kept for compatibility)
         company: Company name
         ticker: Stock ticker
         year: Fiscal year
@@ -287,35 +258,13 @@ def embed_and_store_narrative(
         # Generate embedding
         embedding = embeddings_model_fn(text)
         
-        # Store in Qdrant
-        client = get_qdrant_client()
-        point_id = int(uuid4().int % (2**63))  # Generate unique ID using UUID
-        
-        payload = {
-            'company': company,
-            'ticker': ticker,
-            'year': year,
-            'doc_type': doc_type,
-            'section_title': section_title or '',
-            'chunk_id': chunk_id,
-            'text': text, 
-            'summary': text[:200],  # First 200 chars as summary
-        }
-        
-        from qdrant_client.models import PointStruct
-        client.upsert(
-            collection_name=collection_name,
-            points=[PointStruct(id=point_id, vector=embedding, payload=payload)]
-        )
-        
         # Register in PostgreSQL
         db_id = register_narrative_document(
             company=company,
             ticker=ticker,
             year=year,
             doc_type=doc_type,
-            qdrant_point_id=point_id,
-            qdrant_collection=collection_name,
+            embedding=embedding,
             chunk_id=chunk_id,
             total_chunks=total_chunks,
             section_title=section_title,
@@ -324,7 +273,7 @@ def embed_and_store_narrative(
             source_url=source_url
         )
         
-        logger.debug(f"Stored narrative chunk: {doc_type} for {ticker} (Qdrant ID: {point_id})")
+        logger.debug(f"Stored narrative chunk: {doc_type} for {ticker} (row ID: {db_id})")
         return db_id
         
     except Exception as exc:

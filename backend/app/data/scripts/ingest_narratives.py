@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Ingest narrative financial data (earnings transcripts) into Qdrant.
+Ingest narrative financial data (earnings transcripts) into pgvector-backed PostgreSQL.
 
 This script:
 1. Fetches or loads earnings transcripts
 2. Chunks narrative text
 3. Generates embeddings
-4. Stores in Qdrant with metadata
+4. Stores in PostgreSQL with pgvector embeddings
 5. Registers in PostgreSQL
 
 Phase 2: Hybrid Narrative Retrieval
@@ -22,7 +22,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent))
 from app.config import settings, DATA_OUTPUT_DIR
 from app.data.adapter import (
     chunk_text,
-    create_qdrant_collection_if_needed,
+    ensure_narrative_store_ready,
     embed_and_store_narrative,
 )
 from app.core.embeddings import embed_text
@@ -161,7 +161,7 @@ def ingest_narrative(
     collection_name: str = "financial_narratives"
 ) -> int:
     """
-    Ingest a single company's earnings transcript into Qdrant.
+    Ingest a single company's earnings transcript into PostgreSQL.
     
     Args:
         ticker: Stock ticker
@@ -170,7 +170,7 @@ def ingest_narrative(
         quarter: Quarter number
         prepared_remarks: Prepared remarks text
         qa_section: Q&A section text
-        collection_name: Qdrant collection name
+        collection_name: Narrative store name (retained for compatibility)
         
     Returns:
         Number of chunks successfully ingested
@@ -227,15 +227,15 @@ def ingest_narrative(
 def main():
     """Main ingestion workflow."""
     print("\n" + "="*70)
-    print("Phase 2: Narrative Data Ingestion into Qdrant")
+    print("Phase 2: Narrative Data Ingestion into pgvector")
     print("="*70 + "\n")
     
-    # Step 1: Create Qdrant collection
-    print("📝 Step 1: Creating Qdrant collection...")
-    if not create_qdrant_collection_if_needed("financial_narratives"):
-        print("❌ Failed to create Qdrant collection")
+    # Step 1: Ensure pgvector storage is ready
+    print("📝 Step 1: Preparing pgvector narrative storage...")
+    if not ensure_narrative_store_ready():
+        print("❌ Failed to prepare pgvector narrative storage")
         return False
-    print("✅ Qdrant collection ready\n")
+    print("✅ pgvector storage ready\n")
     
     # Step 2: Load narrative data
     print("📚 Step 2: Loading narrative data...")
@@ -243,7 +243,7 @@ def main():
     print(f"✅ Loaded {len(narratives)} narrative sources\n")
     
     # Step 3: Ingest narratives
-    print("🔄 Step 3: Ingesting narratives into Qdrant...")
+    print("🔄 Step 3: Ingesting narratives into PostgreSQL...")
     total_chunks = 0
     
     for key, narrative in narratives.items():
@@ -286,7 +286,7 @@ def main():
                 print(f"       Score: {chunk['score']:.3f}")
                 print(f"       Section: {chunk['section_title']}\n")
         else:
-            print("⚠️  No results found - Qdrant may be empty\n")
+            print("⚠️  No results found - pgvector store may be empty\n")
         
     except Exception as exc:
         logger.error(f"Verification failed: {exc}")

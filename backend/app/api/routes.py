@@ -56,7 +56,7 @@ async def query_financial_data(payload: QueryRequest) -> QueryResponse:
     Phase 2 Hybrid Retrieval Workflow:
     1. Classify query intent (numeric, narrative, or hybrid)
     2. Retrieve numeric metrics from PostgreSQL if applicable
-    3. Retrieve narrative chunks from Qdrant if applicable
+    3. Retrieve narrative chunks from pgvector-backed PostgreSQL if applicable
     4. Assemble citation-rich context for LLM
     5. Detect contradictions between metrics and narrative
     6. Generate analysis with grounded citations

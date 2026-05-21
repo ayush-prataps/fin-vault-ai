@@ -1,35 +1,31 @@
 from typing import Optional, Dict, List, Any
-from qdrant_client import QdrantClient
-from qdrant_client.models import Filter, FieldCondition, MatchAny, MatchValue
 
-from app.config import settings
+from app.core.db import get_db_connection
 from app.utils.helpers import get_logger
 
 logger = get_logger(__name__)
 
 
-def get_qdrant_client() -> QdrantClient:
-    """Get Qdrant client, raises error if QDRANT_URL not configured"""
-    if not settings.qdrant_url:
-        logger.error("QDRANT_URL not configured - Qdrant features unavailable")
-        raise ValueError("QDRANT_URL environment variable not set")
-    return QdrantClient(url=settings.qdrant_url, api_key=settings.qdrant_api_key or None)
+def _vector_literal(values: List[float]) -> str:
+    """Format a Python vector as a pgvector literal."""
+    return "[" + ",".join(f"{float(value):.8f}" for value in values) + "]"
 
 
-def test_qdrant_connection() -> bool:
-    """Test Qdrant connection and availability"""
+def test_vector_connection() -> bool:
+    """Test PostgreSQL + pgvector availability."""
     try:
-        client = get_qdrant_client()
-        client.get_collections()
+        with get_db_connection() as conn:
+            with conn.cursor() as cur:
+                cur.execute("SELECT 1")
+                cur.fetchone()
         return True
     except Exception as exc:
-        logger.warning("Qdrant connection failed: %s", exc)
+        logger.warning("Vector store connection failed: %s", exc)
         return False
 
 
 def search_narrative(
     query_embedding: List[float],
-    collection_name: str = "financial_narratives",
     tickers: Optional[List[str]] = None,
     years: Optional[List[int]] = None,
     doc_types: Optional[List[str]] = None,
@@ -37,15 +33,14 @@ def search_narrative(
     score_threshold: float = 0.5
 ) -> List[Dict[str, Any]]:
     """
-    Search narrative data in Qdrant using semantic similarity.
+    Search narrative data stored in PostgreSQL using pgvector cosine distance.
     
     Retrieves narrative chunks (transcript excerpts, 10-K sections, etc) relevant
     to a query embedding, with optional filtering by company, year, or document type.
-    Gracefully returns empty list if Qdrant unavailable or collection missing.
+    Gracefully returns empty list if the database is unavailable or no rows match.
     
     Args:
         query_embedding: Vector embedding of user query (e.g., from embed_text)
-        collection_name: Qdrant collection to search (default: financial_narratives)
         tickers: Filter by stock tickers (e.g., ['AAPL', 'MSFT'])
         years: Filter by fiscal years (e.g., [2025, 2024])
         doc_types: Filter by document type (e.g., ['earnings_transcript', 'risk_factors'])
@@ -54,7 +49,7 @@ def search_narrative(
         
     Returns:
         List of narrative chunk dicts with keys:
-        - point_id: Unique Qdrant point ID
+        - point_id: Unique narrative document ID
         - text: Narrative chunk text (max 500 chars)
         - metadata: Dict with company, ticker, year, doc_type, section_title
         - similarity_score: Cosine similarity score (0.0-1.0)
@@ -62,92 +57,64 @@ def search_narrative(
     # DEFENSIVE: Sanitize parameters
     top_k = min(max(top_k, 1), 10)  # Cap between 1 and 10
     score_threshold = max(0.0, min(score_threshold, 1.0))  # Clamp 0-1
-    
-    # DEFENSIVE: Handle Qdrant unavailability gracefully
-    try:
-        client = get_qdrant_client()
-    except ValueError as exc:
-        logger.warning(f"Qdrant unavailable: {exc}")
-        return []
-    except Exception as exc:
-        logger.error(f"Qdrant client failed: {exc}")
-        return []
+    embedding_literal = _vector_literal(query_embedding)
     
     try:
-        # DEFENSIVE: Verify collection exists before search
-        try:
-            collection_info = client.get_collection(collection_name)
-            logger.debug(f"Searching collection '{collection_name}' ({collection_info.points_count} points)")
-        except Exception as exc:
-            logger.warning(f"Collection '{collection_name}' not found - narrative search unavailable")
-            return []
-        
-        filters = None
-        conditions = []
+        with get_db_connection() as conn:
+            with conn.cursor() as cur:
+                query = [
+                    "SELECT",
+                    "    id AS point_id,",
+                    "    company,",
+                    "    ticker,",
+                    "    year,",
+                    "    doc_type,",
+                    "    section_title,",
+                    "    COALESCE(summary, '') AS text,",
+                    "    COALESCE(summary, '') AS summary,",
+                    "    1 - (embedding <=> %s::vector) AS similarity_score",
+                    "FROM narrative_documents",
+                    "WHERE embedding IS NOT NULL",
+                ]
 
-        if tickers:
-            conditions.append(
-                FieldCondition(key="ticker", match=MatchAny(any=[t.upper() for t in tickers]))
-            )
-        if years:
-            conditions.append(
-                FieldCondition(key="year", match=MatchAny(any=years))
-            )
-        if doc_types:
-            conditions.append(
-                FieldCondition(key="doc_type", match=MatchAny(any=doc_types))
-            )
+                params: list[Any] = [embedding_literal]
 
-        if conditions:
-            filters = Filter(must=conditions)
-        
-        # Search Qdrant - try multiple method names for compatibility
-        search_results = []
-        try:
-            # Try newer API (qdrant-client >= 1.7)
-            if hasattr(client, 'search'):
-                search_result = client.search(
-                    collection_name=collection_name,
-                    query_vector=query_embedding,
-                    limit=top_k,
-                    query_filter=filters,
-                    score_threshold=score_threshold
-                )
-                search_results = search_result if isinstance(search_result, list) else (search_result.points if hasattr(search_result, 'points') else search_result)
-            # Fall back to older API (qdrant-client < 1.7)
-            elif hasattr(client, 'search_points'):
-                search_result = client.search_points(
-                    collection_name=collection_name,
-                    query_vector=query_embedding,
-                    limit=top_k,
-                    query_filter=filters,
-                    score_threshold=score_threshold
-                )
-                search_results = search_result.points if hasattr(search_result, 'points') else search_result
-            else:
-                logger.error(f"Qdrant client has no search method. Available methods: {dir(client)}")
-                return []
-        except Exception as search_exc:
-            logger.warning(f"Narrative search failed: {search_exc}")
-            return []
-        
-        # Format results
+                if tickers:
+                    query.append("AND ticker = ANY(%s)")
+                    params.append([ticker.upper() for ticker in tickers])
+                if years:
+                    query.append("AND year = ANY(%s)")
+                    params.append(years)
+                if doc_types:
+                    query.append("AND doc_type = ANY(%s)")
+                    params.append(doc_types)
+
+                query.append("AND (embedding <=> %s::vector) <= %s")
+                params.extend([embedding_literal, 1 - score_threshold])
+                query.append("ORDER BY embedding <=> %s::vector")
+                params.append(embedding_literal)
+                query.append("LIMIT %s")
+                params.append(top_k)
+
+                cur.execute("\n".join(query), params)
+                rows = cur.fetchall()
+
         results = []
-        for result in search_results:
-            payload = result.payload or {}
+        for row in rows:
+            point_id, company, ticker, year, doc_type, section_title, text, summary, similarity_score = row
             
             results.append({
-                'point_id': result.id,
-                'text': payload.get('summary', '')[:500],  # First 500 chars as preview
+                'point_id': point_id,
+                'text': (text or summary or '')[:500],
                 'metadata': {
-                    'company': payload.get('company', 'Unknown'),
-                    'ticker': payload.get('ticker', 'Unknown'),
-                    'year': payload.get('year', 0),
-                    'doc_type': payload.get('doc_type', 'unknown'),
-                    'section_title': payload.get('section_title', ''),
-                    'chunk_id': payload.get('chunk_id', 0),
+                    'company': company or 'Unknown',
+                    'ticker': ticker or 'Unknown',
+                    'year': year or 0,
+                    'doc_type': doc_type or 'unknown',
+                    'section_title': section_title or '',
+                    'chunk_id': 0,
                 },
-                'similarity_score': result.score or 0.0
+                'similarity_score': similarity_score or 0.0
             })
         
         logger.debug(f"Found {len(results)} narrative chunks for query")

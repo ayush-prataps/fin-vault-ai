@@ -14,7 +14,7 @@ if str(BACKEND_DIR) not in sys.path:
 from app.core.schema import init_schema
 from app.data.adapter import (
     ingest_bulk_download_data,
-    create_qdrant_collection_if_needed
+    ensure_narrative_store_ready
 )
 from app.utils.helpers import get_logger
 
@@ -53,12 +53,12 @@ def main():
             status = "✓" if stats['success'] else "✗"
             print(f"   {status} {ticker}: {stats['records_inserted']} records")
     
-    # Step 3: Prepare Qdrant collection
-    print("\n[3/3] Preparing Qdrant vector storage...")
-    if create_qdrant_collection_if_needed("financial_narratives"):
-        print("✅ Qdrant collection ready for narrative embeddings")
+    # Step 3: Prepare pgvector storage
+    print("\n[3/3] Preparing pgvector narrative storage...")
+    if ensure_narrative_store_ready():
+        print("✅ pgvector narrative storage ready")
     else:
-        print("⚠️  Could not initialize Qdrant collection")
+        print("⚠️  Could not initialize pgvector narrative storage")
         print("   (This is optional - proceed without narrative search)")
     
     print("\n" + "="*80)

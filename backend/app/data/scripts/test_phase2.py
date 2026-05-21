@@ -3,7 +3,7 @@
 Phase 2 End-to-End Test: Hybrid Narrative Retrieval
 
 Tests the complete workflow:
-1. Ingest narrative data into Qdrant
+1. Ingest narrative data into pgvector-backed PostgreSQL
 2. Perform hybrid queries combining numeric + narrative
 3. Verify citations in output
 4. Check for contradiction detection

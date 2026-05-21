@@ -1,6 +1,6 @@
 """
 Hybrid Retrieval Module
-Combines structured PostgreSQL queries with semantic Qdrant searches
+Combines structured PostgreSQL queries with semantic pgvector searches
 Bridges numeric financial data with narrative context
 """
 from typing import Optional, TypedDict
@@ -8,7 +8,7 @@ from datetime import datetime
 import json
 
 from app.core.schema import get_financial_metrics
-from app.core.vector import get_qdrant_client
+from app.core.vector import search_narrative
 from app.utils.helpers import get_logger
 
 logger = get_logger(__name__)
@@ -32,7 +32,7 @@ class StructuredMetrics(TypedDict, total=False):
 
 
 class NarrativeChunk(TypedDict):
-    """Narrative text chunk retrieved from Qdrant"""
+    """Narrative text chunk retrieved from PostgreSQL vector search"""
     doc_type: str
     company: str
     ticker: str
@@ -217,18 +217,16 @@ def retrieve_structured_metrics(
 
 def retrieve_narrative_context(
     query_embedding: list[float],
-    collection_name: str = "financial_narratives",
     tickers: Optional[list[str]] = None,
     doc_types: Optional[list[str]] = None,
     limit: int = 5,
     score_threshold: float = 0.5
 ) -> list[NarrativeChunk]:
     """
-    Retrieve narrative chunks from Qdrant using semantic search
+    Retrieve narrative chunks from PostgreSQL using pgvector semantic search
     
     Args:
         query_embedding: Vector embedding of user query
-        collection_name: Qdrant collection to search
         tickers: Filter by company ticker
         doc_types: Filter by document type
         limit: Number of results to return
@@ -238,49 +236,29 @@ def retrieve_narrative_context(
         List of narrative chunks with metadata
     """
     try:
-        client = get_qdrant_client()
-        
-        # Check if collection exists
-        try:
-            client.get_collection(collection_name)
-        except Exception as exc:
-            logger.debug(f"Qdrant collection '{collection_name}' not found: {exc}")
-            return []
-        
-        # Build search filter if needed
-        query_filter = None
-        if tickers or doc_types:
-            query_filter = {}
-            if tickers:
-                query_filter['ticker'] = {'in': tickers}
-            if doc_types:
-                query_filter['doc_type'] = {'in': doc_types}
-        
-        # Search in Qdrant
-        search_results = client.search(
-            collection_name=collection_name,
-            query_vector=query_embedding,
-            limit=limit,
-            query_filter=query_filter,
-            score_threshold=score_threshold
+        search_results = search_narrative(
+            query_embedding=query_embedding,
+            tickers=tickers,
+            doc_types=doc_types,
+            top_k=limit,
+            score_threshold=score_threshold,
         )
         
         # Convert to narrative chunks
         chunks = []
         for result in search_results:
-            payload = result.payload or {}
             chunks.append(NarrativeChunk(
-                doc_type=payload.get('doc_type', 'unknown'),
-                company=payload.get('company', 'unknown'),
-                ticker=payload.get('ticker', 'unknown'),
-                year=payload.get('year', 0),
-                text=payload.get('summary', ''),  # Full text stored in Qdrant payload
-                section_title=payload.get('section_title', 'unknown'),
-                point_id=result.id,
-                score=result.score or 0.0
+                doc_type=result.get('metadata', {}).get('doc_type', 'unknown'),
+                company=result.get('metadata', {}).get('company', 'unknown'),
+                ticker=result.get('metadata', {}).get('ticker', 'unknown'),
+                year=result.get('metadata', {}).get('year', 0),
+                text=result.get('text', ''),
+                section_title=result.get('metadata', {}).get('section_title', 'unknown'),
+                point_id=result.get('point_id', 0),
+                score=result.get('similarity_score', 0.0)
             ))
         
-        logger.info(f"Retrieved {len(chunks)} narrative chunks from Qdrant")
+        logger.info(f"Retrieved {len(chunks)} narrative chunks from pgvector search")
         return chunks
         
     except Exception as exc:
@@ -348,7 +326,7 @@ def perform_hybrid_retrieval(
     and narrative excerpts from earnings calls/filings, then assembles them into a
     citation-rich context for LLM reasoning.
     
-    Gracefully handles missing data (Qdrant down, no narratives) without blocking.
+    Gracefully handles missing data (database unavailable or no narratives) without blocking.
     
     Args:
         query: User query
@@ -361,8 +339,6 @@ def perform_hybrid_retrieval(
     Returns:
         HybridContext with combined structured and semantic data, or empty if all retrieval fails
     """
-    from app.core.vector import search_narrative
-    
     # DEFENSIVE: Sanitize limits
     numeric_limit = min(max(numeric_limit, 10), 100)
     narrative_limit = min(max(narrative_limit, 1), 5)
@@ -411,7 +387,7 @@ def perform_hybrid_retrieval(
                 if not query_embedding or len(query_embedding) == 0:
                     logger.warning("Query embedding is empty")
                 else:
-                    # Use search_narrative with safe defaults
+                    # Use pgvector search with safe defaults
                     narrative_results = search_narrative(
                         query_embedding=query_embedding,
                         tickers=tickers,
@@ -600,7 +576,7 @@ def assemble_context(
     Args:
         query: Original user query
         numeric_data: List of financial metric records from PostgreSQL
-        narrative_chunks: List of narrative chunk records from Qdrant with metadata
+        narrative_chunks: List of narrative chunk records from PostgreSQL vector search with metadata
         include_contradiction_check: Add prompt instruction to detect contradictions
         
     Returns:
@@ -758,37 +734,6 @@ def assemble_context(
                 except Exception as chunk_exc:
                     logger.warning(f"Error processing narrative chunk: {chunk_exc}")
                     continue
-    
-    # Instructions section
-    sections.append("\n" + "=" * 70)
-    sections.append("ANALYSIS INSTRUCTIONS")
-    sections.append("=" * 70)
-    sections.append("""
-You are a financial research agent. Analyze the provided data and respond to the query.
-
-REQUIREMENTS:
-1. Ground all claims in the provided metrics or citations
-2. Use [Source: ...] labels to cite where each insight originates
-3. Compare numeric data with narrative insights where relevant
-4. Identify any contradictions between quantitative metrics and qualitative commentary
-5. Provide both bull and bear perspectives when appropriate
-6. Quantify risks and opportunities with specific metrics
-7. Flag any data inconsistencies or missing information
-
-FORMATTING:
-- Use bullet points for key findings
-- Bold important figures and quotes
-- Structure analysis: Summary → Key Metrics → Narrative Insights → Risks → Conclusions
-    """)
-    
-    if include_contradiction_check:
-        sections.append("""\nCONTRADICTION DETECTION:
-If any earnings commentary contradicts the financial metrics (e.g., management
-claims "strong growth" but metrics show declining revenue), highlight this explicitly.
-Example: "[ALERT] Management stated 'record Q4 performance' but YoY revenue declined 3%"
-    """)
-    
-    return "\n".join(sections)
     
     # Instructions section
     sections.append("\n" + "=" * 70)

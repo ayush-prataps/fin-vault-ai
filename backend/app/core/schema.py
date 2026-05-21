@@ -12,6 +12,8 @@ logger = get_logger(__name__)
 
 SCHEMA_DDL = """
 
+CREATE EXTENSION IF NOT EXISTS vector;
+
 -- Financial metrics table (numeric, deterministic data from SEC filings)
 CREATE TABLE IF NOT EXISTS financial_metrics (
     id SERIAL PRIMARY KEY,
@@ -67,7 +69,7 @@ CREATE TABLE IF NOT EXISTS financial_metrics (
 CREATE INDEX IF NOT EXISTS idx_company_year ON financial_metrics (company, year);
 CREATE INDEX IF NOT EXISTS idx_ticker_year ON financial_metrics (ticker, year);
 
--- Narrative text chunks for semantic search (via Qdrant)
+-- Narrative text chunks for semantic search (via pgvector)
 -- This table stores metadata about embedded documents
 CREATE TABLE IF NOT EXISTS narrative_documents (
     id SERIAL PRIMARY KEY,
@@ -79,10 +81,9 @@ CREATE TABLE IF NOT EXISTS narrative_documents (
     doc_type VARCHAR(50) NOT NULL,
     source_url VARCHAR(500),
     source_file VARCHAR(255),
-    
-    -- Reference to Qdrant collection and vector ID
-    qdrant_collection VARCHAR(100),
-    qdrant_point_id BIGINT,
+
+    -- pgvector embedding for semantic search
+    embedding VECTOR(384),
     
     -- Metadata for retrieval
     chunk_id INTEGER DEFAULT 0,
@@ -91,14 +92,11 @@ CREATE TABLE IF NOT EXISTS narrative_documents (
     
     -- Content summary for quick lookup
     summary TEXT,
-    ingested_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    
-    UNIQUE(qdrant_point_id, qdrant_collection)
+    ingested_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Create indexes for narrative_documents
 CREATE INDEX IF NOT EXISTS idx_company_doc_type ON narrative_documents (company, doc_type);
-CREATE INDEX IF NOT EXISTS idx_qdrant_id ON narrative_documents (qdrant_point_id);
 
 -- User financial preferences and watchlists
 CREATE TABLE IF NOT EXISTS user_preferences (
@@ -126,6 +124,16 @@ def init_schema():
         with psycopg2.connect(settings.database_url) as conn:
             with conn.cursor() as cur:
                 cur.execute(SCHEMA_DDL)
+                try:
+                    cur.execute("ALTER TABLE narrative_documents ADD COLUMN IF NOT EXISTS embedding VECTOR(384);")
+                except Exception:
+                    pass
+                try:
+                    cur.execute(
+                        "CREATE INDEX IF NOT EXISTS idx_narrative_embedding ON narrative_documents USING ivfflat (embedding vector_cosine_ops) WITH (lists = 100);"
+                    )
+                except Exception:
+                    pass
                 conn.commit()
         logger.info("PostgreSQL schema initialized successfully")
         return True
@@ -150,24 +158,36 @@ def insert_financial_metrics(data: list[dict]) -> int:
     try:
         with psycopg2.connect(settings.database_url) as conn:
             with conn.cursor() as cur:
+                unique_records = {}
+                for record in data:
+                    company = record.get('company')
+                    year = record.get('year')
+                    if company is None or year is None:
+                        continue
+                    unique_records[(company, year)] = record
+
+                records_to_insert = list(unique_records.values())
+                if not records_to_insert:
+                    return 0
+
                 # Extract column names from first record
-                columns = list(data[0].keys())
-                placeholders = ','.join(['%s'] * len(columns))
+                columns = list(records_to_insert[0].keys())
                 column_names = ','.join(columns)
                 
                 query = f"""
                     INSERT INTO financial_metrics ({column_names})
-                    VALUES ({placeholders})
+                    VALUES %s
                     ON CONFLICT (company, year) DO UPDATE SET
                     updated_at = CURRENT_TIMESTAMP,
                     {', '.join([f'{col} = EXCLUDED.{col}' for col in columns if col not in ['company', 'year']])}
                 """
                 
                 # Batch insert all records at once for performance
-                values_list = [tuple(record.get(col) for col in columns) for record in data]
-                rows_inserted = execute_values(cur, query, values_list, page_size=1000)
+                values_list = [tuple(record.get(col) for col in columns) for record in records_to_insert]
+                execute_values(cur, query, values_list, page_size=1000)
                 conn.commit()
         
+        rows_inserted = len(values_list)
         logger.info("Inserted %d financial metric records", rows_inserted)
         return rows_inserted
         
@@ -227,8 +247,7 @@ def register_narrative_document(
     ticker: str,
     year: int,
     doc_type: str,
-    qdrant_point_id: int,
-    qdrant_collection: str,
+    embedding: list[float],
     chunk_id: int = 0,
     total_chunks: int = 1,
     section_title: str = None,
@@ -237,7 +256,7 @@ def register_narrative_document(
     source_url: str = None
 ) -> int:
     """
-    Register a narrative document embedding in Qdrant with metadata in PostgreSQL
+    Register a narrative document embedding and metadata in PostgreSQL.
     
     Returns:
         Inserted row ID
@@ -247,13 +266,13 @@ def register_narrative_document(
             with conn.cursor() as cur:
                 query = """
                     INSERT INTO narrative_documents 
-                    (company, ticker, year, doc_type, qdrant_point_id, qdrant_collection,
+                    (company, ticker, year, doc_type, embedding,
                      chunk_id, total_chunks, section_title, summary, source_file, source_url)
-                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    VALUES (%s, %s, %s, %s, %s::vector, %s, %s, %s, %s, %s, %s)
                     RETURNING id
                 """
                 cur.execute(query, (
-                    company, ticker, year, doc_type, qdrant_point_id, qdrant_collection,
+                    company, ticker, year, doc_type, f"[{','.join(str(float(value)) for value in embedding)}]",
                     chunk_id, total_chunks, section_title, summary, source_file, source_url
                 ))
                 row_id = cur.fetchone()[0]
