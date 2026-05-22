@@ -27,17 +27,10 @@ export interface QueryResponse {
   sources: SourceReference[];
   latency_ms: number;
   tokens_used?: number;
+  retrieval_latency_ms?: number;
+  llm_latency_ms?: number;
   contradictions_detected?: string;
 }
-
-export interface MemoryPreferences {
-  risk_tolerance: "conservative" | "moderate" | "aggressive";
-  focus_sectors: string[];
-  key_metrics: string[];
-  save_queries: boolean;
-  max_history: number;
-}
-
 export interface QueryHistoryItem {
   id: number;
   query: string;
@@ -46,5 +39,8 @@ export interface QueryHistoryItem {
   analysis?: string;
   model_used?: string;
   latency_ms?: number;
+  tokens_used?: number;
+  retrieval_latency_ms?: number;
+  llm_latency_ms?: number;
   created_at: string;
 }

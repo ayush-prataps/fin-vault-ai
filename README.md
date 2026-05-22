@@ -261,28 +261,21 @@ frontend/
 
 ---
 
-## Memory Design
+## Data Design
 
 ### PostgreSQL Tables
 
-**user_preferences**
-
-* user_id
-* risk_tolerance
-* preferred_kpis
-* sectors
-* geographies
-* updated_at
-
-**query_logs**
+**query_history**
 
 * query
 * mode
-* model
-* latency
+* retrieval_mode
+* model_used
+* latency_ms
 * tokens_used
-* estimated_cost
-* timestamp
+* retrieval_latency_ms
+* llm_latency_ms
+* created_at
 
 ---
 

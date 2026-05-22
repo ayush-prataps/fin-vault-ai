@@ -2,12 +2,14 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import Optional, List
 import time
+import json
 
 from app.agents.graph import build_graph
 from app.utils.helpers import get_logger
-from app.core.retrieval import perform_hybrid_retrieval
+from app.core.retrieval import perform_hybrid_retrieval, detect_contradictions
 from app.core.embeddings import embed_text
 from app.core.db import get_db_connection
+from app.core.llm import quick_model_call
 
 logger = get_logger(__name__)
 router = APIRouter()
@@ -18,6 +20,7 @@ class QueryRequest(BaseModel):
     mode: Optional[str] = None  # 'quick' or 'deep', overrides default
     tickers: Optional[list[str]] = None  # Filter to specific companies
     retrieval_mode: Optional[str] = None  # Force retrieval type: 'numeric', 'narrative', 'hybrid'
+
 
 
 class SourceReference(BaseModel):
@@ -38,6 +41,8 @@ class QueryResponse(BaseModel):
     sources: List[SourceReference] = []
     latency_ms: int
     tokens_used: Optional[int] = None
+    retrieval_latency_ms: Optional[int] = None
+    llm_latency_ms: Optional[int] = None
     contradictions_detected: Optional[str] = None
 
 
@@ -136,10 +141,12 @@ async def query_financial_data(payload: QueryRequest) -> QueryResponse:
 
             analysis = result.get("raw_analysis", "Unable to generate analysis")
             context = result.get("retrieval_context", {})
+            llm_metadata = result.get("llm_metadata", {}) or {}
         except Exception as graph_exc:
             logger.error(f"Graph invocation failed: {graph_exc}")
             analysis = "Unable to generate analysis"
             context = {}
+            llm_metadata = {}
 
         numeric_data = context.get('numeric_data', []) or []
         narrative_chunks = context.get('narrative_chunks', []) or []
@@ -166,10 +173,22 @@ async def query_financial_data(payload: QueryRequest) -> QueryResponse:
 
         contradictions = None
         if retrieval_summary.get('query_mode') in ['hybrid', 'narrative'] and numeric_data and narrative_chunks:
-            contradictions = None
+            try:
+                numeric_summary = json.dumps(numeric_data[:5], default=str)
+                narrative_summary = "\n\n".join(chunk.get('text', '')[:600] for chunk in narrative_chunks[:3] if isinstance(chunk, dict))
+                contradictions = detect_contradictions(
+                    numeric_summary=numeric_summary,
+                    narrative_summary=narrative_summary,
+                    llm_call_fn=quick_model_call,
+                )
+            except Exception as contradiction_exc:
+                logger.warning(f"Contradiction detection failed: {contradiction_exc}")
+                contradictions = None
 
-        model_used = f"langgraph:{payload.mode or 'quick'}"
-        tokens_used = None
+        model_used = llm_metadata.get("model") or f"langgraph:{payload.mode or 'quick'}"
+        tokens_used = llm_metadata.get("tokens_used")
+        llm_latency_ms = llm_metadata.get("latency_ms")
+        retrieval_latency_ms = retrieval_summary.get('latency_ms', 0)
         
         # DEFENSIVE: Calculate metrics with fallbacks
         try:
@@ -188,10 +207,21 @@ async def query_financial_data(payload: QueryRequest) -> QueryResponse:
             sources=sources or [],
             latency_ms=latency_ms,
             tokens_used=tokens_used if isinstance(tokens_used, int) else None,
+            retrieval_latency_ms=retrieval_latency_ms if isinstance(retrieval_latency_ms, int) else None,
+            llm_latency_ms=llm_latency_ms if isinstance(llm_latency_ms, int) else None,
             contradictions_detected=contradictions[:500] if contradictions else None
         )
         
-        logger.info(f"Query completed in {latency_ms}ms: {len(numeric_data)} metrics, {len(narrative_chunks)} narratives")
+        logger.info(
+            "Query completed in %sms (retrieval=%sms, llm=%sms, tokens=%s, model=%s): %s metrics, %s narratives",
+            latency_ms,
+            retrieval_latency_ms,
+            llm_latency_ms,
+            tokens_used,
+            model_used,
+            len(numeric_data),
+            len(narrative_chunks),
+        )
         return response
         
     except HTTPException:

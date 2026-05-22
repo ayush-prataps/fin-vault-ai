@@ -2,7 +2,12 @@
 
 import React from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { queryFinancialData, healthCheck, getQueryHistory, clearQueryHistory } from "@/lib/api";
+import {
+  queryFinancialData,
+  healthCheck,
+  getQueryHistory,
+  clearQueryHistory,
+} from "@/lib/api";
 import { QueryRequest } from "@/types";
 
 export const useQueryFinancialData = () => {
@@ -53,42 +58,4 @@ export const useBackendQueryHistory = (token: string | null) => {
   return { history, isLoading, clearHistory: clearHistoryHandler };
 };
 
-/**
- * Hook for memory preferences
- */
-export const useMemoryPreferences = () => {
-  const [preferences, setPreferences] = React.useState(
-    () => {
-      if (typeof window === "undefined") {
-        return {
-          risk_tolerance: "moderate",
-          focus_sectors: [],
-          key_metrics: [],
-          save_queries: true,
-          max_history: 20,
-        };
-      }
-      const stored = localStorage.getItem("memory_preferences");
-      return stored
-        ? JSON.parse(stored)
-        : {
-            risk_tolerance: "moderate",
-            focus_sectors: [],
-            key_metrics: [],
-            save_queries: true,
-            max_history: 20,
-          };
-    }
-  );
-
-  const updatePreferences = React.useCallback(
-    (updates: Partial<typeof preferences>) => {
-      const updated = { ...preferences, ...updates };
-      setPreferences(updated);
-      localStorage.setItem("memory_preferences", JSON.stringify(updated));
-    },
-    [preferences]
-  );
-
-  return { preferences, updatePreferences };
-};
+// Memory preferences removed from frontend. No-op placeholder left intentionally.

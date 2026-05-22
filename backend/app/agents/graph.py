@@ -23,8 +23,10 @@ class GraphState(TypedDict, total=False):
     query: str
     mode: str  # 'quick' or 'deep'
     tickers: Optional[list[str]]
+    retrieval_mode: Optional[str]
     retrieval_context: HybridContext
     raw_analysis: str
+    llm_metadata: dict
     formatted_response: str
     error: Optional[str]
 
@@ -74,7 +76,7 @@ def reasoning_node(state: GraphState) -> GraphState:
         prompt = build_llm_prompt(
             query=state['query'],
             context=context,
-            system_role="financial research assistant"
+            system_role="financial research assistant",
         )
         
         # Call appropriate model
@@ -83,6 +85,12 @@ def reasoning_node(state: GraphState) -> GraphState:
         
         result = model_fn(prompt)
         state['raw_analysis'] = result.get('output', '')
+        state['llm_metadata'] = {
+            'model': result.get('model'),
+            'tokens_used': result.get('tokens_used', 0),
+            'latency_ms': result.get('latency_ms', 0),
+            'mock': result.get('mock', False),
+        }
         
         logger.info(f"[REASON] Generated analysis ({len(state['raw_analysis'])} chars)")
         

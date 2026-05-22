@@ -36,6 +36,135 @@ from app.utils.helpers import get_logger
 
 logger = get_logger(__name__)
 
+HIGH_SIGNAL_SECTIONS = {
+    "business": re.compile(r"\bitem\s*1\s*[\.:\-]?\s*business\b", re.IGNORECASE),
+    "risk_factors": re.compile(r"\bitem\s*1a\s*[\.:\-]?\s*risk\s+factors\b", re.IGNORECASE),
+    "md&a": re.compile(
+        r"\bitem\s*7\s*[\.:\-]?\s*management(?:['’]s|\s+s|s)?\s+discussion\s+and\s+analysis\b",
+        re.IGNORECASE,
+    ),
+}
+
+ITEM_HEADING_PATTERN = re.compile(r"\bitem\s*\d+[a-z]?\b", re.IGNORECASE)
+
+
+def _normalize_section_title(section_name: str) -> str:
+    if section_name == "business":
+        return "Item 1. Business"
+    if section_name == "risk_factors":
+        return "Item 1A. Risk Factors"
+    return "Item 7. Management's Discussion and Analysis"
+
+
+def extract_high_signal_sections(plain_text: str) -> list[tuple[str, str]]:
+    """Extract high-signal 10-K sections from plain text using heading anchors."""
+    text = re.sub(r"\s+", " ", plain_text or "").strip()
+    if len(text) < 500:
+        return []
+
+    extracted: list[tuple[str, str]] = []
+
+    def find_section_end(start_index: int) -> int:
+        search_from = start_index + 50
+        while True:
+            next_heading = ITEM_HEADING_PATTERN.search(text, search_from)
+            if not next_heading:
+                return len(text)
+            if next_heading.start() - start_index < 3000:
+                search_from = next_heading.end()
+                continue
+            return next_heading.start()
+
+    for section_name, pattern in HIGH_SIGNAL_SECTIONS.items():
+        best_section: Optional[str] = None
+        best_word_count = 0
+
+        for match in pattern.finditer(text):
+            start = match.start()
+            toc_window = text[max(0, start - 1200): min(len(text), start + 1200)].lower()
+            if "table of contents" in toc_window:
+                continue
+
+            end = find_section_end(start)
+            section_text = text[start:end].strip()
+            word_count = len(section_text.split())
+            if word_count < 250:
+                continue
+
+            if word_count > best_word_count:
+                best_word_count = word_count
+                best_section = section_text
+
+        if best_section:
+            extracted.append((_normalize_section_title(section_name), best_section))
+
+    deduped: list[tuple[str, str]] = []
+    seen_signatures = set()
+    for section_title, section_text in sorted(extracted, key=lambda item: len(item[1]), reverse=True):
+        signature = section_text[:2000].lower()
+        if signature in seen_signatures:
+            continue
+        seen_signatures.add(signature)
+        deduped.append((section_title, section_text))
+
+    return deduped
+
+
+def is_noisy_chunk(text: str) -> bool:
+    """Heuristic filter to remove low-signal narrative chunks."""
+    cleaned = (text or "").strip()
+    if not cleaned:
+        return True
+
+    words = cleaned.split()
+    if len(words) < 45:
+        return True
+
+    alpha_chars = sum(1 for ch in cleaned if ch.isalpha())
+    digit_chars = sum(1 for ch in cleaned if ch.isdigit())
+    total_chars = max(len(cleaned), 1)
+    alpha_ratio = alpha_chars / total_chars
+    digit_ratio = digit_chars / total_chars
+
+    if alpha_ratio < 0.55 or digit_ratio > 0.35:
+        return True
+
+    lower = cleaned.lower()
+    noisy_markers = [
+        "us-gaap",
+        "xbrl",
+        "xmlns",
+        "schema",
+        "contextref",
+        "defref",
+        "linkbase",
+    ]
+    marker_hits = sum(marker in lower for marker in noisy_markers)
+    if marker_hits >= 2:
+        return True
+
+    return False
+
+
+def filter_narrative_chunks(chunks: list[str]) -> list[str]:
+    """Drop low-signal chunks and exact duplicates while preserving order."""
+    filtered: list[str] = []
+    seen = set()
+
+    for chunk in chunks:
+        normalized = re.sub(r"\s+", " ", chunk).strip()
+        if is_noisy_chunk(normalized):
+            continue
+
+        signature = normalized[:500].lower()
+        if signature in seen:
+            continue
+
+        seen.add(signature)
+        filtered.append(normalized)
+
+    return filtered
+
 class _HtmlTextExtractor(HTMLParser):
     def __init__(self) -> None:
         super().__init__()
@@ -121,20 +250,30 @@ def load_real_narratives(
                 logger.warning("Skipping short filing text for %s %s", ticker, filing["accession_number"])
                 continue
 
-            narratives.append(
-                {
-                    "ticker": ticker,
-                    "company": company["company"],
-                    "year": int(str(filing.get("report_date") or filing.get("filing_date") or "0")[:4] or 0),
-                    "form": filing["form"],
-                    "filing_date": filing.get("filing_date"),
-                    "report_date": filing.get("report_date"),
-                    "doc_type": "sec_filing",
-                    "section_title": filing.get("primary_doc_description") or filing.get("primary_document"),
-                    "source_file": filing["primary_document"],
-                    "text": plain_text,
-                }
-            )
+            high_signal_sections = extract_high_signal_sections(plain_text)
+            if not high_signal_sections:
+                logger.warning(
+                    "No high-signal sections found for %s %s; skipping filing",
+                    ticker,
+                    filing["accession_number"],
+                )
+                continue
+
+            for section_title, section_text in high_signal_sections:
+                narratives.append(
+                    {
+                        "ticker": ticker,
+                        "company": company["company"],
+                        "year": int(str(filing.get("report_date") or filing.get("filing_date") or "0")[:4] or 0),
+                        "form": filing["form"],
+                        "filing_date": filing.get("filing_date"),
+                        "report_date": filing.get("report_date"),
+                        "doc_type": "sec_filing",
+                        "section_title": section_title,
+                        "source_file": filing["primary_document"],
+                        "text": section_text,
+                    }
+                )
 
     return narratives
 
@@ -167,6 +306,7 @@ def ingest_narrative(
 
     if text and len(text.strip()) > 100:
         chunks = chunk_text(text, chunk_size=500, overlap=80)
+        chunks = filter_narrative_chunks(chunks)
         for idx, chunk in enumerate(chunks):
             try:
                 embed_and_store_narrative(

@@ -6,7 +6,6 @@ import { useAuth } from "@/lib/AuthContext";
 import {
   QueryPanel,
   ResultsView,
-  MemoryPreferencesSidebar,
   SourcesView,
   QueryHistory,
   MetricsFooter,
@@ -41,7 +40,11 @@ export default function Home() {
     setError(null);
     setResponse(null);
 
-    queryData(request, {
+    const requestWithPreferences: QueryRequest = {
+      ...request,
+    };
+
+    queryData(requestWithPreferences, {
       onSuccess: (data) => {
         setResponse(data);
         
@@ -54,7 +57,10 @@ export default function Home() {
             request.retrieval_mode || "hybrid",
             data.analysis,
             data.model_used,
-            data.latency_ms
+            data.latency_ms,
+            data.tokens_used,
+            data.retrieval_latency_ms,
+            data.llm_latency_ms
           ).then(() => {
             // Refetch query history after save
             queryClient.invalidateQueries({ queryKey: ["queryHistory", token] });
@@ -125,12 +131,7 @@ export default function Home() {
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <button
-                onClick={() => setSidebarOpen(true)}
-                className="px-4 py-2 bg-gray-100 text-gray-900 rounded-md hover:bg-gray-200 font-medium transition-colors"
-              >
-                Memory
-              </button>
+              {/* Memory preferences UI removed */}
               {currentQueryId && (
                 <button
                   onClick={handleNewChat}
@@ -218,11 +219,7 @@ export default function Home() {
         />
       )}
 
-      {/* Memory Preferences Sidebar */}
-      <MemoryPreferencesSidebar
-        isOpen={sidebarOpen}
-        onClose={() => setSidebarOpen(false)}
-      />
+      {/* Memory preferences removed */}
     </div>
   );
 }

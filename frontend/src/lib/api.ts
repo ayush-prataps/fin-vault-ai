@@ -85,7 +85,10 @@ export const saveQueryToHistory = async (
   retrieval_mode: string = "hybrid",
   analysis?: string,
   model_used?: string,
-  latency_ms?: number
+  latency_ms?: number,
+  tokens_used?: number,
+  retrieval_latency_ms?: number,
+  llm_latency_ms?: number
 ): Promise<{ success: boolean }> => {
   try {
     const response = await apiClient.post(
@@ -97,6 +100,9 @@ export const saveQueryToHistory = async (
         analysis,
         model_used,
         latency_ms,
+        tokens_used,
+        retrieval_latency_ms,
+        llm_latency_ms,
       },
       {
         headers: {
@@ -147,5 +153,7 @@ export const clearQueryHistory = async (
     throw handleApiError(error);
   }
 };
+
+// Memory preferences endpoints removed
 
 export default apiClient;

@@ -536,7 +536,7 @@ def format_context_for_llm(context: HybridContext) -> str:
 def build_llm_prompt(
     query: str,
     context: HybridContext,
-    system_role: str = "assistant"
+    system_role: str = "assistant",
 ) -> str:
     """
     Build complete LLM prompt with query and retrieved context
@@ -549,6 +549,9 @@ def build_llm_prompt(
     Returns:
         Complete prompt string
     """
+    # Memory preferences feature removed; no user-specific prompt adjustments
+    preferences_text = ""
+
     prompt_parts = [
         f"""You are a financial research agent. Your role is to {system_role}.
 
@@ -559,6 +562,7 @@ Always cite your sources and explain your reasoning.
 
 USER QUERY:
 {query}
+{preferences_text}
 
 ---
 

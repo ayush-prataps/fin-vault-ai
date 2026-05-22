@@ -60,6 +60,18 @@ async def lifespan(app: FastAPI):
     except Exception as exc:
         logger.warning(f"Auth schema initialization issue: {exc} (continuing anyway)")
 
+    # Apply SQL migrations from db/migrations (idempotent)
+    try:
+        from app.core.migrations import apply_migrations
+
+        applied = apply_migrations()
+        if applied:
+            logger.info("Applied %d DB migrations", applied)
+        else:
+            logger.info("No new DB migrations to apply")
+    except Exception as exc:
+        logger.warning(f"Failed to apply DB migrations: {exc}")
+
     # Check whether the system has real data loaded.
     coverage = _get_data_coverage()
     if coverage:

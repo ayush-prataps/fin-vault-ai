@@ -2,6 +2,7 @@
 Authentication and Query History API endpoints
 """
 
+import json
 from fastapi import APIRouter, HTTPException, Depends, status, Header
 from pydantic import BaseModel
 from typing import List, Optional
@@ -37,6 +38,9 @@ class QueryHistoryItem(BaseModel):
     analysis: Optional[str] = None
     model_used: Optional[str] = None
     latency_ms: Optional[int] = None
+    tokens_used: Optional[int] = None
+    retrieval_latency_ms: Optional[int] = None
+    llm_latency_ms: Optional[int] = None
     created_at: str
 
 
@@ -47,6 +51,9 @@ class SaveQueryRequest(BaseModel):
     analysis: Optional[str] = None
     model_used: Optional[str] = None
     latency_ms: Optional[int] = None
+    tokens_used: Optional[int] = None
+    retrieval_latency_ms: Optional[int] = None
+    llm_latency_ms: Optional[int] = None
 
 
 def get_current_user_id(authorization: str = Header(None, alias="Authorization")) -> int:
@@ -149,11 +156,12 @@ def save_query(request: SaveQueryRequest, authorization: str = Header(None)):
             cur.execute(
                 """
                 INSERT INTO query_history 
-                (user_id, query, mode, retrieval_mode, analysis, model_used, latency_ms)
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
+                 (user_id, query, mode, retrieval_mode, analysis, model_used, latency_ms, tokens_used, retrieval_latency_ms, llm_latency_ms)
+                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                 """,
                 (user_id, request.query, request.mode, request.retrieval_mode, 
-                 request.analysis, request.model_used, request.latency_ms)
+                  request.analysis, request.model_used, request.latency_ms,
+                  request.tokens_used, request.retrieval_latency_ms, request.llm_latency_ms)
             )
             conn.commit()
             return {"success": True}
@@ -176,7 +184,8 @@ def get_query_history(authorization: str = Header(None), limit: int = 20):
         with conn.cursor() as cur:
             cur.execute(
                 """
-                SELECT id, query, mode, retrieval_mode, analysis, model_used, latency_ms, created_at
+                SELECT id, query, mode, retrieval_mode, analysis, model_used, latency_ms,
+                       tokens_used, retrieval_latency_ms, llm_latency_ms, created_at
                 FROM query_history
                 WHERE user_id = %s
                 ORDER BY created_at DESC
@@ -194,7 +203,10 @@ def get_query_history(authorization: str = Header(None), limit: int = 20):
                     "analysis": row[4],
                     "model_used": row[5],
                     "latency_ms": row[6],
-                    "created_at": row[7].isoformat() if row[7] else None,
+                    "tokens_used": row[7],
+                    "retrieval_latency_ms": row[8],
+                    "llm_latency_ms": row[9],
+                    "created_at": row[10].isoformat() if row[10] else None,
                 }
                 for row in rows
             ]
@@ -224,3 +236,4 @@ def clear_query_history(authorization: str = Header(None)):
     finally:
         if conn:
             conn.close()
+# Memory preferences endpoints removed as feature is deprecated

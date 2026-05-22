@@ -36,10 +36,15 @@ def init_auth_schema() -> bool:
                     analysis TEXT,
                     model_used VARCHAR(50),
                     latency_ms INTEGER,
+                    tokens_used INTEGER,
+                    retrieval_latency_ms INTEGER,
+                    llm_latency_ms INTEGER,
                     contradictions_detected VARCHAR(255),
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 );
             """)
+
+            # Note: memory preferences feature removed — legacy tables are no longer created.
             
             # Add missing columns safely (won't fail if they already exist)
             try:
@@ -61,6 +66,21 @@ def init_auth_schema() -> bool:
                 cur.execute("ALTER TABLE query_history ADD COLUMN latency_ms INTEGER;")
             except:
                 pass  # Column already exists
+
+            try:
+                cur.execute("ALTER TABLE query_history ADD COLUMN tokens_used INTEGER;")
+            except:
+                pass
+
+            try:
+                cur.execute("ALTER TABLE query_history ADD COLUMN retrieval_latency_ms INTEGER;")
+            except:
+                pass
+
+            try:
+                cur.execute("ALTER TABLE query_history ADD COLUMN llm_latency_ms INTEGER;")
+            except:
+                pass
             
             # Create index if it doesn't exist
             try:
@@ -70,6 +90,8 @@ def init_auth_schema() -> bool:
                 """)
             except:
                 pass  # Index already exists
+
+            # No memory preferences index required (feature removed)
             
             conn.commit()
             logger.info("Auth schema initialized successfully")
