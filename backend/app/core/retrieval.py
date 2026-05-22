@@ -316,7 +316,7 @@ def perform_hybrid_retrieval(
     tickers: Optional[list[str]] = None,
     force_mode: Optional[str] = None,
     numeric_limit: int = 50,
-    narrative_limit: int = 5
+    narrative_limit: int = 4
 ) -> HybridContext:
     """
     Perform hybrid retrieval combining numeric and narrative data.
@@ -360,6 +360,9 @@ def perform_hybrid_retrieval(
         }
     )
     
+    # Tunable defaults
+    DEFAULT_NARRATIVE_SCORE = 0.5
+
     try:
         # Retrieve numeric data if needed
         if mode in ['numeric', 'hybrid']:
@@ -391,8 +394,8 @@ def perform_hybrid_retrieval(
                     narrative_results = search_narrative(
                         query_embedding=query_embedding,
                         tickers=tickers,
-                        top_k=narrative_limit,
-                        score_threshold=0.4
+                        top_k=narrative_limit * 2,  # fetch some extra for dedupe/pruning
+                        score_threshold=DEFAULT_NARRATIVE_SCORE,
                     )
                     
                     # DEFENSIVE: Ensure results is list
@@ -400,16 +403,16 @@ def perform_hybrid_retrieval(
                         narrative_results = []
                     
                     # Convert to NarrativeChunk format
-                    narrative_chunks = []
-                    for result in narrative_results[:narrative_limit]:  # Double-check limit
+                    narrative_chunks_raw: list[NarrativeChunk] = []
+                    for result in (narrative_results or []):
                         try:
                             metadata = result.get('metadata', {})
-                            narrative_chunks.append(NarrativeChunk(
+                            narrative_chunks_raw.append(NarrativeChunk(
                                 doc_type=metadata.get('doc_type', 'unknown'),
                                 company=metadata.get('company', 'Unknown'),
                                 ticker=metadata.get('ticker', 'Unknown'),
                                 year=metadata.get('year', 0),
-                                text=result.get('text', '')[:800],  # Cap text
+                                text=(result.get('text', '') or '')[:800],  # Cap text
                                 section_title=metadata.get('section_title', ''),
                                 point_id=result.get('point_id', 0),
                                 score=max(0.0, min(result.get('similarity_score', 0.0), 1.0))  # Clamp score
@@ -417,10 +420,34 @@ def perform_hybrid_retrieval(
                         except Exception as chunk_exc:
                             logger.warning(f"Failed to parse narrative chunk: {chunk_exc}")
                             continue
-                    
+
+                    # Deduplicate narrative chunks using a stable fingerprint so
+                    # identical content is collapsed even when point_id differs.
+                    deduped_by_fp: dict = {}
+                    for chunk in narrative_chunks_raw:
+                        try:
+                            ticker = (chunk.get('ticker') or 'Unknown')
+                            year = int(chunk.get('year') or 0)
+                        except Exception:
+                            ticker = chunk.get('ticker', 'Unknown')
+                            year = chunk.get('year', 0)
+
+                        section_snip = (chunk.get('section_title') or '')[:100]
+                        text_snip = (chunk.get('text') or '')[:200]
+
+                        # Fingerprint ignores point_id so duplicates with different ids collapse
+                        fingerprint = (ticker, year, section_snip, text_snip)
+
+                        prev = deduped_by_fp.get(fingerprint)
+                        # Keep the highest-score chunk for each fingerprint
+                        if not prev or (chunk.get('score', 0.0) > prev.get('score', 0.0)):
+                            deduped_by_fp[fingerprint] = chunk
+
+                    # Convert back to list, sort by score desc, and cap to narrative_limit
+                    narrative_chunks = sorted(deduped_by_fp.values(), key=lambda c: c.get('score', 0.0), reverse=True)[:narrative_limit]
                     context['narrative_chunks'] = narrative_chunks
                     context['retrieval_summary']['narrative_retrieved'] = len(narrative_chunks)
-                    logger.info(f"Retrieved {len(narrative_chunks)} narrative chunks")
+                    logger.info(f"Retrieved {len(narrative_chunks)} narrative chunks (deduped) from {len(narrative_chunks_raw)} candidates")
                     
             except Exception as exc:
                 logger.warning(f"Narrative retrieval failed (non-blocking): {exc}")

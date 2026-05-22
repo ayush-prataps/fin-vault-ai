@@ -70,7 +70,7 @@ def search_narrative(
                     "    year,",
                     "    doc_type,",
                     "    section_title,",
-                    "    COALESCE(summary, '') AS text,",
+                    "    COALESCE(content, summary, '') AS text,",
                     "    COALESCE(summary, '') AS summary,",
                     "    1 - (embedding <=> %s::vector) AS similarity_score",
                     "FROM narrative_documents",
@@ -105,7 +105,7 @@ def search_narrative(
             
             results.append({
                 'point_id': point_id,
-                'text': (text or summary or '')[:500],
+                'text': text or summary or '',
                 'metadata': {
                     'company': company or 'Unknown',
                     'ticker': ticker or 'Unknown',

@@ -3,7 +3,7 @@
 Ingest narrative financial data (earnings transcripts) into pgvector-backed PostgreSQL.
 
 This script:
-1. Fetches or loads earnings transcripts
+1. Fetches SEC filings with narrative disclosure text
 2. Chunks narrative text
 3. Generates embeddings
 4. Stores in PostgreSQL with pgvector embeddings
@@ -13,15 +13,21 @@ Phase 2: Hybrid Narrative Retrieval
 """
 import sys
 import os
+import re
+from html.parser import HTMLParser
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Iterable
+
+import pandas as pd
 
 # Add backend to path (go up 4 levels from backend/app/data/scripts/)
 sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent))
 
 from app.config import settings, DATA_OUTPUT_DIR
+from app.data.pipeline.sec_data_fetcher import SECDataFetcher
 from app.data.adapter import (
     chunk_text,
+    clear_narrative_documents,
     ensure_narrative_store_ready,
     embed_and_store_narrative,
 )
@@ -30,156 +36,137 @@ from app.utils.helpers import get_logger
 
 logger = get_logger(__name__)
 
-# Sample narrative data for demonstration
-# In production, fetch from earnings_call_fetcher.py
-SAMPLE_NARRATIVES = {
-    "AAPL_2025_Q4": {
-        "ticker": "AAPL",
-        "company": "Apple Inc.",
-        "year": 2025,
-        "quarter": 4,
-        "doc_type": "earnings_transcript",
-        "prepared_remarks": """
-Apple Q4 2025 Prepared Remarks
+class _HtmlTextExtractor(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.parts: list[str] = []
 
-Good afternoon, everyone, and thank you for joining us. I'm Tim Cook, CEO of Apple.
+    def handle_data(self, data: str) -> None:
+        if data:
+            self.parts.append(data)
 
-In Q4, we delivered record revenue of $119.6 billion, up 12% year-over-year. 
-This was driven by strong iPhone 17 sales in China and Services reaching an all-time high.
-
-Our gross margin expanded to 47.5%, up 60 basis points, reflecting improved
-product mix and manufacturing efficiency. Operating income grew 18% to $36.2 billion.
-
-Looking ahead, we see significant opportunities in AI integration with iOS 19,
-the new Apple Watch with health sensors, and continued Services momentum.
-Our installed base reached 2.2 billion devices worldwide.
-
-For the full year 2025, we achieved revenue of $410.2 billion and net income of $114.3 billion.
-Our return on equity reached 156%, among the highest in tech.
-
-We remain committed to innovation, environmental sustainability, and returning capital
-to shareholders. The Board approved a $150 billion share buyback authorization.
-        """,
-        "qa_section": """
-Q&A SESSION
-
-Q: Tim, can you discuss the outlook for AI revenue?
-A: Absolutely. We believe AI will be transformative, particularly on-device AI which
-preserves privacy. Our initial rollout of Apple Intelligence in iOS 18.3 saw strong
-adoption. Revenue attributed to AI features could reach 15-20% of Services by 2026.
-We're seeing good demand signals from enterprise and consumer segments.
-
-Q: What about competitive pressures in China?
-A: China remains critical, now representing 22% of revenue. While competition is intense,
-our brand loyalty is strong, evidenced by 48% attach rates for Services in China.
-We're localizing features and pricing strategically. Growth in China was 8% this year,
-benefiting from the iPhone 17's strong camera and health features.
-
-Q: Can you detail the iPhone 17 Pro performance?
-A: The Pro models exceeded our expectations. Pro sales were up 24% YoY due to the new
-titanium design and computational photography advances. Average selling price increased
-to $1,120 due to Pro mix. We're seeing healthy demand in both developed and emerging
-markets. Supply constraints have eased, giving us better positioning heading into 2026.
-
-Q: What are the risks you're most concerned about?
-A: Geopolitical uncertainty could impact supply chains, particularly in Taiwan.
-Regulatory scrutiny on App Store practices continues in EU and elsewhere.
-Macro uncertainty, while manageable now, could impact consumer spending. We're hedging
-through Services growth, which is more resilient to hardware cycles.
-        """
-    },
-    "MSFT_2025_Q4": {
-        "ticker": "MSFT",
-        "company": "Microsoft Corporation",
-        "year": 2025,
-        "quarter": 4,
-        "doc_type": "earnings_transcript",
-        "prepared_remarks": """
-Microsoft Q4 2025 Prepared Remarks
-
-Hello, and thank you for joining our Q4 2025 earnings call. This is Satya Nadella.
-
-We had a strong quarter with total revenue of $72.5 billion, up 15% year-over-year.
-Cloud revenue, including Azure and M365, grew 22%, reaching $38.2 billion.
-
-Azure's momentum continued with 29% growth, driven by enterprise AI workloads.
-We're seeing customers deploy large language models at scale. Our committed AI
-infrastructure spending has attracted significant enterprise contracts.
-
-Copilot adoption metrics are encouraging. Copilot Pro subscribers grew 180% to
-4.2 million. Enterprise adoption of Copilot in Microsoft 365 reached 65% of
-premium-tier accounts, up from 38% last year.
-
-Gaming revenue improved with Strong demand for Starfield and new Game Pass content.
-LinkedIn showed steady growth at 12% as recruitment spending rebounded.
-
-Our AI initiatives position us well for continued cloud growth. The partnership
-with OpenAI continues to deepen, and we're investing $6.5 billion annually in
-AI infrastructure development through 2027.
-        """,
-        "qa_section": """
-Q&A SESSION
-
-Q: Satya, can you elaborate on enterprise AI adoption?
-A: Enterprise deployment of AI agents is accelerating beyond our expectations.
-We're seeing 45% of Fortune 500 companies actively running Copilot pilots in
-production environments now. The financial services sector shows 52% adoption.
-Revenue from enterprise AI services is on pace to exceed $8 billion by end of 2026.
-
-Q: What's your outlook for Azure growth as AI normalizes?
-A: Good question. We believe we're still in early innings for enterprise AI adoption.
-The market is shifting from experimentation to production workloads. This favors
-established providers like us with enterprise relationships and compliance certifications.
-We see Azure growth remaining 20%+ through 2027 as AI-driven computing cycles mature.
-
-Q: How do you view competition from open-source LLMs?
-A: We've actually thrived with open source. Our Azure OpenSource initiative now
-hosts hundreds of open models. We believe enterprises value our integrated stack,
-support, and enterprise-grade security over pure commodity models.
-
-Q: What are key risks?
-A: Regulatory scrutiny around AI data usage is a key watch. Energy costs for
-infrastructure are rising due to AI training demands. Macro uncertainty in Europe
-persists, impacting at least 2-3 points of growth.
-        """
-    }
-}
+    def get_text(self) -> str:
+        text = " ".join(self.parts)
+        text = re.sub(r"\s+", " ", text)
+        return text.strip()
 
 
-def load_sample_narratives() -> dict:
-    """Load sample narrative data for demonstration."""
-    return SAMPLE_NARRATIVES
+def strip_html(text: str) -> str:
+    """Convert SEC HTML filings into embeddable plain text."""
+    if not text:
+        return ""
+
+    extractor = _HtmlTextExtractor()
+    extractor.feed(text)
+    plain_text = extractor.get_text()
+    plain_text = re.sub(r"\s{2,}", " ", plain_text)
+    return plain_text.strip()
+
+
+def discover_bulk_download_companies(bulk_download_dir: Optional[Path] = None) -> list[dict]:
+    """Load company metadata from bulk download outputs."""
+    bulk_dir = Path(bulk_download_dir or DATA_OUTPUT_DIR / "bulk_download")
+    summary_files = sorted(bulk_dir.glob("summary_*.csv"))
+    if not summary_files:
+        return []
+
+    summary_df = pd.read_csv(summary_files[0])
+    companies = []
+    for _, row in summary_df.iterrows():
+        ticker = str(row.get("Ticker", "")).strip().upper()
+        company = str(row.get("Company", "")).strip()
+        cik = row.get("CIK")
+        if not ticker or not company or pd.isna(cik):
+            continue
+
+        companies.append(
+            {
+                "ticker": ticker,
+                "company": company,
+                "cik": str(int(cik)),
+            }
+        )
+
+    return companies
+
+
+def load_real_narratives(
+    tickers: Optional[Iterable[str]] = None,
+    filings_per_company: int = 1,
+    form_type: str = "10-K",
+) -> list[dict]:
+    """Fetch real SEC filing text for companies already present in bulk downloads."""
+    fetcher = SECDataFetcher()
+    target_tickers = {ticker.upper() for ticker in tickers} if tickers else None
+    narratives: list[dict] = []
+
+    for company in discover_bulk_download_companies():
+        ticker = company["ticker"]
+        if target_tickers and ticker not in target_tickers:
+            continue
+
+        filings = fetcher.list_recent_filings(company["cik"], form_type=form_type, limit=filings_per_company)
+        for filing in filings:
+            filing_text = fetcher.get_filing_text(
+                cik=company["cik"],
+                accession_number_nodash=filing["accession_number_nodash"],
+                primary_document=filing["primary_document"],
+            )
+            if not filing_text:
+                logger.warning("No filing text available for %s %s", ticker, filing["accession_number"])
+                continue
+
+            plain_text = strip_html(filing_text)
+            if len(plain_text) < 200:
+                logger.warning("Skipping short filing text for %s %s", ticker, filing["accession_number"])
+                continue
+
+            narratives.append(
+                {
+                    "ticker": ticker,
+                    "company": company["company"],
+                    "year": int(str(filing.get("report_date") or filing.get("filing_date") or "0")[:4] or 0),
+                    "form": filing["form"],
+                    "filing_date": filing.get("filing_date"),
+                    "report_date": filing.get("report_date"),
+                    "doc_type": "sec_filing",
+                    "section_title": filing.get("primary_doc_description") or filing.get("primary_document"),
+                    "source_file": filing["primary_document"],
+                    "text": plain_text,
+                }
+            )
+
+    return narratives
 
 
 def ingest_narrative(
     ticker: str,
     company: str,
     year: int,
-    quarter: int,
-    prepared_remarks: str,
-    qa_section: str,
+    text: str,
+    section_title: str,
+    source_file: str,
     collection_name: str = "financial_narratives"
 ) -> int:
     """
-    Ingest a single company's earnings transcript into PostgreSQL.
+    Ingest a single SEC filing narrative into PostgreSQL.
     
     Args:
         ticker: Stock ticker
         company: Company name
         year: Fiscal year
-        quarter: Quarter number
-        prepared_remarks: Prepared remarks text
-        qa_section: Q&A section text
+        text: Filing text to chunk and embed
+        section_title: Filing title or section heading
+        source_file: Filing source filename
         collection_name: Narrative store name (retained for compatibility)
         
     Returns:
         Number of chunks successfully ingested
     """
     ingested = 0
-    
-    # Process prepared remarks
-    if prepared_remarks and len(prepared_remarks.strip()) > 100:
-        chunks = chunk_text(prepared_remarks, chunk_size=400, overlap=50)
+
+    if text and len(text.strip()) > 100:
+        chunks = chunk_text(text, chunk_size=500, overlap=80)
         for idx, chunk in enumerate(chunks):
             try:
                 embed_and_store_narrative(
@@ -188,46 +175,25 @@ def ingest_narrative(
                     company=company,
                     ticker=ticker,
                     year=year,
-                    doc_type="earnings_transcript",
+                    doc_type="sec_filing",
                     embeddings_model_fn=embed_text,
                     chunk_id=idx,
                     total_chunks=len(chunks),
-                    section_title=f"Prepared Remarks ({ticker} Q{quarter})",
-                    source_file=f"{ticker}_earnings_q{quarter}_{year}.json"
+                    section_title=section_title,
+                    source_file=source_file,
                 )
                 ingested += 1
             except Exception as exc:
                 logger.error(f"Failed to ingest chunk {idx}: {exc}")
-    
-    # Process Q&A section
-    if qa_section and len(qa_section.strip()) > 100:
-        chunks = chunk_text(qa_section, chunk_size=400, overlap=50)
-        for idx, chunk in enumerate(chunks):
-            try:
-                embed_and_store_narrative(
-                    text=chunk,
-                    collection_name=collection_name,
-                    company=company,
-                    ticker=ticker,
-                    year=year,
-                    doc_type="earnings_transcript",
-                    embeddings_model_fn=embed_text,
-                    chunk_id=idx + len(chunks),  # Offset from prepared remarks
-                    total_chunks=len(chunks),
-                    section_title=f"Q&A Section ({ticker} Q{quarter})",
-                    source_file=f"{ticker}_earnings_q{quarter}_{year}.json"
-                )
-                ingested += 1
-            except Exception as exc:
-                logger.error(f"Failed to ingest Q&A chunk {idx}: {exc}")
     
     return ingested
 
 
 def main():
     """Main ingestion workflow."""
+    tickers_arg = sys.argv[1:]
     print("\n" + "="*70)
-    print("Phase 2: Narrative Data Ingestion into pgvector")
+    print("Phase 2: SEC Filing Narrative Ingestion into pgvector")
     print("="*70 + "\n")
     
     # Step 1: Ensure pgvector storage is ready
@@ -236,27 +202,38 @@ def main():
         print("❌ Failed to prepare pgvector narrative storage")
         return False
     print("✅ pgvector storage ready\n")
+
+    print("🧹 Step 1b: Clearing existing narrative documents for a clean rebuild...")
+    if not clear_narrative_documents():
+        print("❌ Failed to clear existing narrative documents")
+        return False
+    print("✅ Cleared old narrative documents\n")
     
-    # Step 2: Load narrative data
-    print("📚 Step 2: Loading narrative data...")
-    narratives = load_sample_narratives()
-    print(f"✅ Loaded {len(narratives)} narrative sources\n")
+    # Step 2: Load real SEC narrative data
+    print("📚 Step 2: Loading SEC filing narratives...")
+    narratives = load_real_narratives(tickers=tickers_arg or None)
+    if not narratives:
+        print("❌ No SEC filing narratives were found")
+        print("   Run the bulk download pipeline first, or verify SEC connectivity and CIK metadata")
+        return False
+
+    print(f"✅ Loaded {len(narratives)} filing narratives\n")
     
     # Step 3: Ingest narratives
     print("🔄 Step 3: Ingesting narratives into PostgreSQL...")
     total_chunks = 0
     
-    for key, narrative in narratives.items():
-        ingest_key = f"{narrative['ticker']}_{narrative['year']}_Q{narrative['quarter']}"
+    for narrative in narratives:
+        ingest_key = f"{narrative['ticker']}_{narrative['year']}_{narrative['form']}"
         print(f"\n  Ingesting {ingest_key}...")
         
         chunks_ingested = ingest_narrative(
             ticker=narrative['ticker'],
             company=narrative['company'],
             year=narrative['year'],
-            quarter=narrative['quarter'],
-            prepared_remarks=narrative['prepared_remarks'],
-            qa_section=narrative['qa_section']
+            text=narrative['text'],
+            section_title=narrative['section_title'],
+            source_file=narrative['source_file']
         )
         
         total_chunks += chunks_ingested

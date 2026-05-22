@@ -36,11 +36,13 @@ def retrieve_node(state: GraphState) -> GraphState:
     try:
         logger.info(f"[RETRIEVE] Processing: {state['query'][:50]}...")
         
+        # Allow an external override for retrieval mode (numeric/narrative/hybrid)
+        force_mode = state.get('retrieval_mode') or None
         context = perform_hybrid_retrieval(
             query=state['query'],
             embeddings_model_fn=embed_text,
             tickers=state.get('tickers'),
-            force_mode=None  # Auto-classify
+            force_mode=force_mode,
         )
         
         state['retrieval_context'] = context

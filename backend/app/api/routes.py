@@ -5,6 +5,9 @@ import time
 
 from app.agents.graph import build_graph
 from app.utils.helpers import get_logger
+from app.core.retrieval import perform_hybrid_retrieval
+from app.core.embeddings import embed_text
+from app.core.db import get_db_connection
 
 logger = get_logger(__name__)
 router = APIRouter()
@@ -41,6 +44,32 @@ class QueryResponse(BaseModel):
 @router.get("/health")
 def health_check() -> dict:
     return {"status": "ok"}
+
+
+@router.get("/status")
+def status() -> dict:
+    """Return ingestion status: row counts and last ingest times."""
+    try:
+        with get_db_connection() as conn:
+            with conn.cursor() as cur:
+                cur.execute("SELECT COUNT(*) FROM financial_metrics")
+                fin_count = cur.fetchone()[0]
+                cur.execute("SELECT COUNT(*) FROM narrative_documents")
+                nar_count = cur.fetchone()[0]
+                cur.execute("SELECT MAX(ingested_at) FROM financial_metrics")
+                last_fin = cur.fetchone()[0]
+                cur.execute("SELECT MAX(ingested_at) FROM narrative_documents")
+                last_nar = cur.fetchone()[0]
+
+        return {
+            "financial_metrics_count": int(fin_count or 0),
+            "narrative_documents_count": int(nar_count or 0),
+            "last_financial_ingest": str(last_fin) if last_fin else None,
+            "last_narrative_ingest": str(last_nar) if last_nar else None,
+        }
+    except Exception as exc:
+        logger.warning(f"Status endpoint failed: {exc}")
+        return {"error": "Unable to query database"}
 
 
 @router.get("/")
@@ -83,7 +112,27 @@ async def query_financial_data(payload: QueryRequest) -> QueryResponse:
                 "query": payload.query,
                 "mode": payload.mode or "quick",
                 "tickers": payload.tickers,
+                "retrieval_mode": payload.retrieval_mode,
             })
+
+            # Defensive fallback: if client requested a specific retrieval_mode
+            # but the graph result did not include narratives, re-run retrieval
+            # directly with force_mode to ensure the response is grounded.
+            if payload.retrieval_mode in ("narrative", "hybrid"):
+                retrieval_summary = result.get("retrieval_context", {}).get("retrieval_summary", {})
+                if retrieval_summary.get("query_mode") != payload.retrieval_mode:
+                    try:
+                        context = perform_hybrid_retrieval(
+                            query=payload.query,
+                            embeddings_model_fn=embed_text,
+                            tickers=payload.tickers,
+                            force_mode=payload.retrieval_mode,
+                        )
+                        # Patch result to include the forced retrieval context
+                        result["retrieval_context"] = context
+                    except Exception:
+                        # Non-fatal: leave original result
+                        pass
 
             analysis = result.get("raw_analysis", "Unable to generate analysis")
             context = result.get("retrieval_context", {})

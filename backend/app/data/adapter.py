@@ -10,7 +10,12 @@ from typing import Optional
 from datetime import datetime
 
 from app.config import DATA_OUTPUT_DIR, settings
-from app.core.schema import init_schema, insert_financial_metrics, register_narrative_document
+from app.core.schema import (
+    clear_narrative_documents,
+    init_schema,
+    insert_financial_metrics,
+    register_narrative_document,
+)
 from app.utils.helpers import get_logger
 
 logger = get_logger(__name__)
@@ -268,6 +273,7 @@ def embed_and_store_narrative(
             chunk_id=chunk_id,
             total_chunks=total_chunks,
             section_title=section_title,
+            content=text,
             summary=text[:200],
             source_file=source_file,
             source_url=source_url

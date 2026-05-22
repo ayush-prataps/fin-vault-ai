@@ -4,7 +4,7 @@ Retrieves financial data from SEC EDGAR database with proper rate limiting and c
 """
 import time
 import requests
-from typing import Dict, Optional
+from typing import Dict, Optional, List
 from diskcache import Cache
 
 from app.config import (
@@ -185,6 +185,97 @@ class SECDataFetcher:
         if cik:
             return self.get_company_facts(cik)
         return None
+
+    def list_recent_filings(
+        self,
+        cik: str,
+        form_type: str = "10-K",
+        limit: int = 3
+    ) -> List[Dict]:
+        """
+        List recent SEC filings for a company.
+
+        Args:
+            cik: Company CIK number
+            form_type: Filing form to filter (for example, "10-K")
+            limit: Maximum number of filings to return
+
+        Returns:
+            Filing metadata dictionaries sorted by filing date descending
+        """
+        submissions = self.get_company_submissions(cik)
+        if not submissions:
+            return []
+
+        recent = submissions.get("filings", {}).get("recent", {})
+        forms = recent.get("form", [])
+        accession_numbers = recent.get("accessionNumber", [])
+        primary_documents = recent.get("primaryDocument", [])
+        filing_dates = recent.get("filingDate", [])
+        report_dates = recent.get("reportDate", [])
+        primary_descriptions = recent.get("primaryDocDescription", [])
+
+        filings: List[Dict] = []
+        for index, form in enumerate(forms):
+            if form != form_type:
+                continue
+
+            accession_number = accession_numbers[index] if index < len(accession_numbers) else ""
+            primary_document = primary_documents[index] if index < len(primary_documents) else ""
+            filing_date = filing_dates[index] if index < len(filing_dates) else ""
+            report_date = report_dates[index] if index < len(report_dates) else ""
+            description = primary_descriptions[index] if index < len(primary_descriptions) else ""
+
+            if not accession_number or not primary_document:
+                continue
+
+            filings.append(
+                {
+                    "form": form,
+                    "accession_number": accession_number,
+                    "accession_number_nodash": accession_number.replace("-", ""),
+                    "primary_document": primary_document,
+                    "filing_date": filing_date,
+                    "report_date": report_date,
+                    "primary_doc_description": description,
+                }
+            )
+
+        filings.sort(key=lambda item: item.get("filing_date", ""), reverse=True)
+        return filings[: max(limit, 1)]
+
+    def get_filing_text(
+        self,
+        cik: str,
+        accession_number_nodash: str,
+        primary_document: str,
+    ) -> Optional[str]:
+        """
+        Fetch the raw text or HTML for a filing's primary document.
+
+        Args:
+            cik: Company CIK number
+            accession_number_nodash: Accession number without dashes
+            primary_document: Primary document filename from the submissions payload
+
+        Returns:
+            Filing content as a string, or None on failure
+        """
+        cik_numeric = str(int(str(cik))).lstrip("0") or "0"
+        url = f"https://www.sec.gov/Archives/edgar/data/{cik_numeric}/{accession_number_nodash}/{primary_document}"
+
+        if url in self.cache:
+            return self.cache[url]
+
+        try:
+            self._rate_limit()
+            response = requests.get(url, headers=SEC_HEADERS, timeout=30)
+            response.raise_for_status()
+            content = response.text
+            self.cache.set(url, content, expire=self.cache_ttl)
+            return content
+        except requests.exceptions.RequestException:
+            return None
     
     def clear_cache(self):
         """Clear all cached data"""

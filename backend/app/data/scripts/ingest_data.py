@@ -16,6 +16,7 @@ from app.data.adapter import (
     ingest_bulk_download_data,
     ensure_narrative_store_ready
 )
+from app.data.scripts.ingest_narratives import load_real_narratives, ingest_narrative
 from app.utils.helpers import get_logger
 
 logger = get_logger(__name__)
@@ -54,12 +55,29 @@ def main():
             print(f"   {status} {ticker}: {stats['records_inserted']} records")
     
     # Step 3: Prepare pgvector storage
-    print("\n[3/3] Preparing pgvector narrative storage...")
+    print("\n[3/3] Ingesting SEC filing narratives...")
     if ensure_narrative_store_ready():
         print("✅ pgvector narrative storage ready")
     else:
-        print("⚠️  Could not initialize pgvector narrative storage")
-        print("   (This is optional - proceed without narrative search)")
+        print("❌ Could not initialize pgvector narrative storage")
+        return
+
+    narratives = load_real_narratives()
+    if not narratives:
+        print("⚠️  No SEC filing narratives found; the system will still answer numeric queries")
+    else:
+        total_chunks = 0
+        for narrative in narratives:
+            total_chunks += ingest_narrative(
+                ticker=narrative['ticker'],
+                company=narrative['company'],
+                year=narrative['year'],
+                text=narrative['text'],
+                section_title=narrative['section_title'],
+                source_file=narrative['source_file'],
+            )
+
+        print(f"✅ Ingested {total_chunks} narrative chunks from SEC filings")
     
     print("\n" + "="*80)
     print("📈 INGESTION COMPLETE")

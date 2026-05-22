@@ -90,7 +90,8 @@ CREATE TABLE IF NOT EXISTS narrative_documents (
     total_chunks INTEGER DEFAULT 1,
     section_title VARCHAR(255),
     
-    -- Content summary for quick lookup
+    -- Full content plus short summary for display
+    content TEXT,
     summary TEXT,
     ingested_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -124,6 +125,10 @@ def init_schema():
         with psycopg2.connect(settings.database_url) as conn:
             with conn.cursor() as cur:
                 cur.execute(SCHEMA_DDL)
+                try:
+                    cur.execute("ALTER TABLE narrative_documents ADD COLUMN IF NOT EXISTS content TEXT;")
+                except Exception:
+                    pass
                 try:
                     cur.execute("ALTER TABLE narrative_documents ADD COLUMN IF NOT EXISTS embedding VECTOR(384);")
                 except Exception:
@@ -251,6 +256,7 @@ def register_narrative_document(
     chunk_id: int = 0,
     total_chunks: int = 1,
     section_title: str = None,
+    content: str = None,
     summary: str = None,
     source_file: str = None,
     source_url: str = None
@@ -267,13 +273,13 @@ def register_narrative_document(
                 query = """
                     INSERT INTO narrative_documents 
                     (company, ticker, year, doc_type, embedding,
-                     chunk_id, total_chunks, section_title, summary, source_file, source_url)
-                    VALUES (%s, %s, %s, %s, %s::vector, %s, %s, %s, %s, %s, %s)
+                     chunk_id, total_chunks, section_title, content, summary, source_file, source_url)
+                    VALUES (%s, %s, %s, %s, %s::vector, %s, %s, %s, %s, %s, %s, %s)
                     RETURNING id
                 """
                 cur.execute(query, (
                     company, ticker, year, doc_type, f"[{','.join(str(float(value)) for value in embedding)}]",
-                    chunk_id, total_chunks, section_title, summary, source_file, source_url
+                    chunk_id, total_chunks, section_title, content, summary, source_file, source_url
                 ))
                 row_id = cur.fetchone()[0]
                 conn.commit()
@@ -282,4 +288,18 @@ def register_narrative_document(
         
     except Exception as exc:
         logger.error("Failed to register narrative document: %s", exc)
+        return 0
+
+
+def clear_narrative_documents() -> int:
+    """Remove existing narrative documents before a clean re-ingest."""
+    try:
+        with psycopg2.connect(settings.database_url) as conn:
+            with conn.cursor() as cur:
+                cur.execute("TRUNCATE TABLE narrative_documents RESTART IDENTITY;")
+                conn.commit()
+        logger.info("Cleared narrative_documents table")
+        return 1
+    except Exception as exc:
+        logger.error("Failed to clear narrative documents: %s", exc)
         return 0
