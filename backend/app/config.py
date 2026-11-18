@@ -1,8 +1,12 @@
 import os
 from dataclasses import dataclass
+from pathlib import Path
 
 from dotenv import load_dotenv
 
+BASE_DIR = Path(__file__).resolve().parents[1]
+# Load backend/.env first, then root .env if present
+load_dotenv(BASE_DIR / ".env")
 load_dotenv()
 
 
