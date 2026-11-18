@@ -1,0 +1,3358 @@
+{
+  "git_commit": "73bd4b6467bfa039bb14727b9b9d9ca4d6dd74c1",
+  "timestamp": "20261118_181956",
+  "model": "qwen/qwen3.8-27b",
+  "chunk_size": 400,
+  "total_questions": 31,
+  "retrieval": {
+    "config_a_baseline_no_filter": {
+      "hit_rate_at_5": 0.2258,
+      "hit_count_at_5": 7,
+      "hit_rate_at_10": 0.2581,
+      "hit_count_at_10": 8
+    },
+    "config_b_pipeline_with_filter": {
+      "hit_rate_at_5": 0.2258,
+      "hit_count_at_5": 7,
+      "hit_rate_at_10": 0.2903,
+      "hit_count_at_10": 9
+    }
+  },
+  "generation": {
+    "accuracy": 0.2581,
+    "correct_count": 8,
+    "abstention_rate": 0.6452,
+    "abstained_count": 20,
+    "incorrect_rate": 0.0968,
+    "incorrect_count": 3
+  },
+  "manual_review_20_flagged_ids": [
+    "financebench_id_03029",
+    "financebench_id_04672",
+    "financebench_id_00499",
+    "financebench_id_01226",
+    "financebench_id_01865",
+    "financebench_id_00807",
+    "financebench_id_00941",
+    "financebench_id_03069",
+    "financebench_id_00222",
+    "financebench_id_00995",
+    "financebench_id_01198",
+    "financebench_id_00917",
+    "financebench_id_01279",
+    "financebench_id_00563",
+    "financebench_id_00757",
+    "financebench_id_01028",
+    "financebench_id_00723",
+    "financebench_id_00720",
+    "financebench_id_01964",
+    "financebench_id_01981"
+  ],
+  "failed_questions": [
+    {
+      "id": "financebench_id_03029",
+      "company": "3M",
+      "question": "What is the FY2018 capital expenditure amount (in USD millions) for 3M? Give a response to the question by relying on the details shown in the cash flow statement.",
+      "gold_answer": "$1577.00",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided text from the 3M 2018 10-K [3] discusses capital deployment priorities and liquidity but does not contain the specific capital expenditure amount from the cash flow statement.",
+      "abstained": true,
+      "judge_reason": "Model abstained from answering.",
+      "citations": [
+        {
+          "n": 1,
+          "company": "3M",
+          "doc_name": "3M_2022_10K",
+          "year": 2022,
+          "page": 38,
+          "similarity_score": 0.7521080079207443,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "3M",
+          "doc_name": "3M_2023Q2_10Q",
+          "year": 2023,
+          "page": 69,
+          "similarity_score": 0.7490207626540154,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 42,
+          "similarity_score": 0.74589652531414,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "3M",
+          "doc_name": "3M_2023Q2_10Q",
+          "year": 2023,
+          "page": 70,
+          "similarity_score": 0.745585225390948,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "3M",
+          "doc_name": "3M_2022_10K",
+          "year": 2022,
+          "page": 37,
+          "similarity_score": 0.7443261590198373,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_04672",
+      "company": "3M",
+      "question": "Assume that you are a public equities analyst. Answer the following question by primarily using information that is shown in the balance sheet: what is the year end FY2018 net PPNE for 3M? Answer in USD billions.",
+      "gold_answer": "$8.70",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided context contains information regarding derivative instruments, interest rate swaps, foreign exchange hedges, and pension measurement dates, but it does not include the balance sheet or any data regarding Property, Plant, and Net Equipment (PPNE) for 3M in FY2018.",
+      "abstained": true,
+      "judge_reason": "Model abstained from answering.",
+      "citations": [
+        {
+          "n": 1,
+          "company": "3M",
+          "doc_name": "3M_2022_10K",
+          "year": 2022,
+          "page": 41,
+          "similarity_score": 0.7718670598228893,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 99,
+          "similarity_score": 0.7646672953566106,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "3M",
+          "doc_name": "3M_2023Q2_10Q",
+          "year": 2023,
+          "page": 19,
+          "similarity_score": 0.7641558874891966,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 50,
+          "similarity_score": 0.7619573928092356,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 101,
+          "similarity_score": 0.7576487886204958,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00499",
+      "company": "3M",
+      "question": "Is 3M a capital-intensive business based on FY2022 data?",
+      "gold_answer": "No, the company is managing its CAPEX and Fixed Assets pretty efficiently, which is evident from below key metrics:\nCAPEX/Revenue Ratio: 5.1%\nFixed assets/Total Assets: 20%\nReturn on Assets= 12.4%",
+      "predicted_answer": "Based on the provided filing excerpts, there is insufficient information to definitively determine if 3M is a capital-intensive business based on FY2022 data. The excerpts provide details on working capital, debt, liquidity, and commercial paper issuances [1] [2] [3] [4], and mention that investing in the business (including capital expenditures) is a priority [3] [4]. However, the specific FY2022 figures for capital expenditures or property, plant, and equipment investments are not included in the provided text. The only specific capital spending figure mentioned is for 2019 ($1.7 billion to $1.9 billion) in the FY2018 filing [5].\n\nI cannot answer this question based on the provided filing excerpts.",
+      "abstained": true,
+      "judge_reason": "Model abstained from answering.",
+      "citations": [
+        {
+          "n": 1,
+          "company": "3M",
+          "doc_name": "3M_2022_10K",
+          "year": 2022,
+          "page": 37,
+          "similarity_score": 0.8233720800315217,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "3M",
+          "doc_name": "3M_2023Q2_10Q",
+          "year": 2023,
+          "page": 70,
+          "similarity_score": 0.81950860139779,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "3M",
+          "doc_name": "3M_2023Q2_10Q",
+          "year": 2023,
+          "page": 69,
+          "similarity_score": 0.8192490123807207,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "3M",
+          "doc_name": "3M_2022_10K",
+          "year": 2022,
+          "page": 36,
+          "similarity_score": 0.8082178120742939,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 46,
+          "similarity_score": 0.8059410817552902,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_01226",
+      "company": "3M",
+      "question": "What drove operating margin change as of FY2022 for 3M? If operating margin is not a useful metric for a company like this, then please state that and explain why.",
+      "gold_answer": "Operating Margin for 3M in FY2022 has decreased by 1.7% primarily due to: \n-Decrease in gross Margin\n-mostly one-off charges including Combat Arms Earplugs litigation, impairment related to exiting PFAS manufacturing, costs related to exiting Russia and divestiture-related restructuring\ncharges",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided context contains information regarding 3M's operating income margins for FY2018 [1, 4, 5] and Q2 2023 [3], but it does not contain any data or explanations for FY2022.",
+      "abstained": true,
+      "judge_reason": "Model abstained from answering.",
+      "citations": [
+        {
+          "n": 1,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 27,
+          "similarity_score": 0.8461824816032516,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 37,
+          "similarity_score": 0.7629247535146703,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "3M",
+          "doc_name": "3M_2023Q2_10Q",
+          "year": 2023,
+          "page": 67,
+          "similarity_score": 0.7601592540740967,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 28,
+          "similarity_score": 0.7515334934910247,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 28,
+          "similarity_score": 0.7511886582132777,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_01865",
+      "company": "3M",
+      "question": "If we exclude the impact of M&A, which segment has dragged down 3M's overall growth in 2022?",
+      "gold_answer": "The consumer segment shrunk by 0.9% organically.",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts.\n\nThe provided context contains information regarding 3M's PFAS exit announcement and associated charges [1], [2], segment definitions and geographic reporting [4], and 2016/2017/2018 financial data and segment changes [3], [5]. However, the excerpts do not contain the specific 2022 net sales or organic growth figures for the individual business segments (Safety and Industrial, Transportation and Electronics, Health Care, and Consumer) required to determine which segment dragged down overall growth after excluding M&A impacts.",
+      "abstained": true,
+      "judge_reason": "Model abstained from answering.",
+      "citations": [
+        {
+          "n": 1,
+          "company": "3M",
+          "doc_name": "3M_2022_10K",
+          "year": 2022,
+          "page": 10,
+          "similarity_score": 0.7222388717843499,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "3M",
+          "doc_name": "3M_2023Q2_10Q",
+          "year": 2023,
+          "page": 78,
+          "similarity_score": 0.7206352949142456,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 72,
+          "similarity_score": 0.7200635671615601,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "3M",
+          "doc_name": "3M_2022_10K",
+          "year": 2022,
+          "page": 18,
+          "similarity_score": 0.7195099163347546,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 31,
+          "similarity_score": 0.7188614178382519,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00807",
+      "company": "3M",
+      "question": "Does 3M have a reasonably healthy liquidity profile based on its quick ratio for Q2 of FY2023? If the quick ratio is not relevant to measure liquidity, please state that and explain why.",
+      "gold_answer": "No. The quick ratio for 3M was 0.96 by Jun'23 close, which needs a bit of an improvement to touch the 1x mark",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided context does not contain the specific financial data (current assets, current liabilities, or inventory) required to calculate the quick ratio for Q2 of FY2023, nor does it explicitly state the quick ratio value.\n\nHowever, the excerpts do state that \"3M maintains a strong liquidity profile\" and that its \"primary short-term liquidity needs are met through cash on hand and U.S. commercial paper issuances\" [1].",
+      "abstained": true,
+      "judge_reason": "Model abstained from answering.",
+      "citations": [
+        {
+          "n": 1,
+          "company": "3M",
+          "doc_name": "3M_2023Q2_10Q",
+          "year": 2023,
+          "page": 69,
+          "similarity_score": 0.7933556437492427,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "3M",
+          "doc_name": "3M_2022_10K",
+          "year": 2022,
+          "page": 36,
+          "similarity_score": 0.7910669570525328,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "3M",
+          "doc_name": "3M_2022_10K",
+          "year": 2022,
+          "page": 25,
+          "similarity_score": 0.7767032784158103,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "3M",
+          "doc_name": "3M_2022_10K",
+          "year": 2022,
+          "page": 41,
+          "similarity_score": 0.769679142851882,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 42,
+          "similarity_score": 0.7688111066818292,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00941",
+      "company": "3M",
+      "question": "Which debt securities are registered to trade on a national securities exchange under 3M's name as of Q2 of 2023?",
+      "gold_answer": "Following debt securities registered under 3M's name are listed to trade on the New York Stock Exchange:\n-1.500% Notes due 2026 (Trading Symbol: MMM26)\n-1.750% Notes due 2030 (Trading Symbol: MMM30)\n-1.500% Notes due 2031 (Trading Symbol: MMM31)",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided text mentions the registration of debt or equity securities under a \"well-known seasoned issuer\" (WKSI) shelf registration statement [2] and details the Medium-Term Notes Program (Series F) [2], but it does not specify which debt securities are registered to trade on a national securities exchange under 3M's name as of Q2 2023.",
+      "abstained": true,
+      "judge_reason": "Model abstained from answering.",
+      "citations": [
+        {
+          "n": 1,
+          "company": "3M",
+          "doc_name": "3M_2022_10K",
+          "year": 2022,
+          "page": 41,
+          "similarity_score": 0.7842481603770366,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "3M",
+          "doc_name": "3M_2023Q2_10Q",
+          "year": 2023,
+          "page": 69,
+          "similarity_score": 0.7685187596965698,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "3M",
+          "doc_name": "3M_2022_10K",
+          "year": 2022,
+          "page": 37,
+          "similarity_score": 0.7554516500773013,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "3M",
+          "doc_name": "3M_2023Q2_10Q",
+          "year": 2023,
+          "page": 70,
+          "similarity_score": 0.7533264090607183,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 42,
+          "similarity_score": 0.7530436221413161,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_03069",
+      "company": "AMD",
+      "question": "Answer the following question as if you are an equity research analyst and have lost internet connection so you do not have access to financial metric providers. According to the details clearly outlined within the P&L statement and the statement of cash flows, what is the FY2015 depreciation and amortization (D&A from cash flow statement) % margin for AMD?",
+      "gold_answer": "4.2%",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided context contains selected financial data (net revenue and net income/loss) [3] and general company information [1], but it does not include the full Profit and Loss (P&L) statement or the Statement of Cash Flows required to determine the specific Depreciation and Amortization (D&A) expense for FY2015.",
+      "abstained": true,
+      "judge_reason": "Model abstained from answering.",
+      "citations": [
+        {
+          "n": 1,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 3,
+          "similarity_score": 0.7986426233436255,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "AMD",
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 41,
+          "similarity_score": 0.7944353810601508,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 33,
+          "similarity_score": 0.7834057678822155,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "AMD",
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 103,
+          "similarity_score": 0.7754871115378817,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 31,
+          "similarity_score": 0.7693198460746026,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00222",
+      "company": "AMD",
+      "question": "Does AMD have a reasonably healthy liquidity profile based on its quick ratio for FY22? If the quick ratio is not relevant to measure liquidity, please state that and explain why.",
+      "gold_answer": "Yes. The quick ratio is 1.57, calculated as (cash and cash equivalents+Short term investments+Accounts receivable, net+receivables from related parties)/ (current liabilities).",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided context does not contain AMD's balance sheet data (such as current assets, current liabilities, or inventory) or any mention of the quick ratio for FY2022. The excerpts include general risk factors and company overview from FY2015 [1][4][5], selected financial data (revenue and net income) for FY2011\u2013FY2015 [3], and stock performance/unregistered sales information for FY2022 [2], but none of these sources provide the specific liquidity metrics required to calculate or assess the quick ratio.",
+      "abstained": true,
+      "judge_reason": "Model abstained from answering.",
+      "citations": [
+        {
+          "n": 1,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 3,
+          "similarity_score": 0.7764772772789001,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "AMD",
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 41,
+          "similarity_score": 0.7503171637937901,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 33,
+          "similarity_score": 0.722988486289978,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 3,
+          "similarity_score": 0.7189289927482605,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 2,
+          "similarity_score": 0.7169050619219327,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00995",
+      "company": "AMD",
+      "question": "What are the major products and services that AMD sells as of FY22?",
+      "gold_answer": "AMD sells server microprocessors (CPUs) and graphics processing units (GPUs), data processing units (DPUs), Field Programmable Gate Arrays (FPGAs), and Adaptive System-on-Chip (SoC) products for data centers; CPUs, accelerated processing units (APUs) that integrate CPUs and GPUs, and chipsets for desktop and notebook personal computers; discrete GPUs, and semi-custom SoC products and development services; and embedded CPUs, GPUs, APUs, FPGAs, and Adaptive SoC products.",
+      "predicted_answer": "Based on the provided FY2022 filing excerpt, AMD sells the following major products:\n\n*   **Client Processors:** AMD Ryzen, AMD Ryzen Pro, Ryzen Threadripper, Ryzen Threadripper Pro, AMD Athlon, AMD Athlon Pro, and AMD Pro A-Series, which service desktop and notebook personal computers [1].\n*   **Graphics Products:**\n    *   **Consumer:** AMD Radeon Graphics [1].\n    *   **Embedded:** AMD Embedded Radeon Graphics [1].\n    *   **Professional:** AMD Radeon Pro Graphics [1].\n    *   **Data Center:** Radeon Instinct, Radeon Pro V-Series, and AMD Instinct accelerators for servers [1].\n*   **Server Microprocessors:** AMD EPYC processors [1].\n*   **Embedded Processor Solutions:** Low-power versions of AMD Athlon, AMD Geode, AMD Ryzen, AMD EPYC, AMD R-Series, and G-Series processors [1].\n*   **FPGAs:** Virtex-6, Virtex-7, Virtex UltraScale+, Kintex-7, Kintex UltraScale, Kintex UltraScale+, Artix-7, Artix UltraScale+, Spartan-6, and Spartan-7 [1].\n*   **Adaptive SoCs:** Zynq-7000, Zynq UltraScale+ MPSoC, and Zynq UltraScale+ [1].\n*   **Chipsets:** Sold under AMD trademarks [1].\n\n*Note: The provided context for FY2022 does not list semi-custom products or specific warranty terms as part of the \"major products and services\" list, though it mentions warranty periods for products sold to customers [1].*",
+      "abstained": false,
+      "judge_reason": "The predicted answer omits Data Processing Units (DPUs) and semi-custom SoC products, which are explicitly listed as major products in the gold answer.",
+      "citations": [
+        {
+          "n": 1,
+          "company": "AMD",
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 10,
+          "similarity_score": 0.7544559690032,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 8,
+          "similarity_score": 0.7193723917007446,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 8,
+          "similarity_score": 0.7185743618861233,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 6,
+          "similarity_score": 0.7155240178108215,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 35,
+          "similarity_score": 0.7060809135437012,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_01198",
+      "company": "AMD",
+      "question": "What drove revenue change as of the FY22 for AMD?",
+      "gold_answer": "In 2022, AMD reported Higher sales of their EPYC server processors, higher semi-custom product sales, and the inclusion of Xilinx embedded product sales",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided text from the AMD 2022 10-K [4] mentions that 2022 was a \"transformative year\" and details the acquisition of Xilinx, which expanded the product portfolio to include FPGAs, adaptive SoCs, and ACAP products, but it does not provide specific data or a detailed breakdown of what drove the revenue change for FY22. The other excerpts are from the 2015 10-K [1], [2], [3] or list exhibits [5].",
+      "abstained": true,
+      "judge_reason": "Model abstained from answering.",
+      "citations": [
+        {
+          "n": 1,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 35,
+          "similarity_score": 0.7422372102737427,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 36,
+          "similarity_score": 0.7396443486213684,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 3,
+          "similarity_score": 0.7310084700584412,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "AMD",
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 42,
+          "similarity_score": 0.7281164255003474,
+          "is_gold_hit": true
+        },
+        {
+          "n": 5,
+          "company": "AMD",
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 105,
+          "similarity_score": 0.7260518400607351,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00917",
+      "company": "AMD",
+      "question": "What drove operating margin change as of the FY22 for AMD? If operating margin is not a useful metric for a company like this, then please state that and explain why.",
+      "gold_answer": "The decrease in AMD's operating income was primarily driven by amortization of intangible assets associated with the Xilinx acquisition",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided context contains financial data and segment information for AMD's fiscal years 2013, 2014, and 2015 [1][2][3][5], and stock performance data for the period ending December 31, 2022 [4]. However, the excerpts do not contain the income statement, operating expenses, or net revenue figures for AMD's fiscal year 2022, which are required to calculate or analyze the operating margin for that specific year.",
+      "abstained": true,
+      "judge_reason": "Model abstained from answering.",
+      "citations": [
+        {
+          "n": 1,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 3,
+          "similarity_score": 0.7459743022918701,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 35,
+          "similarity_score": 0.7400204163795837,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 82,
+          "similarity_score": 0.7366777658462524,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "AMD",
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 41,
+          "similarity_score": 0.733738726413735,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 36,
+          "similarity_score": 0.7295848727226257,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_01279",
+      "company": "AMD",
+      "question": "Among operations, investing, and financing activities, which brought in the most (or lost the least) cash flow for AMD in FY22?",
+      "gold_answer": "In 2022, AMD brought in the most cashflow from Operations",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided context contains financial data for AMD for the fiscal years ended December 26, 2015, December 27, 2014, and December 28, 2013 [3][4], but does not contain any information regarding FY22.",
+      "abstained": true,
+      "judge_reason": "Model abstained from answering.",
+      "citations": [
+        {
+          "n": 1,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 36,
+          "similarity_score": 0.7115215063095093,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 3,
+          "similarity_score": 0.7000398635864258,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 33,
+          "similarity_score": 0.6988040804862976,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 59,
+          "similarity_score": 0.6859122514724731,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 2,
+          "similarity_score": 0.6841219083179777,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00563",
+      "company": "AMD",
+      "question": "From FY21 to FY22, excluding Embedded, in which AMD reporting segment did sales proportionally increase the most?",
+      "gold_answer": "Data Center",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided text contains general descriptions of AMD's products and business segments [1, 5], information about acquisitions [4, 5], and stock performance data [3], but it does not include the specific revenue or sales figures for AMD's reporting segments (such as Data Center, Client, Gaming, or Embedded) for FY2021 and FY2022 required to calculate proportional increases.",
+      "abstained": true,
+      "judge_reason": "Model abstained from answering.",
+      "citations": [
+        {
+          "n": 1,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 3,
+          "similarity_score": 0.7141783833503723,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "AMD",
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 101,
+          "similarity_score": 0.7010157704353333,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "AMD",
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 41,
+          "similarity_score": 0.6992839007929503,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "AMD",
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 42,
+          "similarity_score": 0.6979861023442673,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "AMD",
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 59,
+          "similarity_score": 0.6945522013573538,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00757",
+      "company": "AMD",
+      "question": "Did AMD report customer concentration in FY22?",
+      "gold_answer": "Yes, one customer accounted for 16% of consolidated net revenue",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided context includes customer concentration data for FY2015 [3], but the excerpt from the FY2022 10-K [2] only discusses cybersecurity threats and does not contain information regarding customer concentration.",
+      "abstained": true,
+      "judge_reason": "Model abstained from answering.",
+      "citations": [
+        {
+          "n": 1,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 3,
+          "similarity_score": 0.7215014696121216,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "AMD",
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 25,
+          "similarity_score": 0.7122794389724731,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 9,
+          "similarity_score": 0.7083314657211304,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 8,
+          "similarity_score": 0.7013410329818726,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 4,
+          "similarity_score": 0.7005036473274231,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_01028",
+      "company": "American Express",
+      "question": "What are the geographies that American Express primarily operates in as of 2022?",
+      "gold_answer": "United States, EMEA, APAC, and LACC",
+      "predicted_answer": "Based on the provided filing excerpts, American Express operates in the following geographies as of 2022:\n\n*   **Global Network:** The company establishes and maintains relationships with third-party banks and other institutions in approximately **103 countries and territories** [2].\n*   **Significant Jurisdictions Outside the United States:** Jurisdictions representing a significant portion of billed business outside the U.S. include the **United Kingdom (UK)**, the **European Union (EU)**, **Australia**, **Japan**, **Canada**, and **Mexico** [4].\n*   **Subsidiary Locations:** The list of subsidiaries indicates operations or legal presence in the **United States** (including New York, Delaware, and Arizona), **Ireland**, **Mexico**, **Jersey**, **Netherlands Antilles**, **Netherlands**, **Malaysia**, **Japan**, and **India** [1].",
+      "abstained": false,
+      "judge_reason": "The predicted answer lists specific countries and a global network count, whereas the gold answer specifies the company's reporting segments (United States, EMEA, APAC, and LACC), which are distinct categories not provided in the prediction.",
+      "citations": [
+        {
+          "n": 1,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 251,
+          "similarity_score": 0.7250056266784668,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 5,
+          "similarity_score": 0.7231115914318443,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 125,
+          "similarity_score": 0.7200453495992828,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 3,
+          "similarity_score": 0.7091296911239624,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 4,
+          "similarity_score": 0.7080047304627473,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00723",
+      "company": "American Express",
+      "question": "Does AMEX have an improving operating margin profile as of 2022? If operating margin is not a useful metric for a company like this, then state that and explain why.",
+      "gold_answer": "Performance is not measured through operating margin",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided text does not contain specific financial figures for operating income, total revenue, or operating margins for 2022 or prior years, nor does it explicitly state whether the operating margin profile is improving. While the text mentions that operating expenses increased 24 percent year-over-year [1], it does not provide the corresponding revenue data or margin calculations necessary to determine the trend in operating margins.",
+      "abstained": true,
+      "judge_reason": "Model abstained from answering.",
+      "citations": [
+        {
+          "n": 1,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 45,
+          "similarity_score": 0.7147820974951385,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 36,
+          "similarity_score": 0.6999676823616078,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 137,
+          "similarity_score": 0.6974837599685161,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 101,
+          "similarity_score": 0.6950418534849981,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 27,
+          "similarity_score": 0.6931674663324686,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00720",
+      "company": "American Express",
+      "question": "What drove gross margin change as of the FY2022 for American Express? If gross margin is not a useful metric for a company like this, then please state that and explain why.",
+      "gold_answer": "Performance is not measured through gross margin",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided text does not contain data regarding gross margin, cost of revenue, or specific drivers for margin changes. Additionally, the excerpts focus on accounting estimates, regulatory capital ratios, and audit opinions, rather than income statement performance metrics like gross margin.",
+      "abstained": true,
+      "judge_reason": "Model abstained from answering.",
+      "citations": [
+        {
+          "n": 1,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 101,
+          "similarity_score": 0.7313696146011353,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 149,
+          "similarity_score": 0.7124176368215568,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 84,
+          "similarity_score": 0.7084115743637085,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 149,
+          "similarity_score": 0.7071564408289328,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 91,
+          "similarity_score": 0.701842188835144,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_01964",
+      "company": "American Express",
+      "question": "What was the largest liability in American Express's Balance Sheet in 2022?",
+      "gold_answer": "Customer deposits",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided text contains information regarding long-term debt maturities, credit concentrations, and parent company cash flows, but it does not include the consolidated balance sheet or a list of all liabilities required to identify the largest liability.",
+      "abstained": true,
+      "judge_reason": "Model abstained from answering.",
+      "citations": [
+        {
+          "n": 1,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 125,
+          "similarity_score": 0.7751405738168528,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 91,
+          "similarity_score": 0.7532635029240301,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 151,
+          "similarity_score": 0.7435584679702597,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 156,
+          "similarity_score": 0.731713505779092,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 89,
+          "similarity_score": 0.7256682082612507,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_01981",
+      "company": "American Express",
+      "question": "Was American Express able to retain card members during 2022?",
+      "gold_answer": "Yes",
+      "predicted_answer": "Based on the provided filing excerpts, I cannot answer this question. The context states that as of December 31, 2022, American Express had 76.7 million proprietary cards in force worldwide [2], but it does not provide data on card member retention rates, net additions, or cancellations during 2022.",
+      "abstained": true,
+      "judge_reason": "Model abstained from answering.",
+      "citations": [
+        {
+          "n": 1,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 125,
+          "similarity_score": 0.762893401470584,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 4,
+          "similarity_score": 0.7519955186846556,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 183,
+          "similarity_score": 0.7422095979577077,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 161,
+          "similarity_score": 0.7312565606083549,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 253,
+          "similarity_score": 0.7293893260127721,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_01091",
+      "company": "Boeing",
+      "question": "Has Boeing reported any materially important ongoing legal battles from FY2022?",
+      "gold_answer": "Yes. Multiple lawsuits have been filed against Boeing resulting from a 2018 Lion Air crash and a 2019 Ethiopian Airlines crash.",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided text includes the table of contents listing \"Item 3. Legal Proceedings\" [4] and financial statement data, but it does not contain the actual content or details of the legal proceedings described in that section.",
+      "abstained": true,
+      "judge_reason": "Model abstained from answering.",
+      "citations": [
+        {
+          "n": 1,
+          "company": "Boeing",
+          "doc_name": "BOEING_2018_10K",
+          "year": 2018,
+          "page": 125,
+          "similarity_score": 0.7325449308699504,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 131,
+          "similarity_score": 0.7320138216018677,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 62,
+          "similarity_score": 0.7316810546828288,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 1,
+          "similarity_score": 0.7302538591774631,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 58,
+          "similarity_score": 0.7249833077212257,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00678",
+      "company": "Boeing",
+      "question": "Does Boeing have an improving gross margin profile as of FY2022? If gross margin is not a useful metric for a company like this, then state that and explain why.",
+      "gold_answer": "Yes. Boeing has an improving gross margin profile as of FY2022. Gross profit improved from $3,017 million in FY2021 to $3,502 million in FY2022. Gross margin % improved from 4.8% in FY2021 to 5.3% in FY2022.",
+      "predicted_answer": "Based on the provided filing excerpts, I cannot answer this question because the context does not contain data regarding **cost of sales** or **gross profit**, which are required to calculate gross margin.\n\nThe provided excerpts include:\n*   **Revenues** by segment and total [3], [4].\n*   **Loss from operations** (operating income/loss) by segment and total [3], [4].\n*   **Net loss** attributable to Boeing shareholders [3], [4].\n*   **Operating margins** (calculated as Loss from operations / Revenues) [4].\n\nHowever, the specific line item for \"Cost of Sales\" or \"Gross Profit\" is not present in the provided tables or text. While Note 1 mentions that Boeing uses \"program accounting to determine the amount reported as cost of sales\" [1], it does not provide the actual dollar amounts for cost of sales for FY2022, FY2021, or FY2020. Therefore, it is impossible to determine if the gross margin profile is improving based strictly on the provided text.",
+      "abstained": true,
+      "judge_reason": "Model abstained from answering.",
+      "citations": [
+        {
+          "n": 1,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 62,
+          "similarity_score": 0.7693515511767494,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "Boeing",
+          "doc_name": "BOEING_2018_10K",
+          "year": 2018,
+          "page": 56,
+          "similarity_score": 0.7510569095611572,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 61,
+          "similarity_score": 0.742441713809967,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 23,
+          "similarity_score": 0.740348144790421,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 56,
+          "similarity_score": 0.7378760576248169,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_01290",
+      "company": "Boeing",
+      "question": "Who are the primary customers of Boeing as of FY2022?",
+      "gold_answer": "Boeing's primary customers as of FY2022 are a limited number of commercial airlines and the US government. The US government accounted for 40% of Boeing's total revenues in FY2022.",
+      "predicted_answer": "Based on the provided filing excerpts, the primary customers for Boeing's segments as of FY2022 are:\n\n*   **Commercial Airplanes (BCA):** The commercial airline industry worldwide [4].\n*   **Defense, Space & Security (BDS):** The United States Department of Defense (U.S. DoD) is identified as the primary customer [3].\n*   **Global Services (BGS):** Commercial and defense customers worldwide [4].\n\nThe excerpts do not specify a single \"primary customer\" for the entire company, but rather identify the primary customer for the Defense, Space & Security segment and the general customer base for the Commercial Airplanes and Global Services segments.",
+      "abstained": false,
+      "judge_reason": "The predicted answer fails to identify the US government as a primary customer for the entire company (or specifically noting its 40% revenue share) and instead breaks down customers by segment, missing the key aggregate fact presented in the gold answer.",
+      "citations": [
+        {
+          "n": 1,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 54,
+          "similarity_score": 0.7549303399005637,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 61,
+          "similarity_score": 0.7482654079277938,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "Boeing",
+          "doc_name": "BOEING_2018_10K",
+          "year": 2018,
+          "page": 2,
+          "similarity_score": 0.7392488938346179,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 2,
+          "similarity_score": 0.7363168659493509,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 56,
+          "similarity_score": 0.7332314471373397,
+          "is_gold_hit": false
+        }
+      ]
+    }
+  ],
+  "all_questions": [
+    {
+      "id": "financebench_id_03029",
+      "company": "3M",
+      "doc_name": "3M_2018_10K",
+      "question": "What is the FY2018 capital expenditure amount (in USD millions) for 3M? Give a response to the question by relying on the details shown in the cash flow statement.",
+      "gold_answer": "$1577.00",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided text from the 3M 2018 10-K [3] discusses capital deployment priorities and liquidity but does not contain the specific capital expenditure amount from the cash flow statement.",
+      "score": 0,
+      "abstained": true,
+      "eval_method": "abstention",
+      "judge_reason": "Model abstained from answering.",
+      "hit_a_5": false,
+      "hit_a_10": false,
+      "hit_b_5": false,
+      "hit_b_10": true,
+      "tokens_used": 2239,
+      "latency_ms": 675,
+      "citations": [
+        {
+          "n": 1,
+          "company": "3M",
+          "doc_name": "3M_2022_10K",
+          "year": 2022,
+          "page": 38,
+          "similarity_score": 0.7521080079207443,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "3M",
+          "doc_name": "3M_2023Q2_10Q",
+          "year": 2023,
+          "page": 69,
+          "similarity_score": 0.7490207626540154,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 42,
+          "similarity_score": 0.74589652531414,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "3M",
+          "doc_name": "3M_2023Q2_10Q",
+          "year": 2023,
+          "page": 70,
+          "similarity_score": 0.745585225390948,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "3M",
+          "doc_name": "3M_2022_10K",
+          "year": 2022,
+          "page": 37,
+          "similarity_score": 0.7443261590198373,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_04672",
+      "company": "3M",
+      "doc_name": "3M_2018_10K",
+      "question": "Assume that you are a public equities analyst. Answer the following question by primarily using information that is shown in the balance sheet: what is the year end FY2018 net PPNE for 3M? Answer in USD billions.",
+      "gold_answer": "$8.70",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided context contains information regarding derivative instruments, interest rate swaps, foreign exchange hedges, and pension measurement dates, but it does not include the balance sheet or any data regarding Property, Plant, and Net Equipment (PPNE) for 3M in FY2018.",
+      "score": 0,
+      "abstained": true,
+      "eval_method": "abstention",
+      "judge_reason": "Model abstained from answering.",
+      "hit_a_5": false,
+      "hit_a_10": false,
+      "hit_b_5": false,
+      "hit_b_10": false,
+      "tokens_used": 1715,
+      "latency_ms": 456,
+      "citations": [
+        {
+          "n": 1,
+          "company": "3M",
+          "doc_name": "3M_2022_10K",
+          "year": 2022,
+          "page": 41,
+          "similarity_score": 0.7718670598228893,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 99,
+          "similarity_score": 0.7646672953566106,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "3M",
+          "doc_name": "3M_2023Q2_10Q",
+          "year": 2023,
+          "page": 19,
+          "similarity_score": 0.7641558874891966,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 50,
+          "similarity_score": 0.7619573928092356,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 101,
+          "similarity_score": 0.7576487886204958,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00499",
+      "company": "3M",
+      "doc_name": "3M_2022_10K",
+      "question": "Is 3M a capital-intensive business based on FY2022 data?",
+      "gold_answer": "No, the company is managing its CAPEX and Fixed Assets pretty efficiently, which is evident from below key metrics:\nCAPEX/Revenue Ratio: 5.1%\nFixed assets/Total Assets: 20%\nReturn on Assets= 12.4%",
+      "predicted_answer": "Based on the provided filing excerpts, there is insufficient information to definitively determine if 3M is a capital-intensive business based on FY2022 data. The excerpts provide details on working capital, debt, liquidity, and commercial paper issuances [1] [2] [3] [4], and mention that investing in the business (including capital expenditures) is a priority [3] [4]. However, the specific FY2022 figures for capital expenditures or property, plant, and equipment investments are not included in the provided text. The only specific capital spending figure mentioned is for 2019 ($1.7 billion to $1.9 billion) in the FY2018 filing [5].\n\nI cannot answer this question based on the provided filing excerpts.",
+      "score": 0,
+      "abstained": true,
+      "eval_method": "abstention",
+      "judge_reason": "Model abstained from answering.",
+      "hit_a_5": false,
+      "hit_a_10": false,
+      "hit_b_5": false,
+      "hit_b_10": false,
+      "tokens_used": 2688,
+      "latency_ms": 1222,
+      "citations": [
+        {
+          "n": 1,
+          "company": "3M",
+          "doc_name": "3M_2022_10K",
+          "year": 2022,
+          "page": 37,
+          "similarity_score": 0.8233720800315217,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "3M",
+          "doc_name": "3M_2023Q2_10Q",
+          "year": 2023,
+          "page": 70,
+          "similarity_score": 0.81950860139779,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "3M",
+          "doc_name": "3M_2023Q2_10Q",
+          "year": 2023,
+          "page": 69,
+          "similarity_score": 0.8192490123807207,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "3M",
+          "doc_name": "3M_2022_10K",
+          "year": 2022,
+          "page": 36,
+          "similarity_score": 0.8082178120742939,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 46,
+          "similarity_score": 0.8059410817552902,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_01226",
+      "company": "3M",
+      "doc_name": "3M_2022_10K",
+      "question": "What drove operating margin change as of FY2022 for 3M? If operating margin is not a useful metric for a company like this, then please state that and explain why.",
+      "gold_answer": "Operating Margin for 3M in FY2022 has decreased by 1.7% primarily due to: \n-Decrease in gross Margin\n-mostly one-off charges including Combat Arms Earplugs litigation, impairment related to exiting PFAS manufacturing, costs related to exiting Russia and divestiture-related restructuring\ncharges",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided context contains information regarding 3M's operating income margins for FY2018 [1, 4, 5] and Q2 2023 [3], but it does not contain any data or explanations for FY2022.",
+      "score": 0,
+      "abstained": true,
+      "eval_method": "abstention",
+      "judge_reason": "Model abstained from answering.",
+      "hit_a_5": false,
+      "hit_a_10": false,
+      "hit_b_5": false,
+      "hit_b_10": false,
+      "tokens_used": 1511,
+      "latency_ms": 538,
+      "citations": [
+        {
+          "n": 1,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 27,
+          "similarity_score": 0.8461824816032516,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 37,
+          "similarity_score": 0.7629247535146703,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "3M",
+          "doc_name": "3M_2023Q2_10Q",
+          "year": 2023,
+          "page": 67,
+          "similarity_score": 0.7601592540740967,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 28,
+          "similarity_score": 0.7515334934910247,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 28,
+          "similarity_score": 0.7511886582132777,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_01865",
+      "company": "3M",
+      "doc_name": "3M_2022_10K",
+      "question": "If we exclude the impact of M&A, which segment has dragged down 3M's overall growth in 2022?",
+      "gold_answer": "The consumer segment shrunk by 0.9% organically.",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts.\n\nThe provided context contains information regarding 3M's PFAS exit announcement and associated charges [1], [2], segment definitions and geographic reporting [4], and 2016/2017/2018 financial data and segment changes [3], [5]. However, the excerpts do not contain the specific 2022 net sales or organic growth figures for the individual business segments (Safety and Industrial, Transportation and Electronics, Health Care, and Consumer) required to determine which segment dragged down overall growth after excluding M&A impacts.",
+      "score": 0,
+      "abstained": true,
+      "eval_method": "abstention",
+      "judge_reason": "Model abstained from answering.",
+      "hit_a_5": false,
+      "hit_a_10": false,
+      "hit_b_5": false,
+      "hit_b_10": false,
+      "tokens_used": 2587,
+      "latency_ms": 14760,
+      "citations": [
+        {
+          "n": 1,
+          "company": "3M",
+          "doc_name": "3M_2022_10K",
+          "year": 2022,
+          "page": 10,
+          "similarity_score": 0.7222388717843499,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "3M",
+          "doc_name": "3M_2023Q2_10Q",
+          "year": 2023,
+          "page": 78,
+          "similarity_score": 0.7206352949142456,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 72,
+          "similarity_score": 0.7200635671615601,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "3M",
+          "doc_name": "3M_2022_10K",
+          "year": 2022,
+          "page": 18,
+          "similarity_score": 0.7195099163347546,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 31,
+          "similarity_score": 0.7188614178382519,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00807",
+      "company": "3M",
+      "doc_name": "3M_2023Q2_10Q",
+      "question": "Does 3M have a reasonably healthy liquidity profile based on its quick ratio for Q2 of FY2023? If the quick ratio is not relevant to measure liquidity, please state that and explain why.",
+      "gold_answer": "No. The quick ratio for 3M was 0.96 by Jun'23 close, which needs a bit of an improvement to touch the 1x mark",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided context does not contain the specific financial data (current assets, current liabilities, or inventory) required to calculate the quick ratio for Q2 of FY2023, nor does it explicitly state the quick ratio value.\n\nHowever, the excerpts do state that \"3M maintains a strong liquidity profile\" and that its \"primary short-term liquidity needs are met through cash on hand and U.S. commercial paper issuances\" [1].",
+      "score": 0,
+      "abstained": true,
+      "eval_method": "abstention",
+      "judge_reason": "Model abstained from answering.",
+      "hit_a_5": false,
+      "hit_a_10": false,
+      "hit_b_5": false,
+      "hit_b_10": false,
+      "tokens_used": 2483,
+      "latency_ms": 17660,
+      "citations": [
+        {
+          "n": 1,
+          "company": "3M",
+          "doc_name": "3M_2023Q2_10Q",
+          "year": 2023,
+          "page": 69,
+          "similarity_score": 0.7933556437492427,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "3M",
+          "doc_name": "3M_2022_10K",
+          "year": 2022,
+          "page": 36,
+          "similarity_score": 0.7910669570525328,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "3M",
+          "doc_name": "3M_2022_10K",
+          "year": 2022,
+          "page": 25,
+          "similarity_score": 0.7767032784158103,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "3M",
+          "doc_name": "3M_2022_10K",
+          "year": 2022,
+          "page": 41,
+          "similarity_score": 0.769679142851882,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 42,
+          "similarity_score": 0.7688111066818292,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00941",
+      "company": "3M",
+      "doc_name": "3M_2023Q2_10Q",
+      "question": "Which debt securities are registered to trade on a national securities exchange under 3M's name as of Q2 of 2023?",
+      "gold_answer": "Following debt securities registered under 3M's name are listed to trade on the New York Stock Exchange:\n-1.500% Notes due 2026 (Trading Symbol: MMM26)\n-1.750% Notes due 2030 (Trading Symbol: MMM30)\n-1.500% Notes due 2031 (Trading Symbol: MMM31)",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided text mentions the registration of debt or equity securities under a \"well-known seasoned issuer\" (WKSI) shelf registration statement [2] and details the Medium-Term Notes Program (Series F) [2], but it does not specify which debt securities are registered to trade on a national securities exchange under 3M's name as of Q2 2023.",
+      "score": 0,
+      "abstained": true,
+      "eval_method": "abstention",
+      "judge_reason": "Model abstained from answering.",
+      "hit_a_5": false,
+      "hit_a_10": false,
+      "hit_b_5": false,
+      "hit_b_10": false,
+      "tokens_used": 2659,
+      "latency_ms": 18599,
+      "citations": [
+        {
+          "n": 1,
+          "company": "3M",
+          "doc_name": "3M_2022_10K",
+          "year": 2022,
+          "page": 41,
+          "similarity_score": 0.7842481603770366,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "3M",
+          "doc_name": "3M_2023Q2_10Q",
+          "year": 2023,
+          "page": 69,
+          "similarity_score": 0.7685187596965698,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "3M",
+          "doc_name": "3M_2022_10K",
+          "year": 2022,
+          "page": 37,
+          "similarity_score": 0.7554516500773013,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "3M",
+          "doc_name": "3M_2023Q2_10Q",
+          "year": 2023,
+          "page": 70,
+          "similarity_score": 0.7533264090607183,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 42,
+          "similarity_score": 0.7530436221413161,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_01858",
+      "company": "3M",
+      "doc_name": "3M_2023Q2_10Q",
+      "question": "Does 3M maintain a stable trend of dividend distribution?",
+      "gold_answer": "Yes, not only they distribute the dividends on a routine basis, 3M has also been increasing the per share dividend for consecutive 65 years",
+      "predicted_answer": "Based on the provided filing excerpts, 3M states that it expects to continue returning cash to shareholders through dividends [1], [2], [3]. Additionally, the company reported that in February 2023, it declared a dividend of $1.50 per share, which marked the 65th consecutive year of dividend increases [4].",
+      "score": 1,
+      "abstained": false,
+      "eval_method": "llm_judge",
+      "judge_reason": "The predicted answer correctly identifies that 3M maintains a stable trend of dividend distribution and specifically mentions the 65 consecutive years of dividend increases, which aligns with the key facts in the gold answer.",
+      "hit_a_5": false,
+      "hit_a_10": false,
+      "hit_b_5": false,
+      "hit_b_10": false,
+      "tokens_used": 2506,
+      "latency_ms": 17724,
+      "citations": [
+        {
+          "n": 1,
+          "company": "3M",
+          "doc_name": "3M_2023Q2_10Q",
+          "year": 2023,
+          "page": 69,
+          "similarity_score": 0.815680958709831,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 42,
+          "similarity_score": 0.8080530533853832,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "3M",
+          "doc_name": "3M_2022_10K",
+          "year": 2022,
+          "page": 36,
+          "similarity_score": 0.8062871579102983,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "3M",
+          "doc_name": "3M_2022_10K",
+          "year": 2022,
+          "page": 25,
+          "similarity_score": 0.8010862588235114,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "3M",
+          "doc_name": "3M_2018_10K",
+          "year": 2018,
+          "page": 99,
+          "similarity_score": 0.7974758744239864,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_03069",
+      "company": "AMD",
+      "doc_name": "AMD_2015_10K",
+      "question": "Answer the following question as if you are an equity research analyst and have lost internet connection so you do not have access to financial metric providers. According to the details clearly outlined within the P&L statement and the statement of cash flows, what is the FY2015 depreciation and amortization (D&A from cash flow statement) % margin for AMD?",
+      "gold_answer": "4.2%",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided context contains selected financial data (net revenue and net income/loss) [3] and general company information [1], but it does not include the full Profit and Loss (P&L) statement or the Statement of Cash Flows required to determine the specific Depreciation and Amortization (D&A) expense for FY2015.",
+      "score": 0,
+      "abstained": true,
+      "eval_method": "abstention",
+      "judge_reason": "Model abstained from answering.",
+      "hit_a_5": false,
+      "hit_a_10": false,
+      "hit_b_5": false,
+      "hit_b_10": false,
+      "tokens_used": 2935,
+      "latency_ms": 23131,
+      "citations": [
+        {
+          "n": 1,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 3,
+          "similarity_score": 0.7986426233436255,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "AMD",
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 41,
+          "similarity_score": 0.7944353810601508,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 33,
+          "similarity_score": 0.7834057678822155,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "AMD",
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 103,
+          "similarity_score": 0.7754871115378817,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 31,
+          "similarity_score": 0.7693198460746026,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00222",
+      "company": "AMD",
+      "doc_name": "AMD_2022_10K",
+      "question": "Does AMD have a reasonably healthy liquidity profile based on its quick ratio for FY22? If the quick ratio is not relevant to measure liquidity, please state that and explain why.",
+      "gold_answer": "Yes. The quick ratio is 1.57, calculated as (cash and cash equivalents+Short term investments+Accounts receivable, net+receivables from related parties)/ (current liabilities).",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided context does not contain AMD's balance sheet data (such as current assets, current liabilities, or inventory) or any mention of the quick ratio for FY2022. The excerpts include general risk factors and company overview from FY2015 [1][4][5], selected financial data (revenue and net income) for FY2011\u2013FY2015 [3], and stock performance/unregistered sales information for FY2022 [2], but none of these sources provide the specific liquidity metrics required to calculate or assess the quick ratio.",
+      "score": 0,
+      "abstained": true,
+      "eval_method": "abstention",
+      "judge_reason": "Model abstained from answering.",
+      "hit_a_5": false,
+      "hit_a_10": false,
+      "hit_b_5": false,
+      "hit_b_10": false,
+      "tokens_used": 2784,
+      "latency_ms": 17716,
+      "citations": [
+        {
+          "n": 1,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 3,
+          "similarity_score": 0.7764772772789001,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "AMD",
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 41,
+          "similarity_score": 0.7503171637937901,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 33,
+          "similarity_score": 0.722988486289978,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 3,
+          "similarity_score": 0.7189289927482605,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 2,
+          "similarity_score": 0.7169050619219327,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00995",
+      "company": "AMD",
+      "doc_name": "AMD_2022_10K",
+      "question": "What are the major products and services that AMD sells as of FY22?",
+      "gold_answer": "AMD sells server microprocessors (CPUs) and graphics processing units (GPUs), data processing units (DPUs), Field Programmable Gate Arrays (FPGAs), and Adaptive System-on-Chip (SoC) products for data centers; CPUs, accelerated processing units (APUs) that integrate CPUs and GPUs, and chipsets for desktop and notebook personal computers; discrete GPUs, and semi-custom SoC products and development services; and embedded CPUs, GPUs, APUs, FPGAs, and Adaptive SoC products.",
+      "predicted_answer": "Based on the provided FY2022 filing excerpt, AMD sells the following major products:\n\n*   **Client Processors:** AMD Ryzen, AMD Ryzen Pro, Ryzen Threadripper, Ryzen Threadripper Pro, AMD Athlon, AMD Athlon Pro, and AMD Pro A-Series, which service desktop and notebook personal computers [1].\n*   **Graphics Products:**\n    *   **Consumer:** AMD Radeon Graphics [1].\n    *   **Embedded:** AMD Embedded Radeon Graphics [1].\n    *   **Professional:** AMD Radeon Pro Graphics [1].\n    *   **Data Center:** Radeon Instinct, Radeon Pro V-Series, and AMD Instinct accelerators for servers [1].\n*   **Server Microprocessors:** AMD EPYC processors [1].\n*   **Embedded Processor Solutions:** Low-power versions of AMD Athlon, AMD Geode, AMD Ryzen, AMD EPYC, AMD R-Series, and G-Series processors [1].\n*   **FPGAs:** Virtex-6, Virtex-7, Virtex UltraScale+, Kintex-7, Kintex UltraScale, Kintex UltraScale+, Artix-7, Artix UltraScale+, Spartan-6, and Spartan-7 [1].\n*   **Adaptive SoCs:** Zynq-7000, Zynq UltraScale+ MPSoC, and Zynq UltraScale+ [1].\n*   **Chipsets:** Sold under AMD trademarks [1].\n\n*Note: The provided context for FY2022 does not list semi-custom products or specific warranty terms as part of the \"major products and services\" list, though it mentions warranty periods for products sold to customers [1].*",
+      "score": 0,
+      "abstained": false,
+      "eval_method": "llm_judge",
+      "judge_reason": "The predicted answer omits Data Processing Units (DPUs) and semi-custom SoC products, which are explicitly listed as major products in the gold answer.",
+      "hit_a_5": false,
+      "hit_a_10": false,
+      "hit_b_5": false,
+      "hit_b_10": false,
+      "tokens_used": 2578,
+      "latency_ms": 16125,
+      "citations": [
+        {
+          "n": 1,
+          "company": "AMD",
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 10,
+          "similarity_score": 0.7544559690032,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 8,
+          "similarity_score": 0.7193723917007446,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 8,
+          "similarity_score": 0.7185743618861233,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 6,
+          "similarity_score": 0.7155240178108215,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 35,
+          "similarity_score": 0.7060809135437012,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_01198",
+      "company": "AMD",
+      "doc_name": "AMD_2022_10K",
+      "question": "What drove revenue change as of the FY22 for AMD?",
+      "gold_answer": "In 2022, AMD reported Higher sales of their EPYC server processors, higher semi-custom product sales, and the inclusion of Xilinx embedded product sales",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided text from the AMD 2022 10-K [4] mentions that 2022 was a \"transformative year\" and details the acquisition of Xilinx, which expanded the product portfolio to include FPGAs, adaptive SoCs, and ACAP products, but it does not provide specific data or a detailed breakdown of what drove the revenue change for FY22. The other excerpts are from the 2015 10-K [1], [2], [3] or list exhibits [5].",
+      "score": 0,
+      "abstained": true,
+      "eval_method": "abstention",
+      "judge_reason": "Model abstained from answering.",
+      "hit_a_5": true,
+      "hit_a_10": true,
+      "hit_b_5": true,
+      "hit_b_10": true,
+      "tokens_used": 2684,
+      "latency_ms": 20338,
+      "citations": [
+        {
+          "n": 1,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 35,
+          "similarity_score": 0.7422372102737427,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 36,
+          "similarity_score": 0.7396443486213684,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 3,
+          "similarity_score": 0.7310084700584412,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "AMD",
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 42,
+          "similarity_score": 0.7281164255003474,
+          "is_gold_hit": true
+        },
+        {
+          "n": 5,
+          "company": "AMD",
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 105,
+          "similarity_score": 0.7260518400607351,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00917",
+      "company": "AMD",
+      "doc_name": "AMD_2022_10K",
+      "question": "What drove operating margin change as of the FY22 for AMD? If operating margin is not a useful metric for a company like this, then please state that and explain why.",
+      "gold_answer": "The decrease in AMD's operating income was primarily driven by amortization of intangible assets associated with the Xilinx acquisition",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided context contains financial data and segment information for AMD's fiscal years 2013, 2014, and 2015 [1][2][3][5], and stock performance data for the period ending December 31, 2022 [4]. However, the excerpts do not contain the income statement, operating expenses, or net revenue figures for AMD's fiscal year 2022, which are required to calculate or analyze the operating margin for that specific year.",
+      "score": 0,
+      "abstained": true,
+      "eval_method": "abstention",
+      "judge_reason": "Model abstained from answering.",
+      "hit_a_5": false,
+      "hit_a_10": false,
+      "hit_b_5": false,
+      "hit_b_10": false,
+      "tokens_used": 2802,
+      "latency_ms": 18969,
+      "citations": [
+        {
+          "n": 1,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 3,
+          "similarity_score": 0.7459743022918701,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 35,
+          "similarity_score": 0.7400204163795837,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 82,
+          "similarity_score": 0.7366777658462524,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "AMD",
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 41,
+          "similarity_score": 0.733738726413735,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 36,
+          "similarity_score": 0.7295848727226257,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_01279",
+      "company": "AMD",
+      "doc_name": "AMD_2022_10K",
+      "question": "Among operations, investing, and financing activities, which brought in the most (or lost the least) cash flow for AMD in FY22?",
+      "gold_answer": "In 2022, AMD brought in the most cashflow from Operations",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided context contains financial data for AMD for the fiscal years ended December 26, 2015, December 27, 2014, and December 28, 2013 [3][4], but does not contain any information regarding FY22.",
+      "score": 0,
+      "abstained": true,
+      "eval_method": "abstention",
+      "judge_reason": "Model abstained from answering.",
+      "hit_a_5": false,
+      "hit_a_10": false,
+      "hit_b_5": false,
+      "hit_b_10": false,
+      "tokens_used": 2768,
+      "latency_ms": 21729,
+      "citations": [
+        {
+          "n": 1,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 36,
+          "similarity_score": 0.7115215063095093,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 3,
+          "similarity_score": 0.7000398635864258,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 33,
+          "similarity_score": 0.6988040804862976,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 59,
+          "similarity_score": 0.6859122514724731,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 2,
+          "similarity_score": 0.6841219083179777,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00563",
+      "company": "AMD",
+      "doc_name": "AMD_2022_10K",
+      "question": "From FY21 to FY22, excluding Embedded, in which AMD reporting segment did sales proportionally increase the most?",
+      "gold_answer": "Data Center",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided text contains general descriptions of AMD's products and business segments [1, 5], information about acquisitions [4, 5], and stock performance data [3], but it does not include the specific revenue or sales figures for AMD's reporting segments (such as Data Center, Client, Gaming, or Embedded) for FY2021 and FY2022 required to calculate proportional increases.",
+      "score": 0,
+      "abstained": true,
+      "eval_method": "abstention",
+      "judge_reason": "Model abstained from answering.",
+      "hit_a_5": false,
+      "hit_a_10": false,
+      "hit_b_5": false,
+      "hit_b_10": false,
+      "tokens_used": 2380,
+      "latency_ms": 15553,
+      "citations": [
+        {
+          "n": 1,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 3,
+          "similarity_score": 0.7141783833503723,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "AMD",
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 101,
+          "similarity_score": 0.7010157704353333,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "AMD",
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 41,
+          "similarity_score": 0.6992839007929503,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "AMD",
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 42,
+          "similarity_score": 0.6979861023442673,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "AMD",
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 59,
+          "similarity_score": 0.6945522013573538,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00757",
+      "company": "AMD",
+      "doc_name": "AMD_2022_10K",
+      "question": "Did AMD report customer concentration in FY22?",
+      "gold_answer": "Yes, one customer accounted for 16% of consolidated net revenue",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided context includes customer concentration data for FY2015 [3], but the excerpt from the FY2022 10-K [2] only discusses cybersecurity threats and does not contain information regarding customer concentration.",
+      "score": 0,
+      "abstained": true,
+      "eval_method": "abstention",
+      "judge_reason": "Model abstained from answering.",
+      "hit_a_5": false,
+      "hit_a_10": false,
+      "hit_b_5": false,
+      "hit_b_10": false,
+      "tokens_used": 2010,
+      "latency_ms": 13483,
+      "citations": [
+        {
+          "n": 1,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 3,
+          "similarity_score": 0.7215014696121216,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "AMD",
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 25,
+          "similarity_score": 0.7122794389724731,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 9,
+          "similarity_score": 0.7083314657211304,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 8,
+          "similarity_score": 0.7013410329818726,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "AMD",
+          "doc_name": "AMD_2015_10K",
+          "year": 2015,
+          "page": 4,
+          "similarity_score": 0.7005036473274231,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00476",
+      "company": "American Express",
+      "doc_name": "AMERICANEXPRESS_2022_10K",
+      "question": "Which debt securities are registered to trade on a national securities exchange under American Express' name as of 2022?",
+      "gold_answer": "There are none",
+      "predicted_answer": "Based on the provided filing excerpts, the only security registered to trade on a national securities exchange under American Express' name is **Common Shares (par value $0.20 per Share)**, which trades under the symbol **AXP** on the **New York Stock Exchange** [2]. The filing explicitly states that there are **None** registered pursuant to Section 12(g) of the Act [2]. While the document mentions long-term debt obligations and instruments defining the rights of holders of long-term debt securities [1], [5], it does not list any specific debt securities as being registered to trade on a national securities exchange.",
+      "score": 1,
+      "abstained": false,
+      "eval_method": "llm_judge",
+      "judge_reason": "The predicted answer correctly identifies that no specific debt securities are registered to trade on a national securities exchange, aligning with the gold answer's conclusion that there are none.",
+      "hit_a_5": true,
+      "hit_a_10": true,
+      "hit_b_5": true,
+      "hit_b_10": true,
+      "tokens_used": 2989,
+      "latency_ms": 21740,
+      "citations": [
+        {
+          "n": 1,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 125,
+          "similarity_score": 0.799987578391659,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 0,
+          "similarity_score": 0.7951016426086426,
+          "is_gold_hit": true
+        },
+        {
+          "n": 3,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 258,
+          "similarity_score": 0.7686664737860647,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 259,
+          "similarity_score": 0.7612226463092965,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 161,
+          "similarity_score": 0.7588382507063014,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_01028",
+      "company": "American Express",
+      "doc_name": "AMERICANEXPRESS_2022_10K",
+      "question": "What are the geographies that American Express primarily operates in as of 2022?",
+      "gold_answer": "United States, EMEA, APAC, and LACC",
+      "predicted_answer": "Based on the provided filing excerpts, American Express operates in the following geographies as of 2022:\n\n*   **Global Network:** The company establishes and maintains relationships with third-party banks and other institutions in approximately **103 countries and territories** [2].\n*   **Significant Jurisdictions Outside the United States:** Jurisdictions representing a significant portion of billed business outside the U.S. include the **United Kingdom (UK)**, the **European Union (EU)**, **Australia**, **Japan**, **Canada**, and **Mexico** [4].\n*   **Subsidiary Locations:** The list of subsidiaries indicates operations or legal presence in the **United States** (including New York, Delaware, and Arizona), **Ireland**, **Mexico**, **Jersey**, **Netherlands Antilles**, **Netherlands**, **Malaysia**, **Japan**, and **India** [1].",
+      "score": 0,
+      "abstained": false,
+      "eval_method": "llm_judge",
+      "judge_reason": "The predicted answer lists specific countries and a global network count, whereas the gold answer specifies the company's reporting segments (United States, EMEA, APAC, and LACC), which are distinct categories not provided in the prediction.",
+      "hit_a_5": false,
+      "hit_a_10": false,
+      "hit_b_5": false,
+      "hit_b_10": false,
+      "tokens_used": 2539,
+      "latency_ms": 17772,
+      "citations": [
+        {
+          "n": 1,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 251,
+          "similarity_score": 0.7250056266784668,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 5,
+          "similarity_score": 0.7231115914318443,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 125,
+          "similarity_score": 0.7200453495992828,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 3,
+          "similarity_score": 0.7091296911239624,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 4,
+          "similarity_score": 0.7080047304627473,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00723",
+      "company": "American Express",
+      "doc_name": "AMERICANEXPRESS_2022_10K",
+      "question": "Does AMEX have an improving operating margin profile as of 2022? If operating margin is not a useful metric for a company like this, then state that and explain why.",
+      "gold_answer": "Performance is not measured through operating margin",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided text does not contain specific financial figures for operating income, total revenue, or operating margins for 2022 or prior years, nor does it explicitly state whether the operating margin profile is improving. While the text mentions that operating expenses increased 24 percent year-over-year [1], it does not provide the corresponding revenue data or margin calculations necessary to determine the trend in operating margins.",
+      "score": 0,
+      "abstained": true,
+      "eval_method": "abstention",
+      "judge_reason": "Model abstained from answering.",
+      "hit_a_5": false,
+      "hit_a_10": false,
+      "hit_b_5": false,
+      "hit_b_10": false,
+      "tokens_used": 1745,
+      "latency_ms": 11165,
+      "citations": [
+        {
+          "n": 1,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 45,
+          "similarity_score": 0.7147820974951385,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 36,
+          "similarity_score": 0.6999676823616078,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 137,
+          "similarity_score": 0.6974837599685161,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 101,
+          "similarity_score": 0.6950418534849981,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 27,
+          "similarity_score": 0.6931674663324686,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00720",
+      "company": "American Express",
+      "doc_name": "AMERICANEXPRESS_2022_10K",
+      "question": "What drove gross margin change as of the FY2022 for American Express? If gross margin is not a useful metric for a company like this, then please state that and explain why.",
+      "gold_answer": "Performance is not measured through gross margin",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided text does not contain data regarding gross margin, cost of revenue, or specific drivers for margin changes. Additionally, the excerpts focus on accounting estimates, regulatory capital ratios, and audit opinions, rather than income statement performance metrics like gross margin.",
+      "score": 0,
+      "abstained": true,
+      "eval_method": "abstention",
+      "judge_reason": "Model abstained from answering.",
+      "hit_a_5": false,
+      "hit_a_10": false,
+      "hit_b_5": false,
+      "hit_b_10": false,
+      "tokens_used": 2641,
+      "latency_ms": 18812,
+      "citations": [
+        {
+          "n": 1,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 101,
+          "similarity_score": 0.7313696146011353,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 149,
+          "similarity_score": 0.7124176368215568,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 84,
+          "similarity_score": 0.7084115743637085,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 149,
+          "similarity_score": 0.7071564408289328,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 91,
+          "similarity_score": 0.701842188835144,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_01351",
+      "company": "American Express",
+      "doc_name": "AMERICANEXPRESS_2022_10K",
+      "question": "How much has the effective tax rate of American Express changed between FY2021 and FY2022?",
+      "gold_answer": "The effective tax rate for American Express has changed/dropped from 24.6% in FY 2021 to 21.6% in FY 2022.",
+      "predicted_answer": "The effective tax rate for American Express was 24.6 percent in FY2021 and 21.6 percent in FY2022 [1]. Therefore, the effective tax rate decreased by 3.0 percentage points between FY2021 and FY2022 [1].",
+      "score": 1,
+      "abstained": false,
+      "eval_method": "llm_judge",
+      "judge_reason": "The predicted answer correctly identifies the effective tax rates for FY2021 (24.6%) and FY2022 (21.6%) and accurately calculates the change as a decrease of 3.0 percentage points, matching the gold answer.",
+      "hit_a_5": false,
+      "hit_a_10": false,
+      "hit_b_5": false,
+      "hit_b_10": false,
+      "tokens_used": 1790,
+      "latency_ms": 11473,
+      "citations": [
+        {
+          "n": 1,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 48,
+          "similarity_score": 0.75401847773626,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 125,
+          "similarity_score": 0.7525203676533918,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 40,
+          "similarity_score": 0.7371213655805998,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 62,
+          "similarity_score": 0.7132095948707587,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 183,
+          "similarity_score": 0.7129895132472679,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_01964",
+      "company": "American Express",
+      "doc_name": "AMERICANEXPRESS_2022_10K",
+      "question": "What was the largest liability in American Express's Balance Sheet in 2022?",
+      "gold_answer": "Customer deposits",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided text contains information regarding long-term debt maturities, credit concentrations, and parent company cash flows, but it does not include the consolidated balance sheet or a list of all liabilities required to identify the largest liability.",
+      "score": 0,
+      "abstained": true,
+      "eval_method": "abstention",
+      "judge_reason": "Model abstained from answering.",
+      "hit_a_5": false,
+      "hit_a_10": false,
+      "hit_b_5": false,
+      "hit_b_10": false,
+      "tokens_used": 2528,
+      "latency_ms": 18513,
+      "citations": [
+        {
+          "n": 1,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 125,
+          "similarity_score": 0.7751405738168528,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 91,
+          "similarity_score": 0.7532635029240301,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 151,
+          "similarity_score": 0.7435584679702597,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 156,
+          "similarity_score": 0.731713505779092,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 89,
+          "similarity_score": 0.7256682082612507,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_01981",
+      "company": "American Express",
+      "doc_name": "AMERICANEXPRESS_2022_10K",
+      "question": "Was American Express able to retain card members during 2022?",
+      "gold_answer": "Yes",
+      "predicted_answer": "Based on the provided filing excerpts, I cannot answer this question. The context states that as of December 31, 2022, American Express had 76.7 million proprietary cards in force worldwide [2], but it does not provide data on card member retention rates, net additions, or cancellations during 2022.",
+      "score": 0,
+      "abstained": true,
+      "eval_method": "abstention",
+      "judge_reason": "Model abstained from answering.",
+      "hit_a_5": false,
+      "hit_a_10": false,
+      "hit_b_5": false,
+      "hit_b_10": false,
+      "tokens_used": 2387,
+      "latency_ms": 17595,
+      "citations": [
+        {
+          "n": 1,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 125,
+          "similarity_score": 0.762893401470584,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 4,
+          "similarity_score": 0.7519955186846556,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 183,
+          "similarity_score": 0.7422095979577077,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 161,
+          "similarity_score": 0.7312565606083549,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "American Express",
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 253,
+          "similarity_score": 0.7293893260127721,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_10285",
+      "company": "Boeing",
+      "doc_name": "BOEING_2018_10K",
+      "question": "We need to calculate a financial metric by using information only provided within the balance sheet. Please answer the following question: what is Boeing's year end FY2018 net property, plant, and equipment (in USD millions)?",
+      "gold_answer": "$12645.00",
+      "predicted_answer": "Based on the Consolidated Statements of Financial Position for the year ended December 31, 2018, Boeing's net property, plant, and equipment was **$12,645 million** [5].",
+      "score": 1,
+      "abstained": false,
+      "eval_method": "numeric_tolerance",
+      "judge_reason": "Numeric exact/tolerance match passed.",
+      "hit_a_5": true,
+      "hit_a_10": true,
+      "hit_b_5": true,
+      "hit_b_10": true,
+      "tokens_used": 2912,
+      "latency_ms": 13553,
+      "citations": [
+        {
+          "n": 1,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 62,
+          "similarity_score": 0.7867321479379102,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "Boeing",
+          "doc_name": "BOEING_2018_10K",
+          "year": 2018,
+          "page": 56,
+          "similarity_score": 0.7808133363723755,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "Boeing",
+          "doc_name": "BOEING_2018_10K",
+          "year": 2018,
+          "page": 1,
+          "similarity_score": 0.779960655568858,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "Boeing",
+          "doc_name": "BOEING_2018_10K",
+          "year": 2018,
+          "page": 52,
+          "similarity_score": 0.7778052919449002,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "Boeing",
+          "doc_name": "BOEING_2018_10K",
+          "year": 2018,
+          "page": 51,
+          "similarity_score": 0.7759874596603252,
+          "is_gold_hit": true
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00517",
+      "company": "Boeing",
+      "doc_name": "BOEING_2022_10K",
+      "question": "Are there any product categories / service categories that represent more than 20% of Boeing's revenue for FY2022?",
+      "gold_answer": "Yes. Boeing has product and service categories that represent more than 20% of Boeing's revenue for FY2022. These categories are Commercial Airplanes which comprises 39% of total revenue, Defence which comprises 35% of total revenue and Services which comprises 26% of total revenue.",
+      "predicted_answer": "Based on the provided filing excerpts, the revenue breakdown for FY2022 is as follows:\n\n*   **Commercial Airplanes:** $25,867 million [2]\n*   **Defense, Space & Security:** $23,162 million [2]\n*   **Global Services:** $17,611 million [2]\n*   **Boeing Capital:** $199 million [2]\n*   **Total Revenues:** $66,608 million [1], [2]\n\nTo determine if any category represents more than 20% of total revenue, we calculate 20% of the total revenue:\n$66,608 million \u00d7 0.20 = $13,321.6 million.\n\nComparing the segment revenues to this threshold:\n*   Commercial Airplanes ($25,867 million) is greater than $13,321.6 million.\n*   Defense, Space & Security ($23,162 million) is greater than $13,321.6 million.\n*   Global Services ($17,611 million) is greater than $13,321.6 million.\n*   Boeing Capital ($199 million) is less than $13,321.6 million.\n\nTherefore, **Commercial Airplanes**, **Defense, Space & Security**, and **Global Services** each represent more than 20% of Boeing's revenue for FY2022 [2].",
+      "score": 1,
+      "abstained": false,
+      "eval_method": "llm_judge",
+      "judge_reason": "The predicted answer correctly identifies the three categories (Commercial Airplanes, Defense, Space & Security, and Global Services) that exceed 20% of revenue, matching the gold answer's conclusion and using the same underlying figures.",
+      "hit_a_5": true,
+      "hit_a_10": true,
+      "hit_b_5": true,
+      "hit_b_10": true,
+      "tokens_used": 3299,
+      "latency_ms": 23223,
+      "citations": [
+        {
+          "n": 1,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 54,
+          "similarity_score": 0.801898717880249,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 61,
+          "similarity_score": 0.7902383208274841,
+          "is_gold_hit": true
+        },
+        {
+          "n": 3,
+          "company": "Boeing",
+          "doc_name": "BOEING_2018_10K",
+          "year": 2018,
+          "page": 49,
+          "similarity_score": 0.7768658631105981,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 2,
+          "similarity_score": 0.7645993688463802,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 62,
+          "similarity_score": 0.7601980650602072,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_01091",
+      "company": "Boeing",
+      "doc_name": "BOEING_2022_10K",
+      "question": "Has Boeing reported any materially important ongoing legal battles from FY2022?",
+      "gold_answer": "Yes. Multiple lawsuits have been filed against Boeing resulting from a 2018 Lion Air crash and a 2019 Ethiopian Airlines crash.",
+      "predicted_answer": "I cannot answer this question based on the provided filing excerpts. The provided text includes the table of contents listing \"Item 3. Legal Proceedings\" [4] and financial statement data, but it does not contain the actual content or details of the legal proceedings described in that section.",
+      "score": 0,
+      "abstained": true,
+      "eval_method": "abstention",
+      "judge_reason": "Model abstained from answering.",
+      "hit_a_5": false,
+      "hit_a_10": false,
+      "hit_b_5": false,
+      "hit_b_10": false,
+      "tokens_used": 2782,
+      "latency_ms": 20519,
+      "citations": [
+        {
+          "n": 1,
+          "company": "Boeing",
+          "doc_name": "BOEING_2018_10K",
+          "year": 2018,
+          "page": 125,
+          "similarity_score": 0.7325449308699504,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 131,
+          "similarity_score": 0.7320138216018677,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 62,
+          "similarity_score": 0.7316810546828288,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 1,
+          "similarity_score": 0.7302538591774631,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 58,
+          "similarity_score": 0.7249833077212257,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00678",
+      "company": "Boeing",
+      "doc_name": "BOEING_2022_10K",
+      "question": "Does Boeing have an improving gross margin profile as of FY2022? If gross margin is not a useful metric for a company like this, then state that and explain why.",
+      "gold_answer": "Yes. Boeing has an improving gross margin profile as of FY2022. Gross profit improved from $3,017 million in FY2021 to $3,502 million in FY2022. Gross margin % improved from 4.8% in FY2021 to 5.3% in FY2022.",
+      "predicted_answer": "Based on the provided filing excerpts, I cannot answer this question because the context does not contain data regarding **cost of sales** or **gross profit**, which are required to calculate gross margin.\n\nThe provided excerpts include:\n*   **Revenues** by segment and total [3], [4].\n*   **Loss from operations** (operating income/loss) by segment and total [3], [4].\n*   **Net loss** attributable to Boeing shareholders [3], [4].\n*   **Operating margins** (calculated as Loss from operations / Revenues) [4].\n\nHowever, the specific line item for \"Cost of Sales\" or \"Gross Profit\" is not present in the provided tables or text. While Note 1 mentions that Boeing uses \"program accounting to determine the amount reported as cost of sales\" [1], it does not provide the actual dollar amounts for cost of sales for FY2022, FY2021, or FY2020. Therefore, it is impossible to determine if the gross margin profile is improving based strictly on the provided text.",
+      "score": 0,
+      "abstained": true,
+      "eval_method": "abstention",
+      "judge_reason": "Model abstained from answering.",
+      "hit_a_5": false,
+      "hit_a_10": true,
+      "hit_b_5": false,
+      "hit_b_10": true,
+      "tokens_used": 3343,
+      "latency_ms": 24020,
+      "citations": [
+        {
+          "n": 1,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 62,
+          "similarity_score": 0.7693515511767494,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "Boeing",
+          "doc_name": "BOEING_2018_10K",
+          "year": 2018,
+          "page": 56,
+          "similarity_score": 0.7510569095611572,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 61,
+          "similarity_score": 0.742441713809967,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 23,
+          "similarity_score": 0.740348144790421,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 56,
+          "similarity_score": 0.7378760576248169,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_01290",
+      "company": "Boeing",
+      "doc_name": "BOEING_2022_10K",
+      "question": "Who are the primary customers of Boeing as of FY2022?",
+      "gold_answer": "Boeing's primary customers as of FY2022 are a limited number of commercial airlines and the US government. The US government accounted for 40% of Boeing's total revenues in FY2022.",
+      "predicted_answer": "Based on the provided filing excerpts, the primary customers for Boeing's segments as of FY2022 are:\n\n*   **Commercial Airplanes (BCA):** The commercial airline industry worldwide [4].\n*   **Defense, Space & Security (BDS):** The United States Department of Defense (U.S. DoD) is identified as the primary customer [3].\n*   **Global Services (BGS):** Commercial and defense customers worldwide [4].\n\nThe excerpts do not specify a single \"primary customer\" for the entire company, but rather identify the primary customer for the Defense, Space & Security segment and the general customer base for the Commercial Airplanes and Global Services segments.",
+      "score": 0,
+      "abstained": false,
+      "eval_method": "llm_judge",
+      "judge_reason": "The predicted answer fails to identify the US government as a primary customer for the entire company (or specifically noting its 40% revenue share) and instead breaks down customers by segment, missing the key aggregate fact presented in the gold answer.",
+      "hit_a_5": false,
+      "hit_a_10": false,
+      "hit_b_5": false,
+      "hit_b_10": false,
+      "tokens_used": 3117,
+      "latency_ms": 22778,
+      "citations": [
+        {
+          "n": 1,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 54,
+          "similarity_score": 0.7549303399005637,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 61,
+          "similarity_score": 0.7482654079277938,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "Boeing",
+          "doc_name": "BOEING_2018_10K",
+          "year": 2018,
+          "page": 2,
+          "similarity_score": 0.7392488938346179,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 2,
+          "similarity_score": 0.7363168659493509,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 56,
+          "similarity_score": 0.7332314471373397,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00464",
+      "company": "Boeing",
+      "doc_name": "BOEING_2022_10K",
+      "question": "Is Boeing's business subject to cyclicality?",
+      "gold_answer": "Yes, Boeing's business is subject to cyclicality due to its exposure to the airline industry which is a cyclical industry.",
+      "predicted_answer": "Yes, Boeing's business is subject to cyclicality. The airline industry, which is a key market for Boeing's Commercial Airplanes segment, is described as \"cyclical and very competitive\" and has experienced significant profit swings [2]. Additionally, significant deterioration in the global economic environment or the airline industry could result in fewer new orders, postponed or canceled contractual orders, and reduced revenues and profitability [2].",
+      "score": 1,
+      "abstained": false,
+      "eval_method": "llm_judge",
+      "judge_reason": "The predicted answer correctly identifies that Boeing's business is subject to cyclicality due to the airline industry, matching the key concepts in the gold answer and justification.",
+      "hit_a_5": true,
+      "hit_a_10": true,
+      "hit_b_5": true,
+      "hit_b_10": true,
+      "tokens_used": 2746,
+      "latency_ms": 20577,
+      "citations": [
+        {
+          "n": 1,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 62,
+          "similarity_score": 0.7743084392411175,
+          "is_gold_hit": false
+        },
+        {
+          "n": 2,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 7,
+          "similarity_score": 0.7581948945754641,
+          "is_gold_hit": true
+        },
+        {
+          "n": 3,
+          "company": "Boeing",
+          "doc_name": "BOEING_2018_10K",
+          "year": 2018,
+          "page": 56,
+          "similarity_score": 0.7539633961894165,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 56,
+          "similarity_score": 0.7467160669992023,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "Boeing",
+          "doc_name": "BOEING_2018_10K",
+          "year": 2018,
+          "page": 2,
+          "similarity_score": 0.7465867249123304,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00494",
+      "company": "Boeing",
+      "doc_name": "BOEING_2022_10K",
+      "question": "What production rate changes is Boeing forecasting for FY2023?",
+      "gold_answer": "Boeing forecasts an increase in the production rates for the 737, 777X and 787 aircrafts in 2023.",
+      "predicted_answer": "Based on the provided filing excerpts, Boeing is forecasting the following production rate changes for FY2023:\n\n*   **787 Program:** Boeing expects to gradually increase production to **5 per month** in 2023 [1] [3].\n*   **777x Program:** Production, which is currently paused, is expected to **resume** in 2023 [1].\n*   **737 Program:** Boeing plans to **gradually increase** production rates based on market demand and supply chain capacity [1].",
+      "score": 1,
+      "abstained": false,
+      "eval_method": "llm_judge",
+      "judge_reason": "The predicted answer correctly identifies the production rate changes for the 737, 777X, and 787 programs as increasing or resuming, which aligns with the gold answer and justification.",
+      "hit_a_5": true,
+      "hit_a_10": true,
+      "hit_b_5": true,
+      "hit_b_10": true,
+      "tokens_used": 2661,
+      "latency_ms": 18950,
+      "citations": [
+        {
+          "n": 1,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 8,
+          "similarity_score": 0.8059247251793921,
+          "is_gold_hit": true
+        },
+        {
+          "n": 2,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 54,
+          "similarity_score": 0.7869668006896973,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 34,
+          "similarity_score": 0.7821607822823761,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 34,
+          "similarity_score": 0.7729541063308716,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 61,
+          "similarity_score": 0.7717585563659668,
+          "is_gold_hit": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00585",
+      "company": "Boeing",
+      "doc_name": "BOEING_2022_10K",
+      "question": "How does Boeing's effective tax rate in FY2022 compare to FY2021?",
+      "gold_answer": "Effective tax rate in FY2022 was 0.62%, compared to  -14.76% in FY2021.",
+      "predicted_answer": "To calculate the effective tax rate, we use the formula: Income Tax (Expense)/Benefit divided by Loss before income taxes.\n\n**FY2022:**\n*   Loss before income taxes: $(5,022) million [1]\n*   Income tax (expense)/benefit: $(31) million [1]\n*   Effective Tax Rate: $(-31) / (-5,022) \\approx 0.62\\%$\n\n**FY2021:**\n*   Loss before income taxes: $(5,033) million [1]\n*   Income tax (expense)/benefit: $743 million [1]\n*   Effective Tax Rate: $743 / (-5,033) \\approx -14.76\\%$\n\n**Comparison:**\nBoeing's effective tax rate in FY2022 was approximately **0.62%**, compared to approximately **-14.76%** in FY2021. This indicates a significant shift from a tax benefit in FY2021 to a small tax expense in FY2022.\n\nSources: [1]",
+      "score": 1,
+      "abstained": false,
+      "eval_method": "llm_judge",
+      "judge_reason": "The predicted answer provides the exact same effective tax rates (0.62% for FY2022 and -14.76% for FY2021) as the gold answer, with correct calculations and comparison.",
+      "hit_a_5": true,
+      "hit_a_10": true,
+      "hit_b_5": true,
+      "hit_b_10": true,
+      "tokens_used": 3453,
+      "latency_ms": 25047,
+      "citations": [
+        {
+          "n": 1,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 54,
+          "similarity_score": 0.7603474485977727,
+          "is_gold_hit": true
+        },
+        {
+          "n": 2,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 26,
+          "similarity_score": 0.7531421408993647,
+          "is_gold_hit": false
+        },
+        {
+          "n": 3,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 55,
+          "similarity_score": 0.7509874030064961,
+          "is_gold_hit": false
+        },
+        {
+          "n": 4,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 56,
+          "similarity_score": 0.746785424553914,
+          "is_gold_hit": false
+        },
+        {
+          "n": 5,
+          "company": "Boeing",
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 61,
+          "similarity_score": 0.7442108018461112,
+          "is_gold_hit": false
+        }
+      ]
+    }
+  ]
+}
