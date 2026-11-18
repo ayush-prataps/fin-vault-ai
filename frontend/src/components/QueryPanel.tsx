@@ -1,8 +1,3 @@
-/**
- * Query Panel Component
- * Handles user input, mode selection, and query submission
- */
-
 "use client";
 
 import React, { useState } from "react";
@@ -12,120 +7,93 @@ import { Search, Loader2 } from "lucide-react";
 interface QueryPanelProps {
   onSubmit: (request: QueryRequest) => void;
   isLoading: boolean;
-  initialQuery?: string;
 }
 
 export const QueryPanel: React.FC<QueryPanelProps> = ({
   onSubmit,
   isLoading,
-  initialQuery,
 }) => {
-  const [query, setQuery] = useState("");
-  const [mode, setMode] = useState<"quick" | "deep">("quick");
+  const [question, setQuestion] = useState("");
   const [tickers, setTickers] = useState("");
-
-  // Populate or clear query based on initialQuery
-  React.useEffect(() => {
-    if (initialQuery && initialQuery !== query) {
-      setQuery(initialQuery);
-    } else if (!initialQuery) {
-      // Clear query when initialQuery is undefined (new chat)
-      setQuery("");
-    }
-  }, [initialQuery]);
+  const [year, setYear] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!query.trim()) return;
+    if (!question.trim()) return;
+
+    const parsedYear = year.trim() ? parseInt(year.trim(), 10) : undefined;
+    const parsedTickers = tickers
+      .split(",")
+      .map((t) => t.trim().toUpperCase())
+      .filter((t) => t);
 
     onSubmit({
-      query: query.trim(),
-      mode,
-      tickers: tickers
-        .split(",")
-        .map((t) => t.trim().toUpperCase())
-        .filter((t) => t),
+      question: question.trim(),
+      tickers: parsedTickers.length > 0 ? parsedTickers : undefined,
+      year: isNaN(parsedYear as number) ? undefined : parsedYear,
     });
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 rounded-lg border border-gray-200 bg-white p-6">
-      {/* Query Input */}
+    <form onSubmit={handleSubmit} className="space-y-4 rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
       <div>
         <label className="block text-sm font-medium text-gray-900 mb-2">
-          Financial Query
+          Question
         </label>
         <textarea
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="e.g., What is Apple's revenue growth compared to Microsoft?"
+          value={question}
+          onChange={(e) => setQuestion(e.target.value)}
+          placeholder="Ask a question about the SEC filings..."
           disabled={isLoading}
-          className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-50 disabled:text-gray-500 resize-none"
-          rows={4}
+          className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-50 resize-none text-gray-900"
+          rows={3}
         />
       </div>
 
-      {/* Mode and Ticker Selection */}
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-900 mb-2">
-            Query Mode
-          </label>
-          <div className="flex gap-2">
-            {(["quick", "deep"] as const).map((m) => (
-              <button
-                key={m}
-                type="button"
-                onClick={() => setMode(m)}
-                disabled={isLoading}
-                className={`flex-1 py-2 px-3 rounded-md transition-colors ${
-                  mode === m
-                    ? "bg-blue-600 text-white"
-                    : "bg-gray-100 text-gray-900 hover:bg-gray-200"
-                } disabled:opacity-50 disabled:cursor-not-allowed capitalize font-medium`}
-              >
-                {m}
-              </button>
-            ))}
-          </div>
-          <p className="mt-2 text-xs text-gray-500">
-            {mode === "quick"
-              ? "Fast search - 3.5s typical latency"
-              : "Deep analysis - 10-30s typical latency"}
-          </p>
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-900 mb-2">
-            Tickers (Optional)
+          <label className="block text-sm font-medium text-gray-900 mb-1">
+            Company / Ticker (Optional)
           </label>
           <input
             type="text"
             value={tickers}
             onChange={(e) => setTickers(e.target.value)}
-            placeholder="e.g., AAPL, MSFT"
+            placeholder="e.g. AAPL, MSFT"
             disabled={isLoading}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-50 disabled:text-gray-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-sm"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-900 mb-1">
+            Fiscal Year (Optional)
+          </label>
+          <input
+            type="number"
+            value={year}
+            onChange={(e) => setYear(e.target.value)}
+            placeholder="e.g. 2023"
+            disabled={isLoading}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-sm"
           />
         </div>
       </div>
 
-      {/* Submit Button */}
       <div className="flex justify-end pt-2">
         <button
           type="submit"
-          disabled={isLoading || !query.trim()}
-          className="flex items-center gap-2 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed font-medium transition-colors"
+          disabled={isLoading || !question.trim()}
+          className="flex items-center gap-2 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed font-medium transition-colors text-sm"
         >
           {isLoading ? (
             <>
               <Loader2 className="w-4 h-4 animate-spin" />
-              Analyzing...
+              Retrieving & Generating...
             </>
           ) : (
             <>
               <Search className="w-4 h-4" />
-              Search
+              Ask
             </>
           )}
         </button>

@@ -1,7 +1,3 @@
-/**
- * API Client for FinVault AI Backend
- */
-
 import axios, { AxiosError } from "axios";
 import { QueryRequest, QueryResponse } from "@/types";
 
@@ -15,43 +11,6 @@ const apiClient = axios.create({
   },
 });
 
-export interface ApiError {
-  message: string;
-  status?: number;
-  details?: string;
-}
-
-export const handleApiError = (error: unknown): ApiError => {
-  if (axios.isAxiosError(error)) {
-    const axiosError = error as AxiosError;
-    return {
-      message: axiosError.response?.data
-        ? typeof axiosError.response.data === "string"
-          ? axiosError.response.data
-          : (axiosError.response.data as any).detail ||
-            (axiosError.response.data as any).message ||
-            "Request failed"
-        : error.message || "Unknown error",
-      status: axiosError.status,
-      details: JSON.stringify(axiosError.response?.data),
-    };
-  }
-
-  if (error instanceof Error) {
-    return {
-      message: error.message,
-      details: error.stack,
-    };
-  }
-
-  return {
-    message: "An unexpected error occurred",
-  };
-};
-
-/**
- * Query financial data from backend
- */
 export const queryFinancialData = async (
   request: QueryRequest
 ): Promise<QueryResponse> => {
@@ -59,101 +18,21 @@ export const queryFinancialData = async (
     const response = await apiClient.post<QueryResponse>("/query", request);
     return response.data;
   } catch (error) {
-    throw handleApiError(error);
+    if (axios.isAxiosError(error)) {
+      const axiosError = error as AxiosError;
+      const detail =
+        typeof axiosError.response?.data === "object" && axiosError.response?.data
+          ? (axiosError.response.data as { detail?: string }).detail || axiosError.message
+          : axiosError.message;
+      throw new Error(detail || "Query request failed");
+    }
+    throw error;
   }
 };
 
-/**
- * Health check endpoint
- */
 export const healthCheck = async (): Promise<{ status: string }> => {
-  try {
-    const response = await apiClient.get<{ status: string }>("/health");
-    return response.data;
-  } catch (error) {
-    throw handleApiError(error);
-  }
+  const response = await apiClient.get<{ status: string }>("/health");
+  return response.data;
 };
-
-/**
- * Save query to user history
- */
-export const saveQueryToHistory = async (
-  query: string,
-  token: string,
-  mode: string = "quick",
-  retrieval_mode: string = "hybrid",
-  analysis?: string,
-  model_used?: string,
-  latency_ms?: number,
-  tokens_used?: number,
-  retrieval_latency_ms?: number,
-  llm_latency_ms?: number
-): Promise<{ success: boolean }> => {
-  try {
-    const response = await apiClient.post(
-      "/api/query-history/save",
-      {
-        query,
-        mode,
-        retrieval_mode,
-        analysis,
-        model_used,
-        latency_ms,
-        tokens_used,
-        retrieval_latency_ms,
-        llm_latency_ms,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    return response.data;
-  } catch (error) {
-    throw handleApiError(error);
-  }
-};
-
-/**
- * Get user's query history
- */
-export const getQueryHistory = async (
-  token: string,
-  limit: number = 20
-): Promise<Array<any>> => {
-  try {
-    const response = await apiClient.get("/api/query-history", {
-      params: { limit },
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return response.data;
-  } catch (error) {
-    throw handleApiError(error);
-  }
-};
-
-/**
- * Clear user's query history
- */
-export const clearQueryHistory = async (
-  token: string
-): Promise<{ success: boolean }> => {
-  try {
-    const response = await apiClient.delete("/api/query-history", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return response.data;
-  } catch (error) {
-    throw handleApiError(error);
-  }
-};
-
-// Memory preferences endpoints removed
 
 export default apiClient;
