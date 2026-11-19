@@ -17,10 +17,9 @@ sys.path.insert(0, str(backend_dir))
 import pypdf
 import psycopg2
 from psycopg2.extras import execute_values
-from transformers import AutoTokenizer
 
 from app.config import settings
-from app.core.embeddings import embed_batch
+from app.core.embeddings import embed_batch, get_tokenizer
 from app.core.schema import init_schema
 from app.utils.helpers import get_logger
 
@@ -179,8 +178,8 @@ def ingest_all(chunk_size: int = 400, overlap: int = 50):
         sys.exit(1)
 
     # 2. Load tokenizer
-    print(f"Loading tokenizer: {TOKENIZER_NAME}...")
-    tokenizer = AutoTokenizer.from_pretrained(TOKENIZER_NAME)
+    print(f"Loading FastEmbed tokenizer for {TOKENIZER_NAME}...")
+    tokenizer = get_tokenizer()
 
     # 3. Process all PDFs
     all_chunks: List[Dict[str, Any]] = []
