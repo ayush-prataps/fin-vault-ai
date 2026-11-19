@@ -39,7 +39,7 @@ export const SourcesView: React.FC<SourcesViewProps> = ({ citations }) => {
                   </span>
                   <FileText className="w-4 h-4 text-gray-500" />
                   <span className="font-medium text-sm text-gray-900">
-                    {c.company} — {c.doc} (FY{c.year})
+                    {c.company} - {c.doc} (FY{c.year})
                   </span>
                   <span className="text-xs bg-gray-100 text-gray-700 px-2 py-0.5 rounded">
                     Page {c.page}

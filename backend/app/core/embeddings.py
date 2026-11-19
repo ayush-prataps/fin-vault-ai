@@ -96,23 +96,3 @@ def embed_batch(texts: list[str]) -> Optional[list[list[float]]]:
     except Exception as exc:
         logger.error(f"Failed to embed batch: {exc}")
         return None
-
-
-def get_model_dimension() -> int:
-    """
-    Get embedding model dimension for pgvector column sizing
-    
-    Returns:
-        Vector size (typically 384 for BGE-small)
-    """
-    try:
-        model = get_embedding_model()
-        if model is None:
-            return 384  # Default for BGE-small
-        
-        # Get dimension from model
-        test_embedding = model.encode("test")
-        return len(test_embedding)
-        
-    except Exception:
-        return 384

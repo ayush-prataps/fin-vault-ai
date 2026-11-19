@@ -4,7 +4,7 @@ import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: "FinVault AI - Financial Research Agent",
-  description: "Intelligent financial data querying with hybrid retrieval",
+  description: "Factual QA over SEC filings with page-level citations",
 };
 
 export default function RootLayout({

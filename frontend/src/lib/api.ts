@@ -30,9 +30,4 @@ export const queryFinancialData = async (
   }
 };
 
-export const healthCheck = async (): Promise<{ status: string }> => {
-  const response = await apiClient.get<{ status: string }>("/health");
-  return response.data;
-};
-
 export default apiClient;

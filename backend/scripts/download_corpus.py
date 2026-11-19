@@ -3,10 +3,9 @@
 Download real SEC filing PDFs and the matching FinanceBench question subset.
 Stores raw PDFs in backend/data/raw/ (gitignored).
 """
-import os
 import json
-import urllib.request
 from pathlib import Path
+from urllib.request import Request, urlopen
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 DATA_DIR = BASE_DIR / "data"
@@ -37,8 +36,8 @@ PDF_BASE_URL = (
 def download_questions() -> list[dict]:
     """Download full 150 FinanceBench dataset and keep only selected docs."""
     print("Downloading FinanceBench questions...")
-    req = urllib.request.Request(FINANCEBENCH_URL, headers={"User-Agent": "Mozilla/5.0"})
-    with urllib.request.urlopen(req, timeout=15) as resp:
+    req = Request(FINANCEBENCH_URL, headers={"User-Agent": "Mozilla/5.0"})
+    with urlopen(req, timeout=15) as resp:
         all_lines = [json.loads(line) for line in resp.read().decode("utf-8").strip().split("\n")]
 
     filtered = [q for q in all_lines if q.get("doc_name") in ALL_DOC_NAMES]
@@ -63,8 +62,8 @@ def download_pdfs():
 
         url = f"{PDF_BASE_URL}{doc}.pdf"
         print(f"  * Downloading {doc}.pdf from {url}...")
-        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-        with urllib.request.urlopen(req, timeout=30) as resp:
+        req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        with urlopen(req, timeout=30) as resp:
             content = resp.read()
         with open(target_path, "wb") as f:
             f.write(content)

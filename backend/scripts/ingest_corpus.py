@@ -4,12 +4,11 @@ Corpus Ingestion Script
 Extracts text from filing PDFs, chunks with page-awareness and table preservation,
 generates embeddings, and stores in PostgreSQL chunks table.
 """
-import os
 import re
 import sys
 import time
 from pathlib import Path
-from typing import List, Dict, Any, Tuple
+from typing import List, Dict, Any
 
 # Add backend directory to sys.path
 backend_dir = Path(__file__).resolve().parents[1]

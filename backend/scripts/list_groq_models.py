@@ -1,27 +1,18 @@
 #!/usr/bin/env python3
 """List available Groq models, highlighting non-Llama chat models."""
-import os
 import sys
 from pathlib import Path
-from dotenv import load_dotenv
 
-# Load env from backend/.env
 backend_dir = Path(__file__).resolve().parents[1]
-load_dotenv(backend_dir / ".env")
+sys.path.insert(0, str(backend_dir))
 
-from groq import Groq
+from app.core.llm import list_available_groq_models
 
-api_key = os.getenv("GROQ_API_KEY")
-if not api_key:
-    print("GROQ_API_KEY not found in backend/.env", file=sys.stderr)
-    sys.exit(1)
-
-client = Groq(api_key=api_key)
-models_resp = client.models.list()
+models = list_available_groq_models()
 
 print("\n--- ALL AVAILABLE GROQ MODELS ---")
 non_llama = []
-for m in sorted(models_resp.data, key=lambda x: x.id):
+for m in sorted(models, key=lambda x: x.id):
     is_llama = "llama" in m.id.lower()
     tag = " [LLAMA]" if is_llama else " [NON-LLAMA]"
     print(f"  {m.id:<40} {tag} (owned by: {m.owned_by})")

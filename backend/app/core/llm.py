@@ -15,11 +15,10 @@ def get_client() -> Groq:
     return Groq(api_key=settings.groq_api_key)
 
 
-def list_available_groq_models() -> list[str]:
+def list_available_groq_models() -> list[Any]:
     """Query Groq API for available models."""
     client = get_client()
-    models = client.models.list()
-    return [m.id for m in models.data]
+    return list(client.models.list().data)
 
 
 def call_llm(prompt: str, model: str | None = None) -> dict[str, Any]:
