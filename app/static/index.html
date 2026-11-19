@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinVault AI - Financial Research Agent</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>FinVault AI</h1>
+      <p class="subtitle">Factual QA over SEC filings with page-level citations</p>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <form id="query-form" class="card">
+      <div class="form-group">
+        <label for="question-input">Question</label>
+        <textarea
+          id="question-input"
+          rows="3"
+          placeholder="Ask a question about the SEC filings..."
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="company-select">Company (Optional)</label>
+          <select id="company-select">
+            <option value="">All Companies</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="year-select">Fiscal Year (Optional)</label>
+          <select id="year-select">
+            <option value="">All Years</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" id="submit-btn" class="btn primary">Ask</button>
+      </div>
+    </form>
+
+    <div id="error-box" class="alert error hidden"></div>
+
+    <div id="results-box" class="results-container hidden">
+      <div class="card">
+        <div class="card-header">
+          <h2>Answer</h2>
+          <div class="meta-tags">
+            <span>Model: <strong id="meta-model">-</strong></span>
+            <span>Latency: <strong id="meta-latency">-</strong></span>
+            <span>Tokens: <strong id="meta-tokens">-</strong></span>
+          </div>
+        </div>
+        <div id="answer-text" class="answer-body"></div>
+      </div>
+
+      <div id="citations-card" class="card">
+        <h2 id="citations-title">Citations</h2>
+        <div id="citations-list" class="citations-list"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>

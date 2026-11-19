@@ -4,10 +4,10 @@ Smallest honest RAG pipeline answering questions over real SEC filings with page
 
 ## Architecture
 
-1. Client: Next.js single-page application submitting natural language queries.
+1. Client: Vanilla HTML/CSS/JavaScript interface served directly by FastAPI.
 2. API: FastAPI exposing GET /health, GET /corpus, and POST /query endpoints.
 3. Chunker: Page-aware PDF parser preserving structural table boundaries at ~400 tokens.
-4. Embeddings: BAAI/bge-small-en-v1.5 running locally via sentence-transformers.
+4. Embeddings: BAAI/bge-small-en-v1.5 running locally via fastembed (ONNX Runtime, zero PyTorch).
 5. Vector Database: PostgreSQL with pgvector extension storing chunk vectors and metadata.
 6. Retrieval: Top-k cosine similarity search with optional ticker and year SQL filters.
 7. Context Formatter: Numbered bracket citations [1], [2] containing document, year, and page.
@@ -17,34 +17,39 @@ Smallest honest RAG pipeline answering questions over real SEC filings with page
 
 ## How to Run
 
-### Backend
-
 ```bash
-cd backend
 python3 -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
+python scripts/download_model.py
 python scripts/ingest_corpus.py
 uvicorn app.main:app --reload
 ```
 
-### Frontend
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
+Open [http://localhost:8000](http://localhost:8000) in your browser.
 
 ## How to Reproduce Evaluation
 
 Run the evaluation script against the 31 FinanceBench questions:
 
 ```bash
-cd backend
 python eval/run_eval.py
 ```
 
-Results JSON files are written with full timestamped logs under `backend/eval/results/`.
+Results JSON files are written with full timestamped logs under `eval/results/`.
+
+## Embedding Engine Benchmark (Measured)
+
+Measured on Apple Silicon (`BAAI/bge-small-en-v1.5`, 384 dimensions):
+
+| Metric | SentenceTransformers (PyTorch) | FastEmbed (ONNX Runtime) | Measured Change |
+|---|---|---|---|
+| Virtualenv Disk Size | 1,200 MB | 239 MB | -80.1% |
+| Peak RSS (Model Load + 1st Query) | 540.73 MB | 216.70 MB | -59.9% |
+| 1st Query Cold Load Time | 3.63s | 0.06s | -98.3% |
+| 100 Query Embedding Time | 0.5513s (5.51 ms/query) | 0.3155s (3.16 ms/query) | -42.8% |
+| Cosine Similarity to Stored Vectors (N=100) | 1.000000 | Min: 0.999998, Mean: 0.999999, Max: 0.999999 | 99.9999% identical |
+| FinanceBench Retrieval Hit Rate @ 5 | 22.58% (7/31) | 22.58% (7/31) | 0 drop |
+| FinanceBench Retrieval Hit Rate @ 10 | 29.03% (9/31) | 29.03% (9/31) | 0 drop |
 
 ## Benchmark Results
 
