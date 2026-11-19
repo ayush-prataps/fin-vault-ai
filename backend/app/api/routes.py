@@ -1,10 +1,11 @@
 import time
 from typing import Optional, List
-from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
+from fastapi import APIRouter, HTTPException, Request
+from pydantic import BaseModel, Field
 
 from app.core.retrieval import retrieve_chunks, build_rag_prompt
 from app.core.vector import get_corpus_metadata
+from app.core.rate_limit import check_rate_limit, CONCURRENCY_SEMAPHORE
 from app.core.llm import call_llm
 from app.utils.helpers import get_logger
 
@@ -22,7 +23,7 @@ class Citation(BaseModel):
 
 
 class QueryRequest(BaseModel):
-    question: str
+    question: str = Field(..., min_length=3, max_length=500)
     tickers: Optional[List[str]] = None
     year: Optional[int] = None
 
@@ -46,9 +47,8 @@ def get_corpus() -> dict[str, list[int]]:
 
 
 @router.post("/query", response_model=QueryResponse)
-async def query_pipeline(payload: QueryRequest) -> QueryResponse:
-    if not payload.question or not payload.question.strip():
-        raise HTTPException(status_code=400, detail="Question cannot be empty")
+async def query_pipeline(payload: QueryRequest, request: Request) -> QueryResponse:
+    await check_rate_limit(request)
 
     start_time = time.time()
     company = payload.tickers[0] if payload.tickers and len(payload.tickers) > 0 else None
@@ -68,12 +68,13 @@ async def query_pipeline(payload: QueryRequest) -> QueryResponse:
     # Build prompt with numbered citations
     prompt = build_rag_prompt(payload.question, chunks)
 
-    # Call LLM
-    try:
-        llm_result = call_llm(prompt)
-    except Exception as exc:
-        logger.error("LLM call failed: %s", exc)
-        raise HTTPException(status_code=502, detail=f"LLM call failed: {exc}")
+    # Call LLM with concurrency limiting
+    async with CONCURRENCY_SEMAPHORE:
+        try:
+            llm_result = call_llm(prompt)
+        except Exception as exc:
+            logger.error("LLM call failed: %s", exc)
+            raise HTTPException(status_code=502, detail=f"LLM call failed: {exc}")
 
     total_latency_ms = int((time.time() - start_time) * 1000)
 
