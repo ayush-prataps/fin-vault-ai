@@ -5,7 +5,7 @@ Smallest honest RAG pipeline answering questions over real SEC filings with page
 ## Architecture
 
 1. Client: Next.js single-page application submitting natural language queries.
-2. API: FastAPI exposing GET /health and POST /query endpoints.
+2. API: FastAPI exposing GET /health, GET /corpus, and POST /query endpoints.
 3. Chunker: Page-aware PDF parser preserving structural table boundaries at ~400 tokens.
 4. Embeddings: BAAI/bge-small-en-v1.5 running locally via sentence-transformers.
 5. Vector Database: PostgreSQL with pgvector extension storing chunk vectors and metadata.

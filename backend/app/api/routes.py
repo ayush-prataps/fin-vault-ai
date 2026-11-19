@@ -4,6 +4,7 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
 from app.core.retrieval import retrieve_chunks, build_rag_prompt
+from app.core.vector import get_corpus_metadata
 from app.core.llm import call_llm
 from app.utils.helpers import get_logger
 
@@ -37,6 +38,11 @@ class QueryResponse(BaseModel):
 @router.get("/health")
 def health_check() -> dict:
     return {"status": "ok"}
+
+
+@router.get("/corpus")
+def get_corpus() -> dict[str, list[int]]:
+    return get_corpus_metadata()
 
 
 @router.post("/query", response_model=QueryResponse)

@@ -20,3 +20,5 @@ export interface QueryResponse {
   latency_ms: number;
   tokens: number;
 }
+
+export type CorpusMetadata = Record<string, number[]>;

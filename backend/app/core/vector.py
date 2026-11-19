@@ -77,3 +77,22 @@ def search_chunks(
     except Exception as exc:
         logger.error("Vector search failed: %s", exc)
         return []
+
+
+def get_corpus_metadata() -> dict[str, list[int]]:
+    """Return distinct companies and their available years from chunks table."""
+    try:
+        with psycopg2.connect(settings.database_url) as conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    "SELECT DISTINCT company, year FROM chunks ORDER BY company, year;"
+                )
+                rows = cur.fetchall()
+
+        corpus: dict[str, list[int]] = {}
+        for company, year in rows:
+            corpus.setdefault(company, []).append(year)
+        return corpus
+    except Exception as exc:
+        logger.error("Failed to fetch corpus metadata: %s", exc)
+        return {}

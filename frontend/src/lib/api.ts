@@ -1,5 +1,5 @@
 import axios, { AxiosError } from "axios";
-import { QueryRequest, QueryResponse } from "@/types";
+import { QueryRequest, QueryResponse, CorpusMetadata } from "@/types";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
@@ -28,6 +28,11 @@ export const queryFinancialData = async (
     }
     throw error;
   }
+};
+
+export const getCorpus = async (): Promise<CorpusMetadata> => {
+  const response = await apiClient.get<CorpusMetadata>("/corpus");
+  return response.data;
 };
 
 export default apiClient;
