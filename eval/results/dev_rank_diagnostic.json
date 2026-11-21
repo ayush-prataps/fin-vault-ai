@@ -1,0 +1,26 @@
+{
+  "dev_questions_with_doc_found": 66,
+  "rank_distribution": {
+    "1-10": 41,
+    "11-20": 9,
+    "21-50": 11,
+    "51-100": 3,
+    ">100": 2,
+    "absent": 0
+  },
+  "evidence_presence_on_gold_pages": {
+    "total_dev_evidence_items": 91,
+    "exact_alphanumeric_containment": {
+      "count": 60,
+      "pct": 65.93
+    },
+    "sentence_span_containment": {
+      "count": 82,
+      "pct": 90.11
+    },
+    "high_token_recall_gte_70pct": {
+      "count": 76,
+      "pct": 83.52
+    }
+  }
+}

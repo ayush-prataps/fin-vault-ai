@@ -1,0 +1,26 @@
+{
+  "config_a_k10": {
+    "total_questions": 150,
+    "hits": 58,
+    "failures": 92,
+    "categories": {
+      "wrong_company": 15,
+      "right_company_wrong_doc": 7,
+      "right_doc_single_page_miss": 56,
+      "right_doc_multi_page_miss": 14
+    },
+    "reconciliation_check": "92 == 92 (EXACT SUM MATCH)"
+  },
+  "config_b_oracle_k10": {
+    "total_questions": 150,
+    "hits": 61,
+    "failures": 89,
+    "categories": {
+      "wrong_company": 0,
+      "right_company_wrong_doc": 16,
+      "right_doc_single_page_miss": 57,
+      "right_doc_multi_page_miss": 16
+    },
+    "reconciliation_check": "89 == 89 (EXACT SUM MATCH)"
+  }
+}
