@@ -42,7 +42,7 @@ def get_git_commit() -> str:
         return "unknown"
 
 
-def call_with_retry(fn, *args, max_retries: int = 5, initial_delay: float = 2.0, **kwargs):
+def call_with_retry(fn, *args, max_retries: int = 8, initial_delay: float = 3.0, **kwargs):
     """Execute function with exponential backoff on rate limits."""
     delay = initial_delay
     for attempt in range(max_retries):
@@ -256,8 +256,8 @@ def run_evaluation() -> Dict[str, Any]:
         tokens_used = llm_resp.get("tokens_used", 0)
         latency_ms = llm_resp.get("latency_ms", 0)
 
-        # Small delay between LLM calls to respect Groq rate limits
-        time.sleep(1.0)
+        # Pacing delay between LLM calls to respect Groq free-tier rate limits
+        time.sleep(2.0)
 
         # 5. Check abstention
         abstained = check_abstention(pred_answer)
@@ -290,7 +290,7 @@ def run_evaluation() -> Dict[str, Any]:
                 )
                 score = j_score
                 judge_reason = j_reason
-                time.sleep(1.0)
+                time.sleep(2.0)
 
         if score == 1:
             pipeline_correct += 1

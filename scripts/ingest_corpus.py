@@ -4,6 +4,7 @@ Corpus Ingestion Script
 Extracts text from filing PDFs, chunks with page-awareness and table preservation,
 generates embeddings, and stores in PostgreSQL chunks table.
 """
+import json
 import re
 import sys
 import time
@@ -28,16 +29,34 @@ logger = get_logger(__name__)
 RAW_DIR = backend_dir / "data" / "raw"
 TOKENIZER_NAME = settings.embedding_model or "BAAI/bge-small-en-v1.5"
 
-DOC_METADATA = {
-    "3M_2018_10K": {"company": "3M", "year": 2018, "doc_name": "3M_2018_10K"},
-    "3M_2022_10K": {"company": "3M", "year": 2022, "doc_name": "3M_2022_10K"},
-    "3M_2023Q2_10Q": {"company": "3M", "year": 2023, "doc_name": "3M_2023Q2_10Q"},
-    "AMD_2015_10K": {"company": "AMD", "year": 2015, "doc_name": "AMD_2015_10K"},
-    "AMD_2022_10K": {"company": "AMD", "year": 2022, "doc_name": "AMD_2022_10K"},
-    "AMERICANEXPRESS_2022_10K": {"company": "American Express", "year": 2022, "doc_name": "AMERICANEXPRESS_2022_10K"},
-    "BOEING_2018_10K": {"company": "Boeing", "year": 2018, "doc_name": "BOEING_2018_10K"},
-    "BOEING_2022_10K": {"company": "Boeing", "year": 2022, "doc_name": "BOEING_2022_10K"},
-}
+def get_doc_metadata() -> Dict[str, Dict[str, Any]]:
+    """Build doc_name -> {company, year, doc_name} mapping dynamically from dataset and raw files."""
+    jsonl_path = backend_dir / "data" / "financebench_filtered.jsonl"
+    metadata: Dict[str, Dict[str, Any]] = {}
+    if jsonl_path.exists():
+        with open(jsonl_path, "r", encoding="utf-8") as f:
+            for line in f:
+                if not line.strip():
+                    continue
+                q = json.loads(line)
+                d = q.get("doc_name")
+                c = q.get("company")
+                if d and d not in metadata:
+                    y_match = re.search(r"_(\d{4})", d)
+                    year = int(y_match.group(1)) if y_match else 2022
+                    metadata[d] = {"company": c, "year": year, "doc_name": d}
+
+    # Fallback for any PDFs in RAW_DIR not present in jsonl
+    if RAW_DIR.exists():
+        for pdf in RAW_DIR.glob("*.pdf"):
+            doc_stem = pdf.stem
+            if doc_stem not in metadata:
+                y_match = re.search(r"_(\d{4})", doc_stem)
+                year = int(y_match.group(1)) if y_match else 2022
+                company = doc_stem.split("_")[0].title()
+                metadata[doc_stem] = {"company": company, "year": year, "doc_name": doc_stem}
+
+    return metadata
 
 
 def _is_table_line(line: str) -> bool:
@@ -182,8 +201,10 @@ def ingest_all(chunk_size: int = 400, overlap: int = 50):
     tokenizer = get_tokenizer()
 
     # 3. Process all PDFs
+    doc_metadata = get_doc_metadata()
+    print(f"Loaded metadata for {len(doc_metadata)} documents.")
     all_chunks: List[Dict[str, Any]] = []
-    for doc_name, meta in sorted(DOC_METADATA.items()):
+    for doc_name, meta in sorted(doc_metadata.items()):
         pdf_path = RAW_DIR / f"{doc_name}.pdf"
         if not pdf_path.exists():
             print(f"Warning: {pdf_path} not found, skipping.")
@@ -225,6 +246,8 @@ def ingest_all(chunk_size: int = 400, overlap: int = 50):
     print("\nInserting chunks into Neon PostgreSQL...")
     conn = psycopg2.connect(settings.database_url)
     with conn.cursor() as cur:
+        # Drop HNSW index during bulk insert to avoid indexing overhead per batch
+        cur.execute("DROP INDEX IF EXISTS idx_chunks_embedding_hnsw;")
         # Clear previous chunks for a clean slate
         cur.execute("TRUNCATE TABLE chunks RESTART IDENTITY;")
 
@@ -249,6 +272,10 @@ def ingest_all(chunk_size: int = 400, overlap: int = 50):
 
         cur.execute("SELECT COUNT(*) FROM chunks;")
         total_in_db = cur.fetchone()[0]
+
+        print("Building HNSW index on embeddings (vector_cosine_ops)...")
+        cur.execute("CREATE INDEX IF NOT EXISTS idx_chunks_embedding_hnsw ON chunks USING hnsw (embedding vector_cosine_ops);")
+        conn.commit()
 
     conn.close()
 

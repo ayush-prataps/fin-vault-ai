@@ -29,7 +29,7 @@ Open [http://localhost:8000](http://localhost:8000) in your browser.
 
 ## How to Reproduce Evaluation
 
-Run the evaluation script against the 31 FinanceBench questions:
+Run the evaluation script against the 150 FinanceBench questions:
 
 ```bash
 python eval/run_eval.py
@@ -48,22 +48,15 @@ Measured on Apple Silicon (`BAAI/bge-small-en-v1.5`, 384 dimensions):
 | 1st Query Cold Load Time | 3.63s | 0.06s | -98.3% |
 | 100 Query Embedding Time | 0.5513s (5.51 ms/query) | 0.3155s (3.16 ms/query) | -42.8% |
 | Cosine Similarity to Stored Vectors (N=100) | 1.000000 | Min: 0.999998, Mean: 0.999999, Max: 0.999999 | 99.9999% identical |
-| FinanceBench Retrieval Hit Rate @ 5 | 22.58% (7/31) | 22.58% (7/31) | 0 drop |
-| FinanceBench Retrieval Hit Rate @ 10 | 29.03% (9/31) | 29.03% (9/31) | 0 drop |
 
-## Benchmark Results
+## Benchmark Results (Full FinanceBench: 150 Questions, 84 Filings, 32 Companies)
 
-Evaluated on 31 FinanceBench questions across 8 SEC 10-K and 10-Q filings (3M, AMD, American Express, Boeing) on commit `73bd4b6467bfa039bb14727b9b9d9ca4d6dd74c1` using `qwen/qwen3.8-27b`.
+Measured across all 150 questions in FinanceBench against 32,289 chunks from 84 SEC filings:
 
-| Metric | Overall (31 questions) | Numeric (14 questions) | Narrative (17 questions) |
-|---|---|---|---|
-| Retrieval Hit Rate @ 5 (no filter) | 22.58% (7/31) | 21.43% (3/14) | 23.53% (4/17) |
-| Retrieval Hit Rate @ 10 (no filter) | 25.81% (8/31) | 35.71% (5/14) | 23.53% (4/17) |
-| Retrieval Hit Rate @ 5 (ticker filter) | 22.58% (7/31) | 21.43% (3/14) | 23.53% (4/17) |
-| Retrieval Hit Rate @ 10 (ticker filter) | 29.03% (9/31) | 35.71% (5/14) | 23.53% (4/17) |
-| Answer Accuracy (top-5 context) | 25.81% (8/31) | 28.57% (4/14) | 23.53% (4/17) |
-| Abstention Rate | 64.52% (20/31) | 64.29% (9/14) | 64.71% (11/17) |
-| Incorrect Answer Rate | 9.68% (3/31) | 7.14% (1/14) | 11.76% (2/17) |
+| Metric | Config A: Unfiltered Baseline | Config B: Pipeline (Company Filter) |
+|---|---|---|
+| Retrieval Hit Rate @ 5 | 32.67% (49/150) | 34.67% (52/150) |
+| Retrieval Hit Rate @ 10 | 38.67% (58/150) | 40.67% (61/150) |
 
 ## Known Limitations
 

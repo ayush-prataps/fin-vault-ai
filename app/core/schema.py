@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS chunks (
 
 CREATE INDEX IF NOT EXISTS idx_chunks_company ON chunks (company);
 CREATE INDEX IF NOT EXISTS idx_chunks_year ON chunks (year);
+CREATE INDEX IF NOT EXISTS idx_chunks_embedding_hnsw ON chunks USING hnsw (embedding vector_cosine_ops);
 """
 
 
