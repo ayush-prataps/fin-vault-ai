@@ -6,7 +6,7 @@
     "test_question_count": 75,
     "top_k": 10,
     "token_recall_threshold": 0.8,
-    "git_commit": "fb6c226",
+    "git_commit": "2f9b062",
     "timestamp": "2026-11-22 12:51:32"
   },
   "eval_results": {
