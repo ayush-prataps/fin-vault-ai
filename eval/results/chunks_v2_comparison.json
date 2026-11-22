@@ -1,0 +1,1940 @@
+{
+  "metadata": {
+    "model": "BAAI/bge-small-en-v1.5",
+    "split_seed": 42,
+    "dev_question_count": 75,
+    "git_commit": "c6414c1",
+    "timestamp": "2026-11-22 10:24:30"
+  },
+  "eval_results": {
+    "chunks": {
+      "Config A (Vanilla)": {
+        "page_hit_10": 29,
+        "token_hit_10": 11,
+        "total": 75,
+        "page_hit_rate": 0.38666666666666666,
+        "token_hit_rate": 0.14666666666666667,
+        "per_question": {
+          "financebench_id_03029": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_04672": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01226": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01858": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_07966": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_04735": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00591": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_01319": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_10420": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_06655": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_08286": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_03882": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01935": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00799": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01930": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_03069": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01198": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01279": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00757": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00476": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_01028": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00723": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01964": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_05718": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_04417": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01077": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00288": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01902": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_04660": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_07661": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_10285": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01091": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00494": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00585": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_09724": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_10130": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_02981": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_04209": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_01107": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01244": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00822": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_04103": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_03471": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00956": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00711": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00651": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01484": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01488": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00206": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_02049": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_03031": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_03718": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_01254": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00382": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01911": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_04700": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_04458": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_04302": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_04080": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00080": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_04980": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_03620": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00705": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00882": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01476": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_02416": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00283": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00724": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00521": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00601": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00603": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00859": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_02024": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00566": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_06247": {
+            "page_hit": false,
+            "token_hit": false
+          }
+        }
+      },
+      "Config C (Inferred)": {
+        "page_hit_10": 45,
+        "token_hit_10": 20,
+        "total": 75,
+        "page_hit_rate": 0.6,
+        "token_hit_rate": 0.26666666666666666,
+        "per_question": {
+          "financebench_id_03029": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_04672": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01226": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01858": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_07966": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_04735": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00591": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_01319": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_10420": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_06655": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_08286": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_03882": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01935": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00799": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01930": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_03069": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01198": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01279": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00757": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00476": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_01028": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00723": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01964": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_05718": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_04417": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01077": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00288": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01902": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_04660": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_07661": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_10285": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01091": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00494": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00585": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_09724": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_10130": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_02981": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_04209": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_01107": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01244": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00822": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_04103": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_03471": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00956": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00711": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00651": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01484": {
+            "page_hit": false,
+            "token_hit": true
+          },
+          "financebench_id_01488": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00206": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_02049": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_03031": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_03718": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_01254": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00382": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_01911": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_04700": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_04458": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_04302": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_04080": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00080": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_04980": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_03620": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00705": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00882": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01476": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_02416": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00283": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00724": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00521": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00601": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00603": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00859": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_02024": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00566": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_06247": {
+            "page_hit": false,
+            "token_hit": false
+          }
+        }
+      },
+      "Oracle (Gold Co+Yr)": {
+        "page_hit_10": 48,
+        "token_hit_10": 21,
+        "total": 75,
+        "page_hit_rate": 0.64,
+        "token_hit_rate": 0.28,
+        "per_question": {
+          "financebench_id_03029": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_04672": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01226": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01858": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_07966": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_04735": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00591": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_01319": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_10420": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_06655": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_08286": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_03882": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01935": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00799": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01930": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_03069": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01198": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01279": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00757": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00476": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_01028": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00723": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01964": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_05718": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_04417": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01077": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00288": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01902": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_04660": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_07661": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_10285": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01091": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00494": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00585": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_09724": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_10130": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_02981": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_04209": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_01107": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01244": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00822": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_04103": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_03471": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00956": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00711": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00651": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01484": {
+            "page_hit": false,
+            "token_hit": true
+          },
+          "financebench_id_01488": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00206": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_02049": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_03031": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_03718": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_01254": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00382": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_01911": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_04700": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_04458": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_04302": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_04080": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00080": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_04980": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_03620": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00705": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00882": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01476": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_02416": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00283": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00724": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00521": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00601": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00603": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00859": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_02024": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00566": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_06247": {
+            "page_hit": false,
+            "token_hit": false
+          }
+        }
+      }
+    },
+    "chunks_v2": {
+      "Config A (Vanilla)": {
+        "page_hit_10": 30,
+        "token_hit_10": 15,
+        "total": 75,
+        "page_hit_rate": 0.4,
+        "token_hit_rate": 0.2,
+        "per_question": {
+          "financebench_id_03029": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_04672": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01226": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01858": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_07966": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_04735": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00591": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01319": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_10420": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_06655": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_08286": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_03882": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01935": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00799": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01930": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_03069": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01198": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01279": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00757": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00476": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_01028": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00723": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01964": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_05718": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_04417": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01077": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00288": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01902": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_04660": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_07661": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_10285": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01091": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00494": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00585": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_09724": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_10130": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_02981": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_04209": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01107": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01244": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00822": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_04103": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_03471": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00956": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00711": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00651": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01484": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01488": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00206": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_02049": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_03031": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_03718": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01254": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00382": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01911": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_04700": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_04458": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_04302": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_04080": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00080": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_04980": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_03620": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00705": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00882": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01476": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_02416": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00283": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00724": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00521": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00601": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00603": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00859": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_02024": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00566": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_06247": {
+            "page_hit": false,
+            "token_hit": false
+          }
+        }
+      },
+      "Config C (Inferred)": {
+        "page_hit_10": 44,
+        "token_hit_10": 18,
+        "total": 75,
+        "page_hit_rate": 0.5866666666666667,
+        "token_hit_rate": 0.24,
+        "per_question": {
+          "financebench_id_03029": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_04672": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01226": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01858": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_07966": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_04735": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00591": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01319": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_10420": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_06655": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_08286": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_03882": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01935": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00799": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01930": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_03069": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01198": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01279": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00757": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00476": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_01028": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00723": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01964": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_05718": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_04417": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01077": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00288": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01902": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_04660": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_07661": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_10285": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01091": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00494": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00585": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_09724": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_10130": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_02981": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_04209": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01107": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01244": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00822": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_04103": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_03471": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00956": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00711": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00651": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01484": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01488": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00206": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_02049": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_03031": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_03718": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01254": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00382": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01911": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_04700": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_04458": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_04302": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_04080": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00080": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_04980": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_03620": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00705": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00882": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01476": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_02416": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00283": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00724": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00521": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00601": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00603": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00859": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_02024": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00566": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_06247": {
+            "page_hit": false,
+            "token_hit": false
+          }
+        }
+      },
+      "Oracle (Gold Co+Yr)": {
+        "page_hit_10": 49,
+        "token_hit_10": 21,
+        "total": 75,
+        "page_hit_rate": 0.6533333333333333,
+        "token_hit_rate": 0.28,
+        "per_question": {
+          "financebench_id_03029": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_04672": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01226": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01858": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_07966": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_04735": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00591": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01319": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_10420": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_06655": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_08286": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_03882": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01935": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00799": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01930": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_03069": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01198": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01279": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00757": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00476": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_01028": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00723": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01964": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_05718": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_04417": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01077": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00288": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01902": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_04660": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_07661": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_10285": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_01091": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00494": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00585": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_09724": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_10130": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_02981": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_04209": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01107": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01244": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00822": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_04103": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_03471": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00956": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00711": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00651": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01484": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01488": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00206": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_02049": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_03031": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_03718": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01254": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00382": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01911": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_04700": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_04458": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_04302": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_04080": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00080": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_04980": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_03620": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00705": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00882": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_01476": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_02416": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00283": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00724": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00521": {
+            "page_hit": false,
+            "token_hit": false
+          },
+          "financebench_id_00601": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00603": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_00859": {
+            "page_hit": true,
+            "token_hit": true
+          },
+          "financebench_id_02024": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_00566": {
+            "page_hit": true,
+            "token_hit": false
+          },
+          "financebench_id_06247": {
+            "page_hit": false,
+            "token_hit": false
+          }
+        }
+      }
+    }
+  },
+  "paired_summary": {
+    "Config A (Vanilla)": {
+      "page_hit": {
+        "old": 29,
+        "new": 30,
+        "both_right": 17,
+        "only_old": 12,
+        "only_new": 13,
+        "both_wrong": 33,
+        "net_change": 1
+      },
+      "token_hit": {
+        "old": 11,
+        "new": 15,
+        "both_right": 6,
+        "only_old": 5,
+        "only_new": 9,
+        "both_wrong": 55,
+        "net_change": 4
+      }
+    },
+    "Config C (Inferred)": {
+      "page_hit": {
+        "old": 45,
+        "new": 44,
+        "both_right": 34,
+        "only_old": 11,
+        "only_new": 10,
+        "both_wrong": 20,
+        "net_change": -1
+      },
+      "token_hit": {
+        "old": 20,
+        "new": 18,
+        "both_right": 11,
+        "only_old": 9,
+        "only_new": 7,
+        "both_wrong": 48,
+        "net_change": -2
+      }
+    },
+    "Oracle (Gold Co+Yr)": {
+      "page_hit": {
+        "old": 48,
+        "new": 49,
+        "both_right": 37,
+        "only_old": 11,
+        "only_new": 12,
+        "both_wrong": 15,
+        "net_change": 1
+      },
+      "token_hit": {
+        "old": 21,
+        "new": 21,
+        "both_right": 12,
+        "only_old": 9,
+        "only_new": 9,
+        "both_wrong": 45,
+        "net_change": 0
+      }
+    }
+  },
+  "evidence_presence": {
+    "total_dev_evidence_items": 91,
+    "single_chunk_alnum_substring": 38,
+    "single_chunk_alnum_substring_rate": 0.4175824175824176,
+    "concat_chunks_alnum_substring": 65,
+    "concat_chunks_alnum_substring_rate": 0.7142857142857143,
+    "single_chunk_token_recall_08": 47,
+    "single_chunk_token_recall_08_rate": 0.5164835164835165
+  }
+}

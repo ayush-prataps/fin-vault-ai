@@ -4,4 +4,5 @@ __pycache__/
 *.pyc
 .DS_Store
 data/raw/
+data/extracted_chunks_*.jsonl
 .fastembed_cache/

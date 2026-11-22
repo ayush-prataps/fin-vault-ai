@@ -1,0 +1,41 @@
+{
+  "companies": {
+    "3M": ["\\b3M\\b"],
+    "AES Corporation": ["\\bAES(?:\\s+Corporation)?\\b"],
+    "AMD": ["\\bAMD\\b", "\\bAdvanced\\s+Micro\\s+Devices\\b"],
+    "Activision Blizzard": ["\\bActivision(?:\\s+Blizzard)?\\b"],
+    "Adobe": ["\\bAdobe\\b"],
+    "Amazon": ["\\bAmazon(?:\\.com)?\\b"],
+    "Amcor": ["\\bAmcor\\b"],
+    "American Express": ["\\b(?:American\\s+Express|Amex)\\b"],
+    "American Water Works": ["\\bAmerican\\s+Water(?:\\s+Works)?\\b"],
+    "Best Buy": ["\\bBest\\s+Buy\\b"],
+    "Block": ["\\b(?:Block|Square)\\b"],
+    "Boeing": ["\\bBoeing\\b"],
+    "CVS Health": ["\\bCVS(?:\\s+Health)?\\b"],
+    "Coca-Cola": ["\\b(?:Coca-Cola|Coca\\s+Cola|Coke)\\b"],
+    "Corning": ["\\bCorning\\b"],
+    "Costco": ["\\bCostco\\b"],
+    "Foot Locker": ["\\bFoot\\s+Locker\\b"],
+    "General Mills": ["\\bGeneral\\s+Mills\\b"],
+    "JPMorgan": ["\\b(?:JPMorgan|JP\\s+Morgan|JPMorgan\\s+Chase|JPM)\\b"],
+    "Johnson & Johnson": ["\\b(?:Johnson\\s+&\\s+Johnson|J&J|JnJ)\\b"],
+    "Kraft Heinz": ["\\bKraft(?:\\s+Heinz)?\\b"],
+    "Lockheed Martin": ["\\bLockheed(?:\\s+Martin)?\\b"],
+    "MGM Resorts": ["\\bMGM(?:\\s+Resorts)?\\b"],
+    "Microsoft": ["\\bMicrosoft\\b", "\\bMSFT\\b"],
+    "Netflix": ["\\bNetflix\\b"],
+    "Nike": ["\\bNike\\b"],
+    "Paypal": ["\\b(?:PayPal|Paypal)\\b"],
+    "PepsiCo": ["\\bPepsi(?:Co)?\\b"],
+    "Pfizer": ["\\bPfizer\\b"],
+    "Ulta Beauty": ["\\bUlta(?:\\s+Beauty)?\\b"],
+    "Verizon": ["\\bVerizon\\b"],
+    "Walmart": ["\\b(?:Walmart|Wal-Mart)\\b"]
+  },
+  "year_patterns": [
+    "\\bFY\\s*(20\\d\\d)\\b",
+    "\\bFY\\s*(\\d{2})\\b",
+    "\\b(20\\d\\d)\\b"
+  ]
+}

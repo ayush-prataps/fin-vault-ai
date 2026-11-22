@@ -6,7 +6,7 @@ Smallest honest RAG pipeline answering questions over real SEC filings with page
 
 1. Client: Vanilla HTML/CSS/JavaScript interface served directly by FastAPI.
 2. API: FastAPI exposing GET /health, GET /corpus, and POST /query endpoints.
-3. Chunker: Page-aware PDF parser preserving structural table boundaries at ~400 tokens.
+3. Chunker: Page-aware PDF parser slicing original text (zero decode artifacts) with structural table preservation up to 800 tokens, header repetition across split rows, and context headers prepended to embedding inputs.
 4. Embeddings: BAAI/bge-small-en-v1.5 running locally via fastembed (ONNX Runtime, zero PyTorch).
 5. Vector Database: PostgreSQL with pgvector extension storing chunk vectors and metadata.
 6. Retrieval: Top-k cosine similarity search with optional ticker and year SQL filters.
