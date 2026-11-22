@@ -24,12 +24,24 @@ def retrieve_chunks(
         year = infer_year(query)
 
     query_embedding = embed_text(query)
-    return search_chunks(
+    chunks = search_chunks(
         query_embedding=query_embedding,
         company=company,
         year=year,
         top_k=top_k,
     )
+
+    # If filtering by both company and year returned 0 results (e.g. filing year not in corpus
+    # but comparative tables exist in adjacent 10-K filings), fall back to company search without year filter
+    if not chunks and company is not None and year is not None:
+        chunks = search_chunks(
+            query_embedding=query_embedding,
+            company=company,
+            year=None,
+            top_k=top_k,
+        )
+
+    return chunks
 
 
 def build_rag_prompt(query: str, chunks: list[dict[str, Any]]) -> str:

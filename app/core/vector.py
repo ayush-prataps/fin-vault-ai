@@ -45,7 +45,7 @@ def search_chunks(
                 params: list[Any] = [embedding_literal]
 
                 if company:
-                    query.append("AND UPPER(company) = UPPER(%s)")
+                    query.append("AND company = %s")
                     params.append(company)
                 if year:
                     query.append("AND year = %s")
