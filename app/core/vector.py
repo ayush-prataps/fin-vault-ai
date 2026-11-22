@@ -39,7 +39,7 @@ def search_chunks(
                     "    chunk_index,",
                     "    text,",
                     "    1 - (embedding <=> %s::vector) AS similarity_score",
-                    "FROM chunks",
+                    "FROM chunks_v2",
                     "WHERE embedding IS NOT NULL",
                 ]
                 params: list[Any] = [embedding_literal]
@@ -85,7 +85,7 @@ def get_corpus_metadata() -> dict[str, list[int]]:
         with psycopg2.connect(settings.database_url) as conn:
             with conn.cursor() as cur:
                 cur.execute(
-                    "SELECT DISTINCT company, year FROM chunks ORDER BY company, year;"
+                    "SELECT DISTINCT company, year FROM chunks_v2 ORDER BY company, year;"
                 )
                 rows = cur.fetchall()
 

@@ -5,6 +5,7 @@ Performs vector search over filing chunks and formats numbered citations.
 from typing import Optional, Any
 from app.core.embeddings import embed_text
 from app.core.vector import search_chunks
+from app.aliases import infer_company, infer_year
 from app.utils.helpers import get_logger
 
 logger = get_logger(__name__)
@@ -16,7 +17,12 @@ def retrieve_chunks(
     year: Optional[int] = None,
     top_k: int = 5,
 ) -> list[dict[str, Any]]:
-    """Retrieve top-k chunks matching the query embedding."""
+    """Retrieve top-k chunks matching the query embedding with inferred alias fallback."""
+    if company is None:
+        company = infer_company(query)
+    if year is None:
+        year = infer_year(query)
+
     query_embedding = embed_text(query)
     return search_chunks(
         query_embedding=query_embedding,

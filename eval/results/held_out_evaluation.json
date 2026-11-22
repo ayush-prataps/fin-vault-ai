@@ -1,0 +1,2436 @@
+{
+  "metadata": {
+    "model": "BAAI/bge-small-en-v1.5",
+    "table": "chunks_v2",
+    "split_seed": 42,
+    "test_question_count": 75,
+    "top_k": 10,
+    "token_recall_threshold": 0.8,
+    "git_commit": "fb6c226",
+    "timestamp": "2026-11-22 12:51:32"
+  },
+  "eval_results": {
+    "Config A (Vanilla)": {
+      "page_hit_10": 28,
+      "page_hit_rate": 0.37333333333333335,
+      "page_hit_95_ci": [
+        0.2725596912402112,
+        0.48645034885543315
+      ],
+      "token_hit_10": 17,
+      "token_hit_rate": 0.22666666666666666,
+      "token_hit_95_ci": [
+        0.14661367916790652,
+        0.333355354722694
+      ],
+      "total": 75,
+      "per_question": {
+        "financebench_id_00499": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "3M",
+          "gold_pages": [
+            49,
+            51,
+            47
+          ]
+        },
+        "financebench_id_01865": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "3M",
+          "gold_pages": [
+            24
+          ]
+        },
+        "financebench_id_00807": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "3M",
+          "gold_pages": [
+            4
+          ]
+        },
+        "financebench_id_00941": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "3M",
+          "gold_pages": [
+            0
+          ]
+        },
+        "financebench_id_02987": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Activision Blizzard",
+          "gold_pages": [
+            68,
+            69
+          ]
+        },
+        "financebench_id_07507": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Adobe",
+          "gold_pages": [
+            61
+          ]
+        },
+        "financebench_id_03856": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Adobe",
+          "gold_pages": [
+            56,
+            60
+          ]
+        },
+        "financebench_id_00438": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Adobe",
+          "gold_pages": [
+            53
+          ]
+        },
+        "financebench_id_00540": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "AES Corporation",
+          "gold_pages": [
+            129,
+            131
+          ]
+        },
+        "financebench_id_08135": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Amazon",
+          "gold_pages": [
+            37
+          ]
+        },
+        "financebench_id_01079": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Amcor",
+          "gold_pages": [
+            63
+          ]
+        },
+        "financebench_id_01148": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Amcor",
+          "gold_pages": [
+            4
+          ]
+        },
+        "financebench_id_00684": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Amcor",
+          "gold_pages": [
+            49
+          ]
+        },
+        "financebench_id_01936": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Amcor",
+          "gold_pages": [
+            14
+          ]
+        },
+        "financebench_id_01928": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Amcor",
+          "gold_pages": [
+            11
+          ]
+        },
+        "financebench_id_00222": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "AMD",
+          "gold_pages": [
+            55
+          ]
+        },
+        "financebench_id_00995": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "AMD",
+          "gold_pages": [
+            3
+          ]
+        },
+        "financebench_id_00917": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "AMD",
+          "gold_pages": [
+            42
+          ]
+        },
+        "financebench_id_00563": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "AMD",
+          "gold_pages": [
+            47
+          ]
+        },
+        "financebench_id_00720": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "American Express",
+          "gold_pages": [
+            95
+          ]
+        },
+        "financebench_id_01351": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "American Express",
+          "gold_pages": [
+            43
+          ]
+        },
+        "financebench_id_01981": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "American Express",
+          "gold_pages": [
+            44
+          ]
+        },
+        "financebench_id_04254": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "American Water Works",
+          "gold_pages": [
+            85,
+            87
+          ]
+        },
+        "financebench_id_00070": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "American Water Works",
+          "gold_pages": [
+            80,
+            81
+          ]
+        },
+        "financebench_id_02608": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Best Buy",
+          "gold_pages": [
+            55
+          ]
+        },
+        "financebench_id_00685": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Best Buy",
+          "gold_pages": [
+            39
+          ]
+        },
+        "financebench_id_01275": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Best Buy",
+          "gold_pages": [
+            41
+          ]
+        },
+        "financebench_id_00460": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Best Buy",
+          "gold_pages": [
+            16
+          ]
+        },
+        "financebench_id_03838": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Block",
+          "gold_pages": [
+            85
+          ]
+        },
+        "financebench_id_00517": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Boeing",
+          "gold_pages": [
+            61
+          ]
+        },
+        "financebench_id_00678": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Boeing",
+          "gold_pages": [
+            54
+          ]
+        },
+        "financebench_id_01290": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Boeing",
+          "gold_pages": [
+            9,
+            13,
+            7
+          ]
+        },
+        "financebench_id_00464": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Boeing",
+          "gold_pages": [
+            7
+          ]
+        },
+        "financebench_id_03473": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Coca-Cola",
+          "gold_pages": [
+            73,
+            75
+          ]
+        },
+        "financebench_id_06272": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Coca-Cola",
+          "gold_pages": [
+            65,
+            62
+          ]
+        },
+        "financebench_id_01346": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Corning",
+          "gold_pages": [
+            23
+          ]
+        },
+        "financebench_id_00005": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Corning",
+          "gold_pages": [
+            59
+          ]
+        },
+        "financebench_id_05915": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "CVS Health",
+          "gold_pages": [
+            301,
+            303
+          ]
+        },
+        "financebench_id_00790": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "CVS Health",
+          "gold_pages": [
+            107,
+            109
+          ]
+        },
+        "financebench_id_00839": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Foot Locker",
+          "gold_pages": [
+            1
+          ]
+        },
+        "financebench_id_04854": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "General Mills",
+          "gold_pages": [
+            51
+          ]
+        },
+        "financebench_id_10136": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "General Mills",
+          "gold_pages": [
+            48,
+            44
+          ]
+        },
+        "financebench_id_00669": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Johnson & Johnson",
+          "gold_pages": [
+            33
+          ]
+        },
+        "financebench_id_01490": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Johnson & Johnson",
+          "gold_pages": [
+            3
+          ]
+        },
+        "financebench_id_01491": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Johnson & Johnson",
+          "gold_pages": [
+            3
+          ]
+        },
+        "financebench_id_01487": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Johnson & Johnson",
+          "gold_pages": [
+            9
+          ]
+        },
+        "financebench_id_00299": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "JPMorgan",
+          "gold_pages": [
+            18
+          ]
+        },
+        "financebench_id_02119": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "JPMorgan",
+          "gold_pages": [
+            5
+          ]
+        },
+        "financebench_id_00394": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "JPMorgan",
+          "gold_pages": [
+            20
+          ]
+        },
+        "financebench_id_10499": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Kraft Heinz",
+          "gold_pages": [
+            49,
+            51
+          ]
+        },
+        "financebench_id_04412": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Lockheed Martin",
+          "gold_pages": [
+            66,
+            68
+          ]
+        },
+        "financebench_id_04171": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "MGM Resorts",
+          "gold_pages": [
+            56
+          ]
+        },
+        "financebench_id_03849": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "MGM Resorts",
+          "gold_pages": [
+            64,
+            66
+          ]
+        },
+        "financebench_id_01912": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "MGM Resorts",
+          "gold_pages": [
+            2,
+            3
+          ]
+        },
+        "financebench_id_00407": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "MGM Resorts",
+          "gold_pages": [
+            10
+          ]
+        },
+        "financebench_id_00552": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Microsoft",
+          "gold_pages": [
+            59
+          ]
+        },
+        "financebench_id_03282": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Netflix",
+          "gold_pages": [
+            44
+          ]
+        },
+        "financebench_id_03531": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Nike",
+          "gold_pages": [
+            53
+          ]
+        },
+        "financebench_id_01163": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Nike",
+          "gold_pages": [
+            61
+          ]
+        },
+        "financebench_id_01009": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "PepsiCo",
+          "gold_pages": [
+            3,
+            4
+          ]
+        },
+        "financebench_id_00735": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "PepsiCo",
+          "gold_pages": [
+            25
+          ]
+        },
+        "financebench_id_01328": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "PepsiCo",
+          "gold_pages": [
+            77
+          ]
+        },
+        "financebench_id_04481": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "PepsiCo",
+          "gold_pages": [
+            61,
+            63
+          ]
+        },
+        "financebench_id_01482": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "PepsiCo",
+          "gold_pages": [
+            3
+          ]
+        },
+        "financebench_id_01474": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "PepsiCo",
+          "gold_pages": [
+            0
+          ]
+        },
+        "financebench_id_00302": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Pfizer",
+          "gold_pages": [
+            58
+          ]
+        },
+        "financebench_id_00702": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Pfizer",
+          "gold_pages": [
+            56
+          ]
+        },
+        "financebench_id_02419": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Pfizer",
+          "gold_pages": [
+            40
+          ]
+        },
+        "financebench_id_00746": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Ulta Beauty",
+          "gold_pages": [
+            0
+          ]
+        },
+        "financebench_id_00605": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Ulta Beauty",
+          "gold_pages": [
+            2
+          ]
+        },
+        "financebench_id_00606": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Ulta Beauty",
+          "gold_pages": [
+            1
+          ]
+        },
+        "financebench_id_00216": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Verizon",
+          "gold_pages": [
+            55
+          ]
+        },
+        "financebench_id_00215": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Verizon",
+          "gold_pages": [
+            22,
+            55
+          ]
+        },
+        "financebench_id_04784": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Walmart",
+          "gold_pages": [
+            47
+          ]
+        },
+        "financebench_id_06741": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Walmart",
+          "gold_pages": [
+            50,
+            55
+          ]
+        }
+      }
+    },
+    "Config C (Inferred)": {
+      "page_hit_10": 42,
+      "page_hit_rate": 0.56,
+      "page_hit_95_ci": [
+        0.44746771381455497,
+        0.6666854250875085
+      ],
+      "token_hit_10": 24,
+      "token_hit_rate": 0.32,
+      "token_hit_95_ci": [
+        0.2254299503477284,
+        0.4321106329460819
+      ],
+      "total": 75,
+      "per_question": {
+        "financebench_id_00499": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "3M",
+          "inferred_year": 2022,
+          "gold_company": "3M",
+          "gold_pages": [
+            49,
+            51,
+            47
+          ]
+        },
+        "financebench_id_01865": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "3M",
+          "inferred_year": 2022,
+          "gold_company": "3M",
+          "gold_pages": [
+            24
+          ]
+        },
+        "financebench_id_00807": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "3M",
+          "inferred_year": 2023,
+          "gold_company": "3M",
+          "gold_pages": [
+            4
+          ]
+        },
+        "financebench_id_00941": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "3M",
+          "inferred_year": 2023,
+          "gold_company": "3M",
+          "gold_pages": [
+            0
+          ]
+        },
+        "financebench_id_02987": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "Activision Blizzard",
+          "inferred_year": 2019,
+          "gold_company": "Activision Blizzard",
+          "gold_pages": [
+            68,
+            69
+          ]
+        },
+        "financebench_id_07507": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": "Adobe",
+          "inferred_year": 2016,
+          "gold_company": "Adobe",
+          "gold_pages": [
+            61
+          ]
+        },
+        "financebench_id_03856": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": "Adobe",
+          "inferred_year": 2017,
+          "gold_company": "Adobe",
+          "gold_pages": [
+            56,
+            60
+          ]
+        },
+        "financebench_id_00438": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "Adobe",
+          "inferred_year": 2022,
+          "gold_company": "Adobe",
+          "gold_pages": [
+            53
+          ]
+        },
+        "financebench_id_00540": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": "AES Corporation",
+          "inferred_year": 2022,
+          "gold_company": "AES Corporation",
+          "gold_pages": [
+            129,
+            131
+          ]
+        },
+        "financebench_id_08135": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": "Amazon",
+          "inferred_year": 2017,
+          "gold_company": "Amazon",
+          "gold_pages": [
+            37
+          ]
+        },
+        "financebench_id_01079": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "Amcor",
+          "inferred_year": 2023,
+          "gold_company": "Amcor",
+          "gold_pages": [
+            63
+          ]
+        },
+        "financebench_id_01148": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": "Amcor",
+          "inferred_year": null,
+          "gold_company": "Amcor",
+          "gold_pages": [
+            4
+          ]
+        },
+        "financebench_id_00684": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": "Amcor",
+          "inferred_year": 2023,
+          "gold_company": "Amcor",
+          "gold_pages": [
+            49
+          ]
+        },
+        "financebench_id_01936": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": "Amcor",
+          "inferred_year": 2023,
+          "gold_company": "Amcor",
+          "gold_pages": [
+            14
+          ]
+        },
+        "financebench_id_01928": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "Amcor",
+          "inferred_year": 2023,
+          "gold_company": "Amcor",
+          "gold_pages": [
+            11
+          ]
+        },
+        "financebench_id_00222": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "AMD",
+          "inferred_year": 2022,
+          "gold_company": "AMD",
+          "gold_pages": [
+            55
+          ]
+        },
+        "financebench_id_00995": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": "AMD",
+          "inferred_year": 2022,
+          "gold_company": "AMD",
+          "gold_pages": [
+            3
+          ]
+        },
+        "financebench_id_00917": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": "AMD",
+          "inferred_year": 2022,
+          "gold_company": "AMD",
+          "gold_pages": [
+            42
+          ]
+        },
+        "financebench_id_00563": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": "AMD",
+          "inferred_year": 2022,
+          "gold_company": "AMD",
+          "gold_pages": [
+            47
+          ]
+        },
+        "financebench_id_00720": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "American Express",
+          "inferred_year": 2022,
+          "gold_company": "American Express",
+          "gold_pages": [
+            95
+          ]
+        },
+        "financebench_id_01351": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "American Express",
+          "inferred_year": 2022,
+          "gold_company": "American Express",
+          "gold_pages": [
+            43
+          ]
+        },
+        "financebench_id_01981": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "American Express",
+          "inferred_year": 2022,
+          "gold_company": "American Express",
+          "gold_pages": [
+            44
+          ]
+        },
+        "financebench_id_04254": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": "American Water Works",
+          "inferred_year": 2021,
+          "gold_company": "American Water Works",
+          "gold_pages": [
+            85,
+            87
+          ]
+        },
+        "financebench_id_00070": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": "American Water Works",
+          "inferred_year": 2022,
+          "gold_company": "American Water Works",
+          "gold_pages": [
+            80,
+            81
+          ]
+        },
+        "financebench_id_02608": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": "Best Buy",
+          "inferred_year": 2017,
+          "gold_company": "Best Buy",
+          "gold_pages": [
+            55
+          ]
+        },
+        "financebench_id_00685": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "Best Buy",
+          "inferred_year": null,
+          "gold_company": "Best Buy",
+          "gold_pages": [
+            39
+          ]
+        },
+        "financebench_id_01275": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": "Best Buy",
+          "inferred_year": 2023,
+          "gold_company": "Best Buy",
+          "gold_pages": [
+            41
+          ]
+        },
+        "financebench_id_00460": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": "Best Buy",
+          "inferred_year": 2024,
+          "gold_company": "Best Buy",
+          "gold_pages": [
+            16
+          ]
+        },
+        "financebench_id_03838": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": "Block",
+          "inferred_year": 2020,
+          "gold_company": "Block",
+          "gold_pages": [
+            85
+          ]
+        },
+        "financebench_id_00517": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": "Boeing",
+          "inferred_year": 2022,
+          "gold_company": "Boeing",
+          "gold_pages": [
+            61
+          ]
+        },
+        "financebench_id_00678": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "Boeing",
+          "inferred_year": 2022,
+          "gold_company": "Boeing",
+          "gold_pages": [
+            54
+          ]
+        },
+        "financebench_id_01290": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "Boeing",
+          "inferred_year": 2022,
+          "gold_company": "Boeing",
+          "gold_pages": [
+            9,
+            13,
+            7
+          ]
+        },
+        "financebench_id_00464": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "Boeing",
+          "inferred_year": null,
+          "gold_company": "Boeing",
+          "gold_pages": [
+            7
+          ]
+        },
+        "financebench_id_03473": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": "Coca-Cola",
+          "inferred_year": 2017,
+          "gold_company": "Coca-Cola",
+          "gold_pages": [
+            73,
+            75
+          ]
+        },
+        "financebench_id_06272": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": "Coca-Cola",
+          "inferred_year": 2022,
+          "gold_company": "Coca-Cola",
+          "gold_pages": [
+            65,
+            62
+          ]
+        },
+        "financebench_id_01346": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": "Corning",
+          "inferred_year": 2022,
+          "gold_company": "Corning",
+          "gold_pages": [
+            23
+          ]
+        },
+        "financebench_id_00005": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": "Corning",
+          "inferred_year": 2022,
+          "gold_company": "Corning",
+          "gold_pages": [
+            59
+          ]
+        },
+        "financebench_id_05915": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "CVS Health",
+          "inferred_year": 2018,
+          "gold_company": "CVS Health",
+          "gold_pages": [
+            301,
+            303
+          ]
+        },
+        "financebench_id_00790": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "CVS Health",
+          "inferred_year": 2022,
+          "gold_company": "CVS Health",
+          "gold_pages": [
+            107,
+            109
+          ]
+        },
+        "financebench_id_00839": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": "Foot Locker",
+          "inferred_year": null,
+          "gold_company": "Foot Locker",
+          "gold_pages": [
+            1
+          ]
+        },
+        "financebench_id_04854": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": "General Mills",
+          "inferred_year": 2020,
+          "gold_company": "General Mills",
+          "gold_pages": [
+            51
+          ]
+        },
+        "financebench_id_10136": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "General Mills",
+          "inferred_year": 2022,
+          "gold_company": "General Mills",
+          "gold_pages": [
+            48,
+            44
+          ]
+        },
+        "financebench_id_00669": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "Johnson & Johnson",
+          "inferred_year": 2022,
+          "gold_company": "Johnson & Johnson",
+          "gold_pages": [
+            33
+          ]
+        },
+        "financebench_id_01490": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": "Johnson & Johnson",
+          "inferred_year": 2023,
+          "gold_company": "Johnson & Johnson",
+          "gold_pages": [
+            3
+          ]
+        },
+        "financebench_id_01491": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": "Johnson & Johnson",
+          "inferred_year": 2023,
+          "gold_company": "Johnson & Johnson",
+          "gold_pages": [
+            3
+          ]
+        },
+        "financebench_id_01487": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": "Johnson & Johnson",
+          "inferred_year": 2023,
+          "gold_company": "Johnson & Johnson",
+          "gold_pages": [
+            9
+          ]
+        },
+        "financebench_id_00299": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": "JPMorgan",
+          "inferred_year": 2021,
+          "gold_company": "JPMorgan",
+          "gold_pages": [
+            18
+          ]
+        },
+        "financebench_id_02119": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "JPMorgan",
+          "inferred_year": 2021,
+          "gold_company": "JPMorgan",
+          "gold_pages": [
+            5
+          ]
+        },
+        "financebench_id_00394": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "JPMorgan",
+          "inferred_year": 2022,
+          "gold_company": "JPMorgan",
+          "gold_pages": [
+            20
+          ]
+        },
+        "financebench_id_10499": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "Kraft Heinz",
+          "inferred_year": 2019,
+          "gold_company": "Kraft Heinz",
+          "gold_pages": [
+            49,
+            51
+          ]
+        },
+        "financebench_id_04412": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": "Lockheed Martin",
+          "inferred_year": 2020,
+          "gold_company": "Lockheed Martin",
+          "gold_pages": [
+            66,
+            68
+          ]
+        },
+        "financebench_id_04171": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "MGM Resorts",
+          "inferred_year": 2018,
+          "gold_company": "MGM Resorts",
+          "gold_pages": [
+            56
+          ]
+        },
+        "financebench_id_03849": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "MGM Resorts",
+          "inferred_year": 2020,
+          "gold_company": "MGM Resorts",
+          "gold_pages": [
+            64,
+            66
+          ]
+        },
+        "financebench_id_01912": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": "MGM Resorts",
+          "inferred_year": 2022,
+          "gold_company": "MGM Resorts",
+          "gold_pages": [
+            2,
+            3
+          ]
+        },
+        "financebench_id_00407": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": "MGM Resorts",
+          "inferred_year": 2023,
+          "gold_company": "MGM Resorts",
+          "gold_pages": [
+            10
+          ]
+        },
+        "financebench_id_00552": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "Microsoft",
+          "inferred_year": 2023,
+          "gold_company": "Microsoft",
+          "gold_pages": [
+            59
+          ]
+        },
+        "financebench_id_03282": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": "Netflix",
+          "inferred_year": 2017,
+          "gold_company": "Netflix",
+          "gold_pages": [
+            44
+          ]
+        },
+        "financebench_id_03531": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": "Nike",
+          "inferred_year": 2019,
+          "gold_company": "Nike",
+          "gold_pages": [
+            53
+          ]
+        },
+        "financebench_id_01163": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": "Nike",
+          "inferred_year": 2023,
+          "gold_company": "Nike",
+          "gold_pages": [
+            61
+          ]
+        },
+        "financebench_id_01009": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "PepsiCo",
+          "inferred_year": 2022,
+          "gold_company": "PepsiCo",
+          "gold_pages": [
+            3,
+            4
+          ]
+        },
+        "financebench_id_00735": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "PepsiCo",
+          "inferred_year": 2022,
+          "gold_company": "PepsiCo",
+          "gold_pages": [
+            25
+          ]
+        },
+        "financebench_id_01328": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": "PepsiCo",
+          "inferred_year": 2022,
+          "gold_company": "PepsiCo",
+          "gold_pages": [
+            77
+          ]
+        },
+        "financebench_id_04481": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "PepsiCo",
+          "inferred_year": 2022,
+          "gold_company": "PepsiCo",
+          "gold_pages": [
+            61,
+            63
+          ]
+        },
+        "financebench_id_01482": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": "PepsiCo",
+          "inferred_year": 2023,
+          "gold_company": "PepsiCo",
+          "gold_pages": [
+            3
+          ]
+        },
+        "financebench_id_01474": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": "PepsiCo",
+          "inferred_year": 2023,
+          "gold_company": "PepsiCo",
+          "gold_pages": [
+            0
+          ]
+        },
+        "financebench_id_00302": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "Pfizer",
+          "inferred_year": 2021,
+          "gold_company": "Pfizer",
+          "gold_pages": [
+            58
+          ]
+        },
+        "financebench_id_00702": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "Pfizer",
+          "inferred_year": 2019,
+          "gold_company": "Pfizer",
+          "gold_pages": [
+            56
+          ]
+        },
+        "financebench_id_02419": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": "Pfizer",
+          "inferred_year": 2023,
+          "gold_company": "Pfizer",
+          "gold_pages": [
+            40
+          ]
+        },
+        "financebench_id_00746": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": "Ulta Beauty",
+          "inferred_year": 2023,
+          "gold_company": "Ulta Beauty",
+          "gold_pages": [
+            0
+          ]
+        },
+        "financebench_id_00605": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": "Ulta Beauty",
+          "inferred_year": 2023,
+          "gold_company": "Ulta Beauty",
+          "gold_pages": [
+            2
+          ]
+        },
+        "financebench_id_00606": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": "Ulta Beauty",
+          "inferred_year": 2023,
+          "gold_company": "Ulta Beauty",
+          "gold_pages": [
+            1
+          ]
+        },
+        "financebench_id_00216": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "Verizon",
+          "inferred_year": 2022,
+          "gold_company": "Verizon",
+          "gold_pages": [
+            55
+          ]
+        },
+        "financebench_id_00215": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": "Verizon",
+          "inferred_year": 2022,
+          "gold_company": "Verizon",
+          "gold_pages": [
+            22,
+            55
+          ]
+        },
+        "financebench_id_04784": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": "Walmart",
+          "inferred_year": 2019,
+          "gold_company": "Walmart",
+          "gold_pages": [
+            47
+          ]
+        },
+        "financebench_id_06741": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": "Walmart",
+          "inferred_year": 2020,
+          "gold_company": "Walmart",
+          "gold_pages": [
+            50,
+            55
+          ]
+        }
+      }
+    },
+    "Oracle (Gold Co+Yr)": {
+      "page_hit_10": 43,
+      "page_hit_rate": 0.5733333333333334,
+      "page_hit_95_ci": [
+        0.4605279232927693,
+        0.6789925798097525
+      ],
+      "token_hit_10": 25,
+      "token_hit_rate": 0.3333333333333333,
+      "token_hit_95_ci": [
+        0.23708220863575521,
+        0.44582573885851345
+      ],
+      "total": 75,
+      "per_question": {
+        "financebench_id_00499": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "3M",
+          "gold_pages": [
+            49,
+            51,
+            47
+          ]
+        },
+        "financebench_id_01865": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "3M",
+          "gold_pages": [
+            24
+          ]
+        },
+        "financebench_id_00807": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "3M",
+          "gold_pages": [
+            4
+          ]
+        },
+        "financebench_id_00941": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "3M",
+          "gold_pages": [
+            0
+          ]
+        },
+        "financebench_id_02987": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Activision Blizzard",
+          "gold_pages": [
+            68,
+            69
+          ]
+        },
+        "financebench_id_07507": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Adobe",
+          "gold_pages": [
+            61
+          ]
+        },
+        "financebench_id_03856": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Adobe",
+          "gold_pages": [
+            56,
+            60
+          ]
+        },
+        "financebench_id_00438": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Adobe",
+          "gold_pages": [
+            53
+          ]
+        },
+        "financebench_id_00540": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "AES Corporation",
+          "gold_pages": [
+            129,
+            131
+          ]
+        },
+        "financebench_id_08135": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Amazon",
+          "gold_pages": [
+            37
+          ]
+        },
+        "financebench_id_01079": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Amcor",
+          "gold_pages": [
+            63
+          ]
+        },
+        "financebench_id_01148": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Amcor",
+          "gold_pages": [
+            4
+          ]
+        },
+        "financebench_id_00684": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Amcor",
+          "gold_pages": [
+            49
+          ]
+        },
+        "financebench_id_01936": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Amcor",
+          "gold_pages": [
+            14
+          ]
+        },
+        "financebench_id_01928": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Amcor",
+          "gold_pages": [
+            11
+          ]
+        },
+        "financebench_id_00222": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "AMD",
+          "gold_pages": [
+            55
+          ]
+        },
+        "financebench_id_00995": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "AMD",
+          "gold_pages": [
+            3
+          ]
+        },
+        "financebench_id_00917": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "AMD",
+          "gold_pages": [
+            42
+          ]
+        },
+        "financebench_id_00563": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "AMD",
+          "gold_pages": [
+            47
+          ]
+        },
+        "financebench_id_00720": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "American Express",
+          "gold_pages": [
+            95
+          ]
+        },
+        "financebench_id_01351": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "American Express",
+          "gold_pages": [
+            43
+          ]
+        },
+        "financebench_id_01981": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "American Express",
+          "gold_pages": [
+            44
+          ]
+        },
+        "financebench_id_04254": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "American Water Works",
+          "gold_pages": [
+            85,
+            87
+          ]
+        },
+        "financebench_id_00070": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "American Water Works",
+          "gold_pages": [
+            80,
+            81
+          ]
+        },
+        "financebench_id_02608": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Best Buy",
+          "gold_pages": [
+            55
+          ]
+        },
+        "financebench_id_00685": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Best Buy",
+          "gold_pages": [
+            39
+          ]
+        },
+        "financebench_id_01275": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Best Buy",
+          "gold_pages": [
+            41
+          ]
+        },
+        "financebench_id_00460": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Best Buy",
+          "gold_pages": [
+            16
+          ]
+        },
+        "financebench_id_03838": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Block",
+          "gold_pages": [
+            85
+          ]
+        },
+        "financebench_id_00517": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Boeing",
+          "gold_pages": [
+            61
+          ]
+        },
+        "financebench_id_00678": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Boeing",
+          "gold_pages": [
+            54
+          ]
+        },
+        "financebench_id_01290": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Boeing",
+          "gold_pages": [
+            9,
+            13,
+            7
+          ]
+        },
+        "financebench_id_00464": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Boeing",
+          "gold_pages": [
+            7
+          ]
+        },
+        "financebench_id_03473": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Coca-Cola",
+          "gold_pages": [
+            73,
+            75
+          ]
+        },
+        "financebench_id_06272": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Coca-Cola",
+          "gold_pages": [
+            65,
+            62
+          ]
+        },
+        "financebench_id_01346": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Corning",
+          "gold_pages": [
+            23
+          ]
+        },
+        "financebench_id_00005": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Corning",
+          "gold_pages": [
+            59
+          ]
+        },
+        "financebench_id_05915": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "CVS Health",
+          "gold_pages": [
+            301,
+            303
+          ]
+        },
+        "financebench_id_00790": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "CVS Health",
+          "gold_pages": [
+            107,
+            109
+          ]
+        },
+        "financebench_id_00839": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Foot Locker",
+          "gold_pages": [
+            1
+          ]
+        },
+        "financebench_id_04854": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "General Mills",
+          "gold_pages": [
+            51
+          ]
+        },
+        "financebench_id_10136": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "General Mills",
+          "gold_pages": [
+            48,
+            44
+          ]
+        },
+        "financebench_id_00669": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Johnson & Johnson",
+          "gold_pages": [
+            33
+          ]
+        },
+        "financebench_id_01490": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Johnson & Johnson",
+          "gold_pages": [
+            3
+          ]
+        },
+        "financebench_id_01491": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Johnson & Johnson",
+          "gold_pages": [
+            3
+          ]
+        },
+        "financebench_id_01487": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Johnson & Johnson",
+          "gold_pages": [
+            9
+          ]
+        },
+        "financebench_id_00299": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "JPMorgan",
+          "gold_pages": [
+            18
+          ]
+        },
+        "financebench_id_02119": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "JPMorgan",
+          "gold_pages": [
+            5
+          ]
+        },
+        "financebench_id_00394": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "JPMorgan",
+          "gold_pages": [
+            20
+          ]
+        },
+        "financebench_id_10499": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Kraft Heinz",
+          "gold_pages": [
+            49,
+            51
+          ]
+        },
+        "financebench_id_04412": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Lockheed Martin",
+          "gold_pages": [
+            66,
+            68
+          ]
+        },
+        "financebench_id_04171": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "MGM Resorts",
+          "gold_pages": [
+            56
+          ]
+        },
+        "financebench_id_03849": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "MGM Resorts",
+          "gold_pages": [
+            64,
+            66
+          ]
+        },
+        "financebench_id_01912": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "MGM Resorts",
+          "gold_pages": [
+            2,
+            3
+          ]
+        },
+        "financebench_id_00407": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "MGM Resorts",
+          "gold_pages": [
+            10
+          ]
+        },
+        "financebench_id_00552": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Microsoft",
+          "gold_pages": [
+            59
+          ]
+        },
+        "financebench_id_03282": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Netflix",
+          "gold_pages": [
+            44
+          ]
+        },
+        "financebench_id_03531": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Nike",
+          "gold_pages": [
+            53
+          ]
+        },
+        "financebench_id_01163": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Nike",
+          "gold_pages": [
+            61
+          ]
+        },
+        "financebench_id_01009": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "PepsiCo",
+          "gold_pages": [
+            3,
+            4
+          ]
+        },
+        "financebench_id_00735": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "PepsiCo",
+          "gold_pages": [
+            25
+          ]
+        },
+        "financebench_id_01328": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "PepsiCo",
+          "gold_pages": [
+            77
+          ]
+        },
+        "financebench_id_04481": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "PepsiCo",
+          "gold_pages": [
+            61,
+            63
+          ]
+        },
+        "financebench_id_01482": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "PepsiCo",
+          "gold_pages": [
+            3
+          ]
+        },
+        "financebench_id_01474": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "PepsiCo",
+          "gold_pages": [
+            0
+          ]
+        },
+        "financebench_id_00302": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Pfizer",
+          "gold_pages": [
+            58
+          ]
+        },
+        "financebench_id_00702": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Pfizer",
+          "gold_pages": [
+            56
+          ]
+        },
+        "financebench_id_02419": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Pfizer",
+          "gold_pages": [
+            40
+          ]
+        },
+        "financebench_id_00746": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Ulta Beauty",
+          "gold_pages": [
+            0
+          ]
+        },
+        "financebench_id_00605": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Ulta Beauty",
+          "gold_pages": [
+            2
+          ]
+        },
+        "financebench_id_00606": {
+          "page_hit": true,
+          "token_hit": true,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Ulta Beauty",
+          "gold_pages": [
+            1
+          ]
+        },
+        "financebench_id_00216": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Verizon",
+          "gold_pages": [
+            55
+          ]
+        },
+        "financebench_id_00215": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Verizon",
+          "gold_pages": [
+            22,
+            55
+          ]
+        },
+        "financebench_id_04784": {
+          "page_hit": false,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Walmart",
+          "gold_pages": [
+            47
+          ]
+        },
+        "financebench_id_06741": {
+          "page_hit": true,
+          "token_hit": false,
+          "inferred_company": null,
+          "inferred_year": null,
+          "gold_company": "Walmart",
+          "gold_pages": [
+            50,
+            55
+          ]
+        }
+      }
+    }
+  },
+  "paired_summary": {
+    "Config C vs Config A": {
+      "page_hit": {
+        "both": 28,
+        "only_Config C (Inferred)": 14,
+        "only_Config A (Vanilla)": 0,
+        "neither": 33,
+        "net_diff": 14
+      },
+      "token_hit": {
+        "both": 17,
+        "only_Config C (Inferred)": 7,
+        "only_Config A (Vanilla)": 0,
+        "neither": 51,
+        "net_diff": 7
+      }
+    },
+    "Oracle vs Config C": {
+      "page_hit": {
+        "both": 42,
+        "only_Oracle (Gold Co+Yr)": 1,
+        "only_Config C (Inferred)": 0,
+        "neither": 32,
+        "net_diff": 1
+      },
+      "token_hit": {
+        "both": 24,
+        "only_Oracle (Gold Co+Yr)": 1,
+        "only_Config C (Inferred)": 0,
+        "neither": 50,
+        "net_diff": 1
+      }
+    },
+    "Oracle vs Config A": {
+      "page_hit": {
+        "both": 28,
+        "only_Oracle (Gold Co+Yr)": 15,
+        "only_Config A (Vanilla)": 0,
+        "neither": 32,
+        "net_diff": 15
+      },
+      "token_hit": {
+        "both": 17,
+        "only_Oracle (Gold Co+Yr)": 8,
+        "only_Config A (Vanilla)": 0,
+        "neither": 50,
+        "net_diff": 8
+      }
+    }
+  },
+  "extraction_stats": {
+    "company_accuracy": "75/75 (100.0%)",
+    "year_accuracy": "70/75 (93.3%)",
+    "both_accuracy": "70/75 (93.3%)"
+  }
+}
