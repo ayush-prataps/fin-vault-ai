@@ -171,7 +171,17 @@ Return ONLY a valid JSON object:
 {{"score": 1, "reason": "brief 1-sentence reason"}} or {{"score": 0, "reason": "brief 1-sentence reason"}}"""
 
     try:
-        res = call_with_retry(call_llm, prompt=prompt, model=model)
+        judge_url = settings.judge_base_url or settings.llm_base_url
+        judge_key = settings.judge_api_key or settings.llm_api_key
+        judge_m = settings.judge_model or model
+        res = call_with_retry(
+            call_llm,
+            prompt=prompt,
+            model=judge_m,
+            base_url=judge_url,
+            api_key=judge_key,
+            allow_fallback=False,
+        )
         raw_text = res.get("output", "").strip()
         # Parse JSON from response
         json_match = re.search(r"\{.*\}", raw_text, re.DOTALL)
@@ -254,7 +264,7 @@ def run_evaluation() -> Dict[str, Any]:
 
         # 4. Generate Answer using Config B top 5
         rag_prompt = build_rag_prompt(query_text, chunks_b_5)
-        llm_resp = call_with_retry(call_llm, prompt=rag_prompt, model=target_model)
+        llm_resp = call_with_retry(call_llm, prompt=rag_prompt, model=target_model, allow_fallback=False)
         api_model = llm_resp["model"]
         pred_answer = llm_resp.get("output", "").strip()
         tokens_used = llm_resp.get("tokens_used", 0)

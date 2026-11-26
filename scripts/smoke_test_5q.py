@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""5-question live smoke test over dev split for dual-provider pipeline."""
+"""5-question live smoke test over dev split for OpenAI-compatible LLM pipeline."""
 import json
 import os
 import sys
@@ -19,7 +19,6 @@ SPLIT_PATH = BASE_DIR / "eval" / "results" / "split_75_75.json"
 with open(SPLIT_PATH, "r", encoding="utf-8") as f:
     dev_ids = json.load(f)["dev_ids"]
 
-# Pick 5 questions from the dev split
 dev_id_set = set(dev_ids[:5])
 questions = []
 with open(DATA_PATH, "r", encoding="utf-8") as f:
@@ -31,7 +30,7 @@ with open(DATA_PATH, "r", encoding="utf-8") as f:
             questions.append(d)
 
 print(f"=== Running 5-Question Smoke Test (Dev Split) ===")
-print(f"Default Provider: {settings.llm_base_url} | Model: {settings.llm_model or settings.deepseek_model}\n")
+print(f"Endpoint: {settings.llm_base_url} | Model: {settings.llm_model}\n")
 
 results = []
 for idx, q in enumerate(questions, 1):
@@ -39,7 +38,6 @@ for idx, q in enumerate(questions, 1):
     q_text = q["question"]
     company = q.get("company")
     
-    # Inferred year / doc metadata if present
     start_t = time.time()
     chunks = retrieve_chunks(
         query=q_text,
@@ -48,7 +46,7 @@ for idx, q in enumerate(questions, 1):
         top_k=10,
     )
     prompt = build_rag_prompt(q_text, chunks)
-    llm_resp = call_llm(prompt, use_cache=False)
+    llm_resp = call_llm(prompt, use_cache=False, allow_fallback=False)
     elapsed_ms = int((time.time() - start_t) * 1000)
 
     res_item = {
@@ -58,8 +56,6 @@ for idx, q in enumerate(questions, 1):
         "question": q_text,
         "model_returned": llm_resp["model"],
         "requested_model": llm_resp["requested_model"],
-        "provider": llm_resp["provider"],
-        "fallback_from": llm_resp.get("fallback_from"),
         "latency_ms": llm_resp["latency_ms"],
         "pipeline_latency_ms": elapsed_ms,
         "prompt_tokens": llm_resp["prompt_tokens"],
@@ -72,12 +68,11 @@ for idx, q in enumerate(questions, 1):
 
     print(f"[{idx}/5] {q_id} ({company})")
     print(f"  Question: {q_text}")
-    print(f"  Model (API): {res_item['model_returned']} | Provider: {res_item['provider']}")
+    print(f"  Model (API): {res_item['model_returned']}")
     print(f"  Latency: LLM={res_item['latency_ms']}ms | Total={elapsed_ms}ms")
     print(f"  Tokens: {res_item['total_tokens']} (prompt={res_item['prompt_tokens']}, comp={res_item['completion_tokens']})")
     print(f"  Answer:\n    {res_item['answer']}\n")
 
-# Summary
 total_tokens = sum(r["total_tokens"] for r in results)
 avg_llm_latency = sum(r["latency_ms"] for r in results) / len(results)
 print("=== SMOKE TEST SUMMARY ===")

@@ -180,6 +180,12 @@ textarea {
   color: var(--danger-text);
 }
 
+.alert.warning {
+  background-color: #fffbeb;
+  border: 1px solid #fde68a;
+  color: #92400e;
+}
+
 .results-container {
   display: flex;
   flex-direction: column;

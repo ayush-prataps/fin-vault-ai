@@ -107,6 +107,7 @@ def build_config_payload(
             "aliases_sha256": aliases_hash,
             "top_k": top_k,
         },
+        "judge_base_url": (os.getenv("JUDGE_BASE_URL", settings.judge_base_url) or "").strip(),
         "judge_model": judge_model,
         "judge_rubric_sha256": sha256_text(JUDGE_RUBRIC_TEMPLATE),
     }
@@ -178,14 +179,28 @@ class LLMPacer:
             print(f"    [pacer:{model}] est_rem={est_remaining:.0f} < need={needed_tokens}, sleeping {sleep_s:.1f}s")
             time.sleep(sleep_s)
 
-    def call(self, prompt: str, model: str, max_retries: int = 8) -> Dict[str, Any]:
+    def call(
+        self,
+        prompt: str,
+        model: str,
+        base_url: str | None = None,
+        api_key: str | None = None,
+        max_retries: int = 8,
+    ) -> Dict[str, Any]:
         needed = min(self.tpm_limit - 200, self._estimate_tokens(prompt))
         self._wait_if_needed(model, needed)
 
         delay = 8.0
         for attempt in range(max_retries):
             try:
-                res = call_llm(prompt=prompt, model=model, use_cache=False)
+                res = call_llm(
+                    prompt=prompt,
+                    model=model,
+                    base_url=base_url,
+                    api_key=api_key,
+                    use_cache=False,
+                    allow_fallback=False,  # Fallback strictly impossible in eval
+                )
                 rem_raw = res.get("ratelimit_remaining_tokens")
                 rst_raw = res.get("ratelimit_reset_tokens")
                 if rem_raw is not None:
@@ -231,6 +246,11 @@ def check_abstention(answer_text: str) -> bool:
         "cannot answer this question",
         "i cannot answer based on",
         "cannot answer based on",
+        "cannot fully answer",
+        "i cannot fully answer",
+        "unable to fully answer",
+        "cannot definitively confirm",
+        "cannot confirm",
         "excerpts do not contain enough information",
         "context does not contain enough information",
         "do not contain enough information to answer",
@@ -452,6 +472,8 @@ def judge_answer(
     justification: str,
     pred_answer: str,
     judge_model: str,
+    judge_base_url: str | None = None,
+    judge_api_key: str | None = None,
 ) -> Dict[str, Any]:
     """Run LLM judge with fixed rubric and cache verdict keyed by answer/gold hashes."""
     rubric_hash = sha256_text(JUDGE_RUBRIC_TEMPLATE)[:12]
@@ -465,7 +487,12 @@ def judge_answer(
         justification=justification or "N/A",
         pred_answer=pred_answer,
     )
-    res = pacer.call(prompt=prompt, model=judge_model)
+    res = pacer.call(
+        prompt=prompt,
+        model=judge_model,
+        base_url=judge_base_url,
+        api_key=judge_api_key,
+    )
     raw = (res.get("output") or "").strip()
     verdict = "wrong"
     reason = "Judge output parse failed"
@@ -814,17 +841,48 @@ def run_eval(args: argparse.Namespace) -> None:
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
 
-    generator_model = (args.model or os.getenv("LLM_MODEL", settings.llm_model) or settings.deepseek_model or "").strip()
+    generator_model = (args.model or os.getenv("LLM_MODEL", settings.llm_model) or "").strip()
     if not generator_model:
         raise ValueError("LLM_MODEL is not configured")
-    judge_model = (args.judge_model or generator_model).strip()
+    judge_model = (args.judge_model or os.getenv("JUDGE_MODEL", settings.judge_model) or generator_model).strip()
+    judge_base_url = (os.getenv("JUDGE_BASE_URL", settings.judge_base_url) or "").strip()
+    judge_api_key = (os.getenv("JUDGE_API_KEY", settings.judge_api_key) or "").strip()
+
     cfg = build_config_payload(args.prompt_version, args.top_k, generator_model, judge_model)
     cfg_hash = cfg["config_hash"]
     short_hash = cfg_hash[:12]
 
+    out_path = Path(args.output) if args.output else (RESULTS_DIR / f"answer_eval_{args.split}_{args.prompt_version}_k{args.top_k}.json")
+
+    # Guard 1: Held-out runs require a clean git working tree
+    # Guard 2: Held-out runs require the exact frozen config hash
+    # Guard 3: Held-out results are written once; rerun refuses without --force
+    if args.split == "test":
+        git_diff = subprocess.check_output(["git", "status", "--porcelain"], cwd=str(BASE_DIR)).decode().strip()
+        if git_diff:
+            raise RuntimeError(
+                f"Held-out evaluation blocked: git working tree has uncommitted changes:\n{git_diff}\n"
+                f"Commit all changes before running on the held-out test split."
+            )
+        if not args.frozen_config_hash:
+            raise ValueError(
+                "Held-out evaluation blocked: --frozen-config-hash=<hash> is required to verify the frozen config."
+            )
+        if cfg_hash != args.frozen_config_hash:
+            raise ValueError(
+                f"Held-out evaluation blocked: config hash mismatch!\n"
+                f"Expected frozen hash: {args.frozen_config_hash}\n"
+                f"Computed current hash: {cfg_hash}"
+            )
+        if out_path.exists() and not args.force:
+            raise FileExistsError(
+                f"Held-out evaluation result already exists at {out_path}.\n"
+                f"Rerun is blocked to prevent accidental overwrites. Pass --force to override."
+            )
+
     questions = load_questions(args.split, args.abstention_file)
     total = len(questions)
-    print(f"=== FinVault AI Answer-Level Eval | split={args.split} (n={total}) | model={generator_model} | prompt={args.prompt_version} | top_k={args.top_k} | cfg_hash={short_hash} ===")
+    print(f"=== FinVault AI Answer-Level Eval | split={args.split} (n={total}) | gen_model={generator_model} | judge_model={judge_model} | prompt={args.prompt_version} | top_k={args.top_k} | cfg_hash={short_hash} ===")
 
     model_slug = re.sub(r"[^a-zA-Z0-9._-]+", "_", generator_model)
     judge_slug = re.sub(r"[^a-zA-Z0-9._-]+", "_", judge_model)
@@ -839,6 +897,7 @@ def run_eval(args: argparse.Namespace) -> None:
     conn = psycopg2.connect(settings.database_url)
 
     records: List[Dict[str, Any]] = []
+    failed_questions: List[Dict[str, Any]] = []
     api_models_seen = set()
     judge_models_seen = set()
 
@@ -857,7 +916,34 @@ def run_eval(args: argparse.Namespace) -> None:
             chunks = ret["chunks"]
             prompt = build_rag_prompt(q_text, chunks, prompt_version=args.prompt_version)
 
-            llm_res = pacer.call(prompt=prompt, model=generator_model)
+            try:
+                llm_res = pacer.call(prompt=prompt, model=generator_model)
+            except Exception as exc:
+                print(f"!!! LOUD EVAL FAILURE for question {fb_id}: {exc}")
+                failed_questions.append({
+                    "financebench_id": fb_id,
+                    "stage": "generation",
+                    "error": str(exc),
+                })
+                records.append({
+                    "financebench_id": fb_id,
+                    "question": q_text,
+                    "company": q.get("company"),
+                    "gold_answer": q.get("answer"),
+                    "justification": q.get("justification"),
+                    "predicted_answer": "",
+                    "api_model": "error",
+                    "tokens_used": 0,
+                    "retrieved_chunks": chunks,
+                    "retrieval_page_hit": False,
+                    "retrieval_token_hit": False,
+                    "abstained": False,
+                    "verdict": "error",
+                    "eval_method": "failed",
+                    "judge_reason": f"API generation failure: {exc}",
+                })
+                continue
+
             cached = {
                 "cache_key": gen_cache_key,
                 "financebench_id": fb_id,
@@ -934,22 +1020,36 @@ def run_eval(args: argparse.Namespace) -> None:
                 judge_reason = f"Numeric value does not match gold ({gold_answer})."
                 j_model_used = None
             else:
-                j_entry = judge_answer(
-                    pacer=pacer,
-                    judge_cache=judge_cache,
-                    judge_cache_path=judge_cache_path,
-                    fb_id=fb_id,
-                    question=q_text,
-                    gold_answer=gold_answer,
-                    justification=justification,
-                    pred_answer=pred_answer,
-                    judge_model=judge_model,
-                )
-                verdict = j_entry["verdict"]
-                eval_method = "llm_judge"
-                judge_reason = j_entry["reason"]
-                j_model_used = j_entry["judge_model"]
-                judge_models_seen.add(j_model_used)
+                try:
+                    j_entry = judge_answer(
+                        pacer=pacer,
+                        judge_cache=judge_cache,
+                        judge_cache_path=judge_cache_path,
+                        fb_id=fb_id,
+                        question=q_text,
+                        gold_answer=gold_answer,
+                        justification=justification,
+                        pred_answer=pred_answer,
+                        judge_model=judge_model,
+                        judge_base_url=judge_base_url,
+                        judge_api_key=judge_api_key,
+                    )
+                    verdict = j_entry["verdict"]
+                    eval_method = "llm_judge"
+                    judge_reason = j_entry["reason"]
+                    j_model_used = j_entry["judge_model"]
+                    judge_models_seen.add(j_model_used)
+                except Exception as exc:
+                    print(f"!!! LOUD JUDGE FAILURE for question {fb_id}: {exc}")
+                    failed_questions.append({
+                        "financebench_id": fb_id,
+                        "stage": "judge",
+                        "error": str(exc),
+                    })
+                    verdict = "error"
+                    eval_method = "llm_judge"
+                    judge_reason = f"Judge API failure: {exc}"
+                    j_model_used = judge_model
 
         records.append({
             **cached,
@@ -980,8 +1080,12 @@ def run_eval(args: argparse.Namespace) -> None:
             "git_commit": get_git_commit(),
             "config_hash": cfg_hash,
             "frozen_config": cfg,
+            "generator_model": generator_model,
+            "judge_model": judge_model,
             "generator_models_returned_by_api": sorted(api_models_seen),
             "judge_models_returned_by_api": sorted(judge_models_seen),
+            "failed_questions": failed_questions,
+            "failure_count": len(failed_questions),
             "timestamp": datetime.now(timezone.utc).isoformat(),
             "review_files": review_paths,
         },
@@ -1020,6 +1124,8 @@ def main():
     parser.add_argument("--abstention-file", default=None)
     parser.add_argument("--output", default=None)
     parser.add_argument("--generate-reviews", action="store_true")
+    parser.add_argument("--frozen-config-hash", default=None, help="Expected frozen config hash (required for held-out test split)")
+    parser.add_argument("--force", action="store_true", help="Force overwrite of existing held-out results")
     args = parser.parse_args()
     run_eval(args)
 

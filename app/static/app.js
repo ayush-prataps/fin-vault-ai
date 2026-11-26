@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const yearSelect = document.getElementById("year-select");
   const submitBtn = document.getElementById("submit-btn");
   const errorBox = document.getElementById("error-box");
+  const fallbackBox = document.getElementById("fallback-box");
   const resultsBox = document.getElementById("results-box");
   const metaModel = document.getElementById("meta-model");
   const metaLatency = document.getElementById("meta-latency");
@@ -80,6 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!question) return;
 
     errorBox.classList.add("hidden");
+    fallbackBox.classList.add("hidden");
     resultsBox.classList.add("hidden");
     submitBtn.disabled = true;
     submitBtn.textContent = "Retrieving & Generating...";
@@ -117,7 +119,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function displayResults(data) {
-    metaModel.textContent = data.model || "-";
+    if (data.fallback_used) {
+      errorBox.textContent = `Primary model (${data.primary_model || "primary"}) failed: ${data.primary_error || "Unknown error"}`;
+      errorBox.classList.remove("hidden");
+      fallbackBox.textContent = `Now switching to fallback model: ${data.model || "fallback"}`;
+      fallbackBox.classList.remove("hidden");
+    } else {
+      errorBox.classList.add("hidden");
+      fallbackBox.classList.add("hidden");
+    }
+
+    metaModel.textContent = data.fallback_used ? `${data.model || "-"} (fallback)` : (data.model || "-");
     metaLatency.textContent = (data.latency_ms || 0) + "ms";
     metaTokens.textContent = data.tokens || 0;
     answerText.textContent = data.answer || "";
