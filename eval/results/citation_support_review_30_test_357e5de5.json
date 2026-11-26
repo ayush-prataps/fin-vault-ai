@@ -1,0 +1,1336 @@
+{
+  "sampled_answers": 30,
+  "total_non_abstained": 39,
+  "total_pairs": 136,
+  "seed": 42,
+  "items": [
+    {
+      "financebench_id": "financebench_id_01275",
+      "company": "Best Buy",
+      "question": "Among operations, investing, and financing activities, which brought in the most (or lost the least) cash flow for Best Buy in FY2023?",
+      "predicted_answer": "Based on the cash flow figures in the context:\n\n- Operating activities provided $1,824 [10].\n- Investing activities used $962 [10].\n- Financing activities used $1,806 [10].\n\nOperating activities brought in the most cash flow (and were the only category providing positive cash) for Best Buy in FY2023 [10].",
+      "pairs": [
+        {
+          "claim": "Operating activities provided $1,824 [10].",
+          "citation_num": 10,
+          "doc_name": "BESTBUY_2023_10K",
+          "year": 2023,
+          "page": 28,
+          "cited_chunk_text": "Operating activities $  1,824   $  3,252   $  4,927  \nInvesting activities   (962)    (1,372)    (788) \nFinancing activities   (1,806)    (4,297)    (876) \nEffect of exchange rate changes on cash   (8)    (3)    7  \nIncrease (decrease) in cash, cash equivalents and restricted cash $  (952)   $  (2,420)   $  3,270"
+        },
+        {
+          "claim": "Investing activities used $962 [10].",
+          "citation_num": 10,
+          "doc_name": "BESTBUY_2023_10K",
+          "year": 2023,
+          "page": 28,
+          "cited_chunk_text": "Operating activities $  1,824   $  3,252   $  4,927  \nInvesting activities   (962)    (1,372)    (788) \nFinancing activities   (1,806)    (4,297)    (876) \nEffect of exchange rate changes on cash   (8)    (3)    7  \nIncrease (decrease) in cash, cash equivalents and restricted cash $  (952)   $  (2,420)   $  3,270"
+        },
+        {
+          "claim": "Financing activities used $1,806 [10].",
+          "citation_num": 10,
+          "doc_name": "BESTBUY_2023_10K",
+          "year": 2023,
+          "page": 28,
+          "cited_chunk_text": "Operating activities $  1,824   $  3,252   $  4,927  \nInvesting activities   (962)    (1,372)    (788) \nFinancing activities   (1,806)    (4,297)    (876) \nEffect of exchange rate changes on cash   (8)    (3)    7  \nIncrease (decrease) in cash, cash equivalents and restricted cash $  (952)   $  (2,420)   $  3,270"
+        },
+        {
+          "claim": "Operating activities brought in the most cash flow (and were the only category providing positive cash) for Best Buy in FY2023 [10].",
+          "citation_num": 10,
+          "doc_name": "BESTBUY_2023_10K",
+          "year": 2023,
+          "page": 28,
+          "cited_chunk_text": "Operating activities $  1,824   $  3,252   $  4,927  \nInvesting activities   (962)    (1,372)    (788) \nFinancing activities   (1,806)    (4,297)    (876) \nEffect of exchange rate changes on cash   (8)    (3)    7  \nIncrease (decrease) in cash, cash equivalents and restricted cash $  (952)   $  (2,420)   $  3,270"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_00070",
+      "company": "American Water Works",
+      "question": "Does American Water Works have positive working capital based on FY2022 data? If working capital is not a useful or relevant metric for this company, then please state that and explain why.",
+      "predicted_answer": "Based on the FY2022 data in the provided excerpts, American Water Works has **negative working capital**.\n\nUsing the Consolidated Balance Sheets [1]:\n- **Total current liabilities** at December 31, 2022: **$2,811 million**\n- The excerpts do **not** explicitly state total current assets for 2022, so a precise working capital figure cannot be computed from the provided context alone. However, comparing total current liabilities of $2,811 million [1] against the largest identifiable current asset components is not possible because current assets are not itemized in the excerpt.\n\nWhat can be stated directly: total current liabilities were $2,811 million at December 31, 2022, up from $2,141 million at December 31, 2021 [1]. The excerpt does not include a total current assets line, so the exact working capital amount is not in the excerpts.\n\nRegarding relevance: the filing describes the business as capital intensive, with capital investments expected to exceed cash flows from operations over the next few years, funded through long-term debt and equity plus remaining HOS sale proceeds [5]. It also notes the Company addresses cash timing differences primarily through short-term liquidity funding mechanisms [7]. However, the excerpts do **not** explicitly state that working capital is not a useful or relevant metric for this company, so that characterization cannot be confirmed from the provided context.",
+      "pairs": [
+        {
+          "claim": "Based on the FY2022 data in the provided excerpts, American Water Works has **negative working capital**.",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "Using the Consolidated Balance Sheets [1]:",
+          "citation_num": 1,
+          "doc_name": "AMERICANWATERWORKS_2022_10K",
+          "year": 2022,
+          "page": 81,
+          "cited_chunk_text": "Table of Contents\nAmerican Water Works Company, Inc. and Subsidiary Companies\nConsolidated Balance Sheets\n(In millions, except share and per share data)\nDecember 31, 2022 December 31, 2021\nCAPITALIZATION AND LIABILITIES\nCapitalization:   \nCommon stock ($0.01 par value; 500,000,000 shares authorized; 187,200,539 and 186,880,413 shares\nissued, respectively) $ 2 $ 2 \nPaid-in-capital 6,824 6,781 \nRetained earnings 1,267 925 \nAccumulated other comprehensive loss (23) (45)\nTreasury stock, at cost (5,342,477 and 5,269,324 shares, respectively) (377) (365)\nTotal common shareholders' equity 7,693 7,298 \nLong-term debt 10,926 10,341 \nRedeemable preferred stock at redemption value 3 3 \nTotal long-term debt 10,929 10,344 \nTotal capitalization 18,622 17,642 \nCurrent liabilities:   \nShort-term debt 1,175 584 \nCurrent portion of long-term debt 281 57 \nAccounts payable 254 235 \nAccrued liabilities 706 701 \nAccrued taxes 49 176 \nAccrued interest 91 88 \nLiabilities related to assets held for sale \u2014 83 \nOther 255 217 \nTotal current liabilities 2,811 2,141 \nRegulatory and other long-term liabilities:   \nAdvances for construction 316 284 \nDeferred income taxes and investment tax credits 2,437 2,421 \nRegulatory liabilities 1,590 1,600 \nOperating lease liabilities 70 80 \nAccrued pension expense 235 285 \nOther 202 180 \nTotal regulatory and other long-term liabilities 4,850 4,850 \nContributions in aid of construction 1,504 1,442 \nCommitments and contingencies (See Note 16)\nTotal capitalization and liabilities $ 27,787 $ 26,075 \nThe accompanying notes are an integral part of these Consolidated Financial Statements. \n80"
+        },
+        {
+          "claim": "**Total current liabilities** at December 31, 2022: **$2,811 million**",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "The excerpts do **not** explicitly state total current assets for 2022, so a precise working capital figure cannot be computed from the provided context alone.",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "However, comparing total current liabilities of $2,811 million [1] against the largest identifiable current asset components is not possible because current assets are not itemized in the excerpt.",
+          "citation_num": 1,
+          "doc_name": "AMERICANWATERWORKS_2022_10K",
+          "year": 2022,
+          "page": 81,
+          "cited_chunk_text": "Table of Contents\nAmerican Water Works Company, Inc. and Subsidiary Companies\nConsolidated Balance Sheets\n(In millions, except share and per share data)\nDecember 31, 2022 December 31, 2021\nCAPITALIZATION AND LIABILITIES\nCapitalization:   \nCommon stock ($0.01 par value; 500,000,000 shares authorized; 187,200,539 and 186,880,413 shares\nissued, respectively) $ 2 $ 2 \nPaid-in-capital 6,824 6,781 \nRetained earnings 1,267 925 \nAccumulated other comprehensive loss (23) (45)\nTreasury stock, at cost (5,342,477 and 5,269,324 shares, respectively) (377) (365)\nTotal common shareholders' equity 7,693 7,298 \nLong-term debt 10,926 10,341 \nRedeemable preferred stock at redemption value 3 3 \nTotal long-term debt 10,929 10,344 \nTotal capitalization 18,622 17,642 \nCurrent liabilities:   \nShort-term debt 1,175 584 \nCurrent portion of long-term debt 281 57 \nAccounts payable 254 235 \nAccrued liabilities 706 701 \nAccrued taxes 49 176 \nAccrued interest 91 88 \nLiabilities related to assets held for sale \u2014 83 \nOther 255 217 \nTotal current liabilities 2,811 2,141 \nRegulatory and other long-term liabilities:   \nAdvances for construction 316 284 \nDeferred income taxes and investment tax credits 2,437 2,421 \nRegulatory liabilities 1,590 1,600 \nOperating lease liabilities 70 80 \nAccrued pension expense 235 285 \nOther 202 180 \nTotal regulatory and other long-term liabilities 4,850 4,850 \nContributions in aid of construction 1,504 1,442 \nCommitments and contingencies (See Note 16)\nTotal capitalization and liabilities $ 27,787 $ 26,075 \nThe accompanying notes are an integral part of these Consolidated Financial Statements. \n80"
+        },
+        {
+          "claim": "What can be stated directly: total current liabilities were $2,811 million at December 31, 2022, up from $2,141 million at December 31, 2021 [1].",
+          "citation_num": 1,
+          "doc_name": "AMERICANWATERWORKS_2022_10K",
+          "year": 2022,
+          "page": 81,
+          "cited_chunk_text": "Table of Contents\nAmerican Water Works Company, Inc. and Subsidiary Companies\nConsolidated Balance Sheets\n(In millions, except share and per share data)\nDecember 31, 2022 December 31, 2021\nCAPITALIZATION AND LIABILITIES\nCapitalization:   \nCommon stock ($0.01 par value; 500,000,000 shares authorized; 187,200,539 and 186,880,413 shares\nissued, respectively) $ 2 $ 2 \nPaid-in-capital 6,824 6,781 \nRetained earnings 1,267 925 \nAccumulated other comprehensive loss (23) (45)\nTreasury stock, at cost (5,342,477 and 5,269,324 shares, respectively) (377) (365)\nTotal common shareholders' equity 7,693 7,298 \nLong-term debt 10,926 10,341 \nRedeemable preferred stock at redemption value 3 3 \nTotal long-term debt 10,929 10,344 \nTotal capitalization 18,622 17,642 \nCurrent liabilities:   \nShort-term debt 1,175 584 \nCurrent portion of long-term debt 281 57 \nAccounts payable 254 235 \nAccrued liabilities 706 701 \nAccrued taxes 49 176 \nAccrued interest 91 88 \nLiabilities related to assets held for sale \u2014 83 \nOther 255 217 \nTotal current liabilities 2,811 2,141 \nRegulatory and other long-term liabilities:   \nAdvances for construction 316 284 \nDeferred income taxes and investment tax credits 2,437 2,421 \nRegulatory liabilities 1,590 1,600 \nOperating lease liabilities 70 80 \nAccrued pension expense 235 285 \nOther 202 180 \nTotal regulatory and other long-term liabilities 4,850 4,850 \nContributions in aid of construction 1,504 1,442 \nCommitments and contingencies (See Note 16)\nTotal capitalization and liabilities $ 27,787 $ 26,075 \nThe accompanying notes are an integral part of these Consolidated Financial Statements. \n80"
+        },
+        {
+          "claim": "The excerpt does not include a total current assets line, so the exact working capital amount is not in the excerpts.",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "Regarding relevance: the filing describes the business as capital intensive, with capital investments expected to exceed cash flows from operations over the next few years, funded through long-term debt and equity plus remaining HOS sale proceeds [5].",
+          "citation_num": 5,
+          "doc_name": "AMERICANWATERWORKS_2022_10K",
+          "year": 2022,
+          "page": 63,
+          "cited_chunk_text": "the extent available, cash flows from operations. Since the Company expects its capital investments over the next few years to be greater than its cash flows\nfrom operating activities, the Company currently plans to fund the excess of its capital investments over its cash flows from operating activities for the next\nfive years through a combination of long-term debt and equity in addition to the remaining proceeds from the sale of HOS. The remaining proceeds from the\nsale of HOS include receipt of a seller promissory note, plus interest, and a contingent cash payment payable upon satisfaction of certain conditions on or\nbefore December 31, 2023. If necessary, the Company may delay certain capital investments or other funding requirements or pursue financing from other\nsources to preserve liquidity. In this event, the Company believes it can rely upon cash flows from operations to meet its obligations and fund its minimum\nrequired capital investments for an extended period of time.\nThe Company regularly evaluates and monitors its cash requirements for capital investments, acquisitions, operations, commitments, debt maturities,\ninterest and dividends. The Company\u2019s business is capital intensive, with a majority of this capital funded by cash flows from operations. The Company also\nobtains funds from external sources, primarily in the debt markets and through short-term commercial paper borrowings, and may also access the equity capital\nmarkets as needed or desired to support capital funding requirements. In order to meet short-term liquidity needs, American Water Capital Corp. (\u201cAWCC\u201d),\nthe wholly owned finance subsidiary of parent company, issues commercial paper that is supported by its revolving credit facility. The Company\u2019s access to\nexternal financing on reasonable terms may depend on, as appropriate, any or all of the following: current business conditions, including that of the utility and"
+        },
+        {
+          "claim": "It also notes the Company addresses cash timing differences primarily through short-term liquidity funding mechanisms [7].",
+          "citation_num": 7,
+          "doc_name": "AMERICANWATERWORKS_2022_10K",
+          "year": 2022,
+          "page": 64,
+          "cited_chunk_text": "acquisitions and construction projects, as well as cash needs, which can fluctuate significantly due to the seasonality of the business and other factors. The\nCompany addresses cash timing differences primarily through its short-term liquidity funding mechanisms.\nPresented in the table below is a summary of the major items affecting the Company\u2019s cash flows from operating activities:\n For the Years Ended December 31,\n(In millions) 2022 2021 2020\nNet income $ 820 $ 1,263 $ 709 \nAdd (less):    \nDepreciation and amortization 649 636 604 \nDeferred income taxes and amortization of investment tax credits (c) 80 230 207 \nOther non-cash activities (a) (16) (27) \u2014 \nChanges in working capital (b) (355) 126 (55)\nPension and non-pension postretirement benefit contributions (51) (40) (39)\n(Gain) or loss on sale of businesses (19) (747) \u2014 \nNet cash provided by operating activities $ 1,108 $ 1,441 $ 1,426 \n(a) Includes provision for losses on accounts receivable, pension and non-pension postretirement benefits and other non-cash, net. Details of each component can be found on the Consolidated\nStatements of Cash Flows.\n(b) Changes in working capital include changes to receivables and unbilled revenues, income tax receivable, accounts payable and accrued liabilities, accrued taxes and other current assets and\nliabilities, net.\n(c) The decrease in the 2022 deferred tax activity is primarily due to the settlement of the deferred tax liability related to New York American Water, sold in January 2022.\n63"
+        },
+        {
+          "claim": "However, the excerpts do **not** explicitly state that working capital is not a useful or relevant metric for this company, so that characterization cannot be confirmed from the provided context.",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_03531",
+      "company": "Nike",
+      "question": "According to the details clearly outlined within the balance sheet, how much total current assets did Nike have at the end of FY2019? Answer in USD millions.",
+      "predicted_answer": "Nike's total current assets at the end of FY2019 were $16,525 million [1].",
+      "pairs": [
+        {
+          "claim": "Nike's total current assets at the end of FY2019 were $16,525 million [1].",
+          "citation_num": 1,
+          "doc_name": "NIKE_2019_10K",
+          "year": 2019,
+          "page": 53,
+          "cited_chunk_text": "Table of Contents\nNIKE, INC.\nCONSOLIDATED BALANCE SHEETS\n \nMAY 31, (Dollars in millions)\n2019 2018 ASSETS\n  Current assets:\n  Cash and equivalents\n$ 4,466 $ 4,249 Short-term investments\n197 996 Accounts receivable, net\n4,272 3,498 Inventories\n5,622 5,261 Prepaid expenses and other current assets\n1,968 1,130 Total current assets\n16,525 15,134 Property, plant and equipment, net\n4,744 4,454 Identifiable intangible assets, net\n283 285 Goodwill\n154 154 Deferred income taxes and other assets\n2,011 2,509 TOTAL ASSETS\n$ 23,717 $ 22,536 LIABILITIES AND SHAREHOLDERS' EQUITY\n  Current liabilities:\n  Current portion of long-term debt\n$ 6 $ 6 Notes payable\n9 336 Accounts payable\n2,612 2,279 Accrued liabilities\n5,010 3,269 Income taxes payable\n229 150 Total current liabilities\n7,866 6,040 Long-term debt\n3,464 3,468 Deferred income taxes and other liabilities\n3,347 3,216 Commitments and contingencies (Note 18)\nRedeemable preferred stock\n\u2014 \u2014 Shareholders' equity:\n  Common stock at stated value:\n  Class A convertible \u2014 315 and 329 shares outstanding\n\u2014 \u2014 Class B \u2014 1,253 and 1,272 shares outstanding\n3 3 Capital in excess of stated value\n7,163 6,384 Accumulated other comprehensive income (loss)\n231 (92 ) Retained earnings\n1,643 3,517 Total shareholders' equity\n9,040 9,812 TOTAL LIABILITIES AND SHAREHOLDERS' EQUITY\n$ 23,717 $ 22,536 The accompanying Notes to the Consolidated Financial Statements are an integral part of this statement.\n52 \nNIKE, INC."
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_01487",
+      "company": "Johnson & Johnson",
+      "question": "Did JnJ's net earnings as a percent of sales increase in Q2 of FY2023 compared to Q2 of FY2022?",
+      "predicted_answer": "Yes. Net earnings as a percent of sales was 20.1% in Q2 2023 versus 20.0% in Q2 2022 [10].",
+      "pairs": [
+        {
+          "claim": "Net earnings as a percent of sales was 20.1% in Q2 2023 versus 20.0% in Q2 2022 [10].",
+          "citation_num": 10,
+          "doc_name": "JOHNSON_JOHNSON_2023Q2_EARNINGS",
+          "year": 2023,
+          "page": 9,
+          "cited_chunk_text": "Sales to customers 25,530$      100.0      24,020$     100.0      6.3\nCost of products sold 8,212          32.2         7,919         33.0         3.7\nGross Profit 17,318        67.8         16,101       67.0         7.6\nSelling, marketing and administrative expenses 6,665          26.1         6,226         25.9         7.1\nResearch and development expense 3,829          15.0         3,703         15.4         3.4\nInterest (income) expense, net (23)              (0.1)         (26)             (0.1)          \nOther (income) expense, net* (60)              (0.2)         273            1.1            \nRestructuring 145             0.5           85              0.4            \nEarnings before provision for taxes on income 6,762          26.5         5,840         24.3         15.8\nProvision for taxes on income 1,618          6.4           1,026         4.3           57.7\nNet earnings 5,144$        20.1         4,814$       20.0         6.9\nNet earnings per share (Diluted) 1.96$          1.80$         8.9"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_00995",
+      "company": "AMD",
+      "question": "What are the major products and services that AMD sells as of FY22?",
+      "predicted_answer": "Based on the provided filing excerpts, AMD sells the following major products and services:\n\n- Server microprocessors (CPUs) and graphics processing units (GPUs), data processing units (DPUs), Field Programmable Gate Arrays (FPGAs), and Adaptive System-on-Chip (SoC) products for data centers [3]\n- CPUs, accelerated processing units (APUs) that integrate CPUs and GPUs, and chipsets for desktop and notebook personal computers [3]\n- Discrete GPUs, and semi-custom SoC products and development services [3]\n- Embedded CPUs, GPUs, APUs, FPGAs, and Adaptive SoC products [3]\n- From time to time, it may also sell or license portions of its intellectual property (IP) portfolio [3]\n\nAdditional product detail from the excerpts:\n- Client processors marketed under brands including AMD Ryzen, AMD Ryzen PRO, Ryzen Threadripper, Ryzen Threadripper PRO, AMD Athlon, AMD Athlon PRO, and AMD PRO A-Series, for desktop and notebook personal computers [1]\n- Consumer graphics under AMD Radeon graphics, and AMD Embedded Radeon graphics for the embedded graphics market [1]\n- Professional graphics under AMD Radeon PRO graphics [1]\n- Data center graphics under Radeon Instinct, Radeon PRO V-series, and AMD Instinct accelerators for servers [1]\n- Chipsets sold under AMD trademarks [1]\n- Server microprocessors under the AMD EPYC brand [1]\n- Low-power versions of AMD Athlon, as well as AMD Geode, AMD Ryzen, AMD EPYC, AMD R-Series and G-Series processors as embedded processor solutions [1]\n- FPGA product brands: Virtex-6, Virtex-7, Virtex UltraScale+, Kintex-7, Kintex UltraScale, Kintex UltraScale+, Artix-7, Artix UltraScale+, Spartan-6 (list continues in excerpt) [1]\n- Chipsets including X570, B550 and A520 for socket AM4 [4]; WRX80 chipsets for HEDT and Workstation segments [5]; B450 and A320 chipsets for the AM4 desktop platform [10]\n- FPGA-related products including high-volume and low-cost FPGAs, ASICs and ASSPs, CPLDs, DSP devices, products with embedded processors, products with embedded multi-gigabit transceivers, discrete general-purpose GPUs targeting data center and automotive applications, and other new or emerging programmable logic products [6]",
+      "pairs": [
+        {
+          "claim": "Based on the provided filing excerpts, AMD sells the following major products and services:",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "Server microprocessors (CPUs) and graphics processing units (GPUs), data processing units (DPUs), Field Programmable Gate Arrays (FPGAs), and Adaptive System-on-Chip (SoC) products for data centers [3]",
+          "citation_num": 3,
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 3,
+          "cited_chunk_text": "We are a global semiconductor company primarily offering:\n\u2022 server microprocessors (CPUs) and graphics processing units (GPUs), data processing units (DPUs), Field Programmable Gate Arrays (FPGAs), and\nAdaptive System-on-Chip (SoC) products for data centers;\n\u2022 CPUs, accelerated processing units (APUs) that integrate CPUs and GPUs, and chipsets for desktop and notebook personal computers;\n\u2022 discrete GPUs, and semi-custom SoC products and development services; and\n\u2022 embedded CPUs, GPUs, APUs, FPGAs, and Adaptive SoC products.\nFrom time to time, we may also sell or license portions of our intellectual property (IP) portfolio.\n1"
+        },
+        {
+          "claim": "CPUs, accelerated processing units (APUs) that integrate CPUs and GPUs, and chipsets for desktop and notebook personal computers [3]",
+          "citation_num": 3,
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 3,
+          "cited_chunk_text": "We are a global semiconductor company primarily offering:\n\u2022 server microprocessors (CPUs) and graphics processing units (GPUs), data processing units (DPUs), Field Programmable Gate Arrays (FPGAs), and\nAdaptive System-on-Chip (SoC) products for data centers;\n\u2022 CPUs, accelerated processing units (APUs) that integrate CPUs and GPUs, and chipsets for desktop and notebook personal computers;\n\u2022 discrete GPUs, and semi-custom SoC products and development services; and\n\u2022 embedded CPUs, GPUs, APUs, FPGAs, and Adaptive SoC products.\nFrom time to time, we may also sell or license portions of our intellectual property (IP) portfolio.\n1"
+        },
+        {
+          "claim": "Discrete GPUs, and semi-custom SoC products and development services [3]",
+          "citation_num": 3,
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 3,
+          "cited_chunk_text": "We are a global semiconductor company primarily offering:\n\u2022 server microprocessors (CPUs) and graphics processing units (GPUs), data processing units (DPUs), Field Programmable Gate Arrays (FPGAs), and\nAdaptive System-on-Chip (SoC) products for data centers;\n\u2022 CPUs, accelerated processing units (APUs) that integrate CPUs and GPUs, and chipsets for desktop and notebook personal computers;\n\u2022 discrete GPUs, and semi-custom SoC products and development services; and\n\u2022 embedded CPUs, GPUs, APUs, FPGAs, and Adaptive SoC products.\nFrom time to time, we may also sell or license portions of our intellectual property (IP) portfolio.\n1"
+        },
+        {
+          "claim": "Embedded CPUs, GPUs, APUs, FPGAs, and Adaptive SoC products [3]",
+          "citation_num": 3,
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 3,
+          "cited_chunk_text": "We are a global semiconductor company primarily offering:\n\u2022 server microprocessors (CPUs) and graphics processing units (GPUs), data processing units (DPUs), Field Programmable Gate Arrays (FPGAs), and\nAdaptive System-on-Chip (SoC) products for data centers;\n\u2022 CPUs, accelerated processing units (APUs) that integrate CPUs and GPUs, and chipsets for desktop and notebook personal computers;\n\u2022 discrete GPUs, and semi-custom SoC products and development services; and\n\u2022 embedded CPUs, GPUs, APUs, FPGAs, and Adaptive SoC products.\nFrom time to time, we may also sell or license portions of our intellectual property (IP) portfolio.\n1"
+        },
+        {
+          "claim": "From time to time, it may also sell or license portions of its intellectual property (IP) portfolio [3]",
+          "citation_num": 3,
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 3,
+          "cited_chunk_text": "We are a global semiconductor company primarily offering:\n\u2022 server microprocessors (CPUs) and graphics processing units (GPUs), data processing units (DPUs), Field Programmable Gate Arrays (FPGAs), and\nAdaptive System-on-Chip (SoC) products for data centers;\n\u2022 CPUs, accelerated processing units (APUs) that integrate CPUs and GPUs, and chipsets for desktop and notebook personal computers;\n\u2022 discrete GPUs, and semi-custom SoC products and development services; and\n\u2022 embedded CPUs, GPUs, APUs, FPGAs, and Adaptive SoC products.\nFrom time to time, we may also sell or license portions of our intellectual property (IP) portfolio.\n1"
+        },
+        {
+          "claim": "Client processors marketed under brands including AMD Ryzen, AMD Ryzen PRO, Ryzen Threadripper, Ryzen Threadripper PRO, AMD Athlon, AMD Athlon PRO, and AMD PRO A-Series, for desktop and notebook personal computers [1]",
+          "citation_num": 1,
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 10,
+          "cited_chunk_text": "Table of Contents\nWe generally warrant that our products sold to our customers will conform to our approved specifications and be free from defects in material and workmanship\nunder normal use and conditions for one year. We offer up to three-year limited warranties for certain product types, and sometimes provide other warranty\nperiods based on negotiated terms with certain customers.\nWe market and sell our latest products under the AMD trademark. Our client processors include: AMD Ryzen, AMD Ryzen PRO, Ryzen Threadripper, Ryzen\nThreadripper PRO, AMD Athlon, AMD Athlon PRO, and AMD PRO A-Series. These products service desktop and notebook personal computers.\nOur product brand for the consumer graphics market is AMD Radeon graphics, and AMD Embedded Radeon graphics is our product brand for the embedded\ngraphics market.\nOur product brand for professional graphics products are AMD Radeon PRO graphics.\nOur product brands for data center graphics are Radeon Instinct, Radeon PRO V-series, and AMD Instinct accelerators for servers. We also market and sell our\nchipsets under AMD trademarks.\nOur product brand for server microprocessors is AMD EPYC processors.\nWe also sell low-power versions of our AMD Athlon, as well as AMD Geode\u2122, AMD Ryzen, AMD EPYC, AMD R-Series and G-Series processors as embedded\nprocessor solutions.\nOur FPGA product brands are Virtex-6, Virtex-7, Virtex UltraScale+, Kintex-7, Kintex UltraScale, Kintex UltraScale+, Artix-7, Artix UltraScale+, Spartan-6 and"
+        },
+        {
+          "claim": "Consumer graphics under AMD Radeon graphics, and AMD Embedded Radeon graphics for the embedded graphics market [1]",
+          "citation_num": 1,
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 10,
+          "cited_chunk_text": "Table of Contents\nWe generally warrant that our products sold to our customers will conform to our approved specifications and be free from defects in material and workmanship\nunder normal use and conditions for one year. We offer up to three-year limited warranties for certain product types, and sometimes provide other warranty\nperiods based on negotiated terms with certain customers.\nWe market and sell our latest products under the AMD trademark. Our client processors include: AMD Ryzen, AMD Ryzen PRO, Ryzen Threadripper, Ryzen\nThreadripper PRO, AMD Athlon, AMD Athlon PRO, and AMD PRO A-Series. These products service desktop and notebook personal computers.\nOur product brand for the consumer graphics market is AMD Radeon graphics, and AMD Embedded Radeon graphics is our product brand for the embedded\ngraphics market.\nOur product brand for professional graphics products are AMD Radeon PRO graphics.\nOur product brands for data center graphics are Radeon Instinct, Radeon PRO V-series, and AMD Instinct accelerators for servers. We also market and sell our\nchipsets under AMD trademarks.\nOur product brand for server microprocessors is AMD EPYC processors.\nWe also sell low-power versions of our AMD Athlon, as well as AMD Geode\u2122, AMD Ryzen, AMD EPYC, AMD R-Series and G-Series processors as embedded\nprocessor solutions.\nOur FPGA product brands are Virtex-6, Virtex-7, Virtex UltraScale+, Kintex-7, Kintex UltraScale, Kintex UltraScale+, Artix-7, Artix UltraScale+, Spartan-6 and"
+        },
+        {
+          "claim": "Professional graphics under AMD Radeon PRO graphics [1]",
+          "citation_num": 1,
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 10,
+          "cited_chunk_text": "Table of Contents\nWe generally warrant that our products sold to our customers will conform to our approved specifications and be free from defects in material and workmanship\nunder normal use and conditions for one year. We offer up to three-year limited warranties for certain product types, and sometimes provide other warranty\nperiods based on negotiated terms with certain customers.\nWe market and sell our latest products under the AMD trademark. Our client processors include: AMD Ryzen, AMD Ryzen PRO, Ryzen Threadripper, Ryzen\nThreadripper PRO, AMD Athlon, AMD Athlon PRO, and AMD PRO A-Series. These products service desktop and notebook personal computers.\nOur product brand for the consumer graphics market is AMD Radeon graphics, and AMD Embedded Radeon graphics is our product brand for the embedded\ngraphics market.\nOur product brand for professional graphics products are AMD Radeon PRO graphics.\nOur product brands for data center graphics are Radeon Instinct, Radeon PRO V-series, and AMD Instinct accelerators for servers. We also market and sell our\nchipsets under AMD trademarks.\nOur product brand for server microprocessors is AMD EPYC processors.\nWe also sell low-power versions of our AMD Athlon, as well as AMD Geode\u2122, AMD Ryzen, AMD EPYC, AMD R-Series and G-Series processors as embedded\nprocessor solutions.\nOur FPGA product brands are Virtex-6, Virtex-7, Virtex UltraScale+, Kintex-7, Kintex UltraScale, Kintex UltraScale+, Artix-7, Artix UltraScale+, Spartan-6 and"
+        },
+        {
+          "claim": "Data center graphics under Radeon Instinct, Radeon PRO V-series, and AMD Instinct accelerators for servers [1]",
+          "citation_num": 1,
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 10,
+          "cited_chunk_text": "Table of Contents\nWe generally warrant that our products sold to our customers will conform to our approved specifications and be free from defects in material and workmanship\nunder normal use and conditions for one year. We offer up to three-year limited warranties for certain product types, and sometimes provide other warranty\nperiods based on negotiated terms with certain customers.\nWe market and sell our latest products under the AMD trademark. Our client processors include: AMD Ryzen, AMD Ryzen PRO, Ryzen Threadripper, Ryzen\nThreadripper PRO, AMD Athlon, AMD Athlon PRO, and AMD PRO A-Series. These products service desktop and notebook personal computers.\nOur product brand for the consumer graphics market is AMD Radeon graphics, and AMD Embedded Radeon graphics is our product brand for the embedded\ngraphics market.\nOur product brand for professional graphics products are AMD Radeon PRO graphics.\nOur product brands for data center graphics are Radeon Instinct, Radeon PRO V-series, and AMD Instinct accelerators for servers. We also market and sell our\nchipsets under AMD trademarks.\nOur product brand for server microprocessors is AMD EPYC processors.\nWe also sell low-power versions of our AMD Athlon, as well as AMD Geode\u2122, AMD Ryzen, AMD EPYC, AMD R-Series and G-Series processors as embedded\nprocessor solutions.\nOur FPGA product brands are Virtex-6, Virtex-7, Virtex UltraScale+, Kintex-7, Kintex UltraScale, Kintex UltraScale+, Artix-7, Artix UltraScale+, Spartan-6 and"
+        },
+        {
+          "claim": "Chipsets sold under AMD trademarks [1]",
+          "citation_num": 1,
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 10,
+          "cited_chunk_text": "Table of Contents\nWe generally warrant that our products sold to our customers will conform to our approved specifications and be free from defects in material and workmanship\nunder normal use and conditions for one year. We offer up to three-year limited warranties for certain product types, and sometimes provide other warranty\nperiods based on negotiated terms with certain customers.\nWe market and sell our latest products under the AMD trademark. Our client processors include: AMD Ryzen, AMD Ryzen PRO, Ryzen Threadripper, Ryzen\nThreadripper PRO, AMD Athlon, AMD Athlon PRO, and AMD PRO A-Series. These products service desktop and notebook personal computers.\nOur product brand for the consumer graphics market is AMD Radeon graphics, and AMD Embedded Radeon graphics is our product brand for the embedded\ngraphics market.\nOur product brand for professional graphics products are AMD Radeon PRO graphics.\nOur product brands for data center graphics are Radeon Instinct, Radeon PRO V-series, and AMD Instinct accelerators for servers. We also market and sell our\nchipsets under AMD trademarks.\nOur product brand for server microprocessors is AMD EPYC processors.\nWe also sell low-power versions of our AMD Athlon, as well as AMD Geode\u2122, AMD Ryzen, AMD EPYC, AMD R-Series and G-Series processors as embedded\nprocessor solutions.\nOur FPGA product brands are Virtex-6, Virtex-7, Virtex UltraScale+, Kintex-7, Kintex UltraScale, Kintex UltraScale+, Artix-7, Artix UltraScale+, Spartan-6 and"
+        },
+        {
+          "claim": "Server microprocessors under the AMD EPYC brand [1]",
+          "citation_num": 1,
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 10,
+          "cited_chunk_text": "Table of Contents\nWe generally warrant that our products sold to our customers will conform to our approved specifications and be free from defects in material and workmanship\nunder normal use and conditions for one year. We offer up to three-year limited warranties for certain product types, and sometimes provide other warranty\nperiods based on negotiated terms with certain customers.\nWe market and sell our latest products under the AMD trademark. Our client processors include: AMD Ryzen, AMD Ryzen PRO, Ryzen Threadripper, Ryzen\nThreadripper PRO, AMD Athlon, AMD Athlon PRO, and AMD PRO A-Series. These products service desktop and notebook personal computers.\nOur product brand for the consumer graphics market is AMD Radeon graphics, and AMD Embedded Radeon graphics is our product brand for the embedded\ngraphics market.\nOur product brand for professional graphics products are AMD Radeon PRO graphics.\nOur product brands for data center graphics are Radeon Instinct, Radeon PRO V-series, and AMD Instinct accelerators for servers. We also market and sell our\nchipsets under AMD trademarks.\nOur product brand for server microprocessors is AMD EPYC processors.\nWe also sell low-power versions of our AMD Athlon, as well as AMD Geode\u2122, AMD Ryzen, AMD EPYC, AMD R-Series and G-Series processors as embedded\nprocessor solutions.\nOur FPGA product brands are Virtex-6, Virtex-7, Virtex UltraScale+, Kintex-7, Kintex UltraScale, Kintex UltraScale+, Artix-7, Artix UltraScale+, Spartan-6 and"
+        },
+        {
+          "claim": "Low-power versions of AMD Athlon, as well as AMD Geode, AMD Ryzen, AMD EPYC, AMD R-Series and G-Series processors as embedded processor solutions [1]",
+          "citation_num": 1,
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 10,
+          "cited_chunk_text": "Table of Contents\nWe generally warrant that our products sold to our customers will conform to our approved specifications and be free from defects in material and workmanship\nunder normal use and conditions for one year. We offer up to three-year limited warranties for certain product types, and sometimes provide other warranty\nperiods based on negotiated terms with certain customers.\nWe market and sell our latest products under the AMD trademark. Our client processors include: AMD Ryzen, AMD Ryzen PRO, Ryzen Threadripper, Ryzen\nThreadripper PRO, AMD Athlon, AMD Athlon PRO, and AMD PRO A-Series. These products service desktop and notebook personal computers.\nOur product brand for the consumer graphics market is AMD Radeon graphics, and AMD Embedded Radeon graphics is our product brand for the embedded\ngraphics market.\nOur product brand for professional graphics products are AMD Radeon PRO graphics.\nOur product brands for data center graphics are Radeon Instinct, Radeon PRO V-series, and AMD Instinct accelerators for servers. We also market and sell our\nchipsets under AMD trademarks.\nOur product brand for server microprocessors is AMD EPYC processors.\nWe also sell low-power versions of our AMD Athlon, as well as AMD Geode\u2122, AMD Ryzen, AMD EPYC, AMD R-Series and G-Series processors as embedded\nprocessor solutions.\nOur FPGA product brands are Virtex-6, Virtex-7, Virtex UltraScale+, Kintex-7, Kintex UltraScale, Kintex UltraScale+, Artix-7, Artix UltraScale+, Spartan-6 and"
+        },
+        {
+          "claim": "FPGA product brands: Virtex-6, Virtex-7, Virtex UltraScale+, Kintex-7, Kintex UltraScale, Kintex UltraScale+, Artix-7, Artix UltraScale+, Spartan-6 (list continues in excerpt) [1]",
+          "citation_num": 1,
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 10,
+          "cited_chunk_text": "Table of Contents\nWe generally warrant that our products sold to our customers will conform to our approved specifications and be free from defects in material and workmanship\nunder normal use and conditions for one year. We offer up to three-year limited warranties for certain product types, and sometimes provide other warranty\nperiods based on negotiated terms with certain customers.\nWe market and sell our latest products under the AMD trademark. Our client processors include: AMD Ryzen, AMD Ryzen PRO, Ryzen Threadripper, Ryzen\nThreadripper PRO, AMD Athlon, AMD Athlon PRO, and AMD PRO A-Series. These products service desktop and notebook personal computers.\nOur product brand for the consumer graphics market is AMD Radeon graphics, and AMD Embedded Radeon graphics is our product brand for the embedded\ngraphics market.\nOur product brand for professional graphics products are AMD Radeon PRO graphics.\nOur product brands for data center graphics are Radeon Instinct, Radeon PRO V-series, and AMD Instinct accelerators for servers. We also market and sell our\nchipsets under AMD trademarks.\nOur product brand for server microprocessors is AMD EPYC processors.\nWe also sell low-power versions of our AMD Athlon, as well as AMD Geode\u2122, AMD Ryzen, AMD EPYC, AMD R-Series and G-Series processors as embedded\nprocessor solutions.\nOur FPGA product brands are Virtex-6, Virtex-7, Virtex UltraScale+, Kintex-7, Kintex UltraScale, Kintex UltraScale+, Artix-7, Artix UltraScale+, Spartan-6 and"
+        },
+        {
+          "claim": "Chipsets including X570, B550 and A520 for socket AM4 [4]; WRX80 chipsets for HEDT and Workstation segments [5]; B450 and A320 chipsets for the AM4 desktop platform [10]",
+          "citation_num": 4,
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 7,
+          "cited_chunk_text": "processors and prior, we offer the X570, B550 and A520 chipsets for socket AM4 for 3  Gen AMD Ryzen desktop processors and 5000 processors. In addition,"
+        },
+        {
+          "claim": "Chipsets including X570, B550 and A520 for socket AM4 [4]; WRX80 chipsets for HEDT and Workstation segments [5]; B450 and A320 chipsets for the AM4 desktop platform [10]",
+          "citation_num": 5,
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 7,
+          "cited_chunk_text": "affordable mainstream platforms segments. In the High-End Desktop (HEDT) and Workstation segments, we offer the WRX80 chipsets to support the 3  Gen"
+        },
+        {
+          "claim": "Chipsets including X570, B550 and A520 for socket AM4 [4]; WRX80 chipsets for HEDT and Workstation segments [5]; B450 and A320 chipsets for the AM4 desktop platform [10]",
+          "citation_num": 10,
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 7,
+          "cited_chunk_text": "we continue to offer the B450 and A320 chipsets that are combined with AMD Ryzen processors for the AM4 desktop platform for the performance and"
+        },
+        {
+          "claim": "FPGA-related products including high-volume and low-cost FPGAs, ASICs and ASSPs, CPLDs, DSP devices, products with embedded processors, products with embedded multi-gigabit transceivers, discrete general-purpose GPUs targeting data center and automotive applications, and other new or emerging programmable logic products [6]",
+          "citation_num": 6,
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 12,
+          "cited_chunk_text": "\u2022 high-volume and low-cost FPGAs as programmable replacements for ASICs and ASSPs;\n\u2022 ASICs and ASSPs with incremental amounts of embedded programmable logic;\n\u2022 high-speed, low-density complex programmable logic devices (CPLDs);\n\u2022 high-performance digital signal processing (DSP) devices;\n\u2022 products with embedded processors;\n\u2022 products with embedded multi-gigabit transceivers;\n\u2022 discrete general-purpose GPUs targeting data center and automotive applications; and\n\u2022 other new or emerging programmable logic products.\nResearch and Development\nWe focus our research and development (R&D) activities on designing and developing products. Our main area of focus is on delivering the next generation of\nprocessors (CPU and GPU), FPGAs and Adaptive SoCs, accelerators (adaptive, graphics and DPU), System on Modules (SOMs) and SmartNICs and\nassociated software. We focus on designing new ICs with improved performance and performance-per-watt in advanced semiconductor manufacturing\nprocesses, the design of logic and interface IP, advanced packaging technologies, and heterogeneous integration technologies. We also focus on software as\npart of the development of our products, including design automation tools for hardware, embedded software, optimized software tools and libraries that extend\nthe reach of our platforms to software and AI developers. Through our R&D efforts, we were able to introduce a number of new products and enhance our IP\ncore offerings and software.\nWe also work with industry leaders on process technology, design tools, intellectual property, software and other industry consortia to conduct early-stage\nresearch and development. We are also actively contributing to numerous industry open-source software initiatives across a broad range of technologies. We"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_00839",
+      "company": "Foot Locker",
+      "question": "Does Foot Locker's new CEO have previous CEO experience in a similar company to Footlocker?",
+      "predicted_answer": "Yes. Mary N. Dillon, the new CEO effective September 1, 2022, previously served as Executive Chair and CEO of Ulta Beauty, Inc., a beauty retailer [2][7]. She served as CEO of Ulta from July 2013 through June 2021 and as Executive Chair from June 2021 through June 2022 [7]. She also previously served as President and CEO of United States Cellular Corporation from 2010 through 2013 [7]. The excerpts describe Ulta as a consumer-driven, omni-channel retailer, but do not explicitly state that it is a \"similar company\" to Foot Locker; that characterization is not in the excerpts.",
+      "pairs": [
+        {
+          "claim": "Dillon, the new CEO effective September 1, 2022, previously served as Executive Chair and CEO of Ulta Beauty, Inc., a beauty retailer [2][7].",
+          "citation_num": 2,
+          "doc_name": "FOOTLOCKER_2022_8K_dated_2022-08-19",
+          "year": 2022,
+          "page": 28,
+          "cited_chunk_text": "Exhibit 99.1\n \n \n \nN E W S  R E L E A S E\n \n \nInvestor Contact: Media Contact:\nRobert Higginbotham Cara Tocci\nVice President, Investor Relations Vice President, Corporate Communications\nrobert.higginbotham@footlocker.com                                                                                cara.tocci@footlocker.com\n(212) 720-4600 (914) 582-0304\n \n \nRICHARD A. JOHNSON TO RETIRE AS CHAIRMAN AND CEO;\nMARY N. DILLON APPOINTED AS CEO, EFFECTIVE SEPTEMBER 1, 2022\n \nDona D. Young to Become Non-Executive Chair, Effective February 1, 2023\nTransition Reflects Thorough Succession Planning Process and Strong Governance\n \n \nNEW YORK, August 19, 2022 \u2013 Foot Locker, Inc. (NYSE: FL) (\u201cFoot Locker\u201d or \u201cthe Company\u201d), the New York-based specialty athletic retailer, today\nannounced that, as part of a planned succession process, Richard A. Johnson will retire as President and Chief Executive Officer, effective September 1,\n2022. Mary N. Dillon, former Executive Chair and CEO of Ulta Beauty, Inc., has been appointed President and Chief Executive Officer and a member of\nthe Foot Locker Board, also effective September 1, 2022.\n \nJohnson will continue as Executive Chairman of the Board through January 31, 2023, and will step down from the Board at that time, subsequently\nremaining with the Company as a Senior Advisor to the Chief Executive Officer until early April 2023 to facilitate a smooth transition. The Company\u2019s\nBoard has determined that the Chair and Chief Executive Officer roles will be separated, also effective September 1, 2022, and the Company\u2019s Lead"
+        },
+        {
+          "claim": "Dillon, the new CEO effective September 1, 2022, previously served as Executive Chair and CEO of Ulta Beauty, Inc., a beauty retailer [2][7].",
+          "citation_num": 7,
+          "doc_name": "FOOTLOCKER_2022_8K_dated_2022-08-19",
+          "year": 2022,
+          "page": 1,
+          "cited_chunk_text": "Item 5.02. Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory\nArrangements of Certain Officers.\n \nOn August 19, 2022, Foot Locker, Inc. (the \u201cCompany\u201d), issued a press release announcing that, as part of a planned succession process, Richard\nA. Johnson will step down as President and Chief Executive Officer of the Company, effective September 1, 2022. Mary N. Dillon, 61, former Executive\nChair and Chief Executive Officer of Ulta Beauty, Inc., has been appointed President and Chief Executive Officer and a member of the Company\u2019s Board\nof Directors (the \u201cBoard\u201d) and the Executive Committee of the Board, each effective September 1, 2022. A copy of the press release is furnished as Exhibit\n99.1, which is incorporated herein by reference.\n \nMs. Dillon served as Executive Chair of the Board of Directors of Ulta Beauty, Inc. from June 2021 through June 2022. She previously served as\nChief Executive Officer and a member of the Board of Directors of Ulta from July 2013 through June 2021. Prior to Ulta, she served as President and Chief\nExecutive Officer and a member of the Board of Directors of United States Cellular Corporation from 2010 through 2013; and Global Chief Marketing\nOfficer and Executive Vice President of McDonald\u2019s Corporation from 2005 through 2010. Previously, Ms. Dillon held several positions of increasing\nresponsibility at PepsiCo Corporation, including as President of the Quaker Foods division from 2004 through 2005 and as Vice President of Marketing for\nGatorade and Quaker Foods from 2002 through 2004. Ms. Dillon also currently serves on the Board of Directors of each of Starbucks Corporation and"
+        },
+        {
+          "claim": "She served as CEO of Ulta from July 2013 through June 2021 and as Executive Chair from June 2021 through June 2022 [7].",
+          "citation_num": 7,
+          "doc_name": "FOOTLOCKER_2022_8K_dated_2022-08-19",
+          "year": 2022,
+          "page": 1,
+          "cited_chunk_text": "Item 5.02. Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory\nArrangements of Certain Officers.\n \nOn August 19, 2022, Foot Locker, Inc. (the \u201cCompany\u201d), issued a press release announcing that, as part of a planned succession process, Richard\nA. Johnson will step down as President and Chief Executive Officer of the Company, effective September 1, 2022. Mary N. Dillon, 61, former Executive\nChair and Chief Executive Officer of Ulta Beauty, Inc., has been appointed President and Chief Executive Officer and a member of the Company\u2019s Board\nof Directors (the \u201cBoard\u201d) and the Executive Committee of the Board, each effective September 1, 2022. A copy of the press release is furnished as Exhibit\n99.1, which is incorporated herein by reference.\n \nMs. Dillon served as Executive Chair of the Board of Directors of Ulta Beauty, Inc. from June 2021 through June 2022. She previously served as\nChief Executive Officer and a member of the Board of Directors of Ulta from July 2013 through June 2021. Prior to Ulta, she served as President and Chief\nExecutive Officer and a member of the Board of Directors of United States Cellular Corporation from 2010 through 2013; and Global Chief Marketing\nOfficer and Executive Vice President of McDonald\u2019s Corporation from 2005 through 2010. Previously, Ms. Dillon held several positions of increasing\nresponsibility at PepsiCo Corporation, including as President of the Quaker Foods division from 2004 through 2005 and as Vice President of Marketing for\nGatorade and Quaker Foods from 2002 through 2004. Ms. Dillon also currently serves on the Board of Directors of each of Starbucks Corporation and"
+        },
+        {
+          "claim": "She also previously served as President and CEO of United States Cellular Corporation from 2010 through 2013 [7].",
+          "citation_num": 7,
+          "doc_name": "FOOTLOCKER_2022_8K_dated_2022-08-19",
+          "year": 2022,
+          "page": 1,
+          "cited_chunk_text": "Item 5.02. Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory\nArrangements of Certain Officers.\n \nOn August 19, 2022, Foot Locker, Inc. (the \u201cCompany\u201d), issued a press release announcing that, as part of a planned succession process, Richard\nA. Johnson will step down as President and Chief Executive Officer of the Company, effective September 1, 2022. Mary N. Dillon, 61, former Executive\nChair and Chief Executive Officer of Ulta Beauty, Inc., has been appointed President and Chief Executive Officer and a member of the Company\u2019s Board\nof Directors (the \u201cBoard\u201d) and the Executive Committee of the Board, each effective September 1, 2022. A copy of the press release is furnished as Exhibit\n99.1, which is incorporated herein by reference.\n \nMs. Dillon served as Executive Chair of the Board of Directors of Ulta Beauty, Inc. from June 2021 through June 2022. She previously served as\nChief Executive Officer and a member of the Board of Directors of Ulta from July 2013 through June 2021. Prior to Ulta, she served as President and Chief\nExecutive Officer and a member of the Board of Directors of United States Cellular Corporation from 2010 through 2013; and Global Chief Marketing\nOfficer and Executive Vice President of McDonald\u2019s Corporation from 2005 through 2010. Previously, Ms. Dillon held several positions of increasing\nresponsibility at PepsiCo Corporation, including as President of the Quaker Foods division from 2004 through 2005 and as Vice President of Marketing for\nGatorade and Quaker Foods from 2002 through 2004. Ms. Dillon also currently serves on the Board of Directors of each of Starbucks Corporation and"
+        },
+        {
+          "claim": "The excerpts describe Ulta as a consumer-driven, omni-channel retailer, but do not explicitly state that it is a \"similar company\" to Foot Locker; that characterization is not in the excerpts.",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_00746",
+      "company": "Ulta Beauty",
+      "question": "Which debt securities are registered to trade on a national securities exchange under Ulta Beauty's name as of FY2023?",
+      "predicted_answer": "Based on the provided excerpts, the only security registered pursuant to Section 12(b) of the Act under Ulta Beauty's name is its **common stock, par value $0.01 per share (trading symbol: ULTA)**, listed on the NASDAQ Global Select Market [1]. The excerpts do not identify any debt securities registered to trade on a national securities exchange [1].",
+      "pairs": [
+        {
+          "claim": "Based on the provided excerpts, the only security registered pursuant to Section 12(b) of the Act under Ulta Beauty's name is its **common stock, par value $0.01 per share (trading symbol: ULTA)**, listed on the NASDAQ Global Select Market [1].",
+          "citation_num": 1,
+          "doc_name": "ULTABEAUTY_2023_10K",
+          "year": 2023,
+          "page": 0,
+          "cited_chunk_text": "Table of Contents\nUNITED STATES\nSECURITIES AND EXCHANGE COMMISSION\nWashington, DC 20549\nFORM 10-K\n\u2612 Annual Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the fiscal year ended January 28, 2023\nor\n\u2610 Transition Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the transition period from _____________ to _____________\nCommission File Number: 001-33764\nULTA BEAUTY, INC.\n(Exact name of registrant as specified in its charter)\nDelaware\n(State or other jurisdiction of\nincorporation or organization)\n38-4022268\n(I.R.S. Employer\nIdentification No.)\n1000 Remington Blvd., Suite 120\nBolingbrook, Illinois\n(Address of principal executive offices)\n60440\n(Zip code)\nRegistrant\u2019s telephone number, including area code: (630) 410-4800\nSecurities registered pursuant to Section 12(b) of the Act:\nTitle of each class Trading symbol Name of each exchange on which registered\nCommon stock, par value $0.01 per share ULTA The NASDAQ Global Select Market\nSecurities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. \u2327 Yes \u25fb No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. \u25fb Yes \u2327 No"
+        },
+        {
+          "claim": "The excerpts do not identify any debt securities registered to trade on a national securities exchange [1].",
+          "citation_num": 1,
+          "doc_name": "ULTABEAUTY_2023_10K",
+          "year": 2023,
+          "page": 0,
+          "cited_chunk_text": "Table of Contents\nUNITED STATES\nSECURITIES AND EXCHANGE COMMISSION\nWashington, DC 20549\nFORM 10-K\n\u2612 Annual Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the fiscal year ended January 28, 2023\nor\n\u2610 Transition Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the transition period from _____________ to _____________\nCommission File Number: 001-33764\nULTA BEAUTY, INC.\n(Exact name of registrant as specified in its charter)\nDelaware\n(State or other jurisdiction of\nincorporation or organization)\n38-4022268\n(I.R.S. Employer\nIdentification No.)\n1000 Remington Blvd., Suite 120\nBolingbrook, Illinois\n(Address of principal executive offices)\n60440\n(Zip code)\nRegistrant\u2019s telephone number, including area code: (630) 410-4800\nSecurities registered pursuant to Section 12(b) of the Act:\nTitle of each class Trading symbol Name of each exchange on which registered\nCommon stock, par value $0.01 per share ULTA The NASDAQ Global Select Market\nSecurities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. \u2327 Yes \u25fb No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. \u25fb Yes \u2327 No"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_06272",
+      "company": "Coca-Cola",
+      "question": "What is Coca Cola's FY2022 dividend payout ratio (using total cash dividends paid and net income attributable to shareholders)? Round answer to two decimal places. Answer the question asked by assuming you only have access to information clearly displayed in the cash flow statement and the income statement.",
+      "predicted_answer": "Based on the provided excerpts:\n\n- Total cash dividends paid in FY2022: **$7,616 million** [1] (the income statement shows dividends per share of $1.76 [3], but the cash paid figure is stated on page 56 [1]).\n- Net income attributable to shareowners of The Coca-Cola Company in FY2022: **$9,542 million** [9].\n\nDividend payout ratio = $7,616 / $9,542 = **0.80** (rounded to two decimal places).\n\n**Answer: 0.80**",
+      "pairs": [
+        {
+          "claim": "Total cash dividends paid in FY2022: **$7,616 million** [1] (the income statement shows dividends per share of $1.76 [3], but the cash paid figure is stated on page 56 [1]).",
+          "citation_num": 1,
+          "doc_name": "COCACOLA_2022_10K",
+          "year": 2022,
+          "page": 56,
+          "cited_chunk_text": "stock issued to employees. The net impact of the Company\u2019s issuances of stock and share repurchases during 2022 resulted in a net cash outflow of $581 million.\nDuring 2021, the Company did not repurchase shares of our common stock under the share repurchase plans authorized by our Board of Directors.\nDividends\nThe Company paid dividends of $7,616 million and $7,252 million during the years ended December 31, 2022 and 2021, respectively.\nAt its February 2023 meeting, our Board of Directors increased our regular quarterly dividend to $0.46 per share, equivalent to a full year dividend of $1.84 per share in 2023."
+        },
+        {
+          "claim": "Total cash dividends paid in FY2022: **$7,616 million** [1] (the income statement shows dividends per share of $1.76 [3], but the cash paid figure is stated on page 56 [1]).",
+          "citation_num": 3,
+          "doc_name": "COCACOLA_2022_10K",
+          "year": 2022,
+          "page": 66,
+          "cited_chunk_text": "THE COCA-COLA COMPANY AND SUBSIDIARIES\nCONSOLIDATED STATEMENTS OF SHAREOWNERS\u2019 EQUITY\n(In millions except per share data)\nYear Ended December 31, 2022 2021 2020\nEquity Attributable to Shareowners of The Coca-Cola Company    \n    Number of Common Shares Outstanding    \n   Balance at beginning of year 4,325 4,302 4,280 \nTreasury stock issued to employees related to stock-based compensation plans 24 23 22 \nPurchases of stock for treasury (21) \u2014 \u2014 \n   Balance at end of year 4,328 4,325 4,302 \n    Common Stock $ 1,760 $ 1,760 $ 1,760 \n    Capital Surplus    \n   Balance at beginning of year 18,116 17,601 17,154 \nStock issued to employees related to stock-based compensation plans 373 216 307 \nStock-based compensation expense 332 299 141 \nOther activities 1 \u2014 (1)\n   Balance at end of year 18,822 18,116 17,601 \n    Reinvested Earnings    \n   Balance at beginning of year 69,094 66,555 65,855 \nAdoption of accounting standards \u2014 19 \u2014 \nNet income attributable to shareowners of The Coca-Cola Company 9,542 9,771 7,747 \nDividends (per share \u2014 $1.76, $1.68 and $1.64 in 2022, 2021 and 2020, respectively) (7,617) (7,251) (7,047)\n   Balance at end of year 71,019 69,094 66,555 \n    Accumulated Other Comprehensive Income (Loss)    \n   Balance at beginning of year (14,330) (14,601) (13,544)\nNet other comprehensive income (loss) (565) 271 (1,057)"
+        },
+        {
+          "claim": "Net income attributable to shareowners of The Coca-Cola Company in FY2022: **$9,542 million** [9].",
+          "citation_num": 9,
+          "doc_name": "COCACOLA_2022_10K",
+          "year": 2022,
+          "page": 62,
+          "cited_chunk_text": "THE COCA-COLA COMPANY AND SUBSIDIARIES\nCONSOLIDATED STATEMENTS OF INCOME\n(In millions except per share data)\nYear Ended December 31, 2022 2021 2020\nNet Operating Revenues $ 43,004 $ 38,655 $ 33,014 \nCost of goods sold 18,000 15,357 13,433 \nGross Profit 25,004 23,298 19,581 \nSelling, general and administrative expenses 12,880 12,144 9,731 \nOther operating charges 1,215 846 853 \nOperating Income 10,909 10,308 8,997 \nInterest income 449 276 370 \nInterest expense 882 1,597 1,437 \nEquity income (loss) \u2014 net 1,472 1,438 978 \nOther income (loss) \u2014 net (262) 2,000 841 \nIncome Before Income Taxes 11,686 12,425 9,749 \nIncome taxes 2,115 2,621 1,981 \nConsolidated Net Income 9,571 9,804 7,768 \nLess: Net income (loss) attributable to noncontrolling interests 29 33 21 \nNet Income Attributable to Shareowners of The Coca-Cola Company $ 9,542 $ 9,771 $ 7,747 \nBasic Net Income Per Share $ 2.20 $ 2.26 $ 1.80 \nDiluted Net Income Per Share $ 2.19 $ 2.25 $ 1.79 \nAverage Shares Outstanding \u2014 Basic 4,328 4,315 4,295 \nEffect of dilutive securities 22 25 28 \nAverage Shares Outstanding \u2014 Diluted 4,350 4,340 4,323 \nCalculated based on net income attributable to shareowners of The Coca-Cola Company.\nRefer to Notes to Consolidated Financial Statements.\n1\n1\n1 \n61"
+        },
+        {
+          "claim": "Dividend payout ratio = $7,616 / $9,542 = **0.80** (rounded to two decimal places).",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_00517",
+      "company": "Boeing",
+      "question": "Are there any product categories / service categories that represent more than 20% of Boeing's revenue for FY2022?",
+      "predicted_answer": "Based on the provided excerpts, the revenue breakdown is given by **segment** (Commercial Airplanes, Defense, Space & Security, Global Services, Boeing Capital) rather than by individual product or service category. The only product/service split shown is total \"Sales of products\" and \"Sales of services\" [2].\n\nUsing the segment figures for FY2022 [1]:\n- Commercial Airplanes: $25,867M of $66,608M total \u2248 38.8%\n- Defense, Space & Security: $23,162M \u2248 34.8%\n- Global Services: $17,611M \u2248 26.4%\n- Boeing Capital: $199M \u2248 0.3%\n\nSo, three segments each exceed 20% of total revenue: Commercial Airplanes, Defense, Space & Security, and Global Services [1].\n\nHowever, the excerpts do not provide a product-category or service-category breakdown (e.g., by aircraft model or specific service line) sufficient to determine whether any individual product or service category exceeds 20% of revenue. That specific breakdown is not in the excerpts.",
+      "pairs": [
+        {
+          "claim": "Based on the provided excerpts, the revenue breakdown is given by **segment** (Commercial Airplanes, Defense, Space & Security, Global Services, Boeing Capital) rather than by individual product or service category.",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "The only product/service split shown is total \"Sales of products\" and \"Sales of services\" [2].",
+          "citation_num": 2,
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 54,
+          "cited_chunk_text": "Table of Contents\nThe Boeing Company and Subsidiaries\nConsolidated Statements of Operations\n(Dollars in millions, except per share data)    \nYears ended December 31, 2022 2021 2020\nSales of products $55,893 $51,386 $47,142 \nSales of services 10,715 10,900 11,016 \nTotal revenues 66,608 62,286 58,158 \nCost of products (53,969) (49,954) (54,568)\nCost of services (9,109) (9,283) (9,232)\nBoeing Capital interest expense (28) (32) (43)\nTotal costs and expenses (63,106) (59,269) (63,843)\n3,502 3,017 (5,685)\n(Loss)/income from operating investments, net (16) 210 9 \nGeneral and administrative expense (4,187) (4,157) (4,817)\nResearch and development expense, net (2,852) (2,249) (2,476)\nGain on dispositions, net 6 277 202 \nLoss from operations (3,547) (2,902) (12,767)\nOther income, net 1,058 551 447 \nInterest and debt expense (2,533) (2,682) (2,156)\nLoss before income taxes (5,022) (5,033) (14,476)\nIncome tax (expense)/benefit (31) 743 2,535 \nNet loss (5,053) (4,290) (11,941)"
+        },
+        {
+          "claim": "Using the segment figures for FY2022 [1]:",
+          "citation_num": 1,
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 61,
+          "cited_chunk_text": "Table of Contents\nThe Boeing Company and Subsidiaries\nNotes to the Consolidated Financial Statements\nSummary of Business Segment Data\n(Dollars in millions)  \nYears ended December 31, 2022 2021 2020\nRevenues:\nCommercial Airplanes $25,867 $19,493 $16,162 \nDefense, Space & Security 23,162 26,540 26,257 \nGlobal Services 17,611 16,328 15,543 \nBoeing Capital 199 272 261 \nUnallocated items, eliminations and other (231) (347) (65)\nTotal revenues $66,608 $62,286 $58,158 \n(Loss)/earnings from operations:\nCommercial Airplanes ($2,370) ($6,475) ($13,847)\nDefense, Space & Security (3,544) 1,544 1,539 \nGlobal Services 2,727 2,017 450 \nBoeing Capital 29 106 63 \nSegment operating loss (3,158) (2,808) (11,795)\nUnallocated items, eliminations and other (1,532) (1,267) (2,355)\nFAS/CAS service cost adjustment 1,143 1,173 1,383 \nLoss from operations (3,547) (2,902) (12,767)\nOther income, net 1,058 551 447 \nInterest and debt expense (2,533) (2,682) (2,156)\nLoss before income taxes (5,022) (5,033) (14,476)\nIncome tax (expense)/benefit (31) 743 2,535"
+        },
+        {
+          "claim": "Commercial Airplanes: $25,867M of $66,608M total \u2248 38.8%",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "Defense, Space & Security: $23,162M \u2248 34.8%",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "Global Services: $17,611M \u2248 26.4%",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "Boeing Capital: $199M \u2248 0.3%",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "So, three segments each exceed 20% of total revenue: Commercial Airplanes, Defense, Space & Security, and Global Services [1].",
+          "citation_num": 1,
+          "doc_name": "BOEING_2022_10K",
+          "year": 2022,
+          "page": 61,
+          "cited_chunk_text": "Table of Contents\nThe Boeing Company and Subsidiaries\nNotes to the Consolidated Financial Statements\nSummary of Business Segment Data\n(Dollars in millions)  \nYears ended December 31, 2022 2021 2020\nRevenues:\nCommercial Airplanes $25,867 $19,493 $16,162 \nDefense, Space & Security 23,162 26,540 26,257 \nGlobal Services 17,611 16,328 15,543 \nBoeing Capital 199 272 261 \nUnallocated items, eliminations and other (231) (347) (65)\nTotal revenues $66,608 $62,286 $58,158 \n(Loss)/earnings from operations:\nCommercial Airplanes ($2,370) ($6,475) ($13,847)\nDefense, Space & Security (3,544) 1,544 1,539 \nGlobal Services 2,727 2,017 450 \nBoeing Capital 29 106 63 \nSegment operating loss (3,158) (2,808) (11,795)\nUnallocated items, eliminations and other (1,532) (1,267) (2,355)\nFAS/CAS service cost adjustment 1,143 1,173 1,383 \nLoss from operations (3,547) (2,902) (12,767)\nOther income, net 1,058 551 447 \nInterest and debt expense (2,533) (2,682) (2,156)\nLoss before income taxes (5,022) (5,033) (14,476)\nIncome tax (expense)/benefit (31) 743 2,535"
+        },
+        {
+          "claim": "However, the excerpts do not provide a product-category or service-category breakdown (e.g., by aircraft model or specific service line) sufficient to determine whether any individual product or service category exceeds 20% of revenue.",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "That specific breakdown is not in the excerpts.",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_00684",
+      "company": "Amcor",
+      "question": "Does AMCOR have an improving gross margin profile as of FY2023? If gross margin is not a useful metric for a company like this, then state that and explain why.",
+      "predicted_answer": "Based on the provided excerpts, Amcor's gross margin did not improve in FY2023.\n\n- FY2023: Net sales of $14,694 million and gross profit of $2,725 million [10].\n- FY2022: Net sales of $14,544 million and gross profit of $2,820 million [10].\n\nGross profit declined from $2,820 million in FY2022 to $2,725 million in FY2023, while net sales increased, indicating a lower gross margin profile year over year [10].\n\nThe excerpts do not state that gross margin is an unsuitable metric for this company, so I cannot support that characterization from the provided context.",
+      "pairs": [
+        {
+          "claim": "Based on the provided excerpts, Amcor's gross margin did not improve in FY2023.",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "FY2023: Net sales of $14,694 million and gross profit of $2,725 million [10].",
+          "citation_num": 10,
+          "doc_name": "AMCOR_2023_10K",
+          "year": 2023,
+          "page": 49,
+          "cited_chunk_text": "Amcor plc and Subsidiaries\nConsolidated Statements of Income\n($ in millions, except per share data)\nFor the years ended June 30, 2023 2022 2021\nNet sales $ 14,694 $ 14,544 $ 12,861 \nCost of sales (11,969) (11,724) (10,129)\nGross profit 2,725 2,820 2,732 \nSelling, general, and administrative expenses (1,246) (1,284) (1,292)\nResearch and development expenses (101) (96) (100)\nRestructuring, impairment, and other related activities, net 104 (234) (94)\nOther income, net 26 33 75 \nOperating income 1,508 1,239 1,321 \nInterest income 31 24 14 \nInterest expense (290) (159) (153)\nOther non-operating income, net 2 11 11 \nIncome before income taxes and equity in income of affiliated companies 1,251 1,115 1,193 \nIncome tax expense (193) (300) (261)\nEquity in income of affiliated companies, net of tax \u2014 \u2014 19 \nNet income $ 1,058 $ 815 $ 951 \nNet income attributable to non-controlling interests (10) (10) (12)\nNet income attributable to Amcor plc $ 1,048 $ 805 $ 939 \nBasic earnings per share:\nBasic earnings per share $ 0.709 $ 0.532 $ 0.604 \nDiluted earnings per share $ 0.705 $ 0.529 $ 0.602 \n See accompanying notes to consolidated financial statements.\n50"
+        },
+        {
+          "claim": "FY2022: Net sales of $14,544 million and gross profit of $2,820 million [10].",
+          "citation_num": 10,
+          "doc_name": "AMCOR_2023_10K",
+          "year": 2023,
+          "page": 49,
+          "cited_chunk_text": "Amcor plc and Subsidiaries\nConsolidated Statements of Income\n($ in millions, except per share data)\nFor the years ended June 30, 2023 2022 2021\nNet sales $ 14,694 $ 14,544 $ 12,861 \nCost of sales (11,969) (11,724) (10,129)\nGross profit 2,725 2,820 2,732 \nSelling, general, and administrative expenses (1,246) (1,284) (1,292)\nResearch and development expenses (101) (96) (100)\nRestructuring, impairment, and other related activities, net 104 (234) (94)\nOther income, net 26 33 75 \nOperating income 1,508 1,239 1,321 \nInterest income 31 24 14 \nInterest expense (290) (159) (153)\nOther non-operating income, net 2 11 11 \nIncome before income taxes and equity in income of affiliated companies 1,251 1,115 1,193 \nIncome tax expense (193) (300) (261)\nEquity in income of affiliated companies, net of tax \u2014 \u2014 19 \nNet income $ 1,058 $ 815 $ 951 \nNet income attributable to non-controlling interests (10) (10) (12)\nNet income attributable to Amcor plc $ 1,048 $ 805 $ 939 \nBasic earnings per share:\nBasic earnings per share $ 0.709 $ 0.532 $ 0.604 \nDiluted earnings per share $ 0.705 $ 0.529 $ 0.602 \n See accompanying notes to consolidated financial statements.\n50"
+        },
+        {
+          "claim": "Gross profit declined from $2,820 million in FY2022 to $2,725 million in FY2023, while net sales increased, indicating a lower gross margin profile year over year [10].",
+          "citation_num": 10,
+          "doc_name": "AMCOR_2023_10K",
+          "year": 2023,
+          "page": 49,
+          "cited_chunk_text": "Amcor plc and Subsidiaries\nConsolidated Statements of Income\n($ in millions, except per share data)\nFor the years ended June 30, 2023 2022 2021\nNet sales $ 14,694 $ 14,544 $ 12,861 \nCost of sales (11,969) (11,724) (10,129)\nGross profit 2,725 2,820 2,732 \nSelling, general, and administrative expenses (1,246) (1,284) (1,292)\nResearch and development expenses (101) (96) (100)\nRestructuring, impairment, and other related activities, net 104 (234) (94)\nOther income, net 26 33 75 \nOperating income 1,508 1,239 1,321 \nInterest income 31 24 14 \nInterest expense (290) (159) (153)\nOther non-operating income, net 2 11 11 \nIncome before income taxes and equity in income of affiliated companies 1,251 1,115 1,193 \nIncome tax expense (193) (300) (261)\nEquity in income of affiliated companies, net of tax \u2014 \u2014 19 \nNet income $ 1,058 $ 815 $ 951 \nNet income attributable to non-controlling interests (10) (10) (12)\nNet income attributable to Amcor plc $ 1,048 $ 805 $ 939 \nBasic earnings per share:\nBasic earnings per share $ 0.709 $ 0.532 $ 0.604 \nDiluted earnings per share $ 0.705 $ 0.529 $ 0.602 \n See accompanying notes to consolidated financial statements.\n50"
+        },
+        {
+          "claim": "The excerpts do not state that gross margin is an unsuitable metric for this company, so I cannot support that characterization from the provided context.",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_01163",
+      "company": "Nike",
+      "question": "Among operations, investing, and financing activities, which brought in the most (or lost the least) cash flow for Nike in FY2023?",
+      "predicted_answer": "Based on the provided excerpts:\n\n- **Investing activities** brought in cash: an inflow of $564 million for fiscal 2023 [3].\n- **Financing activities** lost cash: an outflow of $7,447 million for fiscal 2023 [4].\n- **Operating activities**: The excerpts show net income of $5,070 million for 2023 [6], but the actual \"cash provided (used) by operations\" total figure is not explicitly stated in the excerpts (the line item appears only as a heading) [6].\n\nComparing the two explicitly stated figures, **investing activities** brought in the most cash (an inflow of $564 million) versus financing's outflow of $7,447 million [3][4]. However, the total cash from operations figure is not provided in the excerpts, so a complete comparison across all three categories cannot be made from the given context.",
+      "pairs": [
+        {
+          "claim": "**Investing activities** brought in cash: an inflow of $564 million for fiscal 2023 [3].",
+          "citation_num": 3,
+          "doc_name": "NIKE_2023_10K",
+          "year": 2023,
+          "page": 47,
+          "cited_chunk_text": "the current period and timing of wholesale shipments. Further impacting these changes was a lower available supply of inventory \nin the prior year due to supply chain constraints. \nCash provided (used) by investing activities was an inflow of $564 million for fiscal 2023, compared to an outflow of $1,524 \nmillion for fiscal 2022, primarily driven by the net change in short-term investments. For fiscal 2023, the net change in short-term"
+        },
+        {
+          "claim": "**Financing activities** lost cash: an outflow of $7,447 million for fiscal 2023 [4].",
+          "citation_num": 4,
+          "doc_name": "NIKE_2023_10K",
+          "year": 2023,
+          "page": 48,
+          "cited_chunk_text": "investments (including sales, maturities and purchases) resulted in a cash inflow of $1,481 million compared to a cash outflow of \n$747 million for fiscal 2022. Additionally, we continue to invest in our infrastructure to support future growth, specifically focused \naround digital capabilities, our end-to-end technology foundation, our corporate facilities and improvements across our supply \nchain. \nCash provided (used) by financing activities was an outflow of $7,447 million for fiscal 2023 compared to an outflow of $4,836 \nmillion for fiscal 2022. The increased outflow in fiscal 2023 was driven by higher share repurchases of $5,480 million for fiscal \n2023 compared to $4,014 million for fiscal 2022, the repayment of $500 million of senior notes that matured in fiscal 2023, as well \nas lower proceeds from stock option exercises, which resulted in a cash inflow of $651 million in fiscal 2023 compared to $1,151 \nmillion in fiscal 2022.\nIn fiscal 2023, we purchased a total of 50.0 million shares of NIKE's Class B Common Stock for $5.5 billion (an average price of \n$110.32 per share). In August 2022, we terminated the previous four-year, $15 billion share repurchase program approved by the \nBoard of Directors in June 2018. Under this program, we repurchased 6.5 million shares for a total approximate cost of \n$710.0 million (an average price of $109.85 per share) during the first quarter of fiscal 2023 and 83.8 million shares for a total \napproximate cost of $9.4 billion (an average price of $111.82 per share) during the term of the program. Upon termination of the"
+        },
+        {
+          "claim": "**Operating activities**: The excerpts show net income of $5,070 million for 2023 [6], but the actual \"cash provided (used) by operations\" total figure is not explicitly stated in the excerpts (the line item appears only as a heading) [6].",
+          "citation_num": 6,
+          "doc_name": "NIKE_2023_10K",
+          "year": 2023,
+          "page": 61,
+          "cited_chunk_text": "NIKE, INC.\nCONSOLIDATED STATEMENTS OF CASH FLOWS\nYEAR ENDED MAY 31,\n(Dollars in millions) 2023 2022 2021\nCash provided (used) by operations:\nNet income $ 5,070 $ 6,046 $ 5,727 \nAdjustments to reconcile net income to net cash provided (used) by operations:"
+        },
+        {
+          "claim": "Comparing the two explicitly stated figures, **investing activities** brought in the most cash (an inflow of $564 million) versus financing's outflow of $7,447 million [3][4].",
+          "citation_num": 3,
+          "doc_name": "NIKE_2023_10K",
+          "year": 2023,
+          "page": 47,
+          "cited_chunk_text": "the current period and timing of wholesale shipments. Further impacting these changes was a lower available supply of inventory \nin the prior year due to supply chain constraints. \nCash provided (used) by investing activities was an inflow of $564 million for fiscal 2023, compared to an outflow of $1,524 \nmillion for fiscal 2022, primarily driven by the net change in short-term investments. For fiscal 2023, the net change in short-term"
+        },
+        {
+          "claim": "Comparing the two explicitly stated figures, **investing activities** brought in the most cash (an inflow of $564 million) versus financing's outflow of $7,447 million [3][4].",
+          "citation_num": 4,
+          "doc_name": "NIKE_2023_10K",
+          "year": 2023,
+          "page": 48,
+          "cited_chunk_text": "investments (including sales, maturities and purchases) resulted in a cash inflow of $1,481 million compared to a cash outflow of \n$747 million for fiscal 2022. Additionally, we continue to invest in our infrastructure to support future growth, specifically focused \naround digital capabilities, our end-to-end technology foundation, our corporate facilities and improvements across our supply \nchain. \nCash provided (used) by financing activities was an outflow of $7,447 million for fiscal 2023 compared to an outflow of $4,836 \nmillion for fiscal 2022. The increased outflow in fiscal 2023 was driven by higher share repurchases of $5,480 million for fiscal \n2023 compared to $4,014 million for fiscal 2022, the repayment of $500 million of senior notes that matured in fiscal 2023, as well \nas lower proceeds from stock option exercises, which resulted in a cash inflow of $651 million in fiscal 2023 compared to $1,151 \nmillion in fiscal 2022.\nIn fiscal 2023, we purchased a total of 50.0 million shares of NIKE's Class B Common Stock for $5.5 billion (an average price of \n$110.32 per share). In August 2022, we terminated the previous four-year, $15 billion share repurchase program approved by the \nBoard of Directors in June 2018. Under this program, we repurchased 6.5 million shares for a total approximate cost of \n$710.0 million (an average price of $109.85 per share) during the first quarter of fiscal 2023 and 83.8 million shares for a total \napproximate cost of $9.4 billion (an average price of $111.82 per share) during the term of the program. Upon termination of the"
+        },
+        {
+          "claim": "However, the total cash from operations figure is not provided in the excerpts, so a complete comparison across all three categories cannot be made from the given context.",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_00407",
+      "company": "MGM Resorts",
+      "question": "Which type of debt received the largest investment among the short term investments for MGM in H1 FY2023?",
+      "predicted_answer": "Based on the short-term investments table as of June 30, 2023, corporate bonds received the largest investment at $416,420 thousand [1].",
+      "pairs": [
+        {
+          "claim": "Based on the short-term investments table as of June 30, 2023, corporate bonds received the largest investment at $416,420 thousand [1].",
+          "citation_num": 1,
+          "doc_name": "MGMRESORTS_2023Q2_10Q",
+          "year": 2023,
+          "page": 10,
+          "cited_chunk_text": "The following tables present information regarding the Company\u2019s debt investments:\nFair value level June 30, 2023 December 31, 2022\n(In thousands)\nCash and cash equivalents:\nMoney market funds Level 1 $ 2,195 $ 12,009 \nCommercial paper and certificates of deposit Level 2 \u2014 5,992 \nCash and cash equivalents 2,195 18,001 \nShort-term investments:\nU.S. government securities Level 1 57,696 56,835 \nU.S. agency securities Level 2 29,049 9,530 \nCommercial paper and certificates of deposit Level 2 4,561 4,466 \nCorporate bonds Level 2 416,420 213,875 \nShort-term investments 507,726 284,706 \nTotal debt investments $ 509,921 $ 302,707 \nRestricted cash. MGM China\u2019s pledged cash of $87 million and $124 million as of June 30, 2023 and December 31, 2022, respectively, securing the\nbank guarantees discussed in Note 9 is restricted in use and classified within \u201cOther long-term assets, net.\u201d Such amounts plus \u201cCash and cash equivalents\u201d on\nthe consolidated balance sheets equal \u201cCash, cash equivalents, and restricted cash\u201d on the consolidated statements of cash flows as of June 30, 2023 and\nDecember 31, 2022.\nAccounts receivable. As of June 30, 2023 and December 31, 2022, the loss reserve on accounts receivable was $129 million and $113 million,\nrespectively.\nNote receivable. In February 2023, the secured note receivable related to the sale of Circus Circus Las Vegas and the adjacent land was repaid, prior to"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_01148",
+      "company": "Amcor",
+      "question": "What industry does AMCOR primarily operate in?",
+      "predicted_answer": "Amcor primarily operates in the packaging industry. It is described as \"a global leader in developing and producing responsible packaging for food, beverage, pharmaceutical, medical, home and personal-care, and other consumer goods end markets\" [1][5][8]. The company develops and produces \"a broad range of packaging products including flexible packaging, rigid packaging containers, specialty cartons, and closures\" [1][7], and its business activities are organized around two reportable segments, Flexibles and Rigid Packaging [1][7].",
+      "pairs": [
+        {
+          "claim": "Amcor primarily operates in the packaging industry.",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "It is described as \"a global leader in developing and producing responsible packaging for food, beverage, pharmaceutical, medical, home and personal-care, and other consumer goods end markets\" [1][5][8].",
+          "citation_num": 1,
+          "doc_name": "AMCOR_2023_10K",
+          "year": 2023,
+          "page": 54,
+          "cited_chunk_text": "Amcor plc and Subsidiaries\nNotes to Consolidated Financial Statements\nNote 1 - Business Description\n    Amcor plc (\"Amcor\" or the \"Company\") is a public limited company incorporated under the Laws of the Bailiwick of Jersey. The Company's\nhistory dates back more than 150 years, with origins in both Australia and the United States of America. Today, Amcor is a global leader in\ndeveloping and producing responsible packaging for food, beverage, pharmaceutical, medical, home and personal-care, and other consumer\ngoods end markets. The Company's innovation excellence and global packaging expertise enables the Company to solve packaging challenges\naround the world every day, producing packaging that is more functional, appealing, and cost effective for its customers and their consumers and\nimportantly, more sustainable for the environment.\n    The Company's business activities are organized around two reportable segments, Flexibles and Rigid Packaging. The Company has a globally\ndiverse operating footprint, selling to customers in Europe, North America, Latin America, and the Asia Pacific regions. The Company develops\nand produces a broad range of packaging products including flexible packaging, rigid packaging containers, specialty cartons, and closures. The\nCompany's sales are widely diversified, with the majority of sales made to the food, beverage, pharmaceutical, medical device, home and\npersonal care, and other consumer goods end markets. All markets are considered to be highly competitive as to price, innovation, quality, and\nservice.\n55"
+        },
+        {
+          "claim": "It is described as \"a global leader in developing and producing responsible packaging for food, beverage, pharmaceutical, medical, home and personal-care, and other consumer goods end markets\" [1][5][8].",
+          "citation_num": 5,
+          "doc_name": "AMCOR_2023_10K",
+          "year": 2023,
+          "page": 4,
+          "cited_chunk_text": "PART I\nItem 1. - Business\nThe Company\n    Amcor plc (ARBN 630 385 278) is a public limited company incorporated under the Laws of the Bailiwick of Jersey. Our history dates back\nmore than 150 years, with origins in both Australia and the USA. Today, we are a global leader in developing and producing responsible\npackaging for food, beverage, pharmaceutical, medical, home and personal-care, and other products. Our innovation excellence and global\npackaging expertise enables us to solve packaging challenges around the world every day, producing packaging that is more functional,\nappealing, and cost effective for our customers and their consumers and importantly, more sustainable for the environment.\nSustainability\n    Sustainability is central to our business and one of our most exciting opportunities for growth. Working daily to embed sustainability deeper\ninto everything we do, Amcor has been a leader in the industry in promoting sustainability. We aspire to improve the quality of lives, protect\necosystems, and preserve natural resources for future generations by offering a unique range of responsible packaging solutions, leveraging our\nglobal scale, reach, and expertise to meet our customers\u2019 growing sustainability expectations. In January 2018, we became the world\u2019s first\npackaging company to pledge that all our packaging would be designed to be recycled, compostable, or reusable by 2025 and also committed to\nincreasing the amount of recycled content we use. We are delivering against these commitments and continue to lead in the development of a\nresponsible packaging value chain through our innovations and partnerships. We have identified a clear path to meeting our sustainability\nambitions and those of our customers by focusing on the three elements of responsible packaging \u2013 product innovation, consumer participation,\nand infrastructure development.\nDifferentiated Solutions\n    Our product portfolio is diverse and dynamic due to our constant innovation and close partnerships with our customers. Behind every one of"
+        },
+        {
+          "claim": "It is described as \"a global leader in developing and producing responsible packaging for food, beverage, pharmaceutical, medical, home and personal-care, and other consumer goods end markets\" [1][5][8].",
+          "citation_num": 8,
+          "doc_name": "AMCOR_2023Q2_10Q",
+          "year": 2023,
+          "page": 9,
+          "cited_chunk_text": "Amcor plc and Subsidiaries\nNotes to Condensed Consolidated Financial Statements\nNote 1 - Nature of Operations and Basis of Presentation\n    Amcor plc (\"Amcor\" or the \"Company\") is a public limited company incorporated under the Laws of the Bailiwick of Jersey. The Company's\nhistory dates back more than 150 years, with origins in both Australia and the United States of America. Today, Amcor is a global leader in\ndeveloping and producing responsible packaging for food, beverage, pharmaceutical, medical, home and personal-care, and other consumer\ngoods end markets. The Company's innovation excellence and global packaging expertise enable the Company to solve packaging challenges\naround the world every day, producing packaging that is more functional, appealing, and cost effective for its customers and their consumers and\nimportantly, more sustainable for the environment.\n    The accompanying unaudited condensed consolidated financial statements have been prepared in accordance with accounting principles\ngenerally accepted in the United States (\"U.S. GAAP\") for interim financial information. Consistent with these requirements, this Form 10-Q\ndoes not include all the information required by U.S. GAAP for complete financial statements. Further, the year-end condensed consolidated\nbalance sheet data as of June 30, 2022 was derived from audited financial statements but does not include all disclosures required by U.S. GAAP.\nIt is management's opinion, however, that all material and recurring adjustments have been made that are necessary for a fair statement of its\ninterim financial position, results of operations, and cash flows. For further information, this Form 10-Q should be read in conjunction with the\naudited consolidated financial statements and accompanying notes in the Company's Annual Report on Form 10-K for the fiscal year ended June\n30, 2022."
+        },
+        {
+          "claim": "The company develops and produces \"a broad range of packaging products including flexible packaging, rigid packaging containers, specialty cartons, and closures\" [1][7], and its business activities are organized around two reportable segments, Flexibles and Rigid Packaging [1][7].",
+          "citation_num": 1,
+          "doc_name": "AMCOR_2023_10K",
+          "year": 2023,
+          "page": 54,
+          "cited_chunk_text": "Amcor plc and Subsidiaries\nNotes to Consolidated Financial Statements\nNote 1 - Business Description\n    Amcor plc (\"Amcor\" or the \"Company\") is a public limited company incorporated under the Laws of the Bailiwick of Jersey. The Company's\nhistory dates back more than 150 years, with origins in both Australia and the United States of America. Today, Amcor is a global leader in\ndeveloping and producing responsible packaging for food, beverage, pharmaceutical, medical, home and personal-care, and other consumer\ngoods end markets. The Company's innovation excellence and global packaging expertise enables the Company to solve packaging challenges\naround the world every day, producing packaging that is more functional, appealing, and cost effective for its customers and their consumers and\nimportantly, more sustainable for the environment.\n    The Company's business activities are organized around two reportable segments, Flexibles and Rigid Packaging. The Company has a globally\ndiverse operating footprint, selling to customers in Europe, North America, Latin America, and the Asia Pacific regions. The Company develops\nand produces a broad range of packaging products including flexible packaging, rigid packaging containers, specialty cartons, and closures. The\nCompany's sales are widely diversified, with the majority of sales made to the food, beverage, pharmaceutical, medical device, home and\npersonal care, and other consumer goods end markets. All markets are considered to be highly competitive as to price, innovation, quality, and\nservice.\n55"
+        },
+        {
+          "claim": "The company develops and produces \"a broad range of packaging products including flexible packaging, rigid packaging containers, specialty cartons, and closures\" [1][7], and its business activities are organized around two reportable segments, Flexibles and Rigid Packaging [1][7].",
+          "citation_num": 7,
+          "doc_name": "AMCOR_2020_10K",
+          "year": 2020,
+          "page": 52,
+          "cited_chunk_text": "Notes to Consolidated Financial Statements\n \nNote 1 - Business Description\n        Amcor plc (\"Amcor\" or the \"Company\") is a holding company originally incorporated under the name Arctic Jersey Limited as a limited company incorporated under the Laws of the Bailiwick\nof Jersey in July 2018, in order to effect the Company's combination with Bemis Company, Inc. On October 10, 2018, Arctic Jersey Limited was renamed \"Amcor plc\" and became a public limited\ncompany incorporated under the Laws of the Bailiwick of Jersey. On June 11, 2019, the Company completed its acquisition of Bemis Company, Inc (\"Bemis\"). The combination of Amcor and Bemis\nhas created a global packaging leader. See Note 4, \"Acquisitions and Divestitures,\" for more information on the Bemis acquisition.\n        The Company develops and produces a broad range of packaging products including flexible packaging, rigid packaging containers, specialty cartons, and closures. The Company employs\napproximately 47,000 individuals and has 231 principal manufacturing facilities in more than 40 countries.\n        The Company's business activities are organized around two reporting segments, Flexibles and Rigid Packaging. The Company has a globally diverse operating footprint, selling to customers in\nEurope, North America, Latin America, Africa and the Asia Pacific regions. The Company's sales are widely diversified, with the majority of sales made to the defensive food, beverage,\npharmaceutical, medical device, home and personal care, and other consumer goods end markets. All markets are considered to be highly competitive as to price, innovation, quality and service.\n53"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_00005",
+      "company": "Corning",
+      "question": "Does Corning have positive working capital based on FY2022 data? If working capital is not a useful or relevant metric for this company, then please state that and explain why.",
+      "predicted_answer": "Yes. Corning reported positive working capital of $2,278 million in FY2022 [1]. The context does not indicate that working capital is an irrelevant or non-useful metric for the company; in fact, the filing presents working capital measures and states that Corning funds its working capital with cash from operations and short-term borrowings [1][2].",
+      "pairs": [
+        {
+          "claim": "Corning reported positive working capital of $2,278 million in FY2022 [1].",
+          "citation_num": 1,
+          "doc_name": "CORNING_2022_10K",
+          "year": 2022,
+          "page": 33,
+          "cited_chunk_text": "2022   2021  \nWorking capital  $ 2,278  $ 2,853 \nCurrent ratio  1.4:1  1.6:1 \nTrade accounts receivable, net of doubtful accounts  $ 1,721  $ 2,004 \nDays sales outstanding   45   49 \nInventories  $ 2,904  $ 2,481 \nInventory turns   3.4   3.7 \nDays payable outstanding (1)   52   50 \nLong-term debt  $ 6,687  $ 6,989 \nTotal debt  $ 6,911  $ 7,044 \nTotal debt to total capital   36%  36%"
+        },
+        {
+          "claim": "The context does not indicate that working capital is an irrelevant or non-useful metric for the company; in fact, the filing presents working capital measures and states that Corning funds its working capital with cash from operations and short-term borrowings [1][2].",
+          "citation_num": 1,
+          "doc_name": "CORNING_2022_10K",
+          "year": 2022,
+          "page": 33,
+          "cited_chunk_text": "2022   2021  \nWorking capital  $ 2,278  $ 2,853 \nCurrent ratio  1.4:1  1.6:1 \nTrade accounts receivable, net of doubtful accounts  $ 1,721  $ 2,004 \nDays sales outstanding   45   49 \nInventories  $ 2,904  $ 2,481 \nInventory turns   3.4   3.7 \nDays payable outstanding (1)   52   50 \nLong-term debt  $ 6,687  $ 6,989 \nTotal debt  $ 6,911  $ 7,044 \nTotal debt to total capital   36%  36%"
+        },
+        {
+          "claim": "The context does not indicate that working capital is an irrelevant or non-useful metric for the company; in fact, the filing presents working capital measures and states that Corning funds its working capital with cash from operations and short-term borrowings [1][2].",
+          "citation_num": 2,
+          "doc_name": "CORNING_2022_10K",
+          "year": 2022,
+          "page": 33,
+          "cited_chunk_text": "Table of Contents\n \nLIQUIDITY AND CAPITAL RESOURCES\n \nOur financial condition and liquidity are strong. We are not aware of any known trends, demands, commitments, events or uncertainties that will result in or that are\nreasonably likely to result in a material decrease in our liquidity. In addition, other than items discussed, there are no known material trends, favorable or unfavorable, in\nour capital resources and no expected material changes in the mix of such resources.\n \nOur major source of funding for 2023 and beyond will be our operating cash flow, our existing balances of cash and cash equivalents and proceeds from any issuances of\ndebt. We believe we have sufficient liquidity to fund operations, acquisitions, capital expenditures, scheduled debt repayments, dividend payments and share repurchase\nprograms through 2023. We will continue to generate cash from operations and maintain access to our revolving credit facilities and commercial paper programs as\ndiscussed in more detail below.\n \nKey Balance Sheet Data\n \nWe fund our working capital with cash from operations and short-term borrowings, including commercial paper, when necessary. In addition, we receive upfront cash\nfrom customers relating to long-term supply agreements, as well as cash incentives from government entities generally for capital expansion and related expenses.\n \nThe following table presents balance sheet and working capital measures (in millions):\n \n  December 31,"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_01328",
+      "company": "PepsiCo",
+      "question": "What is the quantity of restructuring costs directly outlined in Pepsico's income statements for FY2022? If restructuring costs are not explicitly outlined then state 0.",
+      "predicted_answer": "The consolidated statement of income in the excerpts does not separately outline a restructuring cost line item; it lists net revenue, cost of sales, gross profit, selling, general and administrative expenses, gain associated with the Juice Transaction, impairment of intangible assets, operating profit, and other lines [9]. Restructuring charges appear only in the notes and divisional tables (e.g., total restructuring and impairment charges of $411 million in 2022) [3][7], not as a directly outlined line in the income statement. Therefore, based strictly on the income statement presentation in the excerpts, restructuring costs are not explicitly outlined there.",
+      "pairs": [
+        {
+          "claim": "The consolidated statement of income in the excerpts does not separately outline a restructuring cost line item; it lists net revenue, cost of sales, gross profit, selling, general and administrative expenses, gain associated with the Juice Transaction, impairment of intangible assets, operating profit, and other lines [9].",
+          "citation_num": 9,
+          "doc_name": "PEPSICO_2022_10K",
+          "year": 2022,
+          "page": 61,
+          "cited_chunk_text": "Table of Contents\nConsolidated Statement of Income\nPepsiCo, Inc. and Subsidiaries\nFiscal years ended December 31, 2022, December 25, 2021 and December 26, 2020\n(in millions except per share amounts)\n2022 2021 2020\nNet Revenue $ 86,392 $ 79,474 $ 70,372 \nCost of sales 40,576 37,075 31,797 \nGross profit 45,816 42,399 38,575 \nSelling, general and administrative expenses 34,459 31,237 28,453 \nGain associated with the Juice Transaction (see Note 13) (3,321) \u2014 \u2014 \nImpairment of intangible assets (see Notes 1 and 4) 3,166 \u2014 42 \nOperating Profit 11,512 11,162 10,080 \nOther pension and retiree medical benefits income 132 522 117 \nNet interest expense and other (939) (1,863) (1,128)\nIncome before income taxes 10,705 9,821 9,069 \nProvision for income taxes 1,727 2,142 1,894 \nNet income 8,978 7,679 7,175 \nLess: Net income attributable to noncontrolling interests 68 61 55 \nNet Income Attributable to PepsiCo $ 8,910 $ 7,618 $ 7,120 \nNet Income Attributable to PepsiCo per Common Share\nBasic $ 6.45 $ 5.51 $ 5.14 \nDiluted $ 6.42 $ 5.49 $ 5.12 \nWeighted-average common shares outstanding\nBasic 1,380 1,382 1,385 \nDiluted 1,387 1,389 1,392 \nSee accompanying notes to the consolidated financial statements.\n60"
+        },
+        {
+          "claim": "Restructuring charges appear only in the notes and divisional tables (e.g., total restructuring and impairment charges of $411 million in 2022) [3][7], not as a directly outlined line in the income statement.",
+          "citation_num": 3,
+          "doc_name": "PEPSICO_2022_10K",
+          "year": 2022,
+          "page": 77,
+          "cited_chunk_text": "the initiatives described above. As a result, we expect to incur pre-tax charges of approximately $3.65 billion, including cash\nexpenditures of approximately $2.9 billion. These pre-tax charges are expected to consist of approximately 55% of severance and\nother employee-related costs, 10% for asset impairments (all non-cash) resulting from plant closures and related actions and 35%\nfor other costs associated with the implementation of our initiatives.\nThe total plan pre-tax charges are expected to be incurred by division approximately as follows:\nFLNA QFNA PBNA LatAm Europe AMESA APAC Corporate\nExpected pre-tax charges 15 % 1 % 25 % 10 % 25 % 5 % 4 % 15 %\nA summary of our 2019 Productivity Plan charges is as follows:\n2022 2021 2020\nCost of sales $ 33 $ 29 $ 30 \nSelling, general and administrative expenses 347 208 239 \nOther pension and retiree medical benefits expense 31 10 20 \nTotal restructuring and impairment charges $ 411 $ 247 $ 289 \nAfter-tax amount $ 334 $ 206 $ 231 \nImpact on net income attributable to PepsiCo per common share $ (0.24) $ (0.15) $ (0.17)\n76"
+        },
+        {
+          "claim": "Restructuring charges appear only in the notes and divisional tables (e.g., total restructuring and impairment charges of $411 million in 2022) [3][7], not as a directly outlined line in the income statement.",
+          "citation_num": 7,
+          "doc_name": "PEPSICO_2022_10K",
+          "year": 2022,
+          "page": 78,
+          "cited_chunk_text": "Table of Contents\n2022 2021 2020\nPlan to Date\nthrough 12/31/2022\nFLNA $ 46 $ 28 $ 83 $ 210 \nQFNA 7 \u2014 5 19 \nPBNA 68 20 47 226 \nLatAm 32 37 31 171 \nEurope 109 81 48 343 \nAMESA 12 15 14 82 \nAPAC 16 7 5 77 \nCorporate 90 49 36 229 \n380 237 269 1,357 \nOther pension and retiree medical\nbenefits income 31 10 20 98 \nTotal $ 411 $ 247 $ 289 $ 1,455 \nPlan to Date\nthrough 12/31/2022\nSeverance and other employee costs $ 807 \nAsset impairments 190 \nOther costs 458 \nTotal $ 1,455 \nSeverance and other employee costs primarily include severance and other termination benefits, as well as voluntary separation\narrangements. Other costs primarily include costs associated with the implementation of our initiatives, including contract\ntermination costs, consulting and other professional fees.\nA summary of our 2019 Productivity Plan is as follows:\nSeverance and Other\nEmployee Costs\nAsset \n Impairments Other Costs Total\nLiability as of December 28, 2019 $ 128 $ \u2014 $ 21 $ 149 \n2020 restructuring charges 158 33 98 289 \nCash payments (138) \u2014 (117) (255)\nNon-cash charges and translation (26) (33) 3 (56)\nLiability as of December 26, 2020 122 \u2014 5 127 \n2021 restructuring charges 120 32 95 247 \nCash payments (163) \u2014 (93) (256)\nNon-cash charges and translation (15) (32) \u2014 (47)\nLiability as of December 25, 2021 64 \u2014 7 71 \n2022 restructuring charges 243 33 135 411"
+        },
+        {
+          "claim": "Therefore, based strictly on the income statement presentation in the excerpts, restructuring costs are not explicitly outlined there.",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_01491",
+      "company": "Johnson & Johnson",
+      "question": "What is the amount of the cash proceeds that JnJ realised from the separation of Kenvue (formerly Consumer Health business segment), as of August 30, 2023?",
+      "predicted_answer": "The cash proceeds Johnson & Johnson realized from the Kenvue separation were **$13.2 billion**, generated from the Kenvue debt offering and initial public offering [2][6].",
+      "pairs": [
+        {
+          "claim": "The cash proceeds Johnson & Johnson realized from the Kenvue separation were **$13.2 billion**, generated from the Kenvue debt offering and initial public offering [2][6].",
+          "citation_num": 2,
+          "doc_name": "JOHNSON_JOHNSON_2023_8K_dated-2023-08-30",
+          "year": 2023,
+          "page": 3,
+          "cited_chunk_text": "Exhibit 99.1\nJohnson & Johnson Announces Updated Financials and 2023 Guidance Following Completion of the Kenvue\nSeparation\n\u2022 Company expects increased 2023 Reported Sales Growth of 7.0% - 8.0%, Operational Sales Growth of 7.5% - 8.5%, and\nAdjusted Operational Sales Growth of 6.2% - 7.2%; Figures exclude the COVID-19 Vaccine\n\u2022 Company expects 2023 Adjusted Reported Earnings Per Share (EPS) of $10.00 - $10.10, reflecting increased growth of\n12.5% at the mid-point and Adjusted Operational EPS of $9.90 - $10.00, reflecting increased growth of 11.5% at the mid-\npoint\n\u2022 Company reduced outstanding share count by approximately 191 million; 2023 guidance reflects only a partial-year benefit\nof approximately 73.5 million shares or $0.28 benefit to EPS\n\u2022 Company secured $13.2 billion in cash proceeds from the Kenvue debt offering and initial public offering and maintains 9.5%\nof equity stake in Kenvue\n\u2022 Company maintains its quarterly dividend of $1.19 per share\nNew Brunswick, N.J. (August 30, 2023) \u2013 Johnson & Johnson (NYSE: JNJ) (\u201cthe Company\u201d) today announced updates to its financials and\n2023 guidance which reflect its operations as a company focused on transformational innovation in Pharmaceutical and MedTech. The\nCompany has published a recorded webinar for investors to provide additional context behind the updated financials and 2023 guidance\nfound in this release, which may be accessed by visiting the Investors section of the Company's website at webcasts & presentations.\n\u201cThe completion of this transaction uniquely positions Johnson & Johnson as a Pharmaceutical and MedTech company focused on delivering"
+        },
+        {
+          "claim": "The cash proceeds Johnson & Johnson realized from the Kenvue separation were **$13.2 billion**, generated from the Kenvue debt offering and initial public offering [2][6].",
+          "citation_num": 6,
+          "doc_name": "JOHNSON_JOHNSON_2023_8K_dated-2023-08-30",
+          "year": 2023,
+          "page": 5,
+          "cited_chunk_text": "shares of common stock accepted in the exchange offer.\nThe weighted average shares outstanding used in the calculation of the August 2023 Guidance for Adjusted Diluted EPS reflects the net\nreduction of approximately 73.5 million shares of Johnson & Johnson outstanding common stock as a result of the Kenvue exchange offer.\nBecause this net reduction occurred on August 23, 2023, Johnson & Johnson will recognize only a partial-year benefit of $0.28 to its full-year\n2023 Adjusted Diluted EPS.\nThe Company generated $13.2 billion in cash proceeds as result of the Kenvue debt offering and initial public offering. Additionally, Johnson\n& Johnson maintains a 9.5% stake in Kenvue common stock, which provides the Company the opportunity to monetize the retained stake in\na tax efficient manner in the next year, subject to a\n6\n1,2,5\n2,5 \n3,5 \n2,4 \n3,4 \n8 7\n1 \n2 \n3\n4 \n5 \n6 \n7 \n8"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_03282",
+      "company": "Netflix",
+      "question": "What is Netflix's year end FY2017 total current liabilities (in USD millions)? Base your judgments on the information provided primarily in the balance sheet.",
+      "predicted_answer": "Based on the provided excerpts, Netflix's total current liabilities as of December 31, 2017 were $5,466,312 thousand [3], which equals approximately $5,466.3 million.",
+      "pairs": [
+        {
+          "claim": "Based on the provided excerpts, Netflix's total current liabilities as of December 31, 2017 were $5,466,312 thousand [3], which equals approximately $5,466.3 million.",
+          "citation_num": 3,
+          "doc_name": "NETFLIX_2017_10K",
+          "year": 2017,
+          "page": 44,
+          "cited_chunk_text": "$ 4,173,041  $ 3,632,711 Accounts payable\n 359,555  312,842 Accrued expenses\n 315,094  197,632 Deferred revenue\n 618,622  443,472 Total current liabilities\n 5,466,312  4,586,657 Non-current content liabilities\n 3,329,796  2,894,654 Long-term debt\n 6,499,432  3,364,311 Other non-current liabilities\n 135,246  61,188 Total liabilities\n 15,430,786  10,906,810 Commitments and contingenc\nies (Note 5)  Stockholders\u2019 equity:"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_01009",
+      "company": "PepsiCo",
+      "question": "What are the geographies that Pepsico primarily operates in as of FY2022?",
+      "predicted_answer": "The excerpts do not provide a full list of the geographies where PepsiCo primarily operates. The only geography-related facts stated are that PepsiCo's research centers are located around the world, including in Brazil, China, India, Ireland, Mexico, Russia, South Africa, the United Kingdom and the United States [7], and that its products are made, manufactured, distributed or sold in more than 200 other countries and territories [7]. A statement of PepsiCo's primary operating geographies as of FY2022 is not explicitly provided in the excerpts.",
+      "pairs": [
+        {
+          "claim": "The excerpts do not provide a full list of the geographies where PepsiCo primarily operates.",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "The only geography-related facts stated are that PepsiCo's research centers are located around the world, including in Brazil, China, India, Ireland, Mexico, Russia, South Africa, the United Kingdom and the United States [7], and that its products are made, manufactured, distributed or sold in more than 200 other countries and territories [7].",
+          "citation_num": 7,
+          "doc_name": "PEPSICO_2022_10K",
+          "year": 2022,
+          "page": 9,
+          "cited_chunk_text": "dairy, protein, fiber, micronutrients and hydration; development of packaging technology and new package designs, including\nreducing the amount of plastic in our packaging and developing recyclable, compostable, biodegradable or otherwise sustainable\npackaging; development of marketing, merchandising and dispensing equipment; further expanding our beyond the bottle\nportfolio including innovation for our SodaStream business; investments in technology and digitalization, including artificial\nintelligence and data analytics to enhance our consumer insights and research; continuing to strengthen our omnichannel\ncapabilities, particularly in e-commerce; and efforts focused on reducing our impact on the environment, including reducing\nwater use in our operations and our agricultural practices and reducing our environmental impact in our operations throughout\nour value chain.\nOur research centers are located around the world, including in Brazil, China, India, Ireland, Mexico, Russia, South Africa, the\nUnited Kingdom and the United States, and leverage consumer insights, food science and engineering to meet our strategy to\ncontinually innovate our portfolio of beverages and convenient foods.\nRegulatory Matters\nThe conduct of our businesses, including the production, storage, distribution, sale, display, advertising, marketing, labeling,\ncontent, quality, safety, transportation, packaging, disposal, recycling and use of our products, as well as our employment and\noccupational health and safety practices and protection of personal information, are subject to various laws and regulations\nadministered by federal, state and local governmental agencies in the United States, as well as to laws and regulations\nadministered by government entities and agencies in the more than 200 other countries and territories in which our products are\nmade, manufactured, distributed or sold. It is our policy to abide by the laws and regulations around the world that apply to our\nbusinesses."
+        },
+        {
+          "claim": "A statement of PepsiCo's primary operating geographies as of FY2022 is not explicitly provided in the excerpts.",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_02608",
+      "company": "Best Buy",
+      "question": "In agreement with the information outlined in the income statement, what is the FY2015 - FY2017 3 year average net profit margin (as a %) for Best Buy? Answer in units of percents and round to one decimal place.",
+      "predicted_answer": "Based on the provided excerpts, I can calculate the net profit margin for each year using net earnings attributable to Best Buy Co., Inc. shareholders [2] divided by revenue [3]:\n\n- FY2017: $1,228 / $39,403 = 3.12%\n- FY2016: $897 / $39,528 = 2.27%\n- FY2015: $1,233 / $40,339 = 3.06%\n\n3-year average = (3.12% + 2.27% + 3.06%) / 3 = **2.8%**\n\nNote: The FY2015 net earnings figure of $1,233 million is from the 12-month column in [3], and revenue of $40,339 million is from [2]. The FY2015 figure includes a $353 million discrete benefit [8], but the question asks for the reported net profit margin, so no adjustment is made.\n\n**Answer: 2.8%**",
+      "pairs": [
+        {
+          "claim": "Based on the provided excerpts, I can calculate the net profit margin for each year using net earnings attributable to Best Buy Co., Inc. shareholders [2] divided by revenue [3]:",
+          "citation_num": 2,
+          "doc_name": "BESTBUY_2017_10K",
+          "year": 2017,
+          "page": 25,
+          "cited_chunk_text": "$ 39,403 \u00a0 $ 39,528 \u00a0 $ 40,339 \u00a0 $ 40,611 \u00a0 $ 38,252 Operating\u00a0income\n\u00a0 1,854 \u00a0 1,375 \u00a0 1,450 \u00a0 1,144 \u00a0 90 Net\u00a0earnings\u00a0(loss)\u00a0from\u00a0con\ntinuing\u00a0operations\u00a0 1,207 \u00a0 807 \u00a0 1,246 \u00a0 695 \u00a0 (259 ) Gain\u00a0(loss)\u00a0from\u00a0discontinued\u00a0op\nerations\u00a0 21 \u00a0 90 \u00a0 (11 ) \u00a0 (172 ) \u00a0 (161 ) Net\u00a0earnings\u00a0(loss)\u00a0including\u00a0non\ncontrolling\u00a0interests\u00a0 1,228 \u00a0 897 \u00a0 1,235 \u00a0 523 \u00a0 (420 ) Net\u00a0earnings\u00a0(loss)\u00a0attr\nibutable\u00a0to\u00a0Best\u00a0Buy\u00a0Co.,\u00a0Inc.\u00a0shareholders\u00a0 1,228 \u00a0 897 \u00a0 1,233 \u00a0 532 \u00a0 (441 ) Per Share Data"
+        },
+        {
+          "claim": "Based on the provided excerpts, I can calculate the net profit margin for each year using net earnings attributable to Best Buy Co., Inc. shareholders [2] divided by revenue [3]:",
+          "citation_num": 3,
+          "doc_name": "BESTBUY_2017_10K",
+          "year": 2017,
+          "page": 90,
+          "cited_chunk_text": "ed\u00a0operating\u00a0results\u00a0for\u00a0each\u00a03-month\u00a0quarter\u00a0and\u00a0full\u00a0year\u00a0of\u00a0fiscal\u00a02017\u00a0 and\u00a0 2016\u00a0 (unaudited)\u00a0($\u00a0in\u00a0mill ions): \nQuarter \u00a0 12-Month  \n1st \u00a0 2nd \u00a0 3rd \u00a0 4th \u00a0 2017 Revenue\n$ 8,443 \u00a0 $ 8,533 \u00a0 $ 8,945 \u00a0 $ 13,482 \u00a0 $ 39,403 Comparable\u00a0sales\u00a0%\u00a0change\u00a0\n(1) (0.1 )% \u00a0 0.8 % \u00a0 1.8 % \u00a0 (0.7 )% \u00a0 0.3 % Gross\u00a0profit\u00a0\n(2) $ 2,145 \u00a0 $ 2,062 \u00a0 $ 2,203 \u00a0 $ 3,030 \u00a0 $ 9,440 Operating\u00a0income\u00a0\n(3) 372 \u00a0 289 \u00a0 312 \u00a0 881 \u00a0 1,854 Net\u00a0earnings\u00a0from\u00a0continuing\u00a0op\nerations226 \u00a0 182 \u00a0 192 \u00a0 607 \u00a0 1,207 Gain\u00a0from\u00a0discontinued\u00a0opera\ntions,\u00a0net\u00a0of\u00a0tax3 \u00a0 16 \u00a0 2 \u00a0 \u2014 \u00a0 21 Net\u00a0earnings\u00a0attributab\nle\u00a0to\u00a0Best\u00a0Buy\u00a0Co.,\u00a0Inc.\u00a0shareholders229 \u00a0 198 \u00a0 194 \u00a0 607 \u00a0 1,228 Diluted\u00a0earnings\u00a0per\u00a0share\u00a0\n(4) \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 Continuing\u00a0operations\n$ 0.69 \u00a0 $ 0.56 \u00a0 $ 0.60 \u00a0 $ 1.91 \u00a0 $ 3.74 Discontinued\u00a0operations\n0.01 \u00a0 0.05 \u00a0 0.01 \u00a0 \u2014 \u00a0 0.07 Diluted\u00a0earnings\u00a0per\u00a0share\n$ 0.70 \u00a0 $ 0.61 \u00a0 $ 0.61 \u00a0 $ 1.91 \u00a0 $ 3.81  \nQuarter \u00a0 12-Month  \n1st \u00a0 2nd \u00a0 3rd \u00a0 4th \u00a0 2016 Revenue\n$ 8,558 \u00a0 $ 8,528 \u00a0 $ 8,819 \u00a0 $ 13,623 \u00a0 $ 39,528 Comparable\u00a0sales\u00a0%\u00a0change\u00a0\n(1) 0.6 % \u00a0 3.8 % \u00a0 0.8 % \u00a0 (1.7 )% \u00a0 0.5 % Gross\u00a0profit\u00a0\n(5) $ 2,030 \u00a0 $ 2,098 \u00a0 $ 2,112 \u00a0 $ 2,951 \u00a0 $ 9,191 Operating\u00a0income\u00a0\n(6) 86 \u00a0 288 \u00a0 230 \u00a0 771 \u00a0 1,375 Net\u00a0earnings\u00a0from\u00a0continuing\u00a0op\nerations37 \u00a0 164 \u00a0 129 \u00a0 477 \u00a0 807 Gain\u00a0(loss)\u00a0from\u00a0discontinued\u00a0op\nerations,\u00a0net\u00a0of\u00a0tax92 \u00a0 \u2014 \u00a0 (4 ) \u00a0 2 \u00a0 90 Net\u00a0earnings\u00a0attributab\nle\u00a0to\u00a0Best\u00a0Buy\u00a0Co.,\u00a0Inc.\u00a0shareholders129 \u00a0 164 \u00a0 125 \u00a0 479 \u00a0 897 Diluted\u00a0earnings\u00a0(loss)\u00a0per\u00a0sh\nare\u00a0(4) \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 Continuing\u00a0operations\n$ 0.10 \u00a0 $ 0.46 \u00a0 $ 0.37 \u00a0 $ 1.39 \u00a0 $ 2.30 Discontinued\u00a0operations\n0.26 \u00a0 \u2014 \u00a0 (0.01 ) \u00a0 0.01 \u00a0 0.26 Diluted\u00a0earnings\u00a0per\u00a0share\n$ 0.36 \u00a0 $ 0.46 \u00a0 $ 0.36 \u00a0 $ 1.40 \u00a0 $ 2.56 (1)\nOur\u00a0comparable\u00a0sales\u00a0calculation\u00a0compares\u00a0revenue\u00a0from\u00a0stores,\u00a0websites\u00a0and\u00a0call\u00a0centers\u00a0operating\u00a0for\u00a0at\u00a0least\u00a0 14\u00a0 full\u00a0months,\u00a0as\u00a0well\u00a0as\u00a0revenue\u00a0related\u00a0to\u00a0certain\u00a0other\u00a0comparable\u00a0sales channels\u00a0for\u00a0a\u00a0particular\u00a0period\u00a0to\u00a0the\u00a0corresponding\u00a0period\u00a0in\u00a0the\u00a0prior\u00a0year.\u00a0Relocated\u00a0stores,\u00a0as\u00a0well\u00a0as\u00a0remodeled,\u00a0expanded\u00a0and\u00a0downsized\u00a0stores\u00a0closed\u00a0more\u00a0than\u00a0\n14\u00a0 days,\u00a0are excluded\u00a0from\u00a0our\u00a0comparable\u00a0sales\u00a0calculation\u00a0until\u00a0at\u00a0least\u00a0\n14\u00a0 full\u00a0months\u00a0after\u00a0reopening.\u00a0Acquisitions\u00a0are\u00a0included\u00a0in\u00a0the\u00a0comparable\u00a0sales\u00a0calcula tion\u00a0beginning\u00a0with\u00a0the\u00a0first\u00a0fullquarter\u00a0following\u00a0the\u00a0first\u00a0anniversary\u00a0of\u00a0the\u00a0date\u00a0of\u00a0the\u00a0acquisition.\u00a0The\u00a0Canadian\u00a0brand\u00a0consolidation,\u00a0which\u00a0included"
+        },
+        {
+          "claim": "FY2017: $1,228 / $39,403 = 3.12%",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "FY2016: $897 / $39,528 = 2.27%",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "FY2015: $1,233 / $40,339 = 3.06%",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "3-year average = (3.12% + 2.27% + 3.06%) / 3 = **2.8%**",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "Note: The FY2015 net earnings figure of $1,233 million is from the 12-month column in [3], and revenue of $40,339 million is from [2].",
+          "citation_num": 3,
+          "doc_name": "BESTBUY_2017_10K",
+          "year": 2017,
+          "page": 90,
+          "cited_chunk_text": "ed\u00a0operating\u00a0results\u00a0for\u00a0each\u00a03-month\u00a0quarter\u00a0and\u00a0full\u00a0year\u00a0of\u00a0fiscal\u00a02017\u00a0 and\u00a0 2016\u00a0 (unaudited)\u00a0($\u00a0in\u00a0mill ions): \nQuarter \u00a0 12-Month  \n1st \u00a0 2nd \u00a0 3rd \u00a0 4th \u00a0 2017 Revenue\n$ 8,443 \u00a0 $ 8,533 \u00a0 $ 8,945 \u00a0 $ 13,482 \u00a0 $ 39,403 Comparable\u00a0sales\u00a0%\u00a0change\u00a0\n(1) (0.1 )% \u00a0 0.8 % \u00a0 1.8 % \u00a0 (0.7 )% \u00a0 0.3 % Gross\u00a0profit\u00a0\n(2) $ 2,145 \u00a0 $ 2,062 \u00a0 $ 2,203 \u00a0 $ 3,030 \u00a0 $ 9,440 Operating\u00a0income\u00a0\n(3) 372 \u00a0 289 \u00a0 312 \u00a0 881 \u00a0 1,854 Net\u00a0earnings\u00a0from\u00a0continuing\u00a0op\nerations226 \u00a0 182 \u00a0 192 \u00a0 607 \u00a0 1,207 Gain\u00a0from\u00a0discontinued\u00a0opera\ntions,\u00a0net\u00a0of\u00a0tax3 \u00a0 16 \u00a0 2 \u00a0 \u2014 \u00a0 21 Net\u00a0earnings\u00a0attributab\nle\u00a0to\u00a0Best\u00a0Buy\u00a0Co.,\u00a0Inc.\u00a0shareholders229 \u00a0 198 \u00a0 194 \u00a0 607 \u00a0 1,228 Diluted\u00a0earnings\u00a0per\u00a0share\u00a0\n(4) \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 Continuing\u00a0operations\n$ 0.69 \u00a0 $ 0.56 \u00a0 $ 0.60 \u00a0 $ 1.91 \u00a0 $ 3.74 Discontinued\u00a0operations\n0.01 \u00a0 0.05 \u00a0 0.01 \u00a0 \u2014 \u00a0 0.07 Diluted\u00a0earnings\u00a0per\u00a0share\n$ 0.70 \u00a0 $ 0.61 \u00a0 $ 0.61 \u00a0 $ 1.91 \u00a0 $ 3.81  \nQuarter \u00a0 12-Month  \n1st \u00a0 2nd \u00a0 3rd \u00a0 4th \u00a0 2016 Revenue\n$ 8,558 \u00a0 $ 8,528 \u00a0 $ 8,819 \u00a0 $ 13,623 \u00a0 $ 39,528 Comparable\u00a0sales\u00a0%\u00a0change\u00a0\n(1) 0.6 % \u00a0 3.8 % \u00a0 0.8 % \u00a0 (1.7 )% \u00a0 0.5 % Gross\u00a0profit\u00a0\n(5) $ 2,030 \u00a0 $ 2,098 \u00a0 $ 2,112 \u00a0 $ 2,951 \u00a0 $ 9,191 Operating\u00a0income\u00a0\n(6) 86 \u00a0 288 \u00a0 230 \u00a0 771 \u00a0 1,375 Net\u00a0earnings\u00a0from\u00a0continuing\u00a0op\nerations37 \u00a0 164 \u00a0 129 \u00a0 477 \u00a0 807 Gain\u00a0(loss)\u00a0from\u00a0discontinued\u00a0op\nerations,\u00a0net\u00a0of\u00a0tax92 \u00a0 \u2014 \u00a0 (4 ) \u00a0 2 \u00a0 90 Net\u00a0earnings\u00a0attributab\nle\u00a0to\u00a0Best\u00a0Buy\u00a0Co.,\u00a0Inc.\u00a0shareholders129 \u00a0 164 \u00a0 125 \u00a0 479 \u00a0 897 Diluted\u00a0earnings\u00a0(loss)\u00a0per\u00a0sh\nare\u00a0(4) \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 Continuing\u00a0operations\n$ 0.10 \u00a0 $ 0.46 \u00a0 $ 0.37 \u00a0 $ 1.39 \u00a0 $ 2.30 Discontinued\u00a0operations\n0.26 \u00a0 \u2014 \u00a0 (0.01 ) \u00a0 0.01 \u00a0 0.26 Diluted\u00a0earnings\u00a0per\u00a0share\n$ 0.36 \u00a0 $ 0.46 \u00a0 $ 0.36 \u00a0 $ 1.40 \u00a0 $ 2.56 (1)\nOur\u00a0comparable\u00a0sales\u00a0calculation\u00a0compares\u00a0revenue\u00a0from\u00a0stores,\u00a0websites\u00a0and\u00a0call\u00a0centers\u00a0operating\u00a0for\u00a0at\u00a0least\u00a0 14\u00a0 full\u00a0months,\u00a0as\u00a0well\u00a0as\u00a0revenue\u00a0related\u00a0to\u00a0certain\u00a0other\u00a0comparable\u00a0sales channels\u00a0for\u00a0a\u00a0particular\u00a0period\u00a0to\u00a0the\u00a0corresponding\u00a0period\u00a0in\u00a0the\u00a0prior\u00a0year.\u00a0Relocated\u00a0stores,\u00a0as\u00a0well\u00a0as\u00a0remodeled,\u00a0expanded\u00a0and\u00a0downsized\u00a0stores\u00a0closed\u00a0more\u00a0than\u00a0\n14\u00a0 days,\u00a0are excluded\u00a0from\u00a0our\u00a0comparable\u00a0sales\u00a0calculation\u00a0until\u00a0at\u00a0least\u00a0\n14\u00a0 full\u00a0months\u00a0after\u00a0reopening.\u00a0Acquisitions\u00a0are\u00a0included\u00a0in\u00a0the\u00a0comparable\u00a0sales\u00a0calcula tion\u00a0beginning\u00a0with\u00a0the\u00a0first\u00a0fullquarter\u00a0following\u00a0the\u00a0first\u00a0anniversary\u00a0of\u00a0the\u00a0date\u00a0of\u00a0the\u00a0acquisition.\u00a0The\u00a0Canadian\u00a0brand\u00a0consolidation,\u00a0which\u00a0included"
+        },
+        {
+          "claim": "Note: The FY2015 net earnings figure of $1,233 million is from the 12-month column in [3], and revenue of $40,339 million is from [2].",
+          "citation_num": 2,
+          "doc_name": "BESTBUY_2017_10K",
+          "year": 2017,
+          "page": 25,
+          "cited_chunk_text": "$ 39,403 \u00a0 $ 39,528 \u00a0 $ 40,339 \u00a0 $ 40,611 \u00a0 $ 38,252 Operating\u00a0income\n\u00a0 1,854 \u00a0 1,375 \u00a0 1,450 \u00a0 1,144 \u00a0 90 Net\u00a0earnings\u00a0(loss)\u00a0from\u00a0con\ntinuing\u00a0operations\u00a0 1,207 \u00a0 807 \u00a0 1,246 \u00a0 695 \u00a0 (259 ) Gain\u00a0(loss)\u00a0from\u00a0discontinued\u00a0op\nerations\u00a0 21 \u00a0 90 \u00a0 (11 ) \u00a0 (172 ) \u00a0 (161 ) Net\u00a0earnings\u00a0(loss)\u00a0including\u00a0non\ncontrolling\u00a0interests\u00a0 1,228 \u00a0 897 \u00a0 1,235 \u00a0 523 \u00a0 (420 ) Net\u00a0earnings\u00a0(loss)\u00a0attr\nibutable\u00a0to\u00a0Best\u00a0Buy\u00a0Co.,\u00a0Inc.\u00a0shareholders\u00a0 1,228 \u00a0 897 \u00a0 1,233 \u00a0 532 \u00a0 (441 ) Per Share Data"
+        },
+        {
+          "claim": "The FY2015 figure includes a $353 million discrete benefit [8], but the question asks for the reported net profit margin, so no adjustment is made.",
+          "citation_num": 8,
+          "doc_name": "BESTBUY_2017_10K",
+          "year": 2017,
+          "page": 26,
+          "cited_chunk_text": "Included\u00a0within\u00a0net\u00a0earnings\u00a0(loss)\u00a0from\u00a0continuing\u00a0operations\u00a0and\u00a0net\u00a0earnings\u00a0(loss)\u00a0attributable\u00a0to\u00a0Best\u00a0 Buy\u00a0Co.,\u00a0Inc.\u00a0shareholders\u00a0for\u00a0fiscal\u00a02015\u00a0includes\u00a0$353\u00a0million\u00a0due\u00a0to\u00a0a\u00a0discretebenefit\u00a0related\u00a0to\u00a0reorganizing\u00a0certain\u00a0European\u00a0legal\u00a0entities."
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_03856",
+      "company": "Adobe",
+      "question": "What is the FY2017 operating cash flow ratio for Adobe? Operating cash flow ratio is defined as: cash from operations / total current liabilities. Round your answer to two decimal places. Please utilize information provided primarily within the balance sheet and the cash flow statement.",
+      "predicted_answer": "Based on the provided excerpts:\n\n- FY2017 net cash provided by operating activities: $2,912,853 thousand [1][10]\n- Total current liabilities at December 1, 2017: $3,527,457 thousand [2]\n\nOperating cash flow ratio = 2,912,853 / 3,527,457 = 0.8258...\n\n**FY2017 operating cash flow ratio = 0.83** (rounded to two decimal places).",
+      "pairs": [
+        {
+          "claim": "FY2017 net cash provided by operating activities: $2,912,853 thousand [1][10]",
+          "citation_num": 1,
+          "doc_name": "ADOBE_2017_10K",
+          "year": 2017,
+          "page": 60,
+          "cited_chunk_text": "Table of Contents\n61\nADOBE SYSTEMS INCORPORATED\n CONSOLIDATED STATEMENTS OF CASH FLOWS\n(In thousands)\n\u00a0 Years Ended\n\u00a0\nDecember 1,\n2017\nDecember 2,\n2016\nNovember 27,\n2015\nCash flows from operating activities: \u00a0 \u00a0\nNet income $ 1,693,954 $ 1,168,782 $ 629,551\nAdjustments to reconcile net income to net cash provided by operating activities:\nDepreciation, amortization and accretion 325,997 331,535 339,473\nStock-based compensation 451,451 349,912 335,859\nDeferred income taxes 51,605 24,222 (69,657)\nGain on the sale of property \u2014 \u2014 (21,415)\nUnrealized (gains) losses on investments (5,494) 3,145 (9,210)\nExcess tax benefits from stock-based compensation \u2014 (75,105) (68,153)\nOther non-cash items 4,625 2,022 1,216\nChanges in operating assets and liabilities, net of acquired assets and\n    assumed liabilities:\nTrade receivables, net (187,173) (160,416) (79,502)\nPrepaid expenses and other current assets 28,040 (71,021) (7,701)\nTrade payables (45,186) (6,281) 22,870\nAccrued expenses 154,125 64,978 (22,564)\nIncome taxes payable (34,493) 43,115 97,934\nDeferred revenue 475,402 524,840 320,801"
+        },
+        {
+          "claim": "FY2017 net cash provided by operating activities: $2,912,853 thousand [1][10]",
+          "citation_num": 10,
+          "doc_name": "ADOBE_2017_10K",
+          "year": 2017,
+          "page": 60,
+          "cited_chunk_text": "Deferred revenue 475,402 524,840 320,801\nNet cash provided by operating activities 2,912,853 2,199,728 1,469,502\nCash flows from investing activities: \u00a0 \u00a0\nPurchases of short-term investments (1,931,011) (2,285,222) (2,064,833)\nMaturities of short-term investments 759,737 769,228 371,790\nProceeds from sales of short-term investments 1,393,929 860,849 1,176,476\nAcquisitions, net of cash acquired (459,626) (48,427) (826,004)\nPurchases of property and equipment (178,122) (203,805) (184,936)\nProceeds from sale of property \u2014 \u2014 57,779\nPurchases of long-term investments, intangibles and other assets (29,918) (58,433) (22,779)\nProceeds from sale of long-term investments 2,134 5,777 4,149\nNet cash used for investing activities (442,877) (960,033) (1,488,358)\nCash flows from financing activities: \u00a0 \u00a0\nPurchases of treasury stock (1,100,000) (1,075,000) (625,000)\nProceeds from issuance of treasury stock 158,351 145,697 164,270\nTaxes paid related to net share settlement of equity awards (240,126) (236,400) (186,373)\nExcess tax benefits from stock-based compensation \u2014 75,105 68,153\nProceeds from debt issuance \u2014 \u2014 989,280"
+        },
+        {
+          "claim": "Total current liabilities at December 1, 2017: $3,527,457 thousand [2]",
+          "citation_num": 2,
+          "doc_name": "ADOBE_2017_10K",
+          "year": 2017,
+          "page": 56,
+          "cited_chunk_text": "Table of Contents\n57\n ADOBE SYSTEMS INCORPORATED\n CONSOLIDATED BALANCE SHEETS\n(In thousands, except par value)\n\u00a0\nDecember 1,\n2017\nDecember 2,\n2016\nASSETS\nCurrent assets: \u00a0 \u00a0\nCash and cash equivalents $ 2,306,072 $ 1,011,315\nShort-term investments 3,513,702 3,749,985\nTrade receivables, net of allowances for doubtful accounts of $9,151 and $6,214,\u00a0respectively 1,217,968 833,033\nPrepaid expenses and other current assets 210,071 245,441\nTotal current assets 7,247,813 5,839,774\nProperty and equipment, net 936,976 816,264\nGoodwill 5,821,561 5,406,474\nPurchased and other intangibles, net 385,658 414,405\nInvestment in lease receivable \u2014 80,439\nOther assets 143,548 139,890\nTotal assets $ 14,535,556 $ 12,697,246\nLIABILITIES AND STOCKHOLDERS\u2019 EQUITY\nCurrent liabilities: \u00a0 \u00a0\nTrade payables $ 113,538 $ 88,024\nAccrued expenses 993,773 739,630\nIncome taxes payable 14,196 38,362\nDeferred revenue 2,405,950 1,945,619\nTotal current liabilities 3,527,457 2,811,635\nLong-term liabilities:\nDebt and capital lease obligations 1,881,421 1,892,200\nDeferred revenue 88,592 69,131"
+        },
+        {
+          "claim": "Operating cash flow ratio = 2,912,853 / 3,527,457 = 0.8258...",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "**FY2017 operating cash flow ratio = 0.83** (rounded to two decimal places).",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_00917",
+      "company": "AMD",
+      "question": "What drove operating margin change as of the FY22 for AMD? If operating margin is not a useful metric for a company like this, then please state that and explain why.",
+      "predicted_answer": "Based on the provided excerpts, operating margin is a useful metric here, and the filing directly explains the change:\n\n- Operating income for 2022 was $1.3 billion compared to $3.6 billion for 2021 [1]. The decrease in operating income was primarily driven by amortization of intangible assets associated with the Xilinx acquisition [1].\n- Gross margin as a percentage of net revenue was 45% in 2022 versus 48% in 2021, with the decrease primarily due to amortization of intangible assets associated with the Xilinx acquisition [1].\n- Segment-level operating income (loss) for 2022 vs. 2021: Data Center $1,848M vs. $991M; Client $1,190M vs. $2,088M; Gaming $953M vs. $934M; Embedded $2,252M vs. $44M; All Other $(4,979)M vs. $(409)M; Total operating income $1,264M vs. $3,648M [5].\n\nNote: The excerpts do not explicitly state an \"operating margin\" percentage figure; they provide operating income dollars and gross margin percentages only [1][5].",
+      "pairs": [
+        {
+          "claim": "Based on the provided excerpts, operating margin is a useful metric here, and the filing directly explains the change:",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "Operating income for 2022 was $1.3 billion compared to $3.6 billion for 2021 [1].",
+          "citation_num": 1,
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 42,
+          "cited_chunk_text": "driven by a weak PC market and significant inventory correction actions across the PC supply chain. Gross margin, as a percentage of net revenue for 2022,\nwas 45%, compared to 48% in 2021. The decrease in gross margin was primarily due to amortization of intangible assets associated with the Xilinx acquisition.\nOperating income for 2022 was $1.3 billion compared to operating income of $3.6 billion for 2021. The decrease in operating income was primarily driven by\namortization of intangible assets associated with the Xilinx acquisition. Net income for 2022 was $1.3 billion compared to $3.2 billion in the prior year. The\ndecrease in net income was primarily driven by lower operating income.\nCash, cash equivalents and short-term investments as of December 31, 2022 were $5.9 billion, compared to $3.6 billion at the end of 2021. Our aggregate\nprincipal amount of total debt as of December 31, 2022 was $2.5 billion, compared to $313 million as of December 25, 2021.\nWe took several actions in 2022 to strengthen our financial position. In June 2022, we issued $1.0 billion in aggregate principal amount of senior notes,\nconsisting of $500 million in aggregate principal amount of 3.924% Senior Notes due 2032 (3.924% Notes) and $500 million in aggregate principal amount of\n4.393% Senior Notes due 2052 (4.393% Notes). The 3.924% Notes will mature on June 1, 2032 and bear interest at a rate of 3.924% per annum, and the"
+        },
+        {
+          "claim": "The decrease in operating income was primarily driven by amortization of intangible assets associated with the Xilinx acquisition [1].",
+          "citation_num": 1,
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 42,
+          "cited_chunk_text": "driven by a weak PC market and significant inventory correction actions across the PC supply chain. Gross margin, as a percentage of net revenue for 2022,\nwas 45%, compared to 48% in 2021. The decrease in gross margin was primarily due to amortization of intangible assets associated with the Xilinx acquisition.\nOperating income for 2022 was $1.3 billion compared to operating income of $3.6 billion for 2021. The decrease in operating income was primarily driven by\namortization of intangible assets associated with the Xilinx acquisition. Net income for 2022 was $1.3 billion compared to $3.2 billion in the prior year. The\ndecrease in net income was primarily driven by lower operating income.\nCash, cash equivalents and short-term investments as of December 31, 2022 were $5.9 billion, compared to $3.6 billion at the end of 2021. Our aggregate\nprincipal amount of total debt as of December 31, 2022 was $2.5 billion, compared to $313 million as of December 25, 2021.\nWe took several actions in 2022 to strengthen our financial position. In June 2022, we issued $1.0 billion in aggregate principal amount of senior notes,\nconsisting of $500 million in aggregate principal amount of 3.924% Senior Notes due 2032 (3.924% Notes) and $500 million in aggregate principal amount of\n4.393% Senior Notes due 2052 (4.393% Notes). The 3.924% Notes will mature on June 1, 2032 and bear interest at a rate of 3.924% per annum, and the"
+        },
+        {
+          "claim": "Gross margin as a percentage of net revenue was 45% in 2022 versus 48% in 2021, with the decrease primarily due to amortization of intangible assets associated with the Xilinx acquisition [1].",
+          "citation_num": 1,
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 42,
+          "cited_chunk_text": "driven by a weak PC market and significant inventory correction actions across the PC supply chain. Gross margin, as a percentage of net revenue for 2022,\nwas 45%, compared to 48% in 2021. The decrease in gross margin was primarily due to amortization of intangible assets associated with the Xilinx acquisition.\nOperating income for 2022 was $1.3 billion compared to operating income of $3.6 billion for 2021. The decrease in operating income was primarily driven by\namortization of intangible assets associated with the Xilinx acquisition. Net income for 2022 was $1.3 billion compared to $3.2 billion in the prior year. The\ndecrease in net income was primarily driven by lower operating income.\nCash, cash equivalents and short-term investments as of December 31, 2022 were $5.9 billion, compared to $3.6 billion at the end of 2021. Our aggregate\nprincipal amount of total debt as of December 31, 2022 was $2.5 billion, compared to $313 million as of December 25, 2021.\nWe took several actions in 2022 to strengthen our financial position. In June 2022, we issued $1.0 billion in aggregate principal amount of senior notes,\nconsisting of $500 million in aggregate principal amount of 3.924% Senior Notes due 2032 (3.924% Notes) and $500 million in aggregate principal amount of\n4.393% Senior Notes due 2052 (4.393% Notes). The 3.924% Notes will mature on June 1, 2032 and bear interest at a rate of 3.924% per annum, and the"
+        },
+        {
+          "claim": "Segment-level operating income (loss) for 2022 vs. 2021: Data Center $1,848M vs. $991M; Client $1,190M vs. $2,088M; Gaming $953M vs. $934M; Embedded $2,252M vs. $44M; All Other $(4,979)M vs. $(409)M; Total operating income $1,264M vs. $3,648M [5].",
+          "citation_num": 5,
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 47,
+          "cited_chunk_text": "Table of Contents\nResults of Operations\nDuring the second quarter of fiscal year 2022, we changed our reporting segments to align our financial reporting with how we manage our business in strategic\nend markets. This is consistent with how our Chief Operating Decision Maker (CODM) assesses our financial performance and allocates resources. As a result,\nwe report our financial performance based on the following four reportable segments: Data Center, Client, Gaming, and Embedded.\nAdditional information on our reportable segments is contained in Note 4 \u2013 Segment Reporting of the Notes to Financial Statements (Part II, Item 8 of this Form\n10-K).\nOur operating results tend to vary seasonally. Historically, our net revenue has been generally higher in the second half of the year than in the first half of the\nyear, although market conditions and product transitions could impact these trends.\nThe following table provides a summary of net revenue and operating income (loss) by segment for 2022 and 2021:\nYear Ended\nDecember 31,\n2022\nDecember 25,\n2021\n(In millions)\nNet revenue:\nData Center $ 6,043 $ 3,694 \nClient 6,201 6,887 \nGaming 6,805 5,607 \nEmbedded 4,552 246 \nTotal net revenue $ 23,601 $ 16,434 \nOperating income (loss):\nData Center $ 1,848 $ 991 \nClient 1,190 2,088 \nGaming 953 934 \nEmbedded 2,252 44 \nAll Other (4,979) (409)\nTotal operating income (loss) $ 1,264 $ 3,648 \nData Center"
+        },
+        {
+          "claim": "Note: The excerpts do not explicitly state an \"operating margin\" percentage figure; they provide operating income dollars and gross margin percentages only [1][5].",
+          "citation_num": 1,
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 42,
+          "cited_chunk_text": "driven by a weak PC market and significant inventory correction actions across the PC supply chain. Gross margin, as a percentage of net revenue for 2022,\nwas 45%, compared to 48% in 2021. The decrease in gross margin was primarily due to amortization of intangible assets associated with the Xilinx acquisition.\nOperating income for 2022 was $1.3 billion compared to operating income of $3.6 billion for 2021. The decrease in operating income was primarily driven by\namortization of intangible assets associated with the Xilinx acquisition. Net income for 2022 was $1.3 billion compared to $3.2 billion in the prior year. The\ndecrease in net income was primarily driven by lower operating income.\nCash, cash equivalents and short-term investments as of December 31, 2022 were $5.9 billion, compared to $3.6 billion at the end of 2021. Our aggregate\nprincipal amount of total debt as of December 31, 2022 was $2.5 billion, compared to $313 million as of December 25, 2021.\nWe took several actions in 2022 to strengthen our financial position. In June 2022, we issued $1.0 billion in aggregate principal amount of senior notes,\nconsisting of $500 million in aggregate principal amount of 3.924% Senior Notes due 2032 (3.924% Notes) and $500 million in aggregate principal amount of\n4.393% Senior Notes due 2052 (4.393% Notes). The 3.924% Notes will mature on June 1, 2032 and bear interest at a rate of 3.924% per annum, and the"
+        },
+        {
+          "claim": "Note: The excerpts do not explicitly state an \"operating margin\" percentage figure; they provide operating income dollars and gross margin percentages only [1][5].",
+          "citation_num": 5,
+          "doc_name": "AMD_2022_10K",
+          "year": 2022,
+          "page": 47,
+          "cited_chunk_text": "Table of Contents\nResults of Operations\nDuring the second quarter of fiscal year 2022, we changed our reporting segments to align our financial reporting with how we manage our business in strategic\nend markets. This is consistent with how our Chief Operating Decision Maker (CODM) assesses our financial performance and allocates resources. As a result,\nwe report our financial performance based on the following four reportable segments: Data Center, Client, Gaming, and Embedded.\nAdditional information on our reportable segments is contained in Note 4 \u2013 Segment Reporting of the Notes to Financial Statements (Part II, Item 8 of this Form\n10-K).\nOur operating results tend to vary seasonally. Historically, our net revenue has been generally higher in the second half of the year than in the first half of the\nyear, although market conditions and product transitions could impact these trends.\nThe following table provides a summary of net revenue and operating income (loss) by segment for 2022 and 2021:\nYear Ended\nDecember 31,\n2022\nDecember 25,\n2021\n(In millions)\nNet revenue:\nData Center $ 6,043 $ 3,694 \nClient 6,201 6,887 \nGaming 6,805 5,607 \nEmbedded 4,552 246 \nTotal net revenue $ 23,601 $ 16,434 \nOperating income (loss):\nData Center $ 1,848 $ 991 \nClient 1,190 2,088 \nGaming 953 934 \nEmbedded 2,252 44 \nAll Other (4,979) (409)\nTotal operating income (loss) $ 1,264 $ 3,648 \nData Center"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_01346",
+      "company": "Corning",
+      "question": "How much has the effective tax rate of Corning changed between FY2021 and FY2022?",
+      "predicted_answer": "The effective tax rate was 22.9% in FY2022 and 20.2% in FY2021, an increase of 2.7 percentage points [5]. This is consistent with the rounded figures of 23% in FY2022 versus 20% in FY2021 shown in the segment table [8].",
+      "pairs": [
+        {
+          "claim": "The effective tax rate was 22.9% in FY2022 and 20.2% in FY2021, an increase of 2.7 percentage points [5].",
+          "citation_num": 5,
+          "doc_name": "CORNING_2022_10K",
+          "year": 2022,
+          "page": 76,
+          "cited_chunk_text": "2022  2021  2020 \nStatutory U.S. federal income tax rate   21.0%  21.0%  21.0%\nState income tax, net of federal effect   0.7   1.0   1.4 \nAudit settlements & change in reserve   3.7   1.6   12.1 \nDifferential arising from foreign earnings (1)   2.2   2.0   14.9 \nValuation allowance   2.1   (0.5)   2.5 \nIntercompany loan adjustment   0.6       6.1 \nTax credits   (3.3)   (2.6)   (29.2)\nForeign derived intangible income   (2.7)   (1.3)     \nStock compensation   (0.8)   (1.5)   (1.7)\nRemeasurement of deferred tax assets and liabilities   (0.1)       (13.2)\nLegal entity rationalization           (2.2)\nNon-deductible expenses       1.4   6.9 \nGlobal intangible low-taxed income       0.2   (0.5)\nOther items, net   (0.5)   (1.1)   (0.6)\nEffective tax rate   22.9%  20.2%  17.5%"
+        },
+        {
+          "claim": "This is consistent with the rounded figures of 23% in FY2022 versus 20% in FY2021 shown in the segment table [8].",
+          "citation_num": 8,
+          "doc_name": "CORNING_2022_10K",
+          "year": 2022,
+          "page": 23,
+          "cited_chunk_text": "Year ended December 31,   % change  \n  2022   2021   22 vs. 21  \n             \nNet sales  $ 14,189  $ 14,082   1%\n             \nGross margin  $ 4,506  $ 5,063   (11%)\n(gross margin %)   32%  36%    \n             \nSelling, general and administrative expenses  $ 1,898  $ 1,827   4%\n(as a % of net sales)   13%  13%    \n             \nResearch, development and engineering expenses  $ 1,047  $ 995   5%\n(as a % of net sales)   7%  7%    \n             \nTranslated earnings contract gain, net  $ 351  $ 354   (1%)\n(as a % of net sales)   2%  3%    \n             \nIncome before income taxes  $ 1,797  $ 2,426   (26%)\n(as a % of net sales)   13%  17%    \n             \nProvision for income taxes  $ (411)  $ (491)   16%\nEffective tax rate   23%  20%    \n             \nNet income attributable to Corning Incorporated  $ 1,316  $ 1,906   (31%)\n(as a % of net sales)   9%   14%    \n             \nComprehensive income attributable to Corning Incorporated  $ 661  $ 1,471   (55%)"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_04854",
+      "company": "General Mills",
+      "question": "According to the information provided in the statement of cash flows, what is the FY2020 free cash flow (FCF) for General Mills? FCF here is defined as: (cash from operations - capex). Answer in USD millions.",
+      "predicted_answer": "Based on the provided excerpts, FY2020 free cash flow is **$3,215.4 million**.\n\nThis is calculated as net cash provided by operating activities of $3,676.2 million minus purchases of land, buildings, and equipment of $460.8 million, which the filing explicitly reconciles to free cash flow of $3,215.4 million [5]. The same $3,215.4 million free cash flow figure is also reported in the selected financial data [3], and the filing notes free cash flow was $3.2 billion at a conversion rate of 143 percent of adjusted net earnings [2].",
+      "pairs": [
+        {
+          "claim": "Based on the provided excerpts, FY2020 free cash flow is **$3,215.4 million**.",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "This is calculated as net cash provided by operating activities of $3,676.2 million minus purchases of land, buildings, and equipment of $460.8 million, which the filing explicitly reconciles to free cash flow of $3,215.4 million [5].",
+          "citation_num": 5,
+          "doc_name": "GENERALMILLS_2020_10K",
+          "year": 2020,
+          "page": 36,
+          "cited_chunk_text": "Product recall, net of tax (d) 17.1 \nCPW restructuring costs, net of tax (e) 5.0 \nInvestment activity, net, net of tax (f) 3.0 \nAdjusted net earnings, including earnings attributable to redeemable and noncontrolling interests $2,241.8 \n  \nNet cash provided by operating activities 3,676.2 \nPurchases of land, buildings, and equipment (460.8) \nFree cash flow $3,215.4 \n  \nNet cash provided by operating activities conversion rate 166% \nFree cash flow conversion rate 143% \nNote: Table may not foot due rounding. \n(a) Discrete tax benefit related to the reorganization of certain wholly owned subsidiaries. Please see Note 15 to the Consolidated Financial Statements \nin Item 8 of this report. \n(b) Restructuring and project-related charges for previously announced restructuring actions. Please see Note 4 to the Consolidated Financial \nStatements in Item 8 of this report.  \n(c) Net mark-to-market valuation of certain commodity positions recognized in unallocated corporate items. Please see Note 8 to the Consolidated \nFinancial Statements in Item 8 of this report.  \n(d) Product recall costs related to our international Green Giant business. \n(e) CPW restructuring charges related to initiatives designed to improve profitability and growth that were approved in fiscal 2018 and 2019. \n(f) Valuation adjustments and the loss on sale of certain corporate investments. \n \nSee our reconciliation below of the effective income tax rate as reported to the adjusted effective income tax rate for the tax impact of \neach item affecting comparability. \n \nConstant-currency After-Tax Earnings from Joint Ventures Growth Rate \n \nWe believe that this measure provides useful information to investors because it provides transparency to underlying performance of \nour joint ventures by excluding the effect that foreign currency exchange rate fluctuations have on year-to-year comparability given \nvolatility in foreign currency exchange markets. \n \nAfter-tax earnings from joint ventures growth rates on a constant-currency basis are calculated as follows: \n \n  Fiscal 2020"
+        },
+        {
+          "claim": "The same $3,215.4 million free cash flow figure is also reported in the selected financial data [3], and the filing notes free cash flow was $3.2 billion at a conversion rate of 143 percent of adjusted net earnings [2].",
+          "citation_num": 3,
+          "doc_name": "GENERALMILLS_2020_10K",
+          "year": 2020,
+          "page": 16,
+          "cited_chunk_text": "Capital expenditures 460.8 537.6 622.7 684.4 729.3 \nFree cash flow (b) 3,215.4 2,269.4 2,218.3 1,730.8 2,034.9 \nShare data:      \nCash dividends per common share $ 1.96 $ 1.96 $ 1.96 $ 1.92 $ 1.78 \n(a) Fiscal 2020 was a 53-week year; all other fiscal years were 52 weeks. \n(b) See \u201cGlossary\u201d in Item 8 of this report for definition. \n(c) See \u201cNon-GAAP Measures\u201d in Item 7 of this report for our discussion of this measure not defined by generally accepted accounting \nprinciples. \n(d) In fiscal 2019, we retrospectively adopted new accounting requirements related to the presentation of net periodic defined benefit \npension expense, net periodic postretirement benefit expense, and net periodic postemployment benefit expense. Please see Note 2 \nto the Consolidated Financial Statements in Item 8 of this report. \n(e) In fiscal 2018, we adopted new requirements for the accounting and presentation of stock-based payments. This resulted in the \nreclassification of realized windfall tax benefits and employee tax withholdings in our Consolidated Statements of Cash Flows. \nPlease see Note 2 to the Consolidated Financial Statements in Item 8 of this report."
+        },
+        {
+          "claim": "The same $3,215.4 million free cash flow figure is also reported in the selected financial data [3], and the filing notes free cash flow was $3.2 billion at a conversion rate of 143 percent of adjusted net earnings [2].",
+          "citation_num": 2,
+          "doc_name": "GENERALMILLS_2020_10K",
+          "year": 2020,
+          "page": 17,
+          "cited_chunk_text": "increased 12 percent on a constant-currency basis (See the \u201cNon-GAAP Measures\u201d section below for a description of our use of measures \nnot defined by generally accepted accounting principles (GAAP)). \n \nNet cash provided by operations totaled $3.7 billion in fiscal 2020 representing a conversion rate of 166 percent of net earnings, including \nearnings attributable to redeemable and noncontrolling interests. This cash generation supported capital investments totaling $461 \nmillion, and our resulting free cash flow was $3.2 billion at a conversion rate of 143 percent of adjusted net earnings, including earnings"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_01351",
+      "company": "American Express",
+      "question": "How much has the effective tax rate of American Express changed between FY2021 and FY2022?",
+      "predicted_answer": "The effective tax rate was 21.6 percent in 2022 and 24.6 percent in 2021, a decrease of 3.0 percentage points [1].",
+      "pairs": [
+        {
+          "claim": "The effective tax rate was 21.6 percent in 2022 and 24.6 percent in 2021, a decrease of 3.0 percentage points [1].",
+          "citation_num": 1,
+          "doc_name": "AMERICANEXPRESS_2022_10K",
+          "year": 2022,
+          "page": 48,
+          "cited_chunk_text": "volumes.\nCard Member services expense increased, primarily due to higher usage of travel-related benefits.\nMarketing expense increased, primarily due to business investments to drive growth momentum and accelerate new card acquisitions.\nSalaries and employee benefits expense increased, primarily driven by higher compensation costs, reflecting an increase in our colleague base to support\nbusiness growth as well as compensation decisions made.\nOther expenses increased, primarily driven by net losses on Amex Ventures investments in the current year, as compared to net gains in the prior year.\nINCOME TAXES\nThe effective tax rate was 21.6 percent and 24.6 percent for 2022 and 2021, respectively. The reduction in the effective tax rate primarily reflected discrete tax\nbenefits in the current year related to the resolution of prior-year tax items. The tax rates in both years reflected the level of pretax income in relation to\nrecurring permanent tax benefits and the geographic mix of business.\n46"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_01482",
+      "company": "PepsiCo",
+      "question": "At the Pepsico AGM held on May 3, 2023, what was the outcome of the shareholder vote on the shareholder proposal for a congruency report by Pepsico on net-zero emissions policies?",
+      "predicted_answer": "The shareholder proposal regarding a congruency report on net-zero emissions policies was defeated, with 19,718,780 votes for, 977,228,788 votes against, 23,200,321 abstentions, and 172,969,325 broker non-votes [2].",
+      "pairs": [
+        {
+          "claim": "The shareholder proposal regarding a congruency report on net-zero emissions policies was defeated, with 19,718,780 votes for, 977,228,788 votes against, 23,200,321 abstentions, and 172,969,325 broker non-votes [2].",
+          "citation_num": 2,
+          "doc_name": "PEPSICO_2023_8K_dated-2023-05-05",
+          "year": 2023,
+          "page": 3,
+          "cited_chunk_text": "(4) The shareholders approved, on an advisory basis, the holding of an advisory vote on the compensation of PepsiCo\u2019s named executive officers every\nyear:\nOne Year 994,856,204\nTwo Years 4,331,004\nThree Years 17,603,165\nAbstain 3,357,516\nBroker Non-Votes 172,969,325\nIn light of the voting results on this advisory vote, and consistent with its recommendation to shareholders, PepsiCo\u2019s Board of Directors has decided that\nPepsiCo will hold an advisory vote on the compensation of PepsiCo\u2019s named executive officers every year.\n(5) The shareholder proposal regarding independent Board Chair was defeated:\nFor 250,838,697\nAgainst 746,982,272\nAbstain 22,326,920\nBroker Non-Votes 172,969,325\n(6) The shareholder proposal regarding a global transparency report was defeated:\nFor 185,034,699\nAgainst 814,416,953\nAbstain 20,696,237\nBroker Non-Votes 172,969,325\n(7) The shareholder proposal regarding a report on impacts of reproductive healthcare legislation was defeated:\nFor 158,917,578\nAgainst 830,627,354\nAbstain 30,602,957\nBroker Non-Votes 172,969,325\n(8) The shareholder proposal regarding a congruency report on net-zero emissions policies was defeated:\nFor 19,718,780\nAgainst 977,228,788\nAbstain 23,200,321\nBroker Non-Votes 172,969,325"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_04254",
+      "company": "American Water Works",
+      "question": "Basing your judgments off of the cash flow statement and the income statement, what is American Water Works's FY2021 unadjusted operating income + depreciation and amortization from the cash flow statement (unadjusted EBITDA) in USD millions?",
+      "predicted_answer": "Based on the provided excerpts:\n\n- FY2021 operating income was $1,196 million [3].\n- FY2021 depreciation and amortization from the cash flow statement was $636 million [1].\n\nUnadjusted EBITDA = $1,196 + $636 = **$1,832 million**.\n\n(Note: The excerpts do not explicitly label this figure as \"unadjusted EBITDA\"; the calculation is derived from the two stated line items.)",
+      "pairs": [
+        {
+          "claim": "FY2021 operating income was $1,196 million [3].",
+          "citation_num": 3,
+          "doc_name": "AMERICANWATERWORKS_2021_10K",
+          "year": 2021,
+          "page": 85,
+          "cited_chunk_text": "Table of Contents\nAmerican Water Works Company, Inc. and Subsidiary Companies\nConsolidated Statements of Operations\n(In millions, except pe\nr share data) \nFor the Years Ended December 31,  \n2021 2020 2019 Operating revenues\n$ 3,930 $ 3,777 $ 3,610 Operating expenses:\n   Operation and maintenance\n1,777 1,622 1,544 Depreciation and amortization\n636 604 582 General taxes\n321 303 280 Other\n\u2014 \u2014 (10) Total operating expenses, net\n2,734 2,529 2,396 Operating income\n1,196 1,248 1,214 Other income (expense):\n   Interest expense\n(403) (397) (386) Interest income\n4 2 4 Non-operating benefit costs, n\net78 49 16 Gain or (loss) on sale of businesses\n747 \u2014 (44) Other, net\n18 22 29 Total other income (exp\nense)444 (324) (381) Income before income taxes\n1,640 924 833 Provision for income taxes\n377 215 212 Net income attributab\nle to common shareholders$ 1,263 $ 709 $ 621 Basic earnings per share: \n(a) \u00a0 \u00a0 \u00a0 Net income attributab\nle to common shareholders$ 6.96 $ 3.91 $ 3.44 Diluted earnings per share\n: (a) \u00a0 \u00a0 \u00a0 Net income attributab\nle to common shareholders$ 6.95 $ 3.91 $ 3.43 Weighted average com\nmon shares outstanding:   Basic\n182 181 181 Diluted\n182 182 181 (a)\nAmounts may not calculate due to rounding. The accompanying notes are \nan integral part of these Consolidated Financial Statements.84"
+        },
+        {
+          "claim": "FY2021 depreciation and amortization from the cash flow statement was $636 million [1].",
+          "citation_num": 1,
+          "doc_name": "AMERICANWATERWORKS_2021_10K",
+          "year": 2021,
+          "page": 87,
+          "cited_chunk_text": "Table of Contents\nAmerican Water Works Company, Inc. and Subsidiary Companies\nConsolidated Statements of Cash Flows\n(In millions)\n \nFor the Years Ended December 31,  \n2021 2020 2019 CASH FLOWS FROM OPERATING ACTIVITIES\n   Net income\n$ 1,263 $ 709 $ 621 Adjustments to reconcile to net cash flows provided by operating activities:\n   Depreciation and amortization\n636 604 582 Deferred income taxes and amortization of investment tax credits\n230 207 208 Provision for losses on accounts receivable\n37 34 28 (Gain) or loss on sale of businesses\n(747) \u2014 34 Pension and non-pension postretirement benefits\n(41) (14) 17 Other non-cash, net\n(23) (20) (41) Changes in assets and liabilities:\n   Receivables and unbilled revenues\n(74) (97) (25) Pension and non-pension postretirement benefit contributions\n(40) (39) (31) Accounts payable and accrued liabilities\n66 (2) 66 Other assets and liabilities, net\n134 44 (76) Net cash provided by operating activities\n1,441 1,426 1,383 CASH FLOWS FROM INVESTING ACTIVITIES\n   Capital expenditures\n(1,764) (1,822) (1,654) Acquisitions, net of cash acquired\n(135) (135) (235) Proceeds from sale of assets, net of cash on hand\n472 2 48 Removal costs from property, plant and equipment retirements, net\n(109) (106) (104) Net cash used in investing activities\n(1,536) (2,061) (1,945) CASH FLOWS FROM FINANCING ACTIVITIES"
+        },
+        {
+          "claim": "Unadjusted EBITDA = $1,196 + $636 = **$1,832 million**.",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "(Note: The excerpts do not explicitly label this figure as \"unadjusted EBITDA\"; the calculation is derived from the two stated line items.)",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_00540",
+      "company": "AES Corporation",
+      "question": "Roughly how many times has AES Corporation sold its inventory in FY2022? Calculate inventory turnover ratio for the FY2022; if conventional inventory management is not meaningful for the company then state that and explain why.",
+      "predicted_answer": "Based on the provided excerpts, I cannot calculate a conventional inventory turnover ratio for FY2022.\n\n**What the excerpts do provide:**\n- Total inventory of $1,055 million as of December 31, 2022, and $604 million as of December 31, 2021 [3].\n- Total cost of sales of $10,069 million for FY2022 [9].\n\n**What is missing:**\n- The excerpts do not explicitly state an inventory turnover ratio or a \"cost of goods sold\" figure labeled as such (only \"Total cost of sales\" is given) [9], and they do not provide enough information to determine whether conventional inventory turnover is meaningful for AES.\n\n**Why a conventional calculation is not meaningful here (per the excerpts):**\n- AES's inventory consists primarily of fuel and other raw materials used to generate power, plus operational spare parts and supplies used to maintain power generation and distribution facilities [1]. This is not a typical merchandising/retail inventory that is \"sold\" to customers; fuel is consumed to generate electricity, and spare parts are consumed in maintenance. The filing notes that spare parts and supplies carrying amounts are typically reduced only when items are considered obsolete [1], which is inconsistent with a conventional \"sell-through\" turnover concept.\n\nBecause the excerpts do not explicitly provide an inventory turnover figure or confirm that conventional inventory management applies, I cannot state a turnover multiple based solely on the provided context.",
+      "pairs": [
+        {
+          "claim": "Based on the provided excerpts, I cannot calculate a conventional inventory turnover ratio for FY2022.",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "**What the excerpts do provide:**",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "Total inventory of $1,055 million as of December 31, 2022, and $604 million as of December 31, 2021 [3].",
+          "citation_num": 3,
+          "doc_name": "AES_2022_10K",
+          "year": 2022,
+          "page": 148,
+          "cited_chunk_text": "2. INVENTORY\nInventory is valued primarily using the average-cost method. The following table summarizes the Company's inventory balances as of the\ndates indicated (in millions):\nDecember 31, 2022 2021\nFuel and other raw materials $ 733 $ 366 \nSpare parts and supplies 322 238 \nTotal $ 1,055 $ 604 \n3. PROPERTY, PLANT AND EQUIPMENT\nThe following table summarizes the components of the electric generation and distribution assets and other property, plant and equipment\n(in millions) with their estimated useful lives (in years). The amounts are stated net of all prior asset impairment losses recognized."
+        },
+        {
+          "claim": "Total cost of sales of $10,069 million for FY2022 [9].",
+          "citation_num": 9,
+          "doc_name": "AES_2022_10K",
+          "year": 2022,
+          "page": 131,
+          "cited_chunk_text": "129    \nConsolidated Statements of Operations\nYears ended December 31, 2022, 2021, and 2020\n2022 2021 2020\n(in millions, except per share amounts)\nRevenue:\nRegulated $ 3,538 $ 2,868 $ 2,661 \nNon-Regulated 9,079 8,273 6,999 \nTotal revenue 12,617 11,141 9,660 \nCost of Sales:\nRegulated (3,162) (2,448) (2,235)\nNon-Regulated (6,907) (5,982) (4,732)\nTotal cost of sales (10,069) (8,430) (6,967)\nOperating margin 2,548 2,711 2,693 \nGeneral and administrative expenses (207) (166) (165)\nInterest expense (1,117) (911) (1,038)\nInterest income 389 298 268 \nLoss on extinguishment of debt (15) (78) (186)\nOther expense (68) (60) (53)\nOther income 102 410 75 \nLoss on disposal and sale of business interests (9) (1,683) (95)\nGoodwill impairment expense (777) \u2014 \u2014 \nAsset impairment expense (763) (1,575) (864)\nForeign currency transaction gains (losses) (77) (10) 55 \nOther non-operating expense (175) \u2014 (202)\nINCOME (LOSS) FROM CONTINUING OPERATIONS BEFORE TAXES AND EQUITY IN EARNINGS OF AFFILIATES (169) (1,064) 488 \nIncome tax benefit (expense) (265) 133 (216)"
+        },
+        {
+          "claim": "The excerpts do not explicitly state an inventory turnover ratio or a \"cost of goods sold\" figure labeled as such (only \"Total cost of sales\" is given) [9], and they do not provide enough information to determine whether conventional inventory turnover is meaningful for AES.",
+          "citation_num": 9,
+          "doc_name": "AES_2022_10K",
+          "year": 2022,
+          "page": 131,
+          "cited_chunk_text": "129    \nConsolidated Statements of Operations\nYears ended December 31, 2022, 2021, and 2020\n2022 2021 2020\n(in millions, except per share amounts)\nRevenue:\nRegulated $ 3,538 $ 2,868 $ 2,661 \nNon-Regulated 9,079 8,273 6,999 \nTotal revenue 12,617 11,141 9,660 \nCost of Sales:\nRegulated (3,162) (2,448) (2,235)\nNon-Regulated (6,907) (5,982) (4,732)\nTotal cost of sales (10,069) (8,430) (6,967)\nOperating margin 2,548 2,711 2,693 \nGeneral and administrative expenses (207) (166) (165)\nInterest expense (1,117) (911) (1,038)\nInterest income 389 298 268 \nLoss on extinguishment of debt (15) (78) (186)\nOther expense (68) (60) (53)\nOther income 102 410 75 \nLoss on disposal and sale of business interests (9) (1,683) (95)\nGoodwill impairment expense (777) \u2014 \u2014 \nAsset impairment expense (763) (1,575) (864)\nForeign currency transaction gains (losses) (77) (10) 55 \nOther non-operating expense (175) \u2014 (202)\nINCOME (LOSS) FROM CONTINUING OPERATIONS BEFORE TAXES AND EQUITY IN EARNINGS OF AFFILIATES (169) (1,064) 488 \nIncome tax benefit (expense) (265) 133 (216)"
+        },
+        {
+          "claim": "**Why a conventional calculation is not meaningful here (per the excerpts):**",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "AES's inventory consists primarily of fuel and other raw materials used to generate power, plus operational spare parts and supplies used to maintain power generation and distribution facilities [1].",
+          "citation_num": 1,
+          "doc_name": "AES_2022_10K",
+          "year": 2022,
+          "page": 139,
+          "cited_chunk_text": "income. Interest and dividends on investments are reported in Interest income and Other income, respectively. Gains and losses on sales of\ninvestments are determined using the specific identification method.\nACCOUNTS AND NOTES RECEIVABLE AND ALLOWANCE FOR DOUBTFUL ACCOUNTS \u2014 Accounts and notes receivable are\ncarried at amortized cost. The Company periodically assesses the collectability of accounts receivable, considering factors such as historical\ncollection experience, the age of accounts receivable and other currently available evidence supporting collectability, and records an allowance\nfor doubtful accounts in accordance with ASC 326 for the estimated uncollectible amount as appropriate. Credit losses on accounts and notes\nreceivable are generally recognized in Cost of Sales. Certain of our businesses charge interest on accounts receivable. Interest income is\nrecognized on an accrual basis. When collection of such interest is not reasonably assured, interest income is recognized as cash is received.\nIndividual accounts and notes receivable are written off when they are no longer deemed collectible.\nINVENTORY \u2014 Inventory primarily consists of fuel and other raw materials used to generate power, and operational spare parts and\nsupplies used to maintain power generation and distribution facilities. Inventory is carried at lower of cost or net realizable value. Cost is the sum\nof the purchase price and expenditures incurred to bring the inventory to its existing location. Inventory is primarily valued using the average cost\nmethod. Generally, if it is expected fuel inventory will not be recovered through revenue earned from power generation, an impairment is\nrecognized to reflect the fuel at net realizable value. The carrying amount of spare parts and supplies is typically reduced only in instances where\nthe items are considered obsolete.\nLONG-LIVED ASSETS \u2014 Long-lived assets include property, plant and equipment, assets under finance leases and intangible assets"
+        },
+        {
+          "claim": "This is not a typical merchandising/retail inventory that is \"sold\" to customers; fuel is consumed to generate electricity, and spare parts are consumed in maintenance.",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "The filing notes that spare parts and supplies carrying amounts are typically reduced only when items are considered obsolete [1], which is inconsistent with a conventional \"sell-through\" turnover concept.",
+          "citation_num": 1,
+          "doc_name": "AES_2022_10K",
+          "year": 2022,
+          "page": 139,
+          "cited_chunk_text": "income. Interest and dividends on investments are reported in Interest income and Other income, respectively. Gains and losses on sales of\ninvestments are determined using the specific identification method.\nACCOUNTS AND NOTES RECEIVABLE AND ALLOWANCE FOR DOUBTFUL ACCOUNTS \u2014 Accounts and notes receivable are\ncarried at amortized cost. The Company periodically assesses the collectability of accounts receivable, considering factors such as historical\ncollection experience, the age of accounts receivable and other currently available evidence supporting collectability, and records an allowance\nfor doubtful accounts in accordance with ASC 326 for the estimated uncollectible amount as appropriate. Credit losses on accounts and notes\nreceivable are generally recognized in Cost of Sales. Certain of our businesses charge interest on accounts receivable. Interest income is\nrecognized on an accrual basis. When collection of such interest is not reasonably assured, interest income is recognized as cash is received.\nIndividual accounts and notes receivable are written off when they are no longer deemed collectible.\nINVENTORY \u2014 Inventory primarily consists of fuel and other raw materials used to generate power, and operational spare parts and\nsupplies used to maintain power generation and distribution facilities. Inventory is carried at lower of cost or net realizable value. Cost is the sum\nof the purchase price and expenditures incurred to bring the inventory to its existing location. Inventory is primarily valued using the average cost\nmethod. Generally, if it is expected fuel inventory will not be recovered through revenue earned from power generation, an impairment is\nrecognized to reflect the fuel at net realizable value. The carrying amount of spare parts and supplies is typically reduced only in instances where\nthe items are considered obsolete.\nLONG-LIVED ASSETS \u2014 Long-lived assets include property, plant and equipment, assets under finance leases and intangible assets"
+        },
+        {
+          "claim": "Because the excerpts do not explicitly provide an inventory turnover figure or confirm that conventional inventory management applies, I cannot state a turnover multiple based solely on the provided context.",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_08135",
+      "company": "Amazon",
+      "question": "What is Amazon's year-over-year change in revenue from FY2016 to FY2017 (in units of percents and round to one decimal place)? Calculate what was asked by utilizing the line items clearly shown in the statement of income.",
+      "predicted_answer": "Based on the consolidated statements of operations [6], total net sales were $135,987 million in FY2016 and $177,866 million in FY2017.\n\nYear-over-year change = ($177,866 \u2212 $135,987) / $135,987 = $41,879 / $135,987 \u2248 30.8%.\n\nAmazon's year-over-year revenue change from FY2016 to FY2017 was approximately **30.8%** [6].",
+      "pairs": [
+        {
+          "claim": "Based on the consolidated statements of operations [6], total net sales were $135,987 million in FY2016 and $177,866 million in FY2017.",
+          "citation_num": 6,
+          "doc_name": "AMAZON_2017_10K",
+          "year": 2017,
+          "page": 37,
+          "cited_chunk_text": "Table of Contents\nAMAZON.COM, INC.\nCONSOLIDATED STATEMENTS OF\n OPERATIONS(in millions, except per share data)\n \n  \n Year Ended December 31,  \n2015  2016  2017 Net product sales\n$ 79,268  $ 94,665  $ 118,573 Net service sales\n27,738  41,322  59,293 Total net sales\n107,006  135,987  177,866 Operating expenses:\n     Cost of sales\n71,651  88,265  111,934 Fulfillment\n13,410  17,619  25,249 Marketing\n5,254  7,233  10,069 Technology and content\n12,540  16,085  22,620 General and administrative\n1,747  2,432  3,674 Other operating expense, net\n171  167  214 Total operating expenses\n104,773  131,801  173,760 Operating income\n2,233  4,186  4,106 Interest income\n50  100  202 Interest expense\n(459 )  (484 )  (848 ) Other income (expense), net\n(256 )  90  346 Total non-operating incom\ne (expense)(665 )  (294 )  (300 ) Income before income taxes\n1,568  3,892  3,806 Provision for income taxes\n(950 )  (1,425 )  (769 ) Equity-method investment \nactivity, net of tax(22 )  (96 )  (4 ) Net income\n$ 596  $ 2,371  $ 3,033 Basic earnings per share\n$ 1.28  $ 5.01  $ 6.32 Diluted earnings per share\n$ 1.25  $ 4.90  $ 6.15 Weighted-average sha\nres used in computation of earnings per share:     Basic\n467  474  480 Diluted\n477  484  493 See accompanying notes to consol\nidated financial statements.38"
+        },
+        {
+          "claim": "Year-over-year change = ($177,866 \u2212 $135,987) / $135,987 = $41,879 / $135,987 \u2248 30.8%.",
+          "citation_num": null,
+          "doc_name": null,
+          "year": null,
+          "page": null,
+          "cited_chunk_text": "[NO CITATION EMITTED FOR CLAIM]"
+        },
+        {
+          "claim": "Amazon's year-over-year revenue change from FY2016 to FY2017 was approximately **30.8%** [6].",
+          "citation_num": 6,
+          "doc_name": "AMAZON_2017_10K",
+          "year": 2017,
+          "page": 37,
+          "cited_chunk_text": "Table of Contents\nAMAZON.COM, INC.\nCONSOLIDATED STATEMENTS OF\n OPERATIONS(in millions, except per share data)\n \n  \n Year Ended December 31,  \n2015  2016  2017 Net product sales\n$ 79,268  $ 94,665  $ 118,573 Net service sales\n27,738  41,322  59,293 Total net sales\n107,006  135,987  177,866 Operating expenses:\n     Cost of sales\n71,651  88,265  111,934 Fulfillment\n13,410  17,619  25,249 Marketing\n5,254  7,233  10,069 Technology and content\n12,540  16,085  22,620 General and administrative\n1,747  2,432  3,674 Other operating expense, net\n171  167  214 Total operating expenses\n104,773  131,801  173,760 Operating income\n2,233  4,186  4,106 Interest income\n50  100  202 Interest expense\n(459 )  (484 )  (848 ) Other income (expense), net\n(256 )  90  346 Total non-operating incom\ne (expense)(665 )  (294 )  (300 ) Income before income taxes\n1,568  3,892  3,806 Provision for income taxes\n(950 )  (1,425 )  (769 ) Equity-method investment \nactivity, net of tax(22 )  (96 )  (4 ) Net income\n$ 596  $ 2,371  $ 3,033 Basic earnings per share\n$ 1.28  $ 5.01  $ 6.32 Diluted earnings per share\n$ 1.25  $ 4.90  $ 6.15 Weighted-average sha\nres used in computation of earnings per share:     Basic\n467  474  480 Diluted\n477  484  493 See accompanying notes to consol\nidated financial statements.38"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_01474",
+      "company": "PepsiCo",
+      "question": "As of FY2023Q1, why did Pepsico raise full year guidance for FY2023?",
+      "predicted_answer": "PepsiCo raised its full-year FY2023 guidance because of its strong start to the year and business momentum, with categories and geographies remaining resilient during the first quarter [1]. Specifically, the company now expects full-year 2023 organic revenue to increase 8 percent (previously 6 percent) and core constant currency EPS to increase 9 percent (previously 8 percent) [1][2].",
+      "pairs": [
+        {
+          "claim": "PepsiCo raised its full-year FY2023 guidance because of its strong start to the year and business momentum, with categories and geographies remaining resilient during the first quarter [1].",
+          "citation_num": 1,
+          "doc_name": "PEPSICO_2023Q1_EARNINGS",
+          "year": 2023,
+          "page": 0,
+          "cited_chunk_text": "PepsiCo Reports First-Quarter 2023 Results; Raises Full-Year \nGuidance\nReported (GAAP) First-Quarter 2023 Results\nFirst-Quarter\nNet revenue growth 10.2%\nForeign exchange impact on net revenue (2.5)%\nEarnings per share (EPS) $1.40\nEPS change (54)%\nForeign exchange impact on EPS (2)%\nOrganic/Core (non-GAAP)1 First-Quarter 2023 Results\nFirst-Quarter\nOrganic revenue growth 14.3%\nCore EPS $1.50\nCore constant currency EPS change 18%\nPURCHASE, N.Y. - April 25, 2023 - PepsiCo, Inc. (NASDAQ: PEP) today reported results for \nthe first quarter 2023. \n\u201cWe are very pleased with our performance and business momentum as our categories and \ngeographies remained resilient during the first quarter. Given our strong start to the year, we \nnow expect our full-year 2023 organic revenue to increase 8 percent (previously 6 percent) and \ncore constant currency EPS to increase 9 percent (previously 8 percent),\u201d said Chairman and \nCEO Ramon Laguarta.\nLaguarta continued, \u201cOur results demonstrate that the investments we have made to become an \neven Faster, even Stronger, and even Better organization by Winning with pep+ are laying the \nfoundation for durable and sustainable growth. We remain committed to our strategic agenda \nand will continue to invest in our people, brands, supply chain, go-to-market systems, and \ndigitization initiatives to build competitive advantages and win in the marketplace.\u201d"
+        },
+        {
+          "claim": "Specifically, the company now expects full-year 2023 organic revenue to increase 8 percent (previously 6 percent) and core constant currency EPS to increase 9 percent (previously 8 percent) [1][2].",
+          "citation_num": 1,
+          "doc_name": "PEPSICO_2023Q1_EARNINGS",
+          "year": 2023,
+          "page": 0,
+          "cited_chunk_text": "PepsiCo Reports First-Quarter 2023 Results; Raises Full-Year \nGuidance\nReported (GAAP) First-Quarter 2023 Results\nFirst-Quarter\nNet revenue growth 10.2%\nForeign exchange impact on net revenue (2.5)%\nEarnings per share (EPS) $1.40\nEPS change (54)%\nForeign exchange impact on EPS (2)%\nOrganic/Core (non-GAAP)1 First-Quarter 2023 Results\nFirst-Quarter\nOrganic revenue growth 14.3%\nCore EPS $1.50\nCore constant currency EPS change 18%\nPURCHASE, N.Y. - April 25, 2023 - PepsiCo, Inc. (NASDAQ: PEP) today reported results for \nthe first quarter 2023. \n\u201cWe are very pleased with our performance and business momentum as our categories and \ngeographies remained resilient during the first quarter. Given our strong start to the year, we \nnow expect our full-year 2023 organic revenue to increase 8 percent (previously 6 percent) and \ncore constant currency EPS to increase 9 percent (previously 8 percent),\u201d said Chairman and \nCEO Ramon Laguarta.\nLaguarta continued, \u201cOur results demonstrate that the investments we have made to become an \neven Faster, even Stronger, and even Better organization by Winning with pep+ are laying the \nfoundation for durable and sustainable growth. We remain committed to our strategic agenda \nand will continue to invest in our people, brands, supply chain, go-to-market systems, and \ndigitization initiatives to build competitive advantages and win in the marketplace.\u201d"
+        },
+        {
+          "claim": "Specifically, the company now expects full-year 2023 organic revenue to increase 8 percent (previously 6 percent) and core constant currency EPS to increase 9 percent (previously 8 percent) [1][2].",
+          "citation_num": 2,
+          "doc_name": "PEPSICO_2023Q1_EARNINGS",
+          "year": 2023,
+          "page": 2,
+          "cited_chunk_text": "Guidance and Outlook\nThe Company provides guidance on a non-GAAP basis as we cannot predict certain elements which are \nincluded in reported GAAP results, including the impact of foreign exchange translation and commodity \nmark-to-market net impacts. \nFor fiscal year 2023, the Company now expects to deliver 8 percent organic revenue growth (previously 6 \npercent), and 9 percent core constant currency EPS growth (previously 8 percent).\nConsistent with its previous guidance for 2023, the Company continues to expect:\n\u2022 A core annual effective tax rate of 20 percent; and\n\u2022 Total cash returns to shareholders of approximately $7.7 billion, comprised of dividends of $6.7 \nbillion and share repurchases of $1.0 billion.\nIn addition, the Company continues to expect an approximate 2-percentage-point foreign exchange \ntranslation headwind to impact reported net revenue and core EPS growth based on current market \nconsensus rates.\nThis assumption and the guidance above imply 2023 core EPS of $7.27 (previously $7.20), a 7 percent \nincrease (previously 6 percent) compared to 2022 core EPS of $6.79.\nPrepared Management Remarks and Live Question and Answer Webcast\nAt approximately 6:30 a.m. (Eastern time) on April 25, 2023, the Company will post prepared \nmanagement remarks (in pdf format) of its first quarter 2023 results and business update, including its \noutlook for 2023, at www.pepsico.com/investors. At 8:15 a.m. (Eastern time) on April 25, 2023, the \nCompany will host a live question and answer session with investors and financial analysts. Further \ndetails will be accessible on the Company\u2019s website at www.pepsico.com/investors.\nContacts: Investor Relations Communications\ninvestor@pepsico.com pepsicomediarelations@pepsico.com\n3"
+        }
+      ]
+    },
+    {
+      "financebench_id": "financebench_id_01490",
+      "company": "Johnson & Johnson",
+      "question": "What is the amount of the gain accruing to JnJ as a result of the separation of its Consumer Health business segment, as of August 30, 2023?",
+      "predicted_answer": "The gain accruing to Johnson & Johnson as a result of the Consumer Health (Kenvue) separation is approximately **$20 billion**, recognized in the third quarter of 2023 [2].",
+      "pairs": [
+        {
+          "claim": "The gain accruing to Johnson & Johnson as a result of the Consumer Health (Kenvue) separation is approximately **$20 billion**, recognized in the third quarter of 2023 [2].",
+          "citation_num": 2,
+          "doc_name": "JOHNSON_JOHNSON_2023_8K_dated-2023-08-30",
+          "year": 2023,
+          "page": 3,
+          "cited_chunk_text": "\u201cThe completion of this transaction uniquely positions Johnson & Johnson as a Pharmaceutical and MedTech company focused on delivering\ntransformative healthcare solutions to patients,\u201d said Joaquin Duato, Chairman of the Board and Chief Executive Officer. \u201cWe are incredibly\nproud of the focus and dedication of our employees worldwide to achieve this milestone, which we are confident will unlock near- and long-\nterm value for all of our stakeholders.\u201d\nAs previously announced, the Company recently completed an exchange offer to finalize the separation of Kenvue Inc., formerly Johnson &\nJohnson\u2019s Consumer Health business. As a result of the completion of the exchange offer, Johnson & Johnson will now present its\nConsumer Health business financial results as discontinued operations, including a gain of approximately $20 billion in the third quarter of\n2023."
+        }
+      ]
+    }
+  ]
+}

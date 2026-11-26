@@ -28,6 +28,7 @@ from app.core.embeddings import embed_text
 from app.core.llm import call_llm
 from app.core.retrieval import build_rag_prompt
 from app.core.vector import search_chunks
+from eval.run_answer_eval import check_abstention
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger("eval")
@@ -75,21 +76,6 @@ def is_retrieval_hit(chunk: Dict[str, Any], gold_evidence_list: List[Dict[str, A
         if chunk_doc == ev_doc and chunk_page == ev_page:
             return True
     return False
-
-
-def check_abstention(answer_text: str) -> bool:
-    """Return True if model explicitly abstained from answering."""
-    text_lower = answer_text.lower()
-    phrases = [
-        "cannot answer this question",
-        "i cannot answer",
-        "not provided in the",
-        "not mentioned in the provided",
-        "excerpts do not contain",
-        "does not contain information",
-        "does not provide information",
-    ]
-    return any(p in text_lower for p in phrases)
 
 
 def try_numeric_match(gold_answer: str, pred_answer: str) -> Optional[bool]:
@@ -214,6 +200,7 @@ def run_evaluation() -> Dict[str, Any]:
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
 
     # Metrics storage
+    api_failures: List[Dict[str, Any]] = []
     # Config A: Baseline (no company filter)
     # Config B: Pipeline (with company filter)
     config_a_hits_5 = 0
@@ -264,13 +251,23 @@ def run_evaluation() -> Dict[str, Any]:
 
         # 4. Generate Answer using Config B top 5
         rag_prompt = build_rag_prompt(query_text, chunks_b_5)
-        llm_resp = call_with_retry(call_llm, prompt=rag_prompt, model=target_model, allow_fallback=False)
-        api_model = llm_resp["model"]
-        pred_answer = llm_resp.get("output", "").strip()
-        tokens_used = llm_resp.get("tokens_used", 0)
-        prompt_tokens = llm_resp.get("prompt_tokens", 0)
-        completion_tokens = llm_resp.get("completion_tokens", 0)
-        latency_ms = llm_resp.get("latency_ms", 0)
+        try:
+            llm_resp = call_with_retry(call_llm, prompt=rag_prompt, model=target_model, allow_fallback=False)
+            api_model = llm_resp["model"]
+            pred_answer = llm_resp.get("output", "").strip()
+            tokens_used = llm_resp.get("tokens_used", 0)
+            prompt_tokens = llm_resp.get("prompt_tokens", 0)
+            completion_tokens = llm_resp.get("completion_tokens", 0)
+            latency_ms = llm_resp.get("latency_ms", 0)
+        except Exception as exc:
+            logger.error(f"LOUD EVAL FAILURE for question {q_id}: {exc}")
+            api_failures.append({"id": q_id, "stage": "generation", "error": str(exc)})
+            api_model = "error"
+            pred_answer = ""
+            tokens_used = 0
+            prompt_tokens = 0
+            completion_tokens = 0
+            latency_ms = 0
 
         # Pacing delay between LLM calls to respect API rate limits
         time.sleep(2.0)
@@ -389,10 +386,14 @@ def run_evaluation() -> Dict[str, Any]:
     summary = {
         "git_commit": git_commit,
         "timestamp": timestamp,
+        "generator_model": target_model,
+        "judge_model": settings.judge_model or target_model,
         "model": reported_model,
         "api_models_returned": sorted(api_models_seen),
         "chunk_size": 400,
         "total_questions": total_q,
+        "api_failures": api_failures,
+        "failure_count": len(api_failures),
         "retrieval": {
             "config_a_baseline_no_filter": {
                 "hit_rate_at_5": rate_a_5,
