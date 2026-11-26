@@ -29,13 +29,41 @@ Open [http://localhost:8000](http://localhost:8000) in your browser.
 
 ## How to Reproduce Evaluation
 
-Run the evaluation script against the 150 FinanceBench questions:
+Comprehensive documentation is available in [`docs/`](docs/):
+- **[Master System Documentation](docs/MASTER_DOCUMENTATION.md)**: End-to-end architecture, decisions, schema, chunking v2, and operations.
+- **[Empirical Benchmark Report](docs/BENCHMARK_RESULTS.md)**: Detailed ablation tables, Wilson intervals, and statistical formulas.
+- **[Evaluation Harness & Verification Guide](docs/EVALUATION_HARNESS.md)**: Execution gates, LLM judge rubric, and human review sample workflows.
 
+### 1. Frozen Answer-Level Evaluation (Held-Out Test Split, n = 75)
+```bash
+./venv/bin/python3 eval/run_answer_eval.py \
+  --split test \
+  --prompt-version v0 \
+  --frozen-config-hash 357e5de5955c06edec0c892289a2acdb3fefdebaa916ef8e302af52e82d03ebb \
+  --generate-reviews
+```
+
+### 2. Retrieval Evaluation (Legacy 150-Question Harness)
 ```bash
 python eval/run_eval.py
 ```
 
-Results JSON files are written with full timestamped logs under `eval/results/`.
+Results JSON files are written with full timestamped logs and human review files under `eval/results/`.
+
+## Held-Out Test Benchmark Results (Frozen Pipeline, n = 75)
+
+Evaluated under frozen config hash `357e5de5955c` across 75 held-out questions against 84 SEC filings:
+
+| Metric | k / n | Rate (%) | 95% Wilson Score Confidence Interval |
+| :--- | :--- | :--- | :--- |
+| **Overall Correct** | 30 / 75 | **40.0%** | [29.7%, 51.3%] |
+| **Overall Wrong (Errors)** | 9 / 75 | **12.0%** | [6.4%, 21.3%] |
+| **Overall Abstained** | 36 / 75 | **48.0%** | [37.1%, 59.1%] |
+| **Accuracy Among Attempted** | **30 / 39** | **76.9%** | **[61.7%, 87.4%]** |
+| **Retrieval Page Hit@10** | 41 / 75 | **54.7%** | [43.4%, 65.4%] |
+| **Page Hit: Correct Answers** | 26 / 41 | **63.4%** | [48.1%, 76.4%] |
+| **Page Miss: Faithful Abstention** | 27 / 34 | **79.4%** | [63.2%, 89.7%] |
+| **API Errors / Dropped Questions** | 0 / 75 | **0.0%** | - |
 
 ## Embedding Engine Benchmark (Measured)
 
