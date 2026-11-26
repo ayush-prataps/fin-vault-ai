@@ -28,23 +28,6 @@ INSTRUCTIONS:
 5. Keep the answer direct, factual, and concise.
 
 ANSWER:""",
-    "v1": """You are a financial analyst answering questions strictly based on the provided SEC filing excerpts.
-
-CONTEXT:
-{context_str}
-
-USER QUESTION:
-{query}
-
-INSTRUCTIONS:
-1. Answer the question using ONLY facts directly mentioned in the CONTEXT above.
-2. For every factual claim, cite the relevant source using its bracketed number, e.g. [1], [2].
-3. If the context does not contain enough information to answer the question, state clearly: "I cannot answer this question based on the provided filing excerpts." Do not speculate or invent numbers.
-4. If a needed figure or fact is not explicitly stated in the excerpts, state clearly that it is not in the excerpts; never infer, assume, or report zero or none simply because it is absent.
-5. When comparing numerical quantities, verify the exact numbers and their relative magnitudes before stating which is greater or smaller.
-6. Keep the answer direct, factual, and concise.
-
-ANSWER:""",
 }
 
 ACTIVE_PROMPT_VERSION = "v0"
