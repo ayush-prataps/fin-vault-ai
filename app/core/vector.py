@@ -15,11 +15,65 @@ def _vector_literal(values: list[float]) -> str:
     return "[" + ",".join(f"{float(v):.8f}" for v in values) + "]"
 
 
+def _run_search_query(
+    cur,
+    embedding_literal: str,
+    company: Optional[str],
+    year: Optional[int],
+    top_k: int,
+) -> list[dict[str, Any]]:
+    query = [
+        "SELECT",
+        "    id,",
+        "    company,",
+        "    doc_name,",
+        "    year,",
+        "    page,",
+        "    chunk_index,",
+        "    text,",
+        "    1 - (embedding <=> %s::vector) AS similarity_score",
+        "FROM chunks_v2",
+        "WHERE embedding IS NOT NULL",
+    ]
+    params: list[Any] = [embedding_literal]
+
+    if company:
+        query.append("AND company = %s")
+        params.append(company)
+    if year:
+        query.append("AND year = %s")
+        params.append(year)
+
+    query.append("ORDER BY embedding <=> %s::vector")
+    params.append(embedding_literal)
+    query.append("LIMIT %s")
+    params.append(top_k)
+
+    cur.execute("\n".join(query), params)
+    rows = cur.fetchall()
+
+    results = []
+    for row in rows:
+        chunk_id, comp, doc_name, yr, page, chunk_idx, text, score = row
+        results.append({
+            "id": chunk_id,
+            "company": comp,
+            "doc_name": doc_name,
+            "year": yr,
+            "page": page,
+            "chunk_index": chunk_idx,
+            "text": text,
+            "similarity_score": float(score or 0.0),
+        })
+    return results
+
+
 def search_chunks(
     query_embedding: list[float],
     company: Optional[str] = None,
     year: Optional[int] = None,
     top_k: int = 5,
+    conn=None,
 ) -> list[dict[str, Any]]:
     """
     Search chunks using pgvector cosine distance.
@@ -27,52 +81,12 @@ def search_chunks(
     """
     embedding_literal = _vector_literal(query_embedding)
     try:
-        with psycopg2.connect(settings.database_url) as conn:
+        if conn is not None:
             with conn.cursor() as cur:
-                query = [
-                    "SELECT",
-                    "    id,",
-                    "    company,",
-                    "    doc_name,",
-                    "    year,",
-                    "    page,",
-                    "    chunk_index,",
-                    "    text,",
-                    "    1 - (embedding <=> %s::vector) AS similarity_score",
-                    "FROM chunks_v2",
-                    "WHERE embedding IS NOT NULL",
-                ]
-                params: list[Any] = [embedding_literal]
-
-                if company:
-                    query.append("AND company = %s")
-                    params.append(company)
-                if year:
-                    query.append("AND year = %s")
-                    params.append(year)
-
-                query.append("ORDER BY embedding <=> %s::vector")
-                params.append(embedding_literal)
-                query.append("LIMIT %s")
-                params.append(top_k)
-
-                cur.execute("\n".join(query), params)
-                rows = cur.fetchall()
-
-        results = []
-        for row in rows:
-            chunk_id, comp, doc_name, yr, page, chunk_idx, text, score = row
-            results.append({
-                "id": chunk_id,
-                "company": comp,
-                "doc_name": doc_name,
-                "year": yr,
-                "page": page,
-                "chunk_index": chunk_idx,
-                "text": text,
-                "similarity_score": float(score or 0.0),
-            })
-        return results
+                return _run_search_query(cur, embedding_literal, company, year, top_k)
+        with psycopg2.connect(settings.database_url) as new_conn:
+            with new_conn.cursor() as cur:
+                return _run_search_query(cur, embedding_literal, company, year, top_k)
 
     except Exception as exc:
         logger.error("Vector search failed: %s", exc)

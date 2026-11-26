@@ -1,7 +1,7 @@
 fastapi
 uvicorn[standard]
 python-dotenv
-groq
+httpx
 psycopg2-binary
 pypdf[crypto]
 fastembed==0.9.1

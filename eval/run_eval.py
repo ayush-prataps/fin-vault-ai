@@ -198,7 +198,9 @@ def run_evaluation() -> Dict[str, Any]:
     logger.info(f"Loaded {total_q} questions from {dataset_path.name}")
 
     git_commit = get_git_commit()
-    groq_model = settings.groq_model or "qwen/qwen3.8-27b"
+    target_model = settings.llm_model
+    if not target_model:
+        raise ValueError("LLM_MODEL is not configured")
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
 
     # Metrics storage
@@ -212,6 +214,7 @@ def run_evaluation() -> Dict[str, Any]:
     pipeline_correct = 0
     pipeline_abstained = 0
     pipeline_incorrect = 0
+    api_models_seen = set()
 
     question_results: List[Dict[str, Any]] = []
 
@@ -251,12 +254,15 @@ def run_evaluation() -> Dict[str, Any]:
 
         # 4. Generate Answer using Config B top 5
         rag_prompt = build_rag_prompt(query_text, chunks_b_5)
-        llm_resp = call_with_retry(call_llm, prompt=rag_prompt, model=groq_model)
+        llm_resp = call_with_retry(call_llm, prompt=rag_prompt, model=target_model)
+        api_model = llm_resp["model"]
         pred_answer = llm_resp.get("output", "").strip()
         tokens_used = llm_resp.get("tokens_used", 0)
+        prompt_tokens = llm_resp.get("prompt_tokens", 0)
+        completion_tokens = llm_resp.get("completion_tokens", 0)
         latency_ms = llm_resp.get("latency_ms", 0)
 
-        # Pacing delay between LLM calls to respect Groq free-tier rate limits
+        # Pacing delay between LLM calls to respect API rate limits
         time.sleep(2.0)
 
         # 5. Check abstention
@@ -286,7 +292,7 @@ def run_evaluation() -> Dict[str, Any]:
                     gold_answer=gold_answer,
                     justification=justification,
                     pred_answer=pred_answer,
-                    model=groq_model,
+                    model=target_model,
                 )
                 score = j_score
                 judge_reason = j_reason
@@ -312,6 +318,7 @@ def run_evaluation() -> Dict[str, Any]:
             for c_idx, c in enumerate(chunks_b_5)
         ]
 
+        api_models_seen.add(api_model)
         q_res = {
             "id": q_id,
             "company": company,
@@ -319,6 +326,7 @@ def run_evaluation() -> Dict[str, Any]:
             "question": query_text,
             "gold_answer": gold_answer,
             "predicted_answer": pred_answer,
+            "api_model": api_model,
             "score": score,
             "abstained": abstained,
             "eval_method": eval_method,
@@ -328,6 +336,8 @@ def run_evaluation() -> Dict[str, Any]:
             "hit_b_5": hit_b_5,
             "hit_b_10": hit_b_10,
             "tokens_used": tokens_used,
+            "prompt_tokens": prompt_tokens,
+            "completion_tokens": completion_tokens,
             "latency_ms": latency_ms,
             "citations": citations_summary,
         }
@@ -365,10 +375,12 @@ def run_evaluation() -> Dict[str, Any]:
         for q in failures
     ]
 
+    reported_model = sorted(api_models_seen)[0] if len(api_models_seen) == 1 else sorted(api_models_seen)
     summary = {
         "git_commit": git_commit,
         "timestamp": timestamp,
-        "model": groq_model,
+        "model": reported_model,
+        "api_models_returned": sorted(api_models_seen),
         "chunk_size": 400,
         "total_questions": total_q,
         "retrieval": {
@@ -412,7 +424,7 @@ def run_evaluation() -> Dict[str, Any]:
     print("FINANCEBENCH EVALUATION SUMMARY")
     print("=" * 60)
     print(f"Commit:           {git_commit}")
-    print(f"Model:            {groq_model}")
+    print(f"Model (API):      {reported_model}")
     print(f"Total Questions:  {total_q}")
     print("-" * 60)
     print("RETRIEVAL HIT RATE (evidence page in top-k):")

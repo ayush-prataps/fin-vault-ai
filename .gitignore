@@ -6,3 +6,4 @@ __pycache__/
 data/raw/
 data/extracted_chunks_*.jsonl
 .fastembed_cache/
+eval/results/cache/

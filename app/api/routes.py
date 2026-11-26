@@ -32,8 +32,12 @@ class QueryResponse(BaseModel):
     answer: str
     citations: List[Citation]
     model: str
+    provider: Optional[str] = None
+    fallback_from: Optional[str] = None
     latency_ms: int
     tokens: int
+    prompt_tokens: int = 0
+    completion_tokens: int = 0
 
 
 @router.get("/health")
@@ -95,6 +99,10 @@ async def query_pipeline(payload: QueryRequest, request: Request) -> QueryRespon
         answer=llm_result["output"],
         citations=citations,
         model=llm_result["model"],
+        provider=llm_result.get("provider"),
+        fallback_from=llm_result.get("fallback_from"),
         latency_ms=total_latency_ms,
         tokens=llm_result["tokens_used"],
+        prompt_tokens=llm_result.get("prompt_tokens", 0),
+        completion_tokens=llm_result.get("completion_tokens", 0),
     )

@@ -11,7 +11,7 @@ Smallest honest RAG pipeline answering questions over real SEC filings with page
 5. Vector Database: PostgreSQL with pgvector extension storing chunk vectors and metadata.
 6. Retrieval: Top-k cosine similarity search with optional ticker and year SQL filters.
 7. Context Formatter: Numbered bracket citations [1], [2] containing document, year, and page.
-8. Generation: Groq API running qwen/qwen3.8-27b with temperature 0.0.
+8. Generation: OpenAI-compatible LLM client supporting dual providers (DeepSeek `deepseek-flash` in non-thinking mode and Groq `qwen/qwen3.8-27b`) with prefix routing, automatic failover, temperature 0.0, timeout, `max_tokens`, and provider-isolated response caching. Questions and retrieved filing excerpts are sent to a third-party LLM API.
 9. Guardrails: Explicit abstention prompt when context lacks required facts; zero mock data.
 10. Evaluation: Automated FinanceBench harness testing retrieval hit rate and answer accuracy.
 
